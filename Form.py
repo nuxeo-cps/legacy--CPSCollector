@@ -2,12 +2,12 @@
 # $Id$
 """
 The Form class is an HTML form generator.
+
 This is a very simple 'Formulator like' tool. A Form object displays a web
 form until input are correct, then it executes the action method.
 The Form is editable TTW.
 """
 
-# import
 from re import match
 from Globals import InitializeClass
 from ExtensionClass import Base
@@ -15,10 +15,9 @@ from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
-# class
 class Form(Base):
     """A Form knows how to render and validate its fields and
-    it knows how to edit itself using ... itself.
+    it knows how to edit itself using... itself.
     _action and _validator methods should be overriden in subclasses
     """
 
