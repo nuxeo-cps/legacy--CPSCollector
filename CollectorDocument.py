@@ -399,7 +399,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declarePrivate('_decode_id')
     def _decode_id(self, id=''):
-        """Return a tuple (user, ip, date) or None for bad id"""
+        """Return a tuple (user, ip, date) or (None, None, None) for bad id"""
         m = match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
         if m is None:
             return None, None, None
