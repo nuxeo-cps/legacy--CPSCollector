@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2004-02-20 12:25default\n"
-"PO-Revision-Date: 2004-02-20 10:28+0100\n"
+"POT-Creation-Date: 2004-02-20 12:35default\n"
+"PO-Revision-Date: 2004-02-20 12:45+0100\n"
 "Last-Translator: ben <ben@nuxeo.com>\n"
 "Language-Team: ben\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr ""
 "${collector_label_nb_all} question(s)"
 
 #.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
-#.   
+#.
 #.     </input>
 #.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
@@ -432,6 +432,52 @@ msgstr "Correct answer:"
 msgid "collector_blank"
 msgstr " "
 
+msgid "collector_field_required"
+msgstr "required"
+
+msgid "collector_field_too_long"
+msgstr "field too long"
+
+msgid "collector_field_email_invalid"
+msgstr "invalid email"
+
+msgid "collector_field_int_invalid"
+msgstr "invalid identifier"
+
+msgid "collector_field_float_invalid"
+msgstr "invalid float"
+
+msgid "collector_field_phone_invalid"
+msgstr "invalid phone number"
+
+msgid "collector_field_read_only"
+msgstr "read only field"
+
+msgid "collector_field_id_invalid"
+msgstr "invalid identifier"
+
+msgid "collector_field_multiselect_invalid"
+msgstr "invalid selection"
+
+msgid "collector_field_selection_invalid"
+msgstr "invalid selection"
+
+msgid "collector_field_date_invalid"
+msgstr "invalid date"
+
+msgid "collector_field_url_invalid"
+msgstr "invalid URL"
+
+msgid "collector_field_empty_file"
+msgstr "empty file"
+
+msgid "collector_field_file_too_big"
+msgstr "file too big"
+
+#, fuzzy
+#~ msgid "collector_form_mulitple"
+#~ msgstr "Multiple selection:"
+
 #, fuzzy
 #~ msgid "collector_psm_erased_data"
 #~ msgstr "Collected data has been erased"
@@ -445,3 +491,4 @@ msgstr " "
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Collected data has been erased"
+

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2004-02-20 12:25default\n"
+"POT-Creation-Date: 2004-02-20 12:35default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -424,4 +424,46 @@ msgid "collector_form_good_answer"
 msgstr ""
 
 msgid "collector_blank"
+msgstr ""
+
+msgid "collector_field_required"
+msgstr ""
+
+msgid "collector_field_too_long"
+msgstr ""
+
+msgid "collector_field_email_invalid"
+msgstr ""
+
+msgid "collector_field_int_invalid"
+msgstr ""
+
+msgid "collector_field_float_invalid"
+msgstr ""
+
+msgid "collector_field_phone_invalid"
+msgstr ""
+
+msgid "collector_field_read_only"
+msgstr ""
+
+msgid "collector_field_id_invalid"
+msgstr ""
+
+msgid "collector_field_multiselect_invalid"
+msgstr ""
+
+msgid "collector_field_selection_invalid"
+msgstr ""
+
+msgid "collector_field_date_invalid"
+msgstr ""
+
+msgid "collector_field_url_invalid"
+msgstr ""
+
+msgid "collector_field_empty_file"
+msgstr ""
+
+msgid "collector_field_file_too_big"
 msgstr ""

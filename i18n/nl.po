@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
-"POT-Creation-Date: 2004-02-20 12:25default\n"
+"POT-Creation-Date: 2004-02-20 12:35default\n"
 "PO-Revision-Date: 2004-02-18 11:26+0100\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
@@ -433,6 +433,66 @@ msgstr "Juist antwoord:"
 
 msgid "collector_blank"
 msgstr " "
+
+#, fuzzy
+msgid "collector_field_required"
+msgstr "Verplicht:"
+
+#, fuzzy
+msgid "collector_field_too_long"
+msgstr "Knop"
+
+#, fuzzy
+msgid "collector_field_email_invalid"
+msgstr "Email"
+
+#, fuzzy
+msgid "collector_field_int_invalid"
+msgstr "Variabele naam"
+
+#, fuzzy
+msgid "collector_field_float_invalid"
+msgstr "Komma getal"
+
+#, fuzzy
+msgid "collector_field_phone_invalid"
+msgstr "Telefoon nummer"
+
+#, fuzzy
+msgid "collector_field_read_only"
+msgstr "Email"
+
+#, fuzzy
+msgid "collector_field_id_invalid"
+msgstr "Datum"
+
+#, fuzzy
+msgid "collector_field_multiselect_invalid"
+msgstr "Keuze lijst"
+
+#, fuzzy
+msgid "collector_field_selection_invalid"
+msgstr "Keuze lijst"
+
+#, fuzzy
+msgid "collector_field_date_invalid"
+msgstr "Datum"
+
+#, fuzzy
+msgid "collector_field_url_invalid"
+msgstr "URL"
+
+#, fuzzy
+msgid "collector_field_empty_file"
+msgstr "Bestand"
+
+#, fuzzy
+msgid "collector_field_file_too_big"
+msgstr "Bestand"
+
+#, fuzzy
+#~ msgid "collector_form_mulitple"
+#~ msgstr "Veelvoudige keuze:"
 
 #, fuzzy
 #~ msgid "collector_psm_erased_data"

@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
-"POT-Creation-Date: 2004-02-20 12:25default\n"
-"PO-Revision-Date: 2004-02-20 11:13+0100\n"
+"POT-Creation-Date: 2004-02-20 12:35default\n"
+"PO-Revision-Date: 2004-02-20 12:37+0100\n"
 "Last-Translator: ben <ben@nuxeo.com>\n"
 "Language-Team: ben\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr ""
 "${collector_label_nb_all} question(s)"
 
 #.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
-#.   
+#.
 #.     </input>
 #.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
@@ -434,6 +434,52 @@ msgstr "Réponse correcte :"
 msgid "collector_blank"
 msgstr " "
 
+msgid "collector_field_required"
+msgstr "obligatoire"
+
+msgid "collector_field_too_long"
+msgstr "trop long"
+
+msgid "collector_field_email_invalid"
+msgstr "Mél invalide"
+
+msgid "collector_field_int_invalid"
+msgstr "identifiant invalide"
+
+msgid "collector_field_float_invalid"
+msgstr "nombre réel invalide"
+
+msgid "collector_field_phone_invalid"
+msgstr "numéro de téléphone invalide"
+
+msgid "collector_field_read_only"
+msgstr "champ en lecture seul"
+
+msgid "collector_field_id_invalid"
+msgstr "identifiant invalide"
+
+msgid "collector_field_multiselect_invalid"
+msgstr "sélection invalide"
+
+msgid "collector_field_selection_invalid"
+msgstr "sélection invalide"
+
+msgid "collector_field_date_invalid"
+msgstr "date invalide"
+
+msgid "collector_field_url_invalid"
+msgstr "URL invalide"
+
+msgid "collector_field_empty_file"
+msgstr "fichier vide"
+
+msgid "collector_field_file_too_big"
+msgstr "fichier trop long"
+
+#, fuzzy
+#~ msgid "collector_form_mulitple"
+#~ msgstr "Sélection multiple :"
+
 #, fuzzy
 #~ msgid "collector_psm_erased_data"
 #~ msgstr "Les données collectées ont été effacées"
@@ -447,3 +493,4 @@ msgstr " "
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Les données collectées ont été effacées"
+
