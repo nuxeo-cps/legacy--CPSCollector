@@ -20,7 +20,16 @@
   </tal:block>
 </metal:block>
 
-<metal:block fill-slot="header_plus" />
+<metal:block fill-slot="header_plus" >
+  <script language="JavaScript" type="text/javascript"><!--
+function open_metadata_editor(input_id) {
+    a = document.getElementById(input_id)
+    selector_window = window.open('Metadata_edit?input_id='+input_id+'&v='+a.elements, 'metadata_edit', 'toolbar=0, scrollbars=0, location=0, statusbar=0, menubar=0, resizable=0, dependent=1, width=290, height=250')
+    if(!selector_window.opener) selector_window.opener = window
+}
+-->
+  </script>
+</metal:block>
 
 <metal:block fill-slot="main"
   tal:define="title python:(create and [''] or [here.Title()])[0];
@@ -64,11 +73,12 @@
           tal:content="python:mcat('_newsletter_theme_')">Theme
         </metal:block>
         <metal:block fill-slot="content">
-          <select multiple="1" name="Theme">
-            <tal:block repeat="op python:here.md_getVocabularies('Theme', 1)">
-              <option tal:attributes="value python:op[0];selected python:op[1]" tal:content="python:op[0]"></option>
-            </tal:block>
+          <select name="Theme" id="Theme" tal:attributes="multiple python:here.md_isMultiple('Theme')">
+          <tal:block repeat="op python:here.md_getVocabularies('Theme', 1)">
+            <option tal:attributes="value python:op[0];selected python:op[1]" tal:content="python:op[0]"></option>
+          </tal:block>
           </select>
+          <a tal:attributes="href string:javascript:open_metadata_editor('Theme')"><img border="0" src="img_box_edit.png" /></a>
         </metal:block>
       </metal:block>
       </tal:block>
