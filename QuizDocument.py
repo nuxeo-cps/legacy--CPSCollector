@@ -11,7 +11,7 @@ from AccessControl import ClassSecurityInfo
 from Globals import InitializeClass
 
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
-from Products.CPSCollector.CollectorDocument import CollectorDocument, Form
+from Products.CPSCollector.CollectorDocument import CollectorDocument
 
 from Products.CPSCore.CPSBase import CPSBase_adder
 
@@ -86,7 +86,7 @@ class QuizDocument(CollectorDocument):
     _properties = CollectorDocument._properties
 
     # Overrides Form_editForm in Form.py
-    _editForm_pt='Form_editQuizForm'
+    _editForm_pt = 'Form_editQuizForm'
 
     field_attr = CollectorDocument.field_attr.copy()
     # Adding field trueval__, removing checked__ and required__
