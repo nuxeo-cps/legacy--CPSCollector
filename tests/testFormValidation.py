@@ -1,5 +1,8 @@
 """
 $Id$
+
+you (may) need to make a symlink to run this testsuite:
+ln -s $ZS/lib/python/Products $ZS/Products/CMFCore
 """
 import unittest
 
@@ -191,7 +194,7 @@ class TestFormValidation(unittest.TestCase):
         self.assertEqual(checkField('selection', ['sel3','sel1'],
                                     multiple=None,
                                     mvalue='sel1\nsel2\nsel3\n'),
-                         '_field_selection_invalid_')
+                         '_field_multiselect_invalid_')
 
 def test_suite():
     suite = unittest.TestSuite()
@@ -199,5 +202,4 @@ def test_suite():
     return suite
 
 if __name__ == '__main__':
-
-    unittest.main("")
+    unittest.main()
