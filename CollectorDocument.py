@@ -14,9 +14,7 @@ from random import randrange
 from re import match, sub
 from types import StringType, ListType
 
-from OFS.Folder import Folder
 from AccessControl import ClassSecurityInfo
-from Globals import DTMLFile
 from Globals import InitializeClass
 from Acquisition import aq_base
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
@@ -320,7 +318,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declarePrivate('_load_data')
     def _load_data(self, item_id=None):
-        """ Load collectorItem data or latest if item_id is None """
+        """Load collectorItem data or latest if item_id is None"""
         if not item_id:
             item_id = self._find_latest_item()
         if not item_id:
@@ -391,8 +389,8 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declarePrivate('_create_id')
     def _create_id(self):
-        """ id format is like time_user_ip_random
-        021126143959_member_127.0.0.1_814 """
+        """Create a new id with format like <time>_<user>_<ip>_<random>
+        (ex: 021126143959_member_127.0.0.1_814)"""
         id = time.strftime('%y%m%d%H%M%S', time.localtime()) + '_'
         mtools = self.portal_membership
         if mtools.isAnonymousUser():
@@ -405,16 +403,16 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declarePrivate('_decode_id')
     def _decode_id(self, id=''):
-        """ Return a tuple (user,ip,date) or None for bad id """
+        """Return a tuple (user, ip, date) or None for bad id"""
         m = match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
         if m is None:
             return None, None, None
         from zLOG import LOG, DEBUG
-        if hasattr(time,'strptime'):
+        if hasattr(time, 'strptime'):
             d = time.strptime(m.group(1), '%y%m%d%H%M%S')
         else:
-            #call to a platform independant version if not provided
-            #by Zope's python (e.g. Win32 before python 2.3)
+            # Call to a platform-independent version if not provided
+            # by Zope's python (e.g. Win32 before python 2.3)
             d = strptime.strptime(m.group(1), '%y%m%d%H%M%S')
         user = m.group(2)
         ip = m.group(3)
@@ -435,7 +433,7 @@ class CollectorDocument(Form, BaseDocument):
 InitializeClass(CollectorDocument)
 
 def addCollectorDocument(dispatcher, id, REQUEST=None, **kw):
-    """ Add a Collector Document """
+    """Add a Collector Document"""
     ob = CollectorDocument(id, **kw)
     return BaseDocument_adder(dispatcher, id, ob, REQUEST=REQUEST)
 

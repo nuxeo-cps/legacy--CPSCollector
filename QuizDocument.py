@@ -85,11 +85,11 @@ class QuizDocument(CollectorDocument):
 
     _properties = CollectorDocument._properties
 
-    #overrides Form_editForm in Form.py
+    # Overrides Form_editForm in Form.py
     _editForm_pt='Form_editQuizForm'
 
     field_attr = CollectorDocument.field_attr.copy()
-    #adding field trueval__, removing checked__ and required__
+    # Adding field trueval__, removing checked__ and required__
     field_attr['checkbox'] = CollectorDocument.field_attr['checkbox'][:1] +\
                              ('trueval__',) +\
                              CollectorDocument.field_attr['checkbox'][3:]
@@ -118,17 +118,17 @@ class QuizDocument(CollectorDocument):
 
     security.declareProtected(View, 'check_answers')
     def check_quiz_answers(self, **kw):
-        #retrieve latest filled form for current user
+        # Retrieve latest filled form for current user
         latest_item = self._load_data()
         if latest_item:
             dt = latest_item.data
             fields = []
             nb_correct = 0
             for f_id in self.get_quiz_fields():
-                #for each field, compare provided and correct answers
-                #and build a field list with the following information
-                #for each field: question, answer, correct answer, do
-                #they match
+                # For each field, compare provided and correct answers
+                # and build a field list with the following information
+                # for each field: question, answer, correct answer, do
+                # they match
                 pa = self.process_answer(f_id,dt.get(f_id,None))
                 if pa['is_correct']:
                     nb_correct = nb_correct + 1
@@ -139,20 +139,20 @@ class QuizDocument(CollectorDocument):
     
 
     def process_answer(self,f_id,f_value):
-        #for a given field, compare answer with correct answer
-        #build a summary of the question and result
-        #question, answer, correct answer, do they match
+        # For a given field, compare answer with correct answer
+        # build a summary of the question and result
+        # question, answer, correct answer, do they match
         field = self.fields[f_id]
         result = {'question': field['label']}
         correct_answer = field['trueval']
         if field['type'] == 'checkbox':
             if ((correct_answer and not f_value) or
                 (f_value and not correct_answer)):
-                #this series of somewhat complex tests abstracts
-                #other the correct value for the checkbox
-                #any value that does not eval to None is considered
-                #as 'checked' (this is the same behaviour as in the std
-                #collector document)
+                # This series of somewhat complex tests abstracts
+                # other the correct value for the checkbox
+                # any value that does not eval to None is considered
+                # as 'checked' (this is the same behaviour as in the std
+                # collector document)
                 result['is_correct'] = 0
                 if correct_answer:
                     result['correct_answ'] = 'checked'
@@ -187,7 +187,7 @@ class QuizDocument(CollectorDocument):
 InitializeClass(QuizDocument)
 
 def addQuizDocument(dispatcher, id, REQUEST=None, **kw):
-    """ Add a Collector Document """
+    """Add a Collector Document"""
     ob = QuizDocument(id, **kw)
     return BaseDocument_adder(dispatcher, id, ob, REQUEST=REQUEST)
 
