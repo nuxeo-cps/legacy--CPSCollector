@@ -107,7 +107,7 @@ class Form(Base):
     def _display_zpt(self, zpt_name, **kw):
         # call zpt_name
         zpt = self.restrictedTraverse(zpt_name)
-        self._macros = self.restrictedTraverse(self._macros_pt)
+        self._v_macros = self.restrictedTraverse(self._macros_pt)
         return zpt(**kw)
 
     ###
@@ -319,8 +319,8 @@ class Form(Base):
         t = self.fields[f_name]['type']
         if t in ('string', 'identifier', 'email', 'int', 'float', 'phone', \
                   'url', 'date'):
-            return self._macros.macros['string']
-        return self._macros.macros[t]
+            return self._v_macros.macros['string']
+        return self._v_macros.macros[t]
 
 
     security.declareProtected(View, 'getLabel')
