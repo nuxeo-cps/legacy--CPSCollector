@@ -6,7 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- fix: when exporting data get an invalid filename if the title contains spaces
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

@@ -1,4 +1,20 @@
 *******************************************
+** CPSCollector V1.7.2 [R1 build 2004/06/01-10:27 by ben]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- fix: when exporting data get an invalid filename if the title contains spaces
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.7.1 [R1 build 2004/04/09-13:24 by ben]
 
 Requires:
