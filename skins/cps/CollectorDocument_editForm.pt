@@ -67,22 +67,6 @@ function open_metadata_editor(input_id) {
            tal:content="description"></textarea>
         </metal:block>
       </metal:block>
-      <!-- Theme -->
-      <tal:block  condition="not:create">
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_newsletter_theme_')">Theme
-        </metal:block>
-        <metal:block fill-slot="content">
-          <select name="Theme" id="Theme" tal:attributes="multiple python:here.md_isMultiple('Theme')">
-          <tal:block repeat="op python:here.md_getVocabularies('Theme', 1)">
-            <option tal:attributes="value python:op[0];selected python:op[1]" tal:content="python:op[0]"></option>
-          </tal:block>
-          </select>
-          <a tal:attributes="href string:javascript:open_metadata_editor('Theme')"><img border="0" src="img_box_edit.png" /></a>
-        </metal:block>
-      </metal:block>
-      </tal:block>
       <!-- submit_msg -->
       <metal:block use-macro="here/main_widgets/macros/form_property">
         <metal:block fill-slot="title"
