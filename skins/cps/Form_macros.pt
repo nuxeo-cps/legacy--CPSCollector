@@ -18,7 +18,7 @@
 <input metal:define-macro="string" type="text" tal:attributes="name f_id;size f/size|default;maxlength f/maxlength|default; value python:here.getV(f_id, 'value',default)" />
 
 <!-- def title field -->
-<b metal:define-macro="title" tal:content="f/label|default">&nbsp;</b>
+<b metal:define-macro="title" tal:content="label|default">&nbsp;</b>
   
 <!-- def hidden field -->
 <input metal:define-macro="hidden" type="hidden" tal:attributes="name f_id; value f/value" tal:condition="f/value|nothing" />
@@ -41,7 +41,7 @@
 <!-- def radio field -->
 <span metal:define-macro="radio" tal:omit-tag="">
   <span tal:repeat="v python:here.getVList(f_id)" tal:omit-tag="">
-    <input tal:attributes="name f_id;value v;checked python:here.getV(f_id,'checked')==v" name="_x_" type="radio" /><span tal:replace="python:here.fields[f_id]['mvalue'][v]">label</span>
+    <input tal:attributes="name f_id;value v;checked python:here.getV(f_id,'checked')==v" name="_x_" type="radio" /><span tal:replace="python:here.getLabel(f_id,v)">label</span>
     </span>
 </span>
 
@@ -49,32 +49,32 @@
 <span metal:define-macro="selection" tal:omit-tag="">
   <select tal:attributes="name f_id;multiple f/multiple|python:0; size f/size|nothing" name="_x_">
     <span tal:repeat="v python:here.getVList(f_id)" tal:omit-tag="">
-    <option tal:attributes="value v;selected python:here.getV(f_id,'checked')==v" tal:content="python:here.fields[f_id]['mvalue'][v]">_x_</option></span></select>
+    <option tal:attributes="value v;selected python:here.getV(f_id,'checked')==v" tal:content="python:here.getLabel(f_id,v)">_x_</option></span></select>
 </span>
     
 <!-- def separator field -->
 <span metal:define-macro="separator" tal:omit-tag="">
-  <hr><span tal:replace="f/label|nothing" />
+  <hr><span tal:replace="label|nothing" />
 </span>
 
 <!-- def comment -->
-<i metal:define-macro="comment" tal:content="f/label|nothing">comments</i>
+<i metal:define-macro="comment" tal:content="label|nothing">comments</i>
 
 <!-- def submit field -->
 <span metal:define-macro="submit" tal:omit-tag="">
-  <input type="submit" tal:attributes="name f/value|default; value f/label|default" value="" />
+  <input type="submit" tal:attributes="name f/value|default; value label|default" value="" />
 </span>
 
 <!-- def reset field -->
 <span metal:define-macro="reset" tal:omit-tag="">
-<input type="reset" tal:attributes="name f/value|default; value f/label|default" value="" />
+<input type="reset" tal:attributes="name f/value|default; value label|default" value="" />
 </span>
 
 <!-- def file field -->
 <input metal:define-macro="file" type="file" tal:attributes="name f_id; value python:here.getV(f_id, 'value',default)" value="" />
     
 <!-- def display label -->
-<td metal:define-macro="display_label" tal:condition="python:nb_slot==2" align="right" width="1%" nowrap><font tal:attributes="color python:test(f_id in request.form.get('error__',[]),'red',0)" tal:content="f/label|default">&nbsp;</font><span tal:replace="string:*" tal:condition="f/required|nothing" /></td>
+<td metal:define-macro="display_label" tal:condition="python:nb_slot==2" align="right" width="1%" nowrap><font tal:attributes="color python:test(f_id in request.form.get('error__',[]),'red',0)" tal:content="label|default">&nbsp;</font><span tal:replace="string:*" tal:condition="f/required|nothing" /></td>
 
 <!-- def display field -->
 <td metal:define-macro="display_field" tal:attributes="colspan python:test(here.span[f_id],here.span[f_id],nothing)"  width="1%"  nowrap><span metal:use-macro="python:here.getFMacro(f_id)" /></td>
@@ -89,7 +89,7 @@
 <input type="hidden" name="is_form_submitted" value="yes" />
 <table border="0" width="100%">
  <tr tal:repeat="row here/getRows">
-   <span tal:repeat="f_id row" tal:omit-tag=""><span tal:define="f python:here.fields[f_id]; nb_slot python:here.getNbSlot(f_id)" tal:omit-tag="">
+   <span tal:repeat="f_id row" tal:omit-tag=""><span tal:define="f python:here.fields[f_id]; nb_slot python:here.getNbSlot(f_id); label python:here.getLabel(f_id)" tal:omit-tag="">
      <span metal:use-macro="here/Form_macros/macros/display_label" /><span metal:use-macro="here/Form_macros/macros/display_field" />
    </span></span>
  </tr>
@@ -140,19 +140,19 @@
   <tr bgcolor="#98B2CB">
     <td>&nbsp;</td>
     <td nowrap="1">id</td>
-    <td nowrap="1">type</td>
-    <td width="50%">label</td>
-    <td nowrap="1">required</td>
-    <td nowrap>join w/ next field</td>    
+    <td nowrap="1" tal:content="python:mcat('_form_type_')">type</td>
+    <td width="50%" tal:content="python:mcat('_form_label_')">label</td>
+    <td nowrap="1" tal:content="python:mcat('_form_required_')">required</td>
+    <td nowrap tal:content="python:mcat('_form_join_')">join w/ next field</td>    
   </tr>
   <tr tal:repeat="f_id here/getFList">
-    <span tal:define="f python:here.fields[f_id]" tal:omit-tag="">
+    <span tal:define="f python:here.fields[f_id]; label python:here.getLabel(f_id)" tal:omit-tag="">
     <td width="10" bgcolor="#98B2CB">
       <input tal:attributes="value f_id; checked python:here.isSelected('f_id',f_id)" name="f_id" type="checkbox" />
     </td>
     <td><a tal:attributes="href string:editField?f_id=$f_id" tal:content="f_id">&nbsp;</a></td>
     <td tal:content="f/type|default">&nbsp;</td>
-    <td tal:content="f/label|default">&nbsp;</td>
+    <td tal:content="label|default">&nbsp;</td>
     <td tal:content="f/required|default">&nbsp;</td>
     <td tal:content="f/join|default">&nbsp;</td>    
     </span>
