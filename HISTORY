@@ -1,4 +1,19 @@
 *******************************************
+** NuxCPSCollector V1.2.0 [R1 build 2003-03/26-10:27 by ben]
+
+ZODB Requires:
+~~~~~~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- cps3 skin use element implementation
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+*******************************************
 ** NuxCPSCollector V1.1.0 [R1 build 2003-03/20-15:15 by ben]
 
 ZODB Requires:
