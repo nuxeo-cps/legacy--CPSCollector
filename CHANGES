@@ -1,9 +1,7 @@
-ZODB Requires:
-~~~~~~~~~~~~~~
--
+- this product was named NuxCPSCollector
 New features:
 ~~~~~~~~~~~~~
--
+- basic CPSDefault integration
 Bug fixes:
 ~~~~~~~~~~
 -
