@@ -27,7 +27,6 @@ from Metadata import Metadata
 from Form import Form
 from CollectorItem import CollectorItem
 
-
 factory_type_information = (
     {'id': 'Collector Document',
      'description': 'A Collector Document.',
@@ -262,6 +261,8 @@ class CollectorDocument(Form, BaseDocument, Metadata):
 
         for obj in self.objectValues('CollectorItem'):
             _u, _ip, d = self._decode_id(obj.id)
+            if not _u:
+                continue
             if d < date_start:
                 date_start = d
             if d > date_end:
@@ -346,7 +347,7 @@ class CollectorDocument(Form, BaseDocument, Metadata):
         # return a tuple (user,ip,date) or None for bad id
         m=match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
         if m is None:
-            return None
+            return None, None, None
         d=time.strptime(m.group(1), '%y%m%d%H%M%S')
         user=m.group(2)
         ip=m.group(3)
