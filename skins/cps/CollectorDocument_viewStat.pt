@@ -1,7 +1,6 @@
 <tal:block define="_check_perm_ here/assert_form_modify" />
 
-<tal:block define="current_action string:view_stat;
-  mcat python:here.getCPSmcat();">
+<tal:block define="current_action string:view_stat;" i18n:domain="cpscollector">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master">
@@ -17,14 +16,19 @@
                    stats python:doc.process_stat();
                    fields python:doc.get_stat_fields();">
   <tal:block condition="python: not stats['_stat']['nb_item']">
-    <h2 tal:content="python:mcat('_form_stat_empty_')">no data</h2>
+    <h2 i18n:translate="collector_empty_stats">no data</h2>
   </tal:block>
 
   <tal:block condition="python: stats['_stat']['nb_item']">
-  <h2 tal:content="python:mcat('_form_stat_header_')">Result</h2>
-  <tal:block replace="python: mcat('_form_%s_data_from_%s_to_%s_') % (stats['_stat']['nb_item'], stats['_stat']['date_start'], stats['_stat']['date_end'])" />
-
-  <h2 tal:content="python:mcat('_form_stat_detail_')">Result</h2>
+  <h2 i18n:translate="collector_stats_header">Result</h2>
+  <span i18n:translate="" omit-tag="">
+    <tal:block i18n:name="collector_nb" tal:replace="python:stats['_stat']['nb_item']" />
+    forms collected between
+    <tal:block i18n:name="collector_sdate" tal:replace="python:stats['_stat']['date_start']" />
+    and
+    <tal:block i18n:name="collector_edate" tal:replace="python:stats['_stat']['date_end']" />
+  </span>
+  <h2 i18n:translate="collector_stats_details">Result</h2>
 
   <table width="60%" tal:condition="fields">
   <tal:block repeat="field fields">
@@ -41,7 +45,7 @@
   </tal:block>
   </table>
   <tal:block condition="not:fields">
-    <h2 tal:content="python:mcat('_form_stat_null_')">No statistic available</h2>
+    <h2 i18n:translate="collector_form_stats_null">No statistic available</h2>
   </tal:block>
   </tal:block>
   
