@@ -152,7 +152,7 @@ class CollectorDocument(Form, BaseDocument):
         "erase all item obj"
         mcat = self.portal_messages
         psm='portal_status_message=%s' % (mcat('_form_erased_data_'), )
-        for obj in self.objectValues():
+        for obj in self.objectValues('CollectorItem'):
             self._delObject(obj.id)
         self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
         return
