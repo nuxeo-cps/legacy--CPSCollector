@@ -39,6 +39,10 @@ factory_type_information = (
                   'name': 'action_view_results',
                   'action': 'QuizDocument_viewResults',
                   'permissions': (View,)},
+                 {'id': 'view_stat',
+                  'name': 'action_view_stat',
+                  'action': 'CollectorDocument_viewStat',
+                  'permissions': (ModifyPortalContent,)},
                  {'id': 'metadata',
                   'name': 'action_metadata',
                   'action': 'metadata_edit_form',
@@ -100,6 +104,7 @@ class QuizDocument(CollectorDocument):
         """Constructor"""
         CollectorDocument.__init__(self, id, **kw)
         self.add_field('trueval__', type='string', label='collector_form_good_answer')
+        self._action_pt = 'QuizDocument_action'
         
     security.declareProtected(View, 'get_quiz_fields')
     def get_quiz_fields(self, **kw):
@@ -130,7 +135,7 @@ class QuizDocument(CollectorDocument):
                 fields.append(pa)
             return {'fields': fields, 'nb_correct': nb_correct, 'nb_all': len(fields)}
         else:
-            return {'fields': [], 'nb_correct': None, 'nb_all': None}
+            return {'fields': [], 'nb_correct': 0, 'nb_all': 0}
     
 
     def process_answer(self,f_id,f_value):
