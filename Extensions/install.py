@@ -151,6 +151,7 @@ def install(self):
     ttool = portal.portal_types
     ptypes = {
         'CPSCollector' : ('Collector Document',
+                          'Quiz Document',
                                   ),
     }
 
@@ -165,6 +166,8 @@ def install(self):
 
     if 'Collector Document' not in  workspaceACT:
         workspaceACT.append('Collector Document')
+    if 'Quiz Document' not in  workspaceACT:
+        workspaceACT.append('Quiz Document')
 
     allowed_content_type = {
                             'Workspace' : workspaceACT,
@@ -210,6 +213,12 @@ def install(self):
     wfc = getattr(portal[workspaces_id], '.cps_workflow_configuration')
     wfc.manage_addChain(portal_type='Collector Document', chain='workspace_content_wf')
 
+    pr("  Add %s chain to portal type %s in %s of %s" %('workspace_content_wf',
+                                                        'Quiz Document',
+                                                        '.cps_workflow_configuration',
+                                                        workspaces_id))
+    wfc.manage_addChain(portal_type='Quiz Document', chain='workspace_content_wf')
+
     if not '.cps_workflow_configuration' in portal[sections_id].objectIds():
         pr("  Adding workflow configuration to %s" % sections_id)
         portal[sections_id].manage_addProduct['CPSCore'].addCPSWorkflowConfiguration()
@@ -220,6 +229,11 @@ def install(self):
                                                         sections_id))
     wfc = getattr(portal[sections_id], '.cps_workflow_configuration')
     wfc.manage_addChain(portal_type='Collector Document', chain='section_content_wf')
+    pr("  Add %s chain to portal type %s in %s of %s" %('workspace_content_wf',
+                                                        'Quiz Document',
+                                                        '.cps_workflow_configuration',
+                                                        sections_id))
+    wfc.manage_addChain(portal_type='Quiz Document', chain='section_content_wf')
 
     ##########################################
     # SKINS
