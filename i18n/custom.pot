@@ -79,3 +79,7 @@ msgstr ""
 msgid "collector_form_good_answer"
 msgstr ""
 
+msgid "collector_blank"
+msgstr ""
+
+

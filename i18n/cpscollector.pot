@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2003-10-22 17:05default\n"
+"POT-Creation-Date: 2003-10-22 17:11default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -404,4 +404,7 @@ msgid "collector_form_join_with_next"
 msgstr ""
 
 msgid "collector_form_good_answer"
+msgstr ""
+
+msgid "collector_blank"
 msgstr ""

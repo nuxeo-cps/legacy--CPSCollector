@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2003-10-22 17:05default\n"
-"PO-Revision-Date: 2003-10-22 17:06+0200\n"
+"POT-Creation-Date: 2003-10-22 17:11default\n"
+"PO-Revision-Date: 2003-10-22 17:11+0200\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -409,4 +409,7 @@ msgstr "Join with next field:"
 
 msgid "collector_form_good_answer"
 msgstr "Correct answer:"
+
+msgid "collector_blank"
+msgstr " "
 
