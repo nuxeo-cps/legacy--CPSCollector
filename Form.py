@@ -66,17 +66,22 @@ class Form(ExtensionClass.Base):
                    value='editField:method' )
         self.add_field( 'join__', type='checkbox', label='Join with the next field')
 
-    def post_init(self, form_view=None):
-        "setup tpl view"
-        if not form_view:
-            self._form_view=self.Form_view
-        else:
-            self._form_view=form_view
+    def post_init(self, **kw):
+        """ setup tpl stuff
+        view_pt: used to display the form + error input
+        msg_pt: when action is performed
+        editForm_pt: edit a form (add/move/rm field)
+        editField_pt: edit a field (properties)
+        """
+        self._view_pt=kw.get('view_pt', self.Form_view)
+        self._msg_pt=kw.get('msg_pt', self.Form_msg)
+        self._editForm_pt=kw.get('editForm_pt', self.Form_editForm)
+        self._editField_pt=kw.get('editField_pt', self.Form_editField)
 
     ### 
     def action(self, **kw):
         "this method should be rewrite by child"
-        return self._form_view(**kw)
+        return self._msg_pt(**kw)
 
     def validator(self, form):
         "this method should be rewrite by child, should return error str"
@@ -92,10 +97,10 @@ class Form(ExtensionClass.Base):
         self._set_status()
         status,err=self.check_form()
         if status == 'not_yet_submited':
-            return self._form_view(**kw)
+            return self._view_pt(**kw)
         elif status == 'bad_fields':
             self._set_status( err )
-            return self._form_view(**kw)
+            return self._view_pt(**kw)
         return self.action(**kw)        
 
     def editForm( self, **kw ):
@@ -103,17 +108,17 @@ class Form(ExtensionClass.Base):
         self._set_status()
         status,err=self.check_form()
         if status == 'not_yet_submited':
-            return self.Form_editForm(**kw)
+            return self._editForm_pt(**kw)
         elif status == 'bad_fields':
             self._set_status(err)
-        return self.Form_editForm(**kw)
+        return self._editForm_pt(**kw)
 
     def editField( self, **kw ):
         "edit field form"
         form = self.REQUEST.form
         id = form.get( 'f_id' ) or form.get( 'id__' )
         if not self.fields.has_key( id ):
-            return self.Form_editForm( **kw )  # wrong id
+            return self._editForm_pt( **kw )  # wrong id
         self._set_current_form( self.fields[id]['type'] )
         status,err = self.check_form()
         if status == 'not_yet_submited':
@@ -141,7 +146,7 @@ class Form(ExtensionClass.Base):
 
         self.add_field( id, **extra )
         self._set_current_form(None)
-        return self.Form_editForm( **kw )
+        return self._editForm_pt( **kw )
             
     def addField( self, **kw ):
         "add a field"
@@ -159,7 +164,7 @@ class Form(ExtensionClass.Base):
                 self.del_field( id )
         else:
             self.del_field( f_id )
-        return self.Form_editForm(**kw)
+        return self._editForm_pt(**kw)
     
     def moveFieldUp( self, **kw ):
         "move a field up"
@@ -169,7 +174,7 @@ class Form(ExtensionClass.Base):
                 self.move_field( id, 'up' )
         else:
             self.move_field( f_id, 'up' )
-        return self.Form_editForm(**kw)
+        return self._editForm_pt(**kw)
 
     def moveFieldDown( self, **kw ):
         "move a field down"
@@ -180,7 +185,7 @@ class Form(ExtensionClass.Base):
                 self.move_field( id, 'down' )
         else:
             self.move_field( f_id, 'down' )
-        return self.Form_editForm(**kw)
+        return self._editForm_pt(**kw)
 
     def _set_current_form( self, mode ):
         self.REQUEST.other['form_mode__']=mode
