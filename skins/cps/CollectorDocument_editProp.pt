@@ -92,6 +92,7 @@
     <input type="hidden" name="default_title_from" value="description" />
     <input type="hidden" name="default_description_from" value="title" />
   </tal:block>
+  <input type="hidden" name="change_and_edit" value="plz" />
   <input class="mainbutton" type="submit" value="." tal:attributes="value submitvalue" />
   <input type="button" name="cancel" onclick="history.back()"
     tal:attributes="value python:mcat('_button_cancel_')" />

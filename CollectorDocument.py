@@ -34,7 +34,7 @@ factory_type_information = (
      'product': 'CPSCollector',
      'factory': 'addCollectorDocument',
      'meta_type': 'Collector Document',
-     'immediate_view': 'metadata_edit_form',
+     'immediate_view': 'CollectorDocument_editProp',
      'allow_discussion': 1,
      'filter_content_types': 0,
      'actions': ({'id': 'view',
