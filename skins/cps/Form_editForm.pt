@@ -1,28 +1,13 @@
 <tal:block define="_check_perm_ here/assert_form_modify" />
-<tal:block define="current_action string:edit_form;
-  mcat nocall:here/portal_messages;
-  doc here/getContent;">
-<html xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="here/main_template/macros/master">
 
-<body>
-
-<metal:block fill-slot="header">
+<html metal:use-macro="here/content_lib/macros/master">
+<metal:block fill-slot="main" tal:define="mcat nocall:cpsmcat">
   <tal:block replace="python:mcat('_Modify_form(object name)_')" />
   «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»
-</metal:block>
-
-<metal:block fill-slot="header_plus" />
-
-<metal:block fill-slot="main">
   <!-- form editor -->
   <p metal:use-macro="here/Form_macros/macros/display_edit_form">The form</p>
 
-<i><tal:block replace="python:mcat('_form_edit_help_')" /></i>
+  <i><tal:block replace="python:mcat('_form_edit_help_')" /></i>
 
 </metal:block>
-
-</body>
 </html>
-</tal:block>

@@ -1,14 +1,16 @@
-<tal:block define="current_action string:edit;
-  create options/create|here/assert_form_modify;
-  mcat nocall:here/portal_messages;
-  doc python:(create and [here] or [here.getContent()])[0];">
-<html xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="here/main_template/macros/master">
+<html metal:use-macro="here/content_lib/macros/master">
 
-<body>
-
-<metal:block fill-slot="header">
+<metal:block fill-slot="main"
+  tal:define="mcat nocall:cpsmcat;
+              create options/create|here/assert_form_modify;
+              title python:(create and [''] or [doc.Title()])[0];
+              description python:(create and [''] or [doc.description])[0];
+              submit_msg python:(create and ['Thank you'] or [doc.submit_msg])[0];
+              submit_msg_stat python:(create and [0] or [doc.submit_msg_stat])[0];
+              unique_submit python:create or doc.unique_submit;
+              persistent_data python:create or doc.persistent_data;
+              submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
+              action python:create and 'content_create' or 'content_edit';">
   <tal:block condition="create"
     tal:content="python:mcat('_Create_a_collector_')">
     Create a Collector
@@ -19,105 +21,70 @@
     </tal:block>
     «&nbsp;<span tal:replace="doc/title_or_id">Title</span>&nbsp;»
   </tal:block>
-</metal:block>
-
-<metal:block fill-slot="header_plus" >
-  <script language="JavaScript" type="text/javascript"><!--
-function open_metadata_editor(input_id) {
-    a = document.getElementById(input_id)
-    selector_window = window.open('Metadata_edit?input_id='+input_id+'&v='+a.elements, 'metadata_edit', 'toolbar=0, scrollbars=0, location=0, statusbar=0, menubar=0, resizable=0, dependent=1, width=290, height=250')
-    if(!selector_window.opener) selector_window.opener = window
-}
--->
-  </script>
-</metal:block>
-
-<metal:block fill-slot="main"
-  tal:define="title python:(create and [''] or [doc.Title()])[0];
-              description python:(create and [''] or [doc.description])[0];
-              submit_msg python:(create and ['Thank you'] or [doc.submit_msg])[0];
-              submit_msg_stat python:(create and [0] or [doc.submit_msg_stat])[0];
-              unique_submit python:create or doc.unique_submit;
-              persistent_data python:create or doc.persistent_data;
-              submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
-              action python:create and 'cpsdocument_create' or 'cpsdocument_edit';">
 
   <form name="edit_form" action="." method="post" enctype="multipart/form-data"
         tal:attributes="action action">
 
-  <metal:block use-macro="here/main_widgets/macros/form">
-    <metal:block fill-slot="content">
-      <!-- title -->
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_title_')">
-          Title
-        </metal:block>
-        <metal:block fill-slot="content">
-          <input type="text" name="title" value="title" tal:attributes="value title" />
-        </metal:block>
-      </metal:block>
+  <table>
+    <tr>
+      <td>
+        <span tal:content="python:mcat('_prop_title_')" />
+      </td>
+      <td>
+        <input type="text" name="title" value="title" tal:attributes="value
+        title" />
+      </td>
+    </tr>
+    <tr>
+      <td>
       <!-- descr -->
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_description_')">
-          Description
-        </metal:block>
-        <metal:block fill-slot="content">
-          <textarea name="description:text" rows="5" cols="50" wrap="soft"
-           tal:content="description"></textarea>
-        </metal:block>
-      </metal:block>
-      <!-- submit_msg -->
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_submit_msg_')">
-          Message
-        </metal:block>
-        <metal:block fill-slot="content">
-          <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
-           tal:content="submit_msg|default"></textarea>
-        </metal:block>
-      </metal:block>
-      <!-- submit msg stat -->
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_submit_msg_stat_')">
-          Display stat after submit
-        </metal:block>
-        <metal:block fill-slot="content">
+        <span tal:content="python:mcat('_prop_description_')" />
+      </td>
+      <td>
+        <textarea name="description:text" rows="5" cols="50" wrap="soft"
+        tal:content="description"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span tal:content="python:mcat('_prop_submit_msg_')" />
+      </td>
+      <td>
+        <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
+        tal:content="submit_msg|default"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span tal:content="python:mcat('_prop_submit_msg_stat_')" />
+      </td>
+      <td>
           <input type="hidden" name="submit_msg_stat:boolean:default" value="" />
           <input type="checkbox" name="submit_msg_stat:boolean"
             checked="." tal:attributes="checked submit_msg_stat" />
-        </metal:block>
-      </metal:block>
-      <!-- unique submit -->
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_unique_submit_')">
-          Single submit
-        </metal:block>
-        <metal:block fill-slot="content">
-          <input type="hidden" name="unique_submit:boolean:default" value="" />
-          <input type="checkbox" name="unique_submit:boolean"
-            checked="." tal:attributes="checked unique_submit" />
-        </metal:block>
-      </metal:block>
-      <!-- persistent data -->
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_persistent_data_')">
-          Single submit
-        </metal:block>
-        <metal:block fill-slot="content">
-          <input type="hidden" name="persistent_data:boolean:default" value="" />
-          <input type="checkbox" name="persistent_data:boolean"
-            checked="." tal:attributes="checked persistent_data" />
-        </metal:block>
-      </metal:block>
-    </metal:block>
-
-</metal:block>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span tal:content="python:mcat('_prop_unique_submit_')" />
+      </td>
+      <td>
+        <input type="hidden" name="unique_submit:boolean:default" value="" />
+        <input type="checkbox" name="unique_submit:boolean"
+          checked="." tal:attributes="checked unique_submit" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span tal:content="python:mcat('_prop_persistent_data_')" />
+      </td>
+      <td>
+        <input type="hidden" name="persistent_data:boolean:default" value="" />
+        <input type="checkbox" name="persistent_data:boolean"
+          checked="." tal:attributes="checked persistent_data" />
+      </td>
+    </tr>
+  </table>
 
   <input type="hidden" name="type_name" value="Collector Document">
   <tal:block condition="create">
@@ -132,6 +99,4 @@ function open_metadata_editor(input_id) {
 
 </metal:block>
 
-</body>
 </html>
-</tal:block>

@@ -7,18 +7,10 @@ from Products.CMFCore import utils
 from Products.CMFCore.DirectoryView import registerDirectory
 from Products.CMFCore.CMFCorePermissions import AddPortalContent
 
-try:
-    # CPS3
-    from Products.NuxCPS3 import CPSBase
-    bases = (CPSBase.CPSBaseDocument,) # base zclasses
-
-except ImportError:
-    # CPS2
-    from Products.NuxCPSDocuments import BaseDocument
-    bases = (BaseDocument.BaseDocument,) # base zclasses
-    
-from Products.NuxCPSCollector import CollectorDocument
-from Products.NuxCPSCollector import CollectorItem
+from Products.CPSCore import CPSBase
+bases = (CPSBase.CPSBaseDocument,) # base zclasses
+from Products.CPSCollector import CollectorDocument
+from Products.CPSCollector import CollectorItem
 
 contentClasses = (CollectorDocument.CollectorDocument,
                   CollectorItem.CollectorItem,
@@ -35,12 +27,11 @@ this_module = sys.modules[__name__]
 z_bases = utils.initializeBasesPhase1(bases, this_module)
 
 registerDirectory('skins/cps', globals())
-registerDirectory('skins/cps3', globals())
 
 def initialize(registrar):
     utils.initializeBasesPhase2(z_bases, registrar)
     utils.ContentInit(
-        'NuxCPSCollector',
+        'CPSCollector',
         content_types = contentClasses,
         permission = AddPortalContent,
         extra_constructors = contentConstructors,

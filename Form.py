@@ -341,7 +341,7 @@ class Form(Base):
             label = self.fields[f_name].get('label', '')
         if not len(label) or label[0]!='_':
             return label
-        return self.portal_messages(label)
+        return self.Localizer.default(label)
     
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
@@ -411,7 +411,7 @@ class Form(Base):
     def _check_form(self ):
         """ Check all the fields of a form and return a status and msg """
         form = self.REQUEST.form
-        mcat = self.portal_messages
+        mcat = self.Localizer.default
         locale = mcat.get_selected_language()
         if not ( form.get('is_form_submitted') or form.get('is_form_setted') ):
             if not len(self.fields_list):

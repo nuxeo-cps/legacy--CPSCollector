@@ -19,29 +19,22 @@ from Globals import InitializeClass
 from Acquisition import aq_base
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
-try:
-    # CPS3
-    from Products.NuxCPS3.CPSBase import CPSBaseDocument as BaseDocument, \
-         CPSBase_adder
-    def BaseDocument_adder(disp, id, ob, REQUEST=None):
-        return CPSBase_adder(disp, ob, REQUEST)
-except ImportError:
-    # CPS2
-    from Products.NuxCPSDocuments.BaseDocument import BaseDocument, \
-         BaseDocument_adder
-
-from Products.NuxCPSCollector.Form import Form
-from Products.NuxCPSCollector.CollectorItem import CollectorItem
+from Products.CPSCore.CPSBase import CPSBaseDocument as BaseDocument, \
+     CPSBase_adder
+def BaseDocument_adder(disp, id, ob, REQUEST=None):
+    return CPSBase_adder(disp, ob, REQUEST)
+from Products.CPSCollector.Form import Form
+from Products.CPSCollector.CollectorItem import CollectorItem
 
 factory_type_information = (
     {'id': 'Collector Document',
      'description': 'A Collector Document.',
      'title': '_portal_type_Collector Document',
      'content_icon': 'CollectorDocument_icon.gif',
-     'product': 'NuxCPSCollector',
+     'product': 'CPSCollector',
      'factory': 'addCollectorDocument',
      'meta_type': 'Collector Document',
-     'immediate_view': 'CollectorDocument_editProp',
+     'immediate_view': 'metadata_edit_form',
      'allow_discussion': 1,
      'filter_content_types': 0,
      'actions': ({'id': 'view',
@@ -52,6 +45,11 @@ factory_type_information = (
                   'name': '_action_view_stat_',
                   'action': 'CollectorDocument_viewStat',
                   'permissions': (ModifyPortalContent,)},
+                 {'id': 'metadata',
+                  'name': 'action_metadata',
+                  'action': 'metadata_edit_form',
+                  'permissions': (ModifyPortalContent,)
+                  },
                  {'id': 'edit',
                   'name': '_action_modify_prop_',
                   'action': 'CollectorDocument_editProp',
@@ -73,23 +71,11 @@ factory_type_information = (
                   'action': 'CollectorDocument_createForm',
                   'visible': 0,
                   'permissions': ()},
-                 {'id': 'isdocument',
-                  'name': 'isdocument',
-                  'action': 'isdocument',
-                  'visible': 0,
-                  'permissions': ()},
-                 {'id': 'issearchabledocument',
-                  'name': 'issearchabledocument',
-                  'action': 'issearchabledocument',
-                  'visible': 0,
-                  'permissions': ()},
-                 {'id': 'isproxytype',
-                  'name': 'isproxytype',
-                  'action': 'document',
-                  'visible': 0,
-                  'permissions': ()},
                  ),
-     },)
+     'cps_proxy_type': 'document',
+     'cps_is_searchable': 1,
+     },
+    )
 
 
 class CollectorDocument(Form, BaseDocument):
@@ -151,7 +137,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declareProtected(ModifyPortalContent, 'eraseData')
     def eraseData(self, **kw):
         """Erase all collector item"""
-        mcat = self.portal_messages
+        mcat = self.Localizer.default
         psm = 'portal_status_message=%s' % (mcat('_form_erased_data_'), )
         for id in self._get_item_ids():
             self._del_item(id)
@@ -298,7 +284,7 @@ class CollectorDocument(Form, BaseDocument):
                 for v in r[f].keys():
                     nb = r[f][v]
                     r[f][v] = '%3.f' % (nb * 100.0 / nb_item)
-        mcat = self.portal_messages
+        mcat = self.Localizer.default
         date_start = time.strftime(mcat('_date_%m/%d/%Y %H:%M'), date_start)
         date_end = time.strftime(mcat('_date_%m/%d/%Y %H:%M'), date_end)
         r['_stat'] = { 'nb_item': nb_item, 'date_start': date_start,

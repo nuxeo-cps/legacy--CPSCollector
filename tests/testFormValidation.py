@@ -9,7 +9,7 @@ import unittest
 import ZODB
 import OFS.Application
 
-from Products.NuxCPSCollector.Form import Form
+from Products.CPSCollector.Form import Form
 
 def checkField(typ, val, **kw):
     ob = Form('utest')

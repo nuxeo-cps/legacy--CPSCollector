@@ -1,22 +1,7 @@
 <tal:block define="_check_perm_ here/assert_form_view" />
-<tal:block define="current_action string:view;
-  mcat nocall:here/portal_messages;
-  doc here/getContent">
-<html xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="here/main_template/macros/master">
-
-  <metal:block fill-slot="base">
-    <base href="." tal:attributes="href string:${here/absolute_url}/">
-  </metal:block>
-
-  <body>
-   
-    <metal:block fill-slot="main">
-      <i tal:content="here/description" /><br>
-      <p metal:use-macro="here/Form_macros/macros/display_form">The form</p>
-    </metal:block>
-    
-  </body>
+<html metal:use-macro="here/content_lib/macros/master">
+<metal:block fill-slot="main" tal:define="mcat nocall:cpsmcat">
+<i tal:content="here/description" /><br>
+<p metal:use-macro="here/Form_macros/macros/display_form">The form</p>
+</metal:block>
 </html>
-</tal:block>
