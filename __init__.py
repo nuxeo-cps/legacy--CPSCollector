@@ -34,7 +34,7 @@ fti = (CollectorDocument.factory_type_information +
 this_module = sys.modules[__name__]
 z_bases = utils.initializeBasesPhase1(bases, this_module)
 
-registerDirectory('skins/cps2', globals())
+registerDirectory('skins/cps', globals())
 registerDirectory('skins/cps3', globals())
 
 def initialize(registrar):
