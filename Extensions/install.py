@@ -63,35 +63,34 @@ def cps_collector_i18n_update(self):
     def portalhas(id, portal=portal):
         return id in portal.objectIds()
 
-    pr(" Updating i18n support")
-
+    pr("Updating i18n support")
 
     Localizer = portal['Localizer']
     languages = Localizer.get_supported_languages()
-    catalog_id = 'default'
-    ## Message Catalog
-    #if catalog_id in Localizer.objectIds():
-    #    Localizer.manage_delObjects([catalog_id])
-    #    pr(" Previous default MessageCatalog deleted for CPSCollector")
-    #
-    ## Adding the new message Catalog
-    #Localizer.manage_addProduct['Localizer'].manage_addMessageCatalog(
-    #    id=catalog_id,
-    #    title='CPSCollector messages',
-    #    languages=languages,
-    #    )
+    catalog_id = 'cpscollector'
+    # Message Catalog
+    if catalog_id in Localizer.objectIds():
+        Localizer.manage_delObjects([catalog_id])
+        pr(" Previous default MessageCatalog deleted for CPSCollector")
 
-    defaultCatalog = Localizer.default
+    # Adding the new message Catalog
+    Localizer.manage_addProduct['Localizer'].manage_addMessageCatalog(
+        id=catalog_id,
+        title='CPSCollector messages',
+        languages=languages,
+        )
+
+    defaultCatalog = Localizer.cpscollector
 
     # computing po files' system directory
     CPSCollector_path = sys.modules['Products.CPSCollector'].__path__[0]
-    i18n_path = os.path.join(CPSCollector_path, 'Install')
+    i18n_path = os.path.join(CPSCollector_path, 'i18n')
     pr("   po files are searched in %s" % i18n_path)
     pr("   po files for %s are expected" % str(languages))
 
     # loading po files
     for lang in languages:
-        po_filename = 'NuxCPSCollector-'+lang + '.po'
+        po_filename = lang + '.po'
         pr("   importing %s file" % po_filename)
         po_path = os.path.join(i18n_path, po_filename)
         try:
@@ -103,18 +102,18 @@ def cps_collector_i18n_update(self):
             pr("    %s file imported" % po_path)
 
     # Translation Service Tool
-    #if portalhas('translation_service'):
-    #    translation_service = portal.translation_service
-    #    pr (" Translation Sevice Tool found in here ")
-    #    try:
-    #        if getattr(portal['translation_service'], 'cpsforum', None) == None:
-    #            # translation domains
-    #            translation_service.manage_addDomainInfo('cpsforum','Localizer/'+'cpsforum')
-    #            pr(" cpsforum domain set to Localizer/cpsforum")
-    #    except:
-    #        pass
-    #else:
-    #    raise str('DependanceError'), 'translation_service'
+    if portalhas('translation_service'):
+        translation_service = portal.translation_service
+        pr (" Translation Sevice Tool found in here ")
+        try:
+            if getattr(portal['translation_service'], 'cpscollector', None) == None:
+                # translation domains
+                translation_service.manage_addDomainInfo('cpscollector','Localizer/'+'cpscollector')
+                pr(" cpscollector domain set to Localizer/cpscollector")
+        except:
+            pass
+    else:
+        raise str('DependanceError'), 'translation_service'
 
     return pr('flush')
 
