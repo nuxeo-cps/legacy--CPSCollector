@@ -1,0 +1,25 @@
+<tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
+           xmlns:metal="http://xml.zope.org/namespaces/metal"
+           define="_check_perm_ here/assert_form_modify"
+           i18n:domain="cpscollector">
+  <tal:block>
+    <html metal:use-macro="here/main_template/macros/master">
+      <metal:block fill-slot="base">
+        <base href="." tal:attributes="href string:${here/absolute_url}/">
+      </metal:block>
+      <body>
+        <metal:block fill-slot="main">
+          <p i18n:translate="">collector_label_erase_warning</p>
+          <form action="." method="post">
+            <input type="submit" name="Data_erase:method"
+                   i18n:attributes="value" value="collector_button_proceed"
+                   class="destructive" />
+            <input type="submit" name="Data_cancel_erase:method"
+                   i18n:attributes="value" value="collector_button_cancel"
+                   class="context" />
+          </form>
+        </metal:block>
+      </body>
+    </html>
+  </tal:block>
+</tal:block>
