@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.7.3 [R1 build 2004/07/06-10:45 by ben]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- fix: export use repository id for filename
+- fix: export use octet stream content type instead of application/csv
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.7.2 [R1 build 2004/06/01-10:27 by ben]
 
 Requires:
