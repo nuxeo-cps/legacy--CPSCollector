@@ -1,3 +1,4 @@
+<tal:block define="_check_perm_ here/assert_form_view" />
 <tal:block define="current_action string:view_stat;
   mcat nocall:here/portal_messages;">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
@@ -10,7 +11,39 @@
 <body>
 <metal:block fill-slot="main">
 
-<h2>Coming soon</h2>
+<tal:block define="stats python:here.compute_stat();
+                   fields python:here.get_stat_fields()">
+  <tal:block condition="python: not stats['_stat']['nb_item']">
+    <h2 tal:content="python:mcat('_form_stat_empty_')">no data</h2>
+  </tal:block>
+
+  <tal:block condition="python: stats['_stat']['nb_item']">
+  <h2 tal:content="python:mcat('_form_stat_header_')">Result</h2>
+  <tal:block replace="python: mcat('_form_%s_data_from_%s_to_%s_') % (stats['_stat']['nb_item'], stats['_stat']['date_start'], stats['_stat']['date_end'])" />
+
+  <h2 tal:content="python:mcat('_form_stat_detail_')">Result</h2>
+
+  <table width="60%" tal:condition="fields">
+  <tal:block repeat="field fields">
+    <tr><th colspan=2>
+    <tal:block replace="python:here.getLabel(field)" />
+    </th></tr>
+    <tal:block repeat="value python:stats[field].keys()">
+      <tr><td align="right">&nbsp;
+        <tal:block replace="python:here.getLabel(field,value)" />:
+      </td><td align="center">
+        <tal:block replace="python:stats[field][value]" /> %
+      </td></tr>
+    </tal:block>
+  </tal:block>
+  </table>
+  <tal:block condition="not:fields">
+    <h2 tal:content="python:mcat('_form_stat_null_')">No statistic available</h2>
+  </tal:block>
+  </tal:block>
+  
+</tal:block>
+
 
 </metal:block>
 </body>
