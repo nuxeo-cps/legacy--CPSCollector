@@ -96,30 +96,30 @@
     <td bgcolor="#FFDCB7">&nbsp;</td><td colspan="4" nowrap>Id:
       <input type="text" name="id" size="20"/> type:
       <select name="type" size=1>
-	<option value="title">Title</option>
-	<option value="string" selected="1">String</option>
-	<option value="string_ro">String read only</option>	  
-	<option value="identifier">Identifier</option>
-	<option value="email">e-mail</option>
-	<option value="url">URL</option>
-	<option value="date">Date</option>
-	<option value="password">Password</option>	  	  
-	<option value="int">Integer</option>
-	<option value="float">Float</option>
-	<option value="phone">Phone number</option>
-	<option value="text">Text area</option>
-	<option value="radio">Radio button</option>
-        <option value="vradio">Vertical Radio button</option>
-	<option value="checkbox">Checkbox</option>
-	<option value="selection">Selection</option>
-	<option value="separator">Separator</option>	  
-	<option value="submit">Button</option>
-	<option value="reset">Reset button</option>
-	<option value="hidden">Hidden string</option>
-	<option value="comment">Comment</option>
-	<option value="file">File</option>	  
+          <option value="title" tal:content="python:mcat('_col_title_')">Title</option>
+          <option value="string" selected="1" tal:content="python:mcat('_col_string_')">String</option>
+          <option value="string_ro" tal:content="python:mcat('_col_string_ro_')">String read only</option>	  
+          <option value="identifier" tal:content="python:mcat('_col_identifier_')">Identifier</option>
+          <option value="email" tal:content="python:mcat('_col_email_')">e-mail</option>
+          <option value="url" tal:content="python:mcat('_col_url_')">URL</option>
+          <option value="date" tal:content="python:mcat('_col_date_')">Date</option>
+          <option value="password" tal:content="python:mcat('_col_password_')">Password</option>	  	  
+          <option value="int" tal:content="python:mcat('_col_integer_')">Integer</option>
+          <option value="float" tal:content="python:mcat('_col_float_')">Float</option>
+          <option value="phone" tal:content="python:mcat('_col_phonenumber_')">Phone number</option>
+          <option value="text" tal:content="python:mcat('_col_textarea_')">Text area</option>
+          <option value="radio" tal:content="python:mcat('_col_radiobutton_')">Radio button</option>
+          <option value="vradio" tal:content="python:mcat('_col_vradiobutton_')">Vertical Radio button</option>
+          <option value="checkbox" tal:content="python:mcat('_col_checkbox_')">Checkbox</option>
+          <option value="selection" tal:content="python:mcat('_col_selection_')">Selection</option>
+          <option value="separator" tal:content="python:mcat('_col_separator_')">Separator</option>	  
+          <option value="submit" tal:content="python:mcat('_col_button_')" >Button</option>
+          <option value="reset" tal:content="python:mcat('_col_resetbutton_')">Reset button</option>
+          <option value="hidden" tal:content="python:mcat('_col_hiddenstring_')">Hidden string</option>
+          <option value="comment" tal:content="python:mcat('_col_comment_')">Comment</option>
+          <option value="file" tal:content="python:mcat('_col_file_')">File</option>	  
       </select>
-      <input type="submit" name="addField:method" tal:attributes="value python:mcat('_form_add_new_field_')" />
+        <input type="submit" name="addField:method" tal:attributes="value python:mcat('_form_add_new_field_')" />
     </td>
   </tr>
   <tr>
