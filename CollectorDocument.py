@@ -31,8 +31,8 @@ from Products.CPSCollector.CollectorItem import CollectorItem
 
 factory_type_information = (
     {'id': 'Collector Document',
-     'description': '_portal_type_Collector Document_description',
-     'title': '_portal_type_Collector Document',
+     'description': 'portal_type_CollectorDocument_description',
+     'title': 'portal_type_CollectorDocument_title',
      'content_icon': 'CollectorDocument_icon.gif',
      'product': 'CPSCollector',
      'factory': 'addCollectorDocument',
@@ -41,11 +41,11 @@ factory_type_information = (
      'allow_discussion': 1,
      'filter_content_types': 0,
      'actions': ({'id': 'view',
-                  'name': '_action_view_',
+                  'name': 'action_view',
                   'action': 'Form_view',
                   'permissions': (View,)},
                  {'id': 'view_stat',
-                  'name': '_action_view_stat_',
+                  'name': 'action_view_stat',
                   'action': 'CollectorDocument_viewStat',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'metadata',
@@ -54,23 +54,23 @@ factory_type_information = (
                   'permissions': (ModifyPortalContent,)
                   },
                  {'id': 'edit',
-                  'name': '_action_modify_prop_',
+                  'name': 'action_modify_prop',
                   'action': 'CollectorDocument_editProp',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'edit_form',
-                  'name': '_action_modify_form_',
+                  'name': 'action_modify_form',
                   'action': 'Form_editForm',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'export',
-                  'name': '_action_export_csv_',
+                  'name': 'action_export_csv',
                   'action': 'exportData',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'erase',
-                  'name': '_action_erase_data_',
+                  'name': 'action_erase_data',
                   'action': 'eraseData',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'create',
-                  'name': '_action_create_',
+                  'name': 'action_create',
                   'action': 'CollectorDocument_createForm',
                   'visible': 0,
                   'permissions': ()},
@@ -140,8 +140,8 @@ class CollectorDocument(Form, BaseDocument):
     security.declareProtected(ModifyPortalContent, 'eraseData')
     def eraseData(self, **kw):
         """Erase all collector items"""
-        mcat = self.Localizer.default
-        psm = 'portal_status_message=%s' % (mcat('_form_erased_data_'), )
+        mcat = self.Localizer.cpscollector
+        psm = 'portal_status_message=%s' % (mcat('collector_erased_data'), )
         for id in self._get_item_ids():
             self._del_item(id)
         #self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
@@ -288,9 +288,9 @@ class CollectorDocument(Form, BaseDocument):
                 for v in r[f].keys():
                     nb = r[f][v]
                     r[f][v] = '%3.f' % (nb * 100.0 / nb_item)
-        mcat = self.Localizer.default
-        date_start = time.strftime(mcat('_date_%m/%d/%Y %H:%M'), date_start)
-        date_end = time.strftime(mcat('_date_%m/%d/%Y %H:%M'), date_end)
+        mcat = self.Localizer.cpscollector
+        date_start = time.strftime(mcat('collector_date_%m/%d/%Y %H:%M'), date_start)
+        date_end = time.strftime(mcat('collector_date_%m/%d/%Y %H:%M'), date_end)
         r['_stat'] = { 'nb_item': nb_item, 'date_start': date_start,
                      'date_end': date_end }
         return r
