@@ -11,6 +11,7 @@ __version__ = '$Revision$'[11:-2]
 from random import randrange
 import time
 from re import match, sub
+from types import StringType
 
 from OFS.Folder import Folder
 from AccessControl import ClassSecurityInfo
@@ -46,7 +47,7 @@ factory_type_information = (
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'edit_form',
                   'name': '_action_modify_form_',
-                  'action': 'Form_editForm',
+                  'action': 'editForm',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'export',
                   'name': '_action_export_csv_',
@@ -152,41 +153,77 @@ class CollectorDocument(Form, BaseDocument):
         "erase all item obj"
         mcat = self.portal_messages
         psm='portal_status_message=%s' % (mcat('_form_erased_data_'), )
-        for obj in self.objectValues('CollectorItem'):
-            self._delObject(obj.id)
+        for id in self.objectIds('CollectorItem'):
+            self._delObject(id)
         self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
         return
+
+    def viewStat(self, **kw):
+        "display stat for fields of type: selection/checkbox/radio"
+        r=self.compute_stat()
+        return self.CollectorDocument_viewStat(**kw)
 
     security.declareProtected(ModifyPortalContent, 'initTest')
     def initTest(self):
         "test that init a form"
-        self.add_field('title', type='title', label='Test form')
-        self.add_field('name', type='string', label='Enter your name',
-                        size=12, maxlength=12, required=1)
-        self.add_field('Age', type='int', label='How old are you')
-        self.add_field('Email', type='email',
-                        label='Enter your email', size=17)
-        self.add_field('isMale', type='checkbox',
-                        label='Are you a Male', checked=1)
-        self.add_field('rad_1', type='radio',
-                        mvalue='radvalue_1|Label v1\n'+
-                        'radvalue_2|Label v2\nradvalue_3|label v3',
-                        checked='radvalue_2')
-        self.add_field('rad_1', label='Radio choose')
-        self.add_field('rad2', type='radio',
-                        mvalue='value_1|Label 1\n'+
-                        'value_2|Label v 2\nvalue_3|label 3')
-        self.add_field('rad2', label='Radio 2 choose', checked='value_3')
-        self.add_field('drop2', type='selection',
-                        size='1', label='2 choose')
-        self.add_field('drop2', mvalue='choix_1|choix n°1\n'+
-                        'choix_2|Le choix 2\nchoix_3|Le 3eme choix')
-        self.add_field('drop2', checked='choix_1')
-        self.add_field('sep1', type='separator')
-        self.add_field('submit', type='submit', label='GO',
-                        value='view:method')
+        self.add_field('title', label='This is a title', type='title')
+        self.add_field('string', label='This is a string', type='string', required='on', maxlength='14', join='on', size='16')
+        self.add_field('string_ro', label='This is a read only string:', value='Read only value', type='string_ro')
+        self.add_field('id', label='This is an identifier', type='identifier', maxlength='14', join='on', size='16')
+        self.add_field('email', label='this is an email', type='email')
+        self.add_field('url', label='This is an URL', type='url', join='on')
+        self.add_field('date', label='this is a date', type='date')
+        self.add_field('pwd', label='This is a passwd', type='password', join='on')
+        self.add_field('int', label='This is an integer', type='int')
+        self.add_field('float', label='This is a float', type='float', join='on')
+        self.add_field('phone', label='This is a phone number', type='phone')
+        self.add_field('text', label='This is a text area', cols='60', type='text', rows='4')
+        self.add_field('rad', label='This is a radio', checked='radio2', mvalue='radio1 | radio1\nradio2 | radio2\nradio3 | radio3\nradio4 | radio4\n', type='radio')
+        self.add_field('cb', label='This is a checkbox', type='checkbox')
+        self.add_field('selection', label='This is a selection', join='on', multiple='on', checked='sel3', mvalue='sel1 | Section 1\nsel2 | Section 2\nsel3 | Section 3\nsel4 | Section 4\n', type='selection')
+        self.add_field('sel2', label='This is also a selection', checked='sel3', mvalue='sel1 | sel1\nsel2 | sel2\nsel3 | sel3\nsel4 | sel4\n', type='selection')
+        self.add_field('newsel', label='bla selection', mvalue='poi1 | poi1\npoi4 | poi4\npoi7 | poi7\n', type='selection')
+        self.add_field('sep', label='This is a separator', type='separator')
+        self.add_field('bt', label='a SUBMIT button', join='on', type='submit')
+        self.add_field('reset_bt', label='This is a reset button', type='reset')
+        self.add_field('hidden', value='hidden value', type='hidden')
+        self.add_field('comment', label='This is a comment !', type='comment')
         return "DONE"
 
+    security.declarePrivate('compute_stat')
+    def compute_stat(self, **kw):
+        # compute stat on selection/radio or checkbox fields
+        r = {}
+        for f in self.getFList(1):
+            if self.fields[f]['type'] not in ('checkbox','radio','selection'):
+                continue
+            r[f]={}
+            mv=self.fields[f].get('mvalue')
+            if mv:
+                for v in mv.keys():
+                    r[f][v]=0
+            else:
+                r[f]['on']=0
+
+        nbItem=0
+        for obj in self.objectValues('CollectorItem'):
+            nbItem += 1
+            for f in r.keys():
+                mv = obj.data.get(f)
+                if not mv:
+                    continue
+                if type(mv) is StringType:
+                    mv = [mv,]
+                for v in mv:
+                    if r[f].get(v,-1) != -1:
+                        r[f][v] += 1
+                        
+        r['nb_item__'] = nbItem
+        # xxx debug
+        from tools import log
+        log( 'computeStat', r)
+        
+        return r
 
     ### Private
     security.declarePrivate('_list_to_csv')
