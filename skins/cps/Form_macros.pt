@@ -23,7 +23,8 @@
                        value python:doc.getV(f_id, 'value',default)" />
 
 <!-- def title field -->
-<b metal:define-macro="title" tal:content="label|default">&nbsp;</b>
+<b metal:define-macro="title"
+   tal:content="python:colmcat(doc.getLabel(f_id))">label</b>
   
 <!-- def hidden field -->
 <input metal:define-macro="hidden"
@@ -103,13 +104,14 @@
 </metal:block>
 
 <!-- def comment -->
-<i metal:define-macro="comment" tal:content="label|nothing">comments</i>
+<em metal:define-macro="comment" tal:content="label|nothing">comments</em>
 
 <!-- def submit field -->
 <metal:block metal:define-macro="submit">
-  <input type="submit" tal:attributes="name f/value|default;
-                                       value label|default"
-         value="" class="context" />
+  <input type="submit"
+         tal:attributes="name f/value|default;
+                         value python:colmcat(doc.getLabel(f_id))"
+         class="context" />
 </metal:block>
 
 <!-- def reset field -->
@@ -133,7 +135,8 @@
   <font tal:attributes="color python:test(f_id in request.form.get('error__',[]),
                                           'red',
                                           0)"
-        tal:content="label|default">&nbsp;</font>
+        i18n:domain="cpscollector" i18n:translate=""
+        tal:content="python:doc.getLabel(f_id)"></font>
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
 </td>
 
@@ -146,13 +149,14 @@
 
 <!-- def display_form -->
 <form action="." method="post" enctype="multipart/form-data" 
-      metal:define-macro="display_form">
+      metal:define-macro="display_form"
+      i18n:domain="cpscollector">
   <table tal:condition="request/other/form_status|nothing"
          cellpadding="0" cellspacing="0" border="1" noshade width="100%">
     <tr>
       <td bgcolor="#EEEEEE">
         <font color="990000">
-          <strong tal:content="request/other/form_status">error msg</strong>
+          <strong tal:content="request/other/form_status">error msg</strong>schmol
         </font>
       </td>
     </tr>
@@ -166,10 +170,11 @@
             <span tal:repeat="f_id row" tal:omit-tag="">
               <span tal:define="f python:doc.fields[f_id];
                                 nb_slot python:doc.getNbSlot(f_id);
-                                label python:doc.getLabel(f_id)"
-                                tal:omit-tag="">
-                <span metal:use-macro="here/Form_macros/macros/display_label" />
-                <span metal:use-macro="here/Form_macros/macros/display_field" />
+                                label python:doc.getLabel(f_id);
+		                colmcat nocall:here/Localizer/cpscollector"
+                    tal:omit-tag="">
+                <metal:block metal:use-macro="here/Form_macros/macros/display_label" />
+                <metal:block metal:use-macro="here/Form_macros/macros/display_field" />
               </span>
             </span>
           </tr>
@@ -180,7 +185,8 @@
 </form>
 
 <!-- def display_edit_form -->
-<form action="." method="post" metal:define-macro="display_edit_form">
+<form action="." method="post" metal:define-macro="display_edit_form"
+      i18n:domain="cpscollector">
   <table border='0' style='width:80%;height:inherit'
          cellspacing='0' cellpadding='0'>
     <tr bgcolor="ffdcb7" tal:condition="request/other/form_status|nothing">
@@ -188,7 +194,7 @@
     </tr>
     <tr>
       <td colspan="5">
-        <strong tal:content="python:mcat('_form_add_new_field_')">
+        <strong i18n:translate="collector_form_add_new_field">
           Add a new field:
         </strong>
       </td>
@@ -199,82 +205,82 @@
         <input type="text" name="id" size="20"/>
         type:
         <select name="type" size=1>
-          <option value="title" tal:content="python:mcat('_col_title_')">
+          <option value="title" i18n:translate="collector_field_title">
             Title
           </option>
           <option value="string" selected="1"
-                  tal:content="python:mcat('_col_string_')">String</option>
+                  i18n:translate="collector_field_string">String</option>
           <option value="string_ro"
-                  tal:content="python:mcat('_col_string_ro_')">
+                  i18n:translate="collector_field_string_ro">
             String read only
           </option>	  
           <option value="identifier"
-                  tal:content="python:mcat('_col_identifier_')">
+                  i18n:translate="collector_field_identifier">
             Identifier
           </option>
           <option value="email"
-                  tal:content="python:mcat('_col_email_')">
+                  i18n:translate="collector_field_email">
             e-mail
           </option>
           <option value="url"
-                  tal:content="python:mcat('_col_url_')">
+                  i18n:translate="collector_field_url">
             URL
           </option>
           <option value="date"
-                  tal:content="python:mcat('_col_date_')">Date</option>
+                  i18n:translate="collector_field_date">Date</option>
           <option value="password"
-                  tal:content="python:mcat('_col_password_')">Password</option>  	  
+                  i18n:translate="collector_field_password">Password</option>  	  
           <option value="int"
-                  tal:content="python:mcat('_col_integer_')">Integer</option>
+                  i18n:translate="collector_field_integer">Integer</option>
           <option value="float"
-                  tal:content="python:mcat('_col_float_')">Float</option>
+                  i18n:translate="collector_field_float">Float</option>
           <option value="phone"
-                  tal:content="python:mcat('_col_phonenumber_')">
+                  i18n:translate="collector_field_phonenumber">
             Phone number
           </option>
           <option value="text"
-            tal:content="python:mcat('_col_textarea_')">Text area</option>
+            i18n:translate="collector_field_textarea">Text area</option>
           <option value="radio"
-                  tal:content="python:mcat('_col_radiobutton_')">
+                  i18n:translate="collector_field_radiobutton">
             Radio button
           </option>
           <option value="vradio"
-                  tal:content="python:mcat('_col_vradiobutton_')">
+                  i18n:translate="collector_field_vradiobutton">
             Vertical Radio button
           </option>
           <option value="checkbox"
-                  tal:content="python:mcat('_col_checkbox_')">
+                  i18n:translate="collector_field_checkbox">
             Checkbox
           </option>
           <option value="selection"
-                  tal:content="python:mcat('_col_selection_')">
+                  i18n:translate="collector_field_selection">
             Selection
           </option>
           <option value="separator"
-                  tal:content="python:mcat('_col_separator_')">
+                  i18n:translate="collector_field_separator">
             Separator
           </option>	  
           <option value="submit"
-                  tal:content="python:mcat('_col_button_')" >
+                  i18n:translate="collector_field_button">
             Button
           </option>
-          <option value="reset" tal:content="python:mcat('_col_resetbutton_')">
+          <option value="reset" i18n:translate="collector_field_resetbutton">
             Reset button
           </option>
           <option value="hidden"
-                  tal:content="python:mcat('_col_hiddenstring_')">
+                  i18n:translate="collector_field_hiddenstring">
             Hidden string
           </option>
-          <option value="comment" tal:content="python:mcat('_col_comment_')">
+          <option value="comment" i18n:translate="collector_field_comment">
             Comment
           </option>
           <option value="file"
-                  tal:content="python:mcat('_col_file_')">
+                  i18n:translate="collector_field_file">
             File
           </option>	  
         </select>
         <input type="submit" name="Form_addField:method"
-               tal:attributes="value python:mcat('_form_add_new_field_')"
+               i18n:attributes="value" value="collector_form_add_new_field"
                class="context" />
       </td>
     </tr>
@@ -283,7 +289,7 @@
     </tr>
     <tr>
       <td colspan="6">
-        <strong tal:content="python:mcat('_form_list_of_fields_')">
+        <strong i18n:translate="collector_form_list_of_fields">
           List of fields:
         </strong>
       </td>
@@ -291,10 +297,10 @@
     <tr>
       <td>&nbsp;</td>
       <td nowrap="1">id</td>
-      <td nowrap="1" tal:content="python:mcat('_form_type_')">type</td>
-      <td width="50%" tal:content="python:mcat('_form_label_')">label</td>
-      <td nowrap="1" tal:content="python:mcat('_form_required_')">required</td>
-      <td nowrap tal:content="python:mcat('_form_join_')">join w/ next field</td>
+      <td nowrap="1" i18n:translate="collector_form_field_type">type</td>
+      <td width="50%" i18n:translate="collector_form_field_label">label</td>
+      <td nowrap="1" i18n:translate="collector_form_field_req">required</td>
+      <td nowrap i18n:translate="collector_form_field_join">join w/ next field</td>
     </tr>
     <tr tal:repeat="f_id doc/getFList"
         tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
@@ -322,16 +328,17 @@
       <td>&nbsp;</td>
       <td colspan="4">
         <input type="submit" name="Form_moveFieldUp:method"
-               tal:attributes="value python:mcat('_form_bt_move_up_')"
+               i18n:attributes="value" value="collector_button_moveup"
                class="context" />
         <input type="submit" name="Form_moveFieldDown:method"
-               tal:attributes="value python:mcat('_form_bt_move_down_')"
+               i18n:attributes="value" value="collector_button_movedown"
                class="context" />
         <input type="submit" name="Form_delField:method"
-               tal:attributes="value python:mcat('_form_bt_remove_');
-                               onClick 
+               i18n:attributes="value" value="collector_button_remove"
+               tal:define="colmcat nocall:here/Localizer/cpscollector"
+               tal:attributes="onClick 
                                  python:
-                                   'return window.confirm(\'%s\')' % (mcat('_Are_you_sure?_'),)"
+                                   'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)"
                class="destructive"/>
       </td>
     </tr>
@@ -339,7 +346,8 @@
 </form>
 
 <!-- def display_quiz_edit_form -->
-<form action="." method="post" metal:define-macro="display_quiz_edit_form">
+<form action="." method="post" metal:define-macro="display_quiz_edit_form"
+      i18n:domain="cpscollector">
   <table border='0' style='width:80%;height:inherit'
          cellspacing='0' cellpadding='0'>
     <tr bgcolor="ffdcb7" tal:condition="request/other/form_status|nothing">
@@ -347,7 +355,7 @@
     </tr>
     <tr>
       <td colspan="5">
-        <strong tal:content="python:mcat('_form_add_new_field_')">
+        <strong i18n:translate="collector_form_add_new_field">
           Add a new field:
         </strong>
       </td>
@@ -358,42 +366,42 @@
         <input type="text" name="id" size="20"/>
         type:
         <select name="type" size=1>
-          <option value="title" tal:content="python:mcat('_col_title_')">
+          <option value="title" i18n:translate="collector_field_title">
             Title
           </option>
           <option value="radio"
-                  tal:content="python:mcat('_col_radiobutton_')">
+                  i18n:translate="collector_field_radiobutton">
             Radio button
           </option>
           <option value="vradio"
-                  tal:content="python:mcat('_col_vradiobutton_')">
+                  i18n:translate="collector_field_vradiobutton">
             Vertical Radio button
           </option>
           <option value="checkbox"
-                  tal:content="python:mcat('_col_checkbox_')">
+                  i18n:translate="collector_field_checkbox">
             Checkbox
           </option>
           <option value="separator"
-                  tal:content="python:mcat('_col_separator_')">
+                  i18n:translate="collector_field_separator">
             Separator
           </option>	  
           <option value="submit"
-                  tal:content="python:mcat('_col_button_')" >
+                  i18n:translate="collector_field_button">
             Button
           </option>
-          <option value="reset" tal:content="python:mcat('_col_resetbutton_')">
+          <option value="reset" i18n:translate="collector_field_resetbutton">
             Reset button
           </option>
           <option value="hidden"
-                  tal:content="python:mcat('_col_hiddenstring_')">
+                  i18n:translate="collector_field_hiddenstring">
             Hidden string
           </option>
-          <option value="comment" tal:content="python:mcat('_col_comment_')">
+          <option value="comment" i18n:translate="collector_field_comment">
             Comment
           </option>
         </select>
         <input type="submit" name="Form_addField:method"
-               tal:attributes="value python:mcat('_form_add_new_field_')"
+               i18n:attributes="value" value="collector_form_add_new_field"
                class="context" />
       </td>
     </tr>
@@ -402,7 +410,7 @@
     </tr>
     <tr>
       <td colspan="6">
-        <strong tal:content="python:mcat('_form_list_of_fields_')">
+        <strong i18n:translate="collector_form_list_of_fields">
           List of fields:
         </strong>
       </td>
@@ -410,10 +418,10 @@
     <tr>
       <td>&nbsp;</td>
       <td nowrap="1">id</td>
-      <td nowrap="1" tal:content="python:mcat('_form_type_')">type</td>
-      <td width="50%" tal:content="python:mcat('_form_label_')">label</td>
-      <td nowrap="1" tal:content="python:mcat('_form_required_')">required</td>
-      <td nowrap tal:content="python:mcat('_form_join_')">join w/ next field</td>
+      <td nowrap="1" i18n:translate="collector_form_field_type">type</td>
+      <td width="50%" i18n:translate="collector_form_field_label">label</td>
+      <td nowrap="1" i18n:translate="collector_form_field_req">required</td>
+      <td nowrap i18n:translate="collector_form_field_join">join w/ next field</td>
     </tr>
     <tr tal:repeat="f_id doc/getFList"
         tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
@@ -441,16 +449,17 @@
       <td>&nbsp;</td>
       <td colspan="4">
         <input type="submit" name="Form_moveFieldUp:method"
-               tal:attributes="value python:mcat('_form_bt_move_up_')"
+               i18n:attributes="value" value="collector_button_moveup"
                class="context" />
         <input type="submit" name="Form_moveFieldDown:method"
-               tal:attributes="value python:mcat('_form_bt_move_down_')"
+               i18n:attributes="value" value="collector_button_movedown"
                class="context" />
         <input type="submit" name="Form_delField:method"
-               tal:attributes="value python:mcat('_form_bt_remove_');
-                               onClick 
+               i18n:attributes="value" value="collector_button_remove"
+               tal:define="colmcat nocall:here/Localizer/cpscollector"
+               tal:attributes="onClick 
                                  python:
-                                   'return window.confirm(\'%s\')' % (mcat('_Are_you_sure?_'),)"
+                                   'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)"
                class="destructive"/>
       </td>
     </tr>
