@@ -1,4 +1,20 @@
 *******************************************
+** CPSCollector V1.7.4 [R1 build 2004/07/30-09:47 by ben]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- use CPS default value for action metadata
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.7.3 [R1 build 2004/07/06-10:45 by ben]
 
 Requires:
