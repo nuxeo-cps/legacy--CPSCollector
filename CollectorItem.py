@@ -1,7 +1,7 @@
 # (c) 2002 Nuxeo SARL <http://nuxeo.com>
 # $Id$
 """ 
-Collector item encapsulate input from a form 
+A collector item encapsulates input from a form 
 
 """
 from Globals import InitializeClass

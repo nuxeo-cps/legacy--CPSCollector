@@ -1,9 +1,10 @@
 # (c) 2002 Nuxeo SARL <http://nuxeo.com>
 # $Id$
 """
-A Collector is a folderish Form,
-the form action store user input into CollectorItem
-Collector can export its items into a csv file
+A Collector is a folderish Form
+
+The form action stores user input into CollectorItem objects
+A collector can export its items into a csv file
 Collector is able to display statistics about collected data
 """
 
@@ -21,8 +22,10 @@ from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
 from Products.CPSCore.CPSBase import CPSBaseDocument as BaseDocument, \
      CPSBase_adder
+
 def BaseDocument_adder(disp, id, ob, REQUEST=None):
     return CPSBase_adder(disp, ob, REQUEST)
+
 from Products.CPSCollector.Form import Form
 from Products.CPSCollector.CollectorItem import CollectorItem
 
@@ -89,12 +92,13 @@ class CollectorDocument(Form, BaseDocument):
         {'id':'submit_msg', 'type':'string', 'mode':'w',
          'label':'Message after submit'},
         {'id':'submit_msg_stat', 'type':'boolean', 'mode':'w',
-         'label':'View statistic after submit'},
+         'label':'View statistics after submit'},
         {'id':'unique_submit', 'type':'boolean', 'mode':'w',
          'label':'Unique Submit'},
         {'id':'persistent_data', 'type':'boolean', 'mode':'w',
          'label':'Persistent data'},
         )
+    
     submit_msg = ''
     submit_msg_stat = 0
     unique_submit = 1
@@ -111,11 +115,10 @@ class CollectorDocument(Form, BaseDocument):
         """Used by the catalog for basic full text indexing"""
         return '%s %s' % (self.title, self.description)
 
-
     # WEB INTERFACE --------------------------------------------------
     security.declareProtected(ModifyPortalContent, 'exportData')
     def exportData(self, **kw):
-        """Export all collected data as CSV file"""
+        """Export all collected data as a CSV file"""
         fields = self.getFList(1)
         s = self._list_to_csv(['_date', '_user', '_ip']+fields)
         for obj in self._get_item_values():
@@ -136,7 +139,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declareProtected(ModifyPortalContent, 'eraseData')
     def eraseData(self, **kw):
-        """Erase all collector item"""
+        """Erase all collector items"""
         mcat = self.Localizer.default
         psm = 'portal_status_message=%s' % (mcat('_form_erased_data_'), )
         for id in self._get_item_ids():
@@ -147,7 +150,7 @@ class CollectorDocument(Form, BaseDocument):
     # FIXME: these tests should move to a unit test package
     security.declareProtected(ModifyPortalContent, 'initTest')
     def initTest(self):
-        """Test that init a form with all kind of field"""
+        """Test the initialization of a form with all kinds of field"""
         self.add_field('title', label='This is a title', type='title')
         self.add_field('string', label='This is a string', type='string',
             required='on', maxlength='14', join='on', size='16')
@@ -212,7 +215,7 @@ class CollectorDocument(Form, BaseDocument):
             self._action(**kw)
             return self._action_pt
 
-        if status == 'not_yet_submited' and self.persistent_data:
+        if status == 'not_yet_submitted' and self.persistent_data:
             obj = self._load_data()
             if obj:
                 self._set_values(obj.data)
@@ -236,7 +239,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declareProtected(View, 'get_stat_fields')
     def get_stat_fields(self, **kw):
-        # Return the list of field with statistic
+        # Return the list of fields with statistics
         l = []
         for f in self.getFList(1):
             if self.fields[f]['type'] not in ('checkbox','vradio', 'radio','selection'):
@@ -291,7 +294,6 @@ class CollectorDocument(Form, BaseDocument):
         r['_stat'] = { 'nb_item': nb_item, 'date_start': date_start,
                      'date_end': date_end }
         return r
-
 
     # INTERNAL --------------------------------------------------
     security.declarePrivate('_add_item')
