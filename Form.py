@@ -339,6 +339,7 @@ class Form(ExtensionClass.Base):
     def check_form( self  ):
         # check all the fields of a form and return a status and msg
         form = self.REQUEST.form
+        mcat = self.portal_messages
         if not form.get('is_form_submitted'):
             return ( 'not_yet_submited', '' )
         msg=''
@@ -346,14 +347,20 @@ class Form(ExtensionClass.Base):
         for f in self.getFList( ):
             err = self.check_field( f, form.get(f) )
             if err:
-               msg = msg + err + ', '
-               bf.append( f )
+                err_l10n = mcat(err)
+                if err_l10n != err:
+                    err = err_l10n % f
+                else:
+                    err = '['+f+'] '+err
+                msg = msg + err + ', '
+                bf.append( f )
         form['error__'] =  bf
         if not msg:
             msg = self.validator( form )            
 
         if msg:
-            return ( 'bad_fields', 'ERROR: '+msg )
+            err_l10n = mcat('_field_error_')
+            return ( 'bad_fields', err_l10n + ' ' + msg[:-2] +'.' )
 
         return ( 'valid_form', 'Congratulation' )
         
@@ -365,25 +372,25 @@ class Form(ExtensionClass.Base):
         err=None
         
         if not v and f.get('required',0):
-            err='['+id+'] is required'
+            err='_field_is_required_'
         elif not v:
             pass
         elif t == 'string':
             max_len = f.get('maxlength',128)
             if len(v) > max_len:
-                err='['+id+'] is too long, maximum length is %d' %max_len
+                err = '_field_is_too_long_'
         elif t == 'email':
             if not match( r'^(\w(\.|\-)?)+@(\w(\.|\-)?)+\.[A-Za-z]{2,4}$',v):
-                err='Invalid email format for ['+id+']'
+                err = '_field_email_invalid_'
         elif t == 'int':
             if not match( r'^(\-)?[0-9]+$', v):
-                err='['+id+'] is not an integer'
+                err = '_field_int_invalid_'
         elif t == 'float':
             if not match( r'^[0-9]+((\.|\,)[0-9]+)?$', v):
-                err='['+id+'] is not a float'
+                err= '_field_float_invalid_'
         elif t == 'phone':
             if not match( r'^[\(\)0-9\t\ \-\.\+]{6,26}$', v):
-                err='['+id+'] is not a valid phone number'
+                err = '_field_phone_invalid_'
         elif t == 'checkbox':
             pass
         elif t == 'hidden':
@@ -391,46 +398,45 @@ class Form(ExtensionClass.Base):
         elif t == 'string_ro':
             _v = self.fields[id].get('value')
             if _v and (_v != v):
-                err='['+id+'] is read only'
+                err = '_field_is_read_only_'
         elif t == 'identifier':
             if not match( r'^[a-zA-Z]\w*$', v ):
-                err='['+id+'] is not a valid identifier'
+                err = '_field_id_invalid_'
         elif t == 'text':
             pass
         elif t == 'selection':
             if type( v ) is type( [] ):
                 for vv in v:
                     if vv not in f['mvalue'].keys():
-                        err='Invalid multi selection for ['+id+']'
+                        err = '_field_multiselect_invalid_'
                         break
             elif v not in f['mvalue'].keys():
-                err='Invalid selection for ['+id+']'
+                err = '_field_selection_invalid_'
         elif t == 'radio':
             if v not in f['mvalue'].keys():
-                err='Invalid selection for ['+id+']'
+                err = '_field_selection_invalid_'
         elif t == 'date':
             if not match( r'^[0-9]?[0-9]/[0-9]?[0-9]/[0-9]{4,4}$', v):
                 # FIXME: i18n 
-                err='['+id+'] invalid date should be like 12/31/1999'
+                err = '_field_date_invalid_'
         elif t == 'url':
             if not match( r'^(http://)?([\w\~](\:|\.|\-|\/|\?|\=)?){2,}$', v ):
-                err='['+id+'] is not a valid url'
+                err = '_field_url_invalid_'
         elif t == 'password':
             pass
         elif t == 'file':
             if not v.filename and f.get('required',0):
-                err='['+id+'] is required'
+                err = '_field_is_required_'
             elif v.filename:
                 ml = int(f.get( 'maxlength', '0' ))
                 if v.read(1) == "":
-                    err = '['+id+'] is an empty file'
+                    err = '_field_empty_file_'
                     self.REQUEST.form[id] = v.filename                    
                 elif ml:
                     if len( v.read( ml + 1 ) ) == ml + 1:
-                        err = '['+id+'] is too big, maximum size is %d' % ml
-                        self.REQUEST.form[id]=v.filename                        
+                        err = '_field_too_big_file_'
+                        self.REQUEST.form[id]=v.filename                       
                 v.seek(0)
-
 
         return err
 
