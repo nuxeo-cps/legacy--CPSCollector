@@ -99,13 +99,13 @@ class QuizDocument(CollectorDocument):
     field_attr['vradio'] = CollectorDocument.field_attr['vradio'][:2] +\
                            ('trueval__',) +\
                            CollectorDocument.field_attr['vradio'][3:]
-    
+
     def __init__(self, id, **kw):
         """Constructor"""
         CollectorDocument.__init__(self, id, **kw)
         self.add_field('trueval__', type='string', label='collector_form_good_answer')
         self._action_pt = 'QuizDocument_action'
-        
+
     security.declareProtected(View, 'get_quiz_fields')
     def get_quiz_fields(self, **kw):
         # Return the list of fields that can be used as quiz questions
@@ -136,7 +136,7 @@ class QuizDocument(CollectorDocument):
             return {'fields': fields, 'nb_correct': nb_correct, 'nb_all': len(fields)}
         else:
             return {'fields': [], 'nb_correct': 0, 'nb_all': 0}
-    
+
 
     def process_answer(self,f_id,f_value):
         # For a given field, compare answer with correct answer
