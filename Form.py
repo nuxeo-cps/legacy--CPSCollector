@@ -381,7 +381,8 @@ class Form(Base):
             for f in r:
                 span[f]=0
             span[f] = max_cols - nb_cols[rows.index(r)] + 1
-        self.span = span
+        if span != getattr(self, 'span'):
+            self.span = span
         return rows
 
     #   Security Stuff used to raise an exception in skin ------------
