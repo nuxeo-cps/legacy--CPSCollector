@@ -1,0 +1,9 @@
+<html metal:use-macro="here/content_lib/macros/master">
+
+<metal:block fill-slot="main">
+<h2><tal:block replace="doc/submit_msg">Thanks</tal:block></h2>
+<tal:block condition="doc/submit_msg_stat">
+  <metal:block use-macro="here/QuizDocument_viewResults/macros/display_quiz_results" />
+</tal:block>
+</metal:block>
+</html>
