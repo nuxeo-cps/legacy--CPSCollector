@@ -198,7 +198,17 @@ class CollectorDocument(Form, BaseDocument):
         self.add_field('reset_bt', label='This is a reset button', type='reset')
         self.add_field('hidden', value='hidden value', type='hidden')
         self.add_field('comment', label='This is a comment !', type='comment')
-        return "DONE"
+        return "init Test DONE"
+
+    security.declareProtected(ModifyPortalContent, 'initTestSurvey')
+    def initTestSurvey(self):
+        "test that init a form"
+        self.add_field('survey_title', label='_survey_title_', type='title')
+        self.add_field('survey_id', label='_survey_bla_', value='12345', type='comment')
+        self.add_field('survey_q1', label='_survey_q1_', checked='kind2', mvalue='kind1 | _survey_r1_\nkind2 | _survey_r2_\nkind3 | _survey_r3_\n', type='selection')
+        self.add_field('survey_q2', label='_survey_q2_', multiple='on', checked='sel3', mvalue='sel1 | _survey_s1_\nsel2 | _survey_s2_\nsel3 | _survey_s3_\n', type='radio')
+        self.add_field('survey_bt', label='_survey_bt_', type='submit')
+        return "init Test Survey DONE"
 
     security.declareProtected(View, 'get_stat_fields')
     def get_stat_fields(self, **kw):
