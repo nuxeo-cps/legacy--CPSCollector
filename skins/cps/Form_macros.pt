@@ -103,7 +103,7 @@
     <tal:block tal:repeat="v python:doc.getVList(f_id)">
       <option tal:attributes="value v;
                               selected python:v in doc.getV(f_id, 'value',
-	                                                    '', 1)"
+	                                                    nothing, 'selected')"
               tal:content="python:doc.getLabel(f_id,v)">_x_</option>
     </tal:block>
   </select>
@@ -205,7 +205,7 @@
           <option value="title" i18n:translate="collector_field_title">
             Title
           </option>
-          <option value="string" selected="1"
+          <option value="string" selected="selected"
                   i18n:translate="collector_field_string">String</option>
           <option value="string_ro"
                   i18n:translate="collector_field_string_ro">
@@ -302,8 +302,8 @@
                         label python:doc.getLabel(f_id)">
         <td width="10">
           <input tal:attributes="value f_id;
-                                 checked python:doc.isSelected('f_id',f_id)"
-                 name="f_id" type="checkbox" class="noborder" />
+          checked python:test(doc.isSelected('f_id',f_id), 'checked', nothing)"
+            name="f_id" type="checkbox" class="noborder" />
         </td>
         <td>
           <a tal:attributes="href string:Form_editField?f_id=$f_id"
@@ -415,7 +415,8 @@
                         label python:doc.getLabel(f_id)">
         <td width="10">
           <input tal:attributes="value f_id;
-                                 checked python:doc.isSelected('f_id',f_id)"
+                                 checked
+          python:test(doc.isSelected('f_id',f_id), 'checked', nothing)"
                  name="f_id" type="checkbox" class="noborder" />
         </td>
         <td>
