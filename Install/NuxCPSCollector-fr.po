@@ -192,6 +192,9 @@ msgstr "Description"
 msgid "_button_modify_"
 msgstr "Modifier"
 
+msgid "_button_create_"
+msgstr "Créer"
+
 msgid "_button_cancel_"
 msgstr "Annuler"
 
