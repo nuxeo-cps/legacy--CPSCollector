@@ -31,3 +31,49 @@ msgstr ""
 msgid "collector_empty_form"
 msgstr ""
 
+msgid "collector_erased_data"
+msgstr ""
+
+msgid "collector_form_label"
+msgstr ""
+
+msgid "collector_form_field_edit"
+msgstr ""
+
+msgid "collector_form_type"
+msgstr ""
+
+msgid "collector_form_size"
+msgstr ""
+
+msgid "collector_form_cols"
+msgstr ""
+
+msgid "collector_form_rows"
+msgstr ""
+
+msgid "collector_form_max_length"
+msgstr ""
+
+msgid "collector_form_required"
+msgstr ""
+
+msgid "collector_form_checked"
+msgstr ""
+
+msgid "collector_form_value"
+msgstr ""
+
+msgid "collector_form_values"
+msgstr ""
+
+msgid "collector_form_multiple"
+msgstr ""
+
+msgid "collector_button_change"
+msgstr ""
+
+msgid "collector_form_join_with_next"
+msgstr ""
+
+

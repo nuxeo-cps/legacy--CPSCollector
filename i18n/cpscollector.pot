@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2003-10-22 11:22default\n"
+"POT-Creation-Date: 2003-10-22 16:02default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -65,6 +65,11 @@ msgstr ""
 #.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
+msgstr ""
+
+#.   <block />
+#: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
+msgid "collector_edit_help"
 msgstr ""
 
 #.   <h2>no data</h2>
@@ -281,6 +286,16 @@ msgstr ""
 msgid "collector_label_result"
 msgstr ""
 
+#.   <block />
+#: from ../skins/cps/Form_editField_pt.pt
+msgid "collector_modify_field"
+msgstr ""
+
+#.   <block />
+#: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
+msgid "collector_modify_form"
+msgstr ""
+
 #.   <block>
 #.         Modify
 #.       </block>
@@ -341,4 +356,49 @@ msgid "collector_field_error"
 msgstr ""
 
 msgid "collector_empty_form"
+msgstr ""
+
+msgid "collector_erased_data"
+msgstr ""
+
+msgid "collector_form_label"
+msgstr ""
+
+msgid "collector_form_field_edit"
+msgstr ""
+
+msgid "collector_form_type"
+msgstr ""
+
+msgid "collector_form_size"
+msgstr ""
+
+msgid "collector_form_cols"
+msgstr ""
+
+msgid "collector_form_rows"
+msgstr ""
+
+msgid "collector_form_max_length"
+msgstr ""
+
+msgid "collector_form_required"
+msgstr ""
+
+msgid "collector_form_checked"
+msgstr ""
+
+msgid "collector_form_value"
+msgstr ""
+
+msgid "collector_form_values"
+msgstr ""
+
+msgid "collector_form_multiple"
+msgstr ""
+
+msgid "collector_button_change"
+msgstr ""
+
+msgid "collector_form_join_with_next"
 msgstr ""

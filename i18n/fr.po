@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
-"POT-Creation-Date: 2003-10-22 11:22default\n"
-"PO-Revision-Date: 2003-10-22 11:24+0200\n"
+"POT-Creation-Date: 2003-10-22 16:02default\n"
+"PO-Revision-Date: 2003-10-22 16:02+0200\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -70,6 +70,13 @@ msgstr "Déplacer vers le haut"
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
 msgstr "Supprimer"
+
+#.   <block />
+#: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
+msgid "collector_edit_help"
+msgstr ""
+"Utilisez les commandes de cette page pour ajouter des champs au formulaire "
+"et les modifier"
 
 #.   <h2>no data</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
@@ -285,12 +292,22 @@ msgstr "Question"
 msgid "collector_label_result"
 msgstr "Résultat"
 
+#.   <block />
+#: from ../skins/cps/Form_editField_pt.pt
+msgid "collector_modify_field"
+msgstr "Modifier le champ"
+
+#.   <block />
+#: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
+msgid "collector_modify_form"
+msgstr "Modifier le formulaire"
+
 #.   <block>
 #.         Modify
 #.       </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_modify_props"
-msgstr "Modifier les propriétés"
+msgstr "Modifier les propriétés de "
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
@@ -346,4 +363,50 @@ msgstr "Erreur :"
 
 msgid "collector_empty_form"
 msgstr "Cette fiche est vide"
+
+msgid "collector_erased_data"
+msgstr "Les données collectées ont été effacées"
+
+msgid "collector_form_label"
+msgstr "Libellé :"
+
+msgid "collector_form_field_edit"
+msgstr "Edition d'un champ :"
+
+msgid "collector_form_type"
+msgstr "Type :"
+
+msgid "collector_form_size"
+msgstr "Taille :"
+
+msgid "collector_form_cols"
+msgstr "Nombre de colonnes :"
+
+msgid "collector_form_rows"
+msgstr "Nombre de lignes :"
+
+msgid "collector_form_max_length"
+msgstr "Taille max. :"
+
+msgid "collector_form_required"
+msgstr "Obligatoire :"
+
+msgid "collector_form_checked"
+msgstr "Sélection par défaut :"
+
+msgid "collector_form_value"
+msgstr "Valeur :"
+
+msgid "collector_form_values"
+msgstr "Valeurs :"
+
+msgid "collector_form_multiple"
+msgstr "Sélection multiple :"
+
+msgid "collector_button_change"
+msgstr "Modifier"
+
+#, fuzzy
+msgid "collector_form_join_with_next"
+msgstr "Concaténer avec le champ suivant :"
 
