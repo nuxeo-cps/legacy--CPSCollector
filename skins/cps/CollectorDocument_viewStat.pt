@@ -14,7 +14,7 @@
 
 <metal:block define-macro="display_stat">
 <tal:block define="doc here/getContent;
-                   stats python:doc.compute_stat();
+                   stats python:doc.process_stat();
                    fields python:doc.get_stat_fields();">
   <tal:block condition="python: not stats['_stat']['nb_item']">
     <h2 tal:content="python:mcat('_form_stat_empty_')">no data</h2>

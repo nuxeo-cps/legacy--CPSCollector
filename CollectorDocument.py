@@ -241,9 +241,8 @@ class CollectorDocument(Form, BaseDocument):
             l.append(f)
         return l
     
-    # XXX TODO rename compute_stat into process_stat
-    security.declareProtected(View, 'compute_stat')
-    def compute_stat(self, **kw):
+    security.declareProtected(View, 'process_stat')
+    def process_stat(self, **kw):
         # Compute stat on selection/radio or checkbox fields
         r = {}
         date_start = time.localtime()
