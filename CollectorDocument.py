@@ -411,12 +411,10 @@ class CollectorDocument(Form, BaseDocument):
             return None, None, None
         from zLOG import LOG, DEBUG
         if hasattr(time,'strptime'):
-            LOG('XXXXXXXXXXXXXXX',DEBUG,'has it')
             d = time.strptime(m.group(1), '%y%m%d%H%M%S')
         else:
             #call to a platform independant version if not provided
             #by Zope's python (e.g. Win32 before python 2.3)
-            LOG('XXXXXXXXXXXXXXX',DEBUG,'does not')
             d = strptime.strptime(m.group(1), '%y%m%d%H%M%S')
         user = m.group(2)
         ip = m.group(3)
