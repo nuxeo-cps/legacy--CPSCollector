@@ -24,7 +24,7 @@ factory_type_information = (
     {'id': 'Quiz Document',
      'description': 'portal_type_QuizDocument_description',
      'title': 'portal_type_QuizDocument_title',
-     'content_icon': 'CollectorDocument_icon.gif',
+     'content_icon': 'QuizDocument_icon.gif',
      'product': 'CPSCollector',
      'factory': 'addQuizDocument',
      'meta_type': 'Quiz Document',
