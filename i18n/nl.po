@@ -54,65 +54,65 @@ msgstr ""
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
-msgstr "Cancel"
+msgstr "Annulering"
 
 #.   <input value="collector_button_movedown" class="context" name="Form_moveFieldDown:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
-msgstr "Move Down"
+msgstr "Naar beneden"
 
 #.   <input value="collector_button_moveup" class="context" name="Form_moveFieldUp:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
-msgstr "Move Up"
+msgstr "Naar boven"
 
 #.   <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
-msgstr "Proceed"
+msgstr "Verder gaan"
 
 #.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
 #.                                    python:
 #.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
-msgstr "Delete"
+msgstr "Verwijderin"
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
-msgstr "Use the commands on this page to add and edit fields in your form"
+msgstr "Gebruik de knoppen op deze pagina om velden in je formulier toe te voegen en te wijzigen"
 
 #.   <h2>no data</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_empty_stats"
-msgstr "No data collected yet"
+msgstr "Nog geen gevevens verzameld"
 
 #.   <option value="submit">
 #.               Button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_button"
-msgstr "Button"
+msgstr "Knop"
 
 #.   <option value="checkbox">
 #.               Checkbox
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_checkbox"
-msgstr "Checkbox"
+msgstr "Selectievakje"
 
 #.   <option value="comment">
 #.               Comment
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_comment"
-msgstr "Comment"
+msgstr "Commentaar"
 
 #.   <option value="date">Date</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_date"
-msgstr "Date"
+msgstr "Datum"
 
 #.   <option value="email">
 #.               e-mail
@@ -126,95 +126,95 @@ msgstr "Email"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_file"
-msgstr "File"
+msgstr "Bestand"
 
 #.   <option value="float">Float</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_float"
-msgstr "Float"
+msgstr "Komma getal"
 
 #.   <option value="hidden">
 #.               Hidden string
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_hiddenstring"
-msgstr "Hidden string"
+msgstr "Verborgen waarde"
 
 #.   <option value="identifier">
 #.               Identifier
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_identifier"
-msgstr "Identifier"
+msgstr "Variabele naam"
 
 #.   <option value="int">Integer</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_integer"
-msgstr "Integer"
+msgstr "Geheel getal"
 
 #.   <option value="password">Password</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_password"
-msgstr "Password"
+msgstr "Paswoord"
 
 #.   <option value="phone">
 #.               Phone number
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_phonenumber"
-msgstr "Phone number"
+msgstr "Telefoon nummer"
 
 #.   <option value="radio">
 #.               Radio button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_radiobutton"
-msgstr "Radio Button"
+msgstr "Keuzerondje"
 
 #.   <option value="reset">
 #.               Reset button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_resetbutton"
-msgstr "Reset Button"
+msgstr "Herinitialiseren"
 
 #.   <option value="selection">
 #.               Selection
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_selection"
-msgstr "Selection List"
+msgstr "Keuze lijst"
 
 #.   <option value="separator">
 #.               Separator
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_separator"
-msgstr "Separator"
+msgstr "Scheidingsteken"
 
 #.   <option selected="1" value="string">String</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_string"
-msgstr "String"
+msgstr "Karakterreeks"
 
 #.   <option value="string_ro">
 #.               String read only
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_string_ro"
-msgstr "String (read only)"
+msgstr "Karakterreeks (permanent)"
 
 #.   <option value="text">Text area</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_textarea"
-msgstr "Text area"
+msgstr "Tekst veld"
 
 #.   <option value="title">
 #.               Title
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_title"
-msgstr "Title"
+msgstr "Titel"
 
 #.   <option value="url">
 #.               URL
@@ -228,7 +228,7 @@ msgstr "URL"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_vradiobutton"
-msgstr "Radio button (vertical layout)"
+msgstr "Keuzerondje (verticale indeling)"
 
 #.   <strong>
 #.             Add a new field:
@@ -236,208 +236,208 @@ msgstr "Radio button (vertical layout)"
 #.   <input value="collector_form_add_new_field" class="context" name="Form_addField:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
-msgstr "Add new field"
+msgstr "Voeg een nieuw veld toe"
 
 #.   <td nowrap="">join w/ next field</td>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
-msgstr "Join:"
+msgstr "Samenvoegen:"
 
 #.   <td width="50%">label</td>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_label"
-msgstr "Label:"
+msgstr "Etiket:"
 
 #.   <td nowrap="1">required</td>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_req"
-msgstr "Required:"
+msgstr "Verplicht:"
 
 #.   <td nowrap="1">type</td>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_type"
-msgstr "Type:"
+msgstr "Soort:"
 
 #.   <strong>
 #.             List of fields:
 #.           </strong>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_list_of_fields"
-msgstr "List of fields:"
+msgstr "Lijst van de velden:"
 
 #.   <h2>No statistic available</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_form_stats_null"
-msgstr "There is no field on this form suited to the computation of statistics"
+msgstr "Er is geen veld in dit formulier dat geschikt is om statistieken te berekenen"
 
 #.   <th>Chosen Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_chosen_answ"
-msgstr "Chosen answer"
+msgstr "Gekozen antwoord"
 
 #.   <th>Correct Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_correct_answ"
-msgstr "Correct answer"
+msgstr "Correct antwoord"
 
 #.   <block condition="create">
 #.       Create a Collector
 #.     </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_label_create"
-msgstr "Create form"
+msgstr "Formulier aanmaken"
 
 #.   <p>collector_label_erase_warning</p>
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_label_erase_warning"
-msgstr "All collected data will be lost"
+msgstr "De verzamelde data zal verloren gaan"
 
 #.   <th>Question</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_question"
-msgstr "Question"
+msgstr "Vraag"
 
 #.   <th>Result</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_result"
-msgstr "Result"
+msgstr "Resultaat"
 
 #.   <block />
 #: from ../skins/cps/Form_editField_pt.pt
 msgid "collector_modify_field"
-msgstr "Modify a field of "
+msgstr "Wijzig een veld van "
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_modify_form"
-msgstr "Modify form"
+msgstr "Wijzig formulier"
 
 #.   <block>
 #.         Modify
 #.       </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_modify_props"
-msgstr "Modify properties of "
+msgstr "Wijzig de eigenschappen van "
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_description"
-msgstr "Description"
+msgstr "Omschrijving"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_persistent"
-msgstr "Display latest input"
+msgstr "Toon de laatste invoer"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg"
-msgstr "Message to display after submission"
+msgstr "Boodschap om na de verzending te tonen"
 
 #.   <span condition="is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_results"
-msgstr "Display results after submission"
+msgstr "Toon resultaten na verzending"
 
 #.   <span condition="not: is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_stats"
-msgstr "Display statistics after submission"
+msgstr "Toon statistieken na verzending"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_title"
-msgstr "Title"
+msgstr "Titel"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_unique"
-msgstr "One form per user only"
+msgstr "Een formulier per gebruiker"
 
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_stats_details"
-msgstr "Results:"
+msgstr "Resultaten:"
 
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_stats_header"
-msgstr "Collected information:"
+msgstr "Verzamelde informatie:"
 
 msgid "collector_confirm"
-msgstr "Are you sure?"
+msgstr "Bent u zeker?"
 
 msgid "collector_button_modify"
-msgstr "Modify"
+msgstr "Wijzig"
 
 msgid "collector_date_%m/%d/%Y %H:%M"
-msgstr "%m/%d/%Y %H:%M"
+msgstr "%d/%m/%Y %H:%M"
 
 msgid "collector_field_error"
-msgstr "Error:"
+msgstr "Fout:"
 
 msgid "collector_empty_form"
-msgstr "This form is empty"
+msgstr "Dit formulier is leeg"
 
 msgid "collector_form_label"
-msgstr "Label:"
+msgstr "Etiket:"
 
 msgid "collector_form_field_edit"
-msgstr "Editing field:"
+msgstr "Bewerkbaar veld:"
 
 msgid "collector_form_type"
-msgstr "Type:"
+msgstr "Soort:"
 
 msgid "collector_form_size"
-msgstr "Size:"
+msgstr "Grootte:"
 
 msgid "collector_form_cols"
-msgstr "Number of columns:"
+msgstr "Aantal kolommen:"
 
 msgid "collector_form_rows"
-msgstr "Number of rows:"
+msgstr "Aantal rijen:"
 
 msgid "collector_form_max_length"
-msgstr "Max. length:"
+msgstr "Max. lengte:"
 
 msgid "collector_form_required"
-msgstr "Required:"
+msgstr "Verplicht:"
 
 msgid "collector_form_checked"
-msgstr "Default value:"
+msgstr "Standaardwaarde:"
 
 msgid "collector_form_value"
-msgstr "Value:"
+msgstr "Waarde:"
 
 msgid "collector_form_values"
-msgstr "Values:"
+msgstr "Waarden:"
 
 msgid "collector_form_multiple"
-msgstr "Multiple selection:"
+msgstr "Veelvoudige keuze:"
 
 msgid "collector_button_change"
-msgstr "Modify"
+msgstr "Wijzig"
 
 msgid "collector_form_join_with_next"
-msgstr "Join with next field:"
+msgstr "Voeg samen met het volgende veld:"
 
 msgid "collector_form_good_answer"
-msgstr "Correct answer:"
+msgstr "Juist antwoord:"
 
 msgid "collector_blank"
 msgstr " "
 
 #, fuzzy
 #~ msgid "collector_psm_erased_data"
-#~ msgstr "Collected data has been erased"
+#~ msgstr "Verzamelde gegevens zijn verwijderd"
 
 #~ msgid "collector_psm_erase_data_cancel"
-#~ msgstr "Collected data has not been erased"
+#~ msgstr "Verzamelde gegevens zijn niet verwijderd"
 
 #~ msgid "collector_erased_data"
-#~ msgstr "Collected data has been erased"
+#~ msgstr "Verzamelde gegevens zijn verwijderd"
 
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
-#~ msgstr "Collected data has been erased"
+#~ msgstr "Verzamelde gegevens zijn niet verwijderd"
 
