@@ -37,246 +37,65 @@ HOWTO USE THAT ?
 
 """
 
-import os, sys
-from zLOG import LOG, INFO, DEBUG
-
-def cps_collector_i18n_update(self):
-    """
-    Importation of the po files for internationalization.
-    For CPS itself and compulsory products.
-    """
-    _log = []
-    def pr(bla, _log=_log):
-        if bla == 'flush':
-            return '\n'.join(_log)
-        _log.append(bla)
-        if (bla):
-            LOG('cps_i18n_update:', INFO, bla)
-
-    def primp(pr=pr):
-        pr(" !!! Cannot migrate that component !!!")
-
-    def prok(pr=pr):
-        pr(" Already correctly installed")
-
-    portal = self.portal_url.getPortalObject()
-    def portalhas(id, portal=portal):
-        return id in portal.objectIds()
-
-    pr("Updating i18n support")
-
-    Localizer = portal['Localizer']
-    languages = Localizer.get_supported_languages()
-    catalog_id = 'cpscollector'
-    # Message Catalog
-    if catalog_id in Localizer.objectIds():
-        Localizer.manage_delObjects([catalog_id])
-        pr(" Previous default MessageCatalog deleted for CPSCollector")
-
-    # Adding the new message Catalog
-    Localizer.manage_addProduct['Localizer'].manage_addMessageCatalog(
-        id=catalog_id,
-        title='CPSCollector messages',
-        languages=languages,
-        )
-
-    defaultCatalog = Localizer.cpscollector
-
-    # computing po files' system directory
-    CPSCollector_path = sys.modules['Products.CPSCollector'].__path__[0]
-    i18n_path = os.path.join(CPSCollector_path, 'i18n')
-    pr("   po files are searched in %s" % i18n_path)
-    pr("   po files for %s are expected" % str(languages))
-
-    # loading po files
-    for lang in languages:
-        po_filename = lang + '.po'
-        pr("   importing %s file" % po_filename)
-        po_path = os.path.join(i18n_path, po_filename)
-        try:
-            po_file = open(po_path)
-        except (IOError, NameError):
-            pr("    %s file not found" % po_path)
-        else:
-            defaultCatalog.manage_import(lang, po_file)
-            pr("    %s file imported" % po_path)
-
-    # Translation Service Tool
-    if portalhas('translation_service'):
-        translation_service = portal.translation_service
-        pr (" Translation Sevice Tool found in here ")
-        try:
-            if getattr(portal['translation_service'], 'cpscollector', None) == None:
-                # translation domains
-                translation_service.manage_addDomainInfo('cpscollector','Localizer/'+'cpscollector')
-                pr(" cpscollector domain set to Localizer/cpscollector")
-        except:
-            pass
-    else:
-        raise str('DependanceError'), 'translation_service'
-
-    return pr('flush')
+from Products.CPSInstaller.CPSInstaller import CPSInstaller
 
 def install(self):
     """
-    Statring point !
+    Starting point !
     """
-    _log = []
-    def pr(bla, zlog=1, _log=_log):
-        if bla == 'flush':
-            return '<html><head><title>CPSCalendar Installer</title></head><body><pre>'+ \
-                   '\n'.join(_log) + \
-                   '</pre></body></html>'
 
-        _log.append(bla)
-        if bla and zlog:
-            LOG('CPSCalendar Install:', INFO, bla)
-
-    def prok(pr=pr):
-        pr(" Already correctly installed")
-
-    pr("Starting CPSCalendar Install")
-
-    portal = self.portal_url.getPortalObject()
-
-    def portalhas(id, portal=portal):
-        return id in portal.objectIds()
+    ##############################################
+    # Create the installer
+    ##############################################
+    installer = CPSInstaller(self, 'CPSCollector')
+    installer.log("Starting CPSCollector Install")
 
     #################################################
     # PORTAL TYPES
     #################################################
-
-    pr("Verifying portal types")
-    ttool = portal.portal_types
+    installer.allowContentTypes(('Collector Document','Quiz Document'),
+                                 'Workspace')
     ptypes = {
-        'CPSCollector' : ('Collector Document',
-                          'Quiz Document',
-                                  ),
+        'Collector Document' : {
+            'allowed_content_types': (),
+            'typeinfo_name': 'CPSCollector: Collector Document',
+            'add_meta_type': 'Factory-based Type Information',
+        },
+       'Quiz Document' : {
+            'allowed_content_types': (),
+            'typeinfo_name': 'CPSCollector: Quiz Document',
+            'add_meta_type': 'Factory-based Type Information',
+       },
     }
-
-    #################################################
-    # AUTHORIZATING PORTAL TYPES (ws only)
-    #################################################
-
-    if 'Workspace' in ttool.objectIds():
-        workspaceACT = list(ttool['Workspace'].allowed_content_types)
-    else:
-        workspaceACT = []
-
-    if 'Collector Document' not in  workspaceACT:
-        workspaceACT.append('Collector Document')
-    if 'Quiz Document' not in  workspaceACT:
-        workspaceACT.append('Quiz Document')
-
-    allowed_content_type = {
-                            'Workspace' : workspaceACT,
-                            }
-
-    ptypes_installed = ttool.objectIds()
-
-    for prod in ptypes.keys():
-        for ptype in ptypes[prod]:
-            pr("  Type '%s'" % ptype)
-            if ptype in ptypes_installed:
-                ttool.manage_delObjects([ptype])
-                pr("   Deleted")
-
-            ttool.manage_addTypeInformation(
-                id=ptype,
-                add_meta_type='Factory-based Type Information',
-                typeinfo_name=prod+': '+ptype
-                )
-            pr("   Installation")
-
-
-    for ptype in allowed_content_type.keys():
-        ttool[ptype].allowed_content_types = allowed_content_type[ptype]
+    installer.verifyContentTypes(ptypes)
 
     ########################################
     #   WORKFLOW ASSOCIATIONS
     ########################################
-
-    workspaces_id = 'workspaces'
-    sections_id = 'sections'
-
-    pr("Verifying local workflow association")
-
-    if not '.cps_workflow_configuration' in portal[workspaces_id].objectIds():
-        pr("  Adding workflow configuration to %s" % workspaces_id)
-        portal[workspaces_id].manage_addProduct['CPSCore'].addCPSWorkflowConfiguration()
-
-    pr("  Add %s chain to portal type %s in %s of %s" %('workspace_content_wf',
-                                                        'Collector Document',
-                                                        '.cps_workflow_configuration',
-                                                        workspaces_id))
-    wfc = getattr(portal[workspaces_id], '.cps_workflow_configuration')
-    wfc.manage_addChain(portal_type='Collector Document', chain='workspace_content_wf')
-
-    pr("  Add %s chain to portal type %s in %s of %s" %('workspace_content_wf',
-                                                        'Quiz Document',
-                                                        '.cps_workflow_configuration',
-                                                        workspaces_id))
-    wfc.manage_addChain(portal_type='Quiz Document', chain='workspace_content_wf')
-
-    if not '.cps_workflow_configuration' in portal[sections_id].objectIds():
-        pr("  Adding workflow configuration to %s" % sections_id)
-        portal[sections_id].manage_addProduct['CPSCore'].addCPSWorkflowConfiguration()
-
-    pr("  Add %s chain to portal type %s in %s of %s" %('workspace_content_wf',
-                                                        'Collector Document',
-                                                        '.cps_workflow_configuration',
-                                                        sections_id))
-    wfc = getattr(portal[sections_id], '.cps_workflow_configuration')
-    wfc.manage_addChain(portal_type='Collector Document', chain='section_content_wf')
-    pr("  Add %s chain to portal type %s in %s of %s" %('workspace_content_wf',
-                                                        'Quiz Document',
-                                                        '.cps_workflow_configuration',
-                                                        sections_id))
-    wfc.manage_addChain(portal_type='Quiz Document', chain='section_content_wf')
+    ws_chains = { 'Collector Document': 'workspace_content_wf',
+                  'Quiz Document': 'workspace_content_wf', }
+    se_chains = { 'Collector Document': 'section_content_wf',
+                  'Quiz Document': 'section_content_wf', }
+    installer.verifyLocalWorkflowChains(installer.portal['workspaces'],
+                                        ws_chains)
+    installer.verifyLocalWorkflowChains(installer.portal['sections'],
+                                        se_chains)
 
     ##########################################
     # SKINS
     ##########################################
-
-    skins = ('cps_collector',)
-    paths = {'cps_collector': 'Products/CPSCollector/skins/cps'}
-
-    for skin in skins:
-        path = paths[skin]
-        path = path.replace('/', os.sep)
-        pr(" FS Directory View '%s'" % skin)
-        if skin in portal.portal_skins.objectIds():
-            dv = portal.portal_skins[skin]
-            oldpath = dv.getDirPath()
-            if oldpath == path:
-                prok()
-            else:
-                pr("  Correctly installed, correcting path")
-                dv.manage_properties(dirpath=path)
-        else:
-            portal.portal_skins.manage_addProduct['CMFCore'].manage_addDirectoryView(\
-                filepath=path, id=skin)
-            pr("  Creating skin")
-    allskins = portal.portal_skins.getSkinPaths()
-    for skin_name, skin_path in allskins:
-        if skin_name != 'Basic':
-            continue
-        path = [x.strip() for x in skin_path.split(',')]
-        path = [x for x in path if x not in skins] # strip all
-        if path and path[0] == 'custom':
-            path = path[:1] + list(skins) + path[1:]
-        else:
-            path = list(skins) + path
-        npath = ', '.join(path)
-        portal.portal_skins.addSkinSelection(skin_name, npath)
-        pr(" Fixup of skin %s" % skin_name)
-
+    skins = {'cps_collector': 'Products/CPSCollector/skins/cps'}
+    installer.verifySkins(skins)
 
     ##############################################
     # i18n support
     ##############################################
+    installer.verifyMessageCatalog('cpscollector', 'CPSCollector messages')
+    installer.setupTranslations(message_catalog='cpscollector')
 
-    pr(cps_collector_i18n_update(self))
-
-    pr("End of CPSCollector install")
-    return pr('flush')
+    ##############################################
+    # Finished!
+    ##############################################
+    installer.finalize()
+    installer.log("End of CPSCollector install")
+    return installer.logResult()
