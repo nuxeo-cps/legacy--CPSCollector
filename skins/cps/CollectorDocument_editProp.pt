@@ -1,9 +1,27 @@
 <html metal:use-macro="here/content_lib/macros/master"
       i18n:domain="cpscollector">
-
+<metal:block fill-slot="header"
+  tal:define="_check_perm_ doc/assert_form_modify;
+              create options/create|nothing;">
+  <h1>
+  <tal:block condition="create"
+    i18n:translate="collector_label_create">
+    Create a Collector
+  </tal:block>
+  <tal:block condition="not:create">
+    <tal:block i18n:translate="collector_modify_props">
+      Modify
+    </tal:block>
+    «&nbsp;<span tal:replace="here/title_or_id">Title</span>&nbsp;»
+  </tal:block>
+  </h1>
+  <div class="description" tal:content="doc/Description">
+    Document Description goes here.
+  </div>
+</metal:block>
 <metal:block fill-slot="main"
   tal:define="colmcat nocall:here/Localizer/cpscollector;
-              create options/create|here/assert_form_modify;
+              create options/create|nothing;
               title python:(create and [''] or [doc.Title()])[0];
               description python:(create and [''] or [doc.description])[0];
               submit_msg python:(create and ['Thank you'] or [doc.submit_msg])[0];
@@ -13,16 +31,6 @@
               submitvalue python:create and colmcat('collector_button_create')
                                  or colmcat('collector_button_modify');
               action python:create and 'content_create' or 'content_edit';">
-  <tal:block condition="create"
-    i18n:translate="collector_label_create">
-    Create a Collector
-  </tal:block>
-  <tal:block condition="not:create">
-    <tal:block i18n:translate="collector_modify_props">
-      Modify
-    </tal:block>
-    «&nbsp;<span tal:replace="doc/title_or_id">Title</span>&nbsp;»
-  </tal:block>
 
   <form name="edit_form" action="." method="post" enctype="multipart/form-data"
         tal:attributes="action action">
@@ -31,7 +39,7 @@
   <div class="row">
   <div class="label"><span i18n:translate="collector_prop_title" /></div>
   <div class="field">
-    <input type="text" name="title" value="title"
+    <input type="text" name="Title" value="title" size="72" maxlength="100"
       tal:attributes="value title">
   </div>
   </div>
@@ -39,7 +47,7 @@
   <div class="row">
   <div class="label"><span i18n:translate="collector_prop_description" /></div>
   <div class="field">
-    <textarea name="description:text" rows="5" cols="50" wrap="soft"
+    <textarea name="Description:text" rows="5" cols="72" wrap="soft"
       tal:content="description"></textarea>
   </div>
   </div>

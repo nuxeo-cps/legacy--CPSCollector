@@ -346,7 +346,7 @@ class Form(Base):
             label = self.fields[f_name].get('label', '')
         if not len(label) or label[0] != '_':
             return label
-        return self.Localizer.default(label)
+        return self.Localizer.cpscollector(label)
 
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
@@ -417,7 +417,7 @@ class Form(Base):
     def _check_form(self):
         """Check all the fields of a form and return a status and msg """
         form = self.REQUEST.form
-        locale = self.Localizer.default.get_selected_language()
+        locale = self.Localizer.cpscollector.get_selected_language()
         if not (form.get('is_form_submitted') or form.get('is_form_setted')):
             if not len(self.fields_list):
                 msg = self.Localizer.cpscollector('collector_empty_form')
@@ -429,7 +429,7 @@ class Form(Base):
         for f in self.getFList():
             err = self._check_field(f, form.get(f), locale)
             if err:
-                err_l10n = self.Localizer.default(err)
+                err_l10n = self.Localizer.cpscollector(err)
                 if err_l10n != err:
                     err = err_l10n % f
                 else:

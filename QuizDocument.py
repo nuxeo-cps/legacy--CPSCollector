@@ -12,12 +12,7 @@ from Globals import InitializeClass
 
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 from Products.CPSCollector.CollectorDocument import CollectorDocument
-
 from Products.CPSCore.CPSBase import CPSBase_adder
-
-def BaseDocument_adder(disp, id, ob, REQUEST=None):
-    return CPSBase_adder(disp, ob, REQUEST)
-
 from zLOG import LOG, DEBUG
 
 factory_type_information = (
@@ -189,6 +184,6 @@ InitializeClass(QuizDocument)
 def addQuizDocument(dispatcher, id, REQUEST=None, **kw):
     """Add a Collector Document"""
     ob = QuizDocument(id, **kw)
-    return BaseDocument_adder(dispatcher, id, ob, REQUEST=REQUEST)
+    return CPSBase_adder(dispatcher, ob, REQUEST=REQUEST)
 
 #EOF

@@ -1,22 +1,20 @@
-<tal:block define="_check_perm_ here/assert_form_modify" />
-
 <tal:block define="current_action string:view_stat;" i18n:domain="cpscollector">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="here/main_template/macros/master">
+      metal:use-macro="here/content_lib/macros/master">
   <metal:block fill-slot="base">
     <base href="." tal:attributes="href string:${here/absolute_url}/">
   </metal:block>
 
 <body>
 <metal:block fill-slot="main">
-
+<tal:block define="_check_perm_ doc/assert_form_modify" />
 <metal:block define-macro="display_stat">
 <tal:block define="doc here/getContent;
                    stats python:doc.process_stat();
                    fields python:doc.get_stat_fields();">
   <tal:block condition="python: not stats['_stat']['nb_item']">
-    <h2 i18n:translate="collector_empty_stats">no data</h2>
+    <div style="text-align:center; padding: 2em;"><strong i18n:translate="collector_empty_stats">no data</strong></div>
   </tal:block>
 
   <tal:block condition="python: stats['_stat']['nb_item']">

@@ -1,14 +1,16 @@
-<tal:block define="_check_perm_ here/assert_form_modify" />
-
 <html metal:use-macro="here/content_lib/macros/master"
       i18n:domain="cpscollector">
+<metal:block fill-slot="header">
+  <tal:block define="_check_perm_ doc/assert_form_modify" />
+  <h1><tal:block i18n:translate="collector_modify_form" />
+  «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»</h1>
+  <div class="description" tal:content="doc/Description">
+    Document Description goes here.
+  </div>
+</metal:block>
 <metal:block fill-slot="main">
-  <tal:block i18n:translate="collector_modify_form" />
-  «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»
   <!-- form editor -->
   <p metal:use-macro="here/Form_macros/macros/display_quiz_edit_form">The form</p>
-
   <em><tal:block i18n:translate="collector_edit_help" /></em>
-
 </metal:block>
 </html>

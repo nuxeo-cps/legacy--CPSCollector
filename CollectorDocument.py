@@ -17,16 +17,16 @@ from types import StringType, ListType
 from AccessControl import ClassSecurityInfo
 from Globals import InitializeClass
 from Acquisition import aq_base
+
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
-
-from Products.CPSCore.CPSBase import CPSBaseDocument as BaseDocument, \
-     CPSBase_adder
-
-def BaseDocument_adder(disp, id, ob, REQUEST=None):
-    return CPSBase_adder(disp, ob, REQUEST)
-
+from Products.CPSCore.CPSBase import CPSBase_adder
+try:
+    from Products.CPSDocument.CPSDocument import CPSDocument as BaseDocument
+except ImportError:
+    from Products.CPSCore.CPSBase import CPSBaseDocument as BaseDocument
 from Products.CPSCollector.Form import Form
 from Products.CPSCollector.CollectorItem import CollectorItem
+from zLOG import DEBUG, LOG
 
 factory_type_information = (
     {'id': 'Collector Document',
@@ -79,7 +79,6 @@ factory_type_information = (
      },
     )
 
-
 class CollectorDocument(Form, BaseDocument):
     """Collector Document"""
 
@@ -97,7 +96,7 @@ class CollectorDocument(Form, BaseDocument):
         {'id':'persistent_data', 'type':'boolean', 'mode':'w',
          'label':'Persistent data'},
         )
-    
+
     submit_msg = ''
     submit_msg_stat = 0
     unique_submit = 1
@@ -294,7 +293,20 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('_add_item')
     def _add_item(self, id, values):
         """Add item interface"""
-        self._setObject(id, CollectorItem(id, values))
+        LOG('CollectorDocument._add_item', DEBUG,
+            "adding %s in %s" % (id, self.absolute_url()))
+        ob =  CollectorItem(id, values)
+        self._setObject(id, ob)
+        obj = self._getOb(id)
+        LOG('CollectorDocument._add_item', DEBUG,
+            "obj = %s %s %s %s" % (obj, obj.absolute_url(), self._objects,
+                                self.objectIds()))
+        ids = self.contentIds()
+        vals = self.objectValues()
+        LOG('xxxxxxxxxxxxx', DEBUG,
+            "%s %s" % (ids, vals))
+
+
 
     security.declarePrivate('_del_item')
     def _del_item(self, id):
@@ -304,6 +316,8 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('_get_item_ids')
     def _get_item_ids(self):
         """Get item ids"""
+        LOG('CollectorDocument._get_items_ids', DEBUG,
+            "in %s = %s" % (self.absolute_url(), self.objectIds('CollectorItem')))
         return self.objectIds('CollectorItem')
 
     security.declarePrivate('_get_item_values')
@@ -435,6 +449,6 @@ InitializeClass(CollectorDocument)
 def addCollectorDocument(dispatcher, id, REQUEST=None, **kw):
     """Add a Collector Document"""
     ob = CollectorDocument(id, **kw)
-    return BaseDocument_adder(dispatcher, id, ob, REQUEST=REQUEST)
+    return CPSBase_adder(dispatcher, ob, REQUEST=REQUEST)
 
 #EOF

@@ -138,10 +138,7 @@
 
 <!-- def display label -->
 <td metal:define-macro="display_label"
-    tal:condition="python:nb_slot==2"
-    align="right"
-    width="1%"
-    nowrap>
+    tal:condition="python:nb_slot==2">
   <div tal:attributes="class
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
   <span i18n:domain="cpscollector" i18n:translate=""
@@ -153,7 +150,7 @@
 <!-- def display field -->
 <td metal:define-macro="display_field"
     tal:attributes="colspan python:test(doc.span[f_id],doc.span[f_id],nothing)"
-    width="1%">
+    >
   <div class="field">
   <span metal:use-macro="python:doc.getFMacro(f_id)" />
   </div>
@@ -164,7 +161,8 @@
       metal:define-macro="display_form"
       i18n:domain="cpscollector">
   <div class="group">
-  <div class="message" tal:condition="request/other/form_status|nothing"
+  <div class="message"
+    tal:condition="request/other/form_status|nothing"
     tal:content="request/other/form_status">error msg</div>
   <table>
     <tr>
@@ -193,22 +191,14 @@
 <!-- def display_edit_form -->
 <form action="." method="post" metal:define-macro="display_edit_form"
       i18n:domain="cpscollector">
-  <table border='0' style='width:80%;height:inherit'
-         cellspacing='0' cellpadding='0'>
-    <tr bgcolor="ffdcb7" tal:condition="request/other/form_status|nothing">
-      <td colspan="5" tal:content="request/other/form_status">bla</td>
-    </tr>
-    <tr>
-      <td colspan="5">
-        <strong i18n:translate="collector_form_add_new_field">
-          Add a new field:
-        </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td colspan="4" nowrap>Id:
-        <input type="text" name="id" size="20"/>
+  <div class="message" tal:condition="request/other/form_status|nothing">
+     tal:content="request/other/form_status">bla</div>
+  <div class="group">
+    <div class="label" i18n:translate="collector_form_add_new_field">
+       Add a new field:
+     </div>
+     <div class="field">Id:
+        <input style="margin-bottom:1em;"  type="text" name="id" size="15">
         type:
         <select name="type" size=1>
           <option value="title" i18n:translate="collector_field_title">
@@ -287,26 +277,23 @@
         </select>
         <input type="submit" name="Form_addField:method"
                i18n:attributes="value" value="collector_form_add_new_field"
-               class="context" />
-      </td>
-    </tr>
+               class="standalone">
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="label" i18n:translate="collector_form_list_of_fields">
+      List of fields:
+    </div>
+    <div class="field">
+  <table border="0" cellspacing="1" cellpadding="1">
     <tr>
-      <td colspan="5"><br></td>
-    </tr>
-    <tr>
-      <td colspan="6">
-        <strong i18n:translate="collector_form_list_of_fields">
-          List of fields:
-        </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td nowrap="1">id</td>
-      <td nowrap="1" i18n:translate="collector_form_field_type">type</td>
-      <td width="50%" i18n:translate="collector_form_field_label">label</td>
-      <td nowrap="1" i18n:translate="collector_form_field_req">required</td>
-      <td nowrap i18n:translate="collector_form_field_join">join w/ next field</td>
+      <th>&nbsp;</th>
+      <th nowrap="1">id</th>
+      <th nowrap="1" i18n:translate="collector_form_field_type">type</th>
+      <th width="50%" i18n:translate="collector_form_field_label">label</th>
+      <th nowrap="1" i18n:translate="collector_form_field_req">required</th>
+      <th nowrap i18n:translate="collector_form_field_join">join w/ next field</th>
     </tr>
     <tr tal:repeat="f_id doc/getFList"
         tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
@@ -335,10 +322,10 @@
       <td colspan="4">
         <input type="submit" name="Form_moveFieldUp:method"
                i18n:attributes="value" value="collector_button_moveup"
-               class="context" />
+               class="context moveUp" />
         <input type="submit" name="Form_moveFieldDown:method"
                i18n:attributes="value" value="collector_button_movedown"
-               class="context" />
+               class="context moveDown" />
         <input type="submit" name="Form_delField:method"
                i18n:attributes="value" value="collector_button_remove"
                tal:define="colmcat nocall:here/Localizer/cpscollector"
@@ -349,27 +336,22 @@
       </td>
     </tr>
   </table>
+    </div>
+  </div>
 </form>
 
 <!-- def display_quiz_edit_form -->
 <form action="." method="post" metal:define-macro="display_quiz_edit_form"
       i18n:domain="cpscollector">
-  <table border='0' style='width:80%;height:inherit'
-         cellspacing='0' cellpadding='0'>
-    <tr bgcolor="ffdcb7" tal:condition="request/other/form_status|nothing">
-      <td colspan="5" tal:content="request/other/form_status">bla</td>
-    </tr>
-    <tr>
-      <td colspan="5">
-        <strong i18n:translate="collector_form_add_new_field">
-          Add a new field:
-        </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td colspan="4" nowrap>Id:
-        <input type="text" name="id" size="20"/>
+
+  <div class="message" tal:condition="request/other/form_status|nothing">
+     tal:content="request/other/form_status">bla</div>
+  <div class="group">
+    <div class="label" i18n:translate="collector_form_add_new_field">
+       Add a new field:
+     </div>
+     <div class="field">Id:
+        <input style="margin-bottom:1em;"  type="text" name="id" size="15">
         type:
         <select name="type" size=1>
           <option value="title" i18n:translate="collector_field_title">
@@ -408,26 +390,23 @@
         </select>
         <input type="submit" name="Form_addField:method"
                i18n:attributes="value" value="collector_form_add_new_field"
-               class="context" />
-      </td>
-    </tr>
+               class="standalone">
+    </div>
+  </div>
+
+  <div class="group">
+    <div class="label" i18n:translate="collector_form_list_of_fields">
+      List of fields:
+    </div>
+    <div class="field">
+  <table border="0" cellspacing="1" cellpadding="1">
     <tr>
-      <td colspan="5"><br></td>
-    </tr>
-    <tr>
-      <td colspan="6">
-        <strong i18n:translate="collector_form_list_of_fields">
-          List of fields:
-        </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td nowrap="1">id</td>
-      <td nowrap="1" i18n:translate="collector_form_field_type">type</td>
-      <td width="50%" i18n:translate="collector_form_field_label">label</td>
-      <td nowrap="1" i18n:translate="collector_form_field_req">required</td>
-      <td nowrap i18n:translate="collector_form_field_join">join w/ next field</td>
+      <th>&nbsp;</th>
+      <th nowrap="1">id</th>
+      <th nowrap="1" i18n:translate="collector_form_field_type">type</th>
+      <th width="50%" i18n:translate="collector_form_field_label">label</th>
+      <th nowrap="1" i18n:translate="collector_form_field_req">required</th>
+      <th nowrap i18n:translate="collector_form_field_join">join w/ next field</th>
     </tr>
     <tr tal:repeat="f_id doc/getFList"
         tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
@@ -456,10 +435,10 @@
       <td colspan="4">
         <input type="submit" name="Form_moveFieldUp:method"
                i18n:attributes="value" value="collector_button_moveup"
-               class="context" />
+               class="context moveUp" />
         <input type="submit" name="Form_moveFieldDown:method"
                i18n:attributes="value" value="collector_button_movedown"
-               class="context" />
+               class="context moveDown" />
         <input type="submit" name="Form_delField:method"
                i18n:attributes="value" value="collector_button_remove"
                tal:define="colmcat nocall:here/Localizer/cpscollector"
@@ -470,4 +449,6 @@
       </td>
     </tr>
   </table>
+      </div>
+  </div>
 </form>

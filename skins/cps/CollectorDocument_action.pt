@@ -1,7 +1,9 @@
 <html metal:use-macro="here/content_lib/macros/master">
 
 <metal:block fill-slot="main">
-<h2><tal:block replace="doc/submit_msg">Thanks</tal:block></h2>
+<div style="text-align:center; padding: 2em;">
+<strong><tal:block replace="doc/submit_msg">Thanks</tal:block></strong>
+</div>
 <tal:block condition="doc/submit_msg_stat">
   <metal:block use-macro="here/CollectorDocument_viewStat/macros/display_stat" />
 </tal:block>
