@@ -1,9 +1,16 @@
+# translation of NuxCPSCollector-fr.po to Français
 # $Id$
+# Julien Anguenot <ja@nuxeo.com>, 2003
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Julien Anguenot <ja@nuxeo.com>\n"
+"PO-Revision-Date: 2003-09-09 17:54+0200\n"
+"Project-Id-Version: NuxCPSCollector-fr\n"
+"Language-Team: Français <fr@li.org>\n"
+"X-Generator: KBabel 1.0\n"
 
 msgid "_portal_type_Collector Document"
 msgstr "Fiche d'information"
@@ -240,3 +247,70 @@ msgstr "Votez"
 
 msgid "_survey_thanks_"
 msgstr "Merci"
+
+msgid "_col_title_"
+msgstr "Titre"
+
+msgid "_col_string_"
+msgstr "Chaîne de caractères"
+
+msgid "_col_string_ro_"
+msgstr "Chaîne de caractère (lecture seule) "
+
+msgid "_col_identifier_"
+msgstr "Identifiant"
+
+msgid "_col_email_"
+msgstr "Courriel"
+
+msgid "_col_url_"
+msgstr "Url"
+
+msgid "_col_date_"
+msgstr "Date"
+
+msgid "_col_password_"
+msgstr "Mot de passe "
+
+msgid "_col_integer_"
+msgstr "Entier"
+
+msgid "_col_float_"
+msgstr "Réel"
+
+msgid "_col_phonenumber_"
+msgstr "Téléphone "
+
+msgid "_col_textarea_"
+msgstr "Zone de texte"
+
+msgid "_col_radiobutton_"
+msgstr "Boutton radio"
+
+msgid "_col_vradiobutton_"
+msgstr "vradio boutton"
+
+msgid "_col_checkbox_"
+msgstr "Case à cocher"
+
+msgid "_col_selection_"
+msgstr "Sélection"
+
+msgid "_col_separator_"
+msgstr "Séparateur"
+
+msgid "_col_button_"
+msgstr "Boutton"
+
+msgid "_col_resetbutton_"
+msgstr "Boutton annuller"
+
+msgid "_col_hiddenstring_"
+msgstr "Chaîne de caractères cachée"
+
+msgid "_col_comment_"
+msgstr "Commentaire"
+
+msgid "_col_file_"
+msgstr "Fichier"
+
