@@ -60,7 +60,7 @@ class Form(Base):
                               'multiple__', 'size__', 'required__', 'join__')
 
     def __init__(self, id):
-        "construtor, but you have to call post_init"
+        "construtor, you can use post_init to setup zpt stuff"
         self.id = id
 
         # creation of internal fields
