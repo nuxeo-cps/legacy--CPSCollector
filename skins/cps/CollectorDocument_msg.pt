@@ -1,0 +1,18 @@
+<tal:block define="current_action string:view_msg;
+  mcat nocall:here/portal_messages">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+  <metal:block fill-slot="base">
+    <base href="." tal:attributes="href string:${here/absolute_url}/">
+  </metal:block>
+
+<body>
+<metal:block fill-slot="main">
+
+<h2><tal:block replace="options/display_msg|default">Thank you</tal:block></h2>
+
+</metal:block>
+</body>
+</html>
+</tal:block>
