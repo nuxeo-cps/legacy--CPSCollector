@@ -55,7 +55,8 @@
 
 <!-- def checkbox field -->
 <input metal:define-macro="checkbox" 
-       tal:attributes="name f_id;checked python:doc.getV(f_id,'checked')"
+       tal:attributes="name f_id;checked python:doc.meta_type!='Quiz Document' and
+                                                doc.getV(f_id,'checked')"
        name="_x_"
        type="checkbox"/>
 
@@ -63,7 +64,8 @@
 <metal:block metal:define-macro="radio">
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
     <input tal:attributes="name f_id;value v;
-                           checked python:doc.getV(f_id,'checked')==v"
+                           checked python:doc.meta_type!='Quiz Document' and
+                                          doc.getV(f_id,'checked')==v"
            name="_x_" type="radio" />
     <tal:block tal:replace="python:doc.getLabel(f_id,v)">label</tal:block>
   </tal:block>
@@ -73,7 +75,8 @@
 <metal:block metal:define-macro="vradio">
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
     <input tal:attributes="name f_id;value v;
-                           checked python:doc.getV(f_id,'checked')==v"
+                           checked python:doc.meta_type!='Quiz Document' and
+                                          doc.getV(f_id,'checked')==v"
            name="_x_" type="radio" />
     <tal:block tal:replace="python:doc.getLabel(f_id,v)">label</tal:block><br />
   </tal:block>
@@ -87,7 +90,8 @@
           name="_x_">
     <tal:block tal:repeat="v python:doc.getVList(f_id)">
       <option tal:attributes="value v;
-                              selected python:v in doc.getV(f_id, 'value', '', 1)"
+                              selected python:v in doc.getV(f_id, 'value',
+	                                                    '', 1)"
               tal:content="python:doc.getLabel(f_id,v)">_x_</option>
     </tal:block>
   </select>
@@ -105,13 +109,14 @@
 <metal:block metal:define-macro="submit">
   <input type="submit" tal:attributes="name f/value|default;
                                        value label|default"
-         value="" class="mainbutton" />
+         value="" class="context" />
 </metal:block>
 
 <!-- def reset field -->
 <metal:block metal:define-macro="reset">
   <input type="reset" tal:attributes="name f/value|default; value label|default" 
-         value="" />
+         value=""
+         class="context" />
 </metal:block>
 
 <!-- def file field -->
@@ -176,7 +181,8 @@
 
 <!-- def display_edit_form -->
 <form action="." method="post" metal:define-macro="display_edit_form">
-  <table border=0 width="80%">
+  <table border='0' style='width:80%;height:inherit'
+         cellspacing='0' cellpadding='0'>
     <tr bgcolor="ffdcb7" tal:condition="request/other/form_status|nothing">
       <td colspan="5" tal:content="request/other/form_status">bla</td>
     </tr>
@@ -193,32 +199,83 @@
         <input type="text" name="id" size="20"/>
         type:
         <select name="type" size=1>
-          <option value="title" tal:content="python:mcat('_col_title_')">Title</option>
-          <option value="string" selected="1" tal:content="python:mcat('_col_string_')">String</option>
-          <option value="string_ro" tal:content="python:mcat('_col_string_ro_')">String read only</option>	  
-          <option value="identifier" tal:content="python:mcat('_col_identifier_')">Identifier</option>
-          <option value="email" tal:content="python:mcat('_col_email_')">e-mail</option>
-          <option value="url" tal:content="python:mcat('_col_url_')">URL</option>
-          <option value="date" tal:content="python:mcat('_col_date_')">Date</option>
-          <option value="password" tal:content="python:mcat('_col_password_')">Password</option>	  	  
-          <option value="int" tal:content="python:mcat('_col_integer_')">Integer</option>
-          <option value="float" tal:content="python:mcat('_col_float_')">Float</option>
-          <option value="phone" tal:content="python:mcat('_col_phonenumber_')">Phone number</option>
-          <option value="text" tal:content="python:mcat('_col_textarea_')">Text area</option>
-          <option value="radio" tal:content="python:mcat('_col_radiobutton_')">Radio button</option>
-          <option value="vradio" tal:content="python:mcat('_col_vradiobutton_')">Vertical Radio button</option>
-          <option value="checkbox" tal:content="python:mcat('_col_checkbox_')">Checkbox</option>
-          <option value="selection" tal:content="python:mcat('_col_selection_')">Selection</option>
-          <option value="separator" tal:content="python:mcat('_col_separator_')">Separator</option>	  
-          <option value="submit" tal:content="python:mcat('_col_button_')" >Button</option>
-          <option value="reset" tal:content="python:mcat('_col_resetbutton_')">Reset button</option>
-          <option value="hidden" tal:content="python:mcat('_col_hiddenstring_')">Hidden string</option>
-          <option value="comment" tal:content="python:mcat('_col_comment_')">Comment</option>
-          <option value="file" tal:content="python:mcat('_col_file_')">File</option>	  
+          <option value="title" tal:content="python:mcat('_col_title_')">
+            Title
+          </option>
+          <option value="string" selected="1"
+                  tal:content="python:mcat('_col_string_')">String</option>
+          <option value="string_ro"
+                  tal:content="python:mcat('_col_string_ro_')">
+            String read only
+          </option>	  
+          <option value="identifier"
+                  tal:content="python:mcat('_col_identifier_')">
+            Identifier
+          </option>
+          <option value="email"
+                  tal:content="python:mcat('_col_email_')">
+            e-mail
+          </option>
+          <option value="url"
+                  tal:content="python:mcat('_col_url_')">
+            URL
+          </option>
+          <option value="date"
+                  tal:content="python:mcat('_col_date_')">Date</option>
+          <option value="password"
+                  tal:content="python:mcat('_col_password_')">Password</option>  	  
+          <option value="int"
+                  tal:content="python:mcat('_col_integer_')">Integer</option>
+          <option value="float"
+                  tal:content="python:mcat('_col_float_')">Float</option>
+          <option value="phone"
+                  tal:content="python:mcat('_col_phonenumber_')">
+            Phone number
+          </option>
+          <option value="text"
+            tal:content="python:mcat('_col_textarea_')">Text area</option>
+          <option value="radio"
+                  tal:content="python:mcat('_col_radiobutton_')">
+            Radio button
+          </option>
+          <option value="vradio"
+                  tal:content="python:mcat('_col_vradiobutton_')">
+            Vertical Radio button
+          </option>
+          <option value="checkbox"
+                  tal:content="python:mcat('_col_checkbox_')">
+            Checkbox
+          </option>
+          <option value="selection"
+                  tal:content="python:mcat('_col_selection_')">
+            Selection
+          </option>
+          <option value="separator"
+                  tal:content="python:mcat('_col_separator_')">
+            Separator
+          </option>	  
+          <option value="submit"
+                  tal:content="python:mcat('_col_button_')" >
+            Button
+          </option>
+          <option value="reset" tal:content="python:mcat('_col_resetbutton_')">
+            Reset button
+          </option>
+          <option value="hidden"
+                  tal:content="python:mcat('_col_hiddenstring_')">
+            Hidden string
+          </option>
+          <option value="comment" tal:content="python:mcat('_col_comment_')">
+            Comment
+          </option>
+          <option value="file"
+                  tal:content="python:mcat('_col_file_')">
+            File
+          </option>	  
         </select>
         <input type="submit" name="Form_addField:method"
                tal:attributes="value python:mcat('_form_add_new_field_')"
-               class="mainbutton" />
+               class="context" />
       </td>
     </tr>
     <tr>
@@ -239,7 +296,8 @@
       <td nowrap="1" tal:content="python:mcat('_form_required_')">required</td>
       <td nowrap tal:content="python:mcat('_form_join_')">join w/ next field</td>
     </tr>
-    <tr tal:repeat="f_id doc/getFList">
+    <tr tal:repeat="f_id doc/getFList"
+        tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
       <tal:block tal:define="f python:doc.fields[f_id];
                         label python:doc.getLabel(f_id)">
         <td width="10">
@@ -257,21 +315,143 @@
         <td tal:content="f/join|default">&nbsp;</td>    
       </tal:block>
     </tr>
+    <tr colspan="5">
+      <td>&nbsp;</td>
+    </tr>
     <tr>
       <td>&nbsp;</td>
       <td colspan="4">
         <input type="submit" name="Form_moveFieldUp:method"
                tal:attributes="value python:mcat('_form_bt_move_up_')"
-               class="mainbutton" />
+               class="context" />
         <input type="submit" name="Form_moveFieldDown:method"
                tal:attributes="value python:mcat('_form_bt_move_down_')"
-               class="mainbutton" />
+               class="context" />
         <input type="submit" name="Form_delField:method"
                tal:attributes="value python:mcat('_form_bt_remove_');
                                onClick 
                                  python:
                                    'return window.confirm(\'%s\')' % (mcat('_Are_you_sure?_'),)"
-               class="mainbutton"/>
+               class="destructive"/>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<!-- def display_quiz_edit_form -->
+<form action="." method="post" metal:define-macro="display_quiz_edit_form">
+  <table border='0' style='width:80%;height:inherit'
+         cellspacing='0' cellpadding='0'>
+    <tr bgcolor="ffdcb7" tal:condition="request/other/form_status|nothing">
+      <td colspan="5" tal:content="request/other/form_status">bla</td>
+    </tr>
+    <tr>
+      <td colspan="5">
+        <strong tal:content="python:mcat('_form_add_new_field_')">
+          Add a new field:
+        </strong>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="4" nowrap>Id:
+        <input type="text" name="id" size="20"/>
+        type:
+        <select name="type" size=1>
+          <option value="title" tal:content="python:mcat('_col_title_')">
+            Title
+          </option>
+          <option value="radio"
+                  tal:content="python:mcat('_col_radiobutton_')">
+            Radio button
+          </option>
+          <option value="vradio"
+                  tal:content="python:mcat('_col_vradiobutton_')">
+            Vertical Radio button
+          </option>
+          <option value="checkbox"
+                  tal:content="python:mcat('_col_checkbox_')">
+            Checkbox
+          </option>
+          <option value="separator"
+                  tal:content="python:mcat('_col_separator_')">
+            Separator
+          </option>	  
+          <option value="submit"
+                  tal:content="python:mcat('_col_button_')" >
+            Button
+          </option>
+          <option value="reset" tal:content="python:mcat('_col_resetbutton_')">
+            Reset button
+          </option>
+          <option value="hidden"
+                  tal:content="python:mcat('_col_hiddenstring_')">
+            Hidden string
+          </option>
+          <option value="comment" tal:content="python:mcat('_col_comment_')">
+            Comment
+          </option>
+        </select>
+        <input type="submit" name="Form_addField:method"
+               tal:attributes="value python:mcat('_form_add_new_field_')"
+               class="context" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5"><br></td>
+    </tr>
+    <tr>
+      <td colspan="6">
+        <strong tal:content="python:mcat('_form_list_of_fields_')">
+          List of fields:
+        </strong>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td nowrap="1">id</td>
+      <td nowrap="1" tal:content="python:mcat('_form_type_')">type</td>
+      <td width="50%" tal:content="python:mcat('_form_label_')">label</td>
+      <td nowrap="1" tal:content="python:mcat('_form_required_')">required</td>
+      <td nowrap tal:content="python:mcat('_form_join_')">join w/ next field</td>
+    </tr>
+    <tr tal:repeat="f_id doc/getFList"
+        tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
+      <tal:block tal:define="f python:doc.fields[f_id];
+                        label python:doc.getLabel(f_id)">
+        <td width="10">
+          <input tal:attributes="value f_id;
+                                 checked python:doc.isSelected('f_id',f_id)"
+                 name="f_id" type="checkbox" />
+        </td>
+        <td>
+          <a tal:attributes="href string:Form_editField?f_id=$f_id"
+             tal:content="f_id">&nbsp;</a>
+        </td>
+        <td tal:content="f/type|default">&nbsp;</td>
+        <td tal:content="label|default">&nbsp;</td>
+        <td tal:content="f/required|default">&nbsp;</td>
+        <td tal:content="f/join|default">&nbsp;</td>    
+      </tal:block>
+    </tr>
+    <tr colspan="5">
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="4">
+        <input type="submit" name="Form_moveFieldUp:method"
+               tal:attributes="value python:mcat('_form_bt_move_up_')"
+               class="context" />
+        <input type="submit" name="Form_moveFieldDown:method"
+               tal:attributes="value python:mcat('_form_bt_move_down_')"
+               class="context" />
+        <input type="submit" name="Form_delField:method"
+               tal:attributes="value python:mcat('_form_bt_remove_');
+                               onClick 
+                                 python:
+                                   'return window.confirm(\'%s\')' % (mcat('_Are_you_sure?_'),)"
+               class="destructive"/>
       </td>
     </tr>
   </table>
