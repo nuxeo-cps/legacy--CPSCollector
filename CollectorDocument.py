@@ -11,7 +11,7 @@ __version__ = '$Revision$'[11:-2]
 from random import randrange
 import time
 from re import match, sub
-from types import StringType
+from types import StringType, ListType
 
 from OFS.Folder import Folder
 from AccessControl import ClassSecurityInfo
@@ -217,24 +217,30 @@ class CollectorDocument(Form, BaseDocument):
                 for v in mv:
                     if r[f].get(v,-1) != -1:
                         r[f][v] += 1
-                        
-        r['nb_item__'] = nbItem
-        # xxx debug
-        from tools import log
-        log( 'computeStat', r)
-        
-        return r
+        return nbItem, r
 
     ### Private
     security.declarePrivate('_list_to_csv')
     def _list_to_csv(self, t):
         l = ''
         for v in t:
+            if v and type(v) is ListType:
+                _s = ''
+                for vv in v:
+                    _s += str(vv)+'+'
+                if _s:
+                    v = _s[:-1]
+                else:
+                    v = ''
             if v and (v.find('\n')!=-1 or v.find('"')!=-1 or \
                        v.find(',')!=-1):
                 v = '"'+sub('"', '""', v)+'"'
-            l += str(v) + ','
-        return l[:-1] + '\n'
+            if not v:
+                v=''
+            l += str(v) + ', '
+        if l:
+            l=l[:-2]
+        return l + '\n'
 
     security.declarePrivate('_check_unique')
     def _check_unique(self):
