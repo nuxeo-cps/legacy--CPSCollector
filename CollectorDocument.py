@@ -59,7 +59,7 @@ factory_type_information = (
                   'name': '_action_export_csv_',
                   'action': 'exportData',
                   'permissions': (ModifyPortalContent,)},
-                 {'id': 'export',
+                 {'id': 'erase',
                   'name': '_action_erase_data_',
                   'action': 'eraseData',
                   'permissions': (ModifyPortalContent,)},
