@@ -1,15 +1,13 @@
-ZODB Requires:
-~~~~~~~~~~~~~~
+Requires:
+~~~~~~~~~
 -
-
 New features:
 ~~~~~~~~~~~~~
--
-
+- better cps css integration
+- now vertical radio button is displayed in 2 rows
 Bug fixes:
 ~~~~~~~~~~
 -
-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
