@@ -1,7 +1,13 @@
+# (c) 2002 Nuxeo SARL <http://nuxeo.com>
 # $Id$
-# an html form generator
+""" 
+The Form Class is an html form generator.
+This is a very simple 'Formulator like' tool, a Form object display a web 
+form until input are correct then it executes the action method.
+The Form is editable TTW.
+"""
 
-### import
+# import
 from re import match
 from Globals import InitializeClass
 from ExtensionClass import Base
@@ -9,25 +15,21 @@ from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
-### class
+# class
 class Form(Base):
-    "Form class"
-
-    security = ClassSecurityInfo()
-    #security_* used to raise an exception in skin 
-    security.declarePrivate('assert_form_private')
-    def assert_form_private(self):
-        pass
-
-    security.declareProtected(View, 'assert_form_view')
-    def assert_form_view(self):
-        pass
-
-    security.declareProtected(ModifyPortalContent, 'assert_form_modify')
-    def assert_form_modify(self):
-        pass
-
-    # DEFINITION OF FIELDS
+    """ A Form know how to render and validate its fields and
+    it knows how to edit itself using ... itself.
+    action of the form should be overriden in subclasses
+    """
+    
+    # ZPT default
+    _macros_pt='Form_macros'
+    _view_pt='Form_view'
+    _msg_pt='Form_msg'
+    _editForm_pt='Form_editForm'
+    _editField_pt='Form_editField'
+    
+    # Type of fields
     types = ('title', 'separator', 'comment',
              'string', 'email', 'identifier', 'string_ro', 'phone',
              'date', 'url', 'password',
@@ -35,35 +37,38 @@ class Form(Base):
              'text', 'file',
              'checkbox', 'radio', 'selection',
              'submit', 'reset', 'hidden')
-
-    # field attributes
+    
+    # Fields attributes that describe fields
     # title__, id__, type__ and submit__ are automaticly added
     field_attr = {}
     field_attr['string']=('label__', 'size__', 'maxlength__',
-                           'value__', 'required__', 'join__')
+                          'value__', 'required__', 'join__')
     field_attr['identifier']=field_attr['email']=field_attr['phone']= \
-                              field_attr['int']=field_attr['float']= \
-                              field_attr['url']=field_attr['password']= \
-                              field_attr['date']= \
-                              field_attr['string']
+              field_attr['int']=field_attr['float']= \
+              field_attr['url']=field_attr['password']= \
+              field_attr['date']= \
+              field_attr['string']
     field_attr['string_ro']=('label__', 'value__', 'join__')
     field_attr['reset']=field_attr['submit']= field_attr['string_ro']
     field_attr['hidden']=('value__',)
     field_attr['title']=('label__', 'join__')
     field_attr['separator']=field_attr['comment']=field_attr['title']
-    field_attr['file']=('label__', 'value__', 'maxlength__', 'required__', 'join__')
+    field_attr['file']=('label__', 'value__', 'maxlength__', 'required__',
+                        'join__')
     field_attr['text']=('label__', 'cols__', 'rows__', 'value__',
-                         'required__', 'join__')
+                        'required__', 'join__')
     field_attr['checkbox']=('label__', 'checked__', 'required__', 'join__')
     field_attr['radio']=('label__', 'mvalue__', 'checked__', 'join__')
     field_attr['selection']=('label__', 'mvalue__', 'checked__',
-                              'multiple__', 'size__', 'required__', 'join__')
-
+                             'multiple__', 'size__', 'required__', 'join__')
+    
+    security = ClassSecurityInfo()
+    
+    
     def __init__(self, id):
-        "construtor, you can use post_init to setup zpt stuff"
+        """ construtor, use post_init to setup zpt stuff """
         self.id = id
-
-        # creation of internal fields
+        # creation of internal fields ending with '__'
         self.add_field('title__', type='title', label='_form_field_edit_')
         self.add_field('id__', type='string_ro', label='Id:', join='on')
         self.add_field('type__', type='string_ro', label='_form_type_')
@@ -75,23 +80,15 @@ class Form(Base):
         self.add_field('required__', type='checkbox', label='_form_required_')
         self.add_field('checked__', type='string', label='_form_checked_')
         self.add_field('value__', type='string', label='_form_value_')
-        self.add_field('mvalue__', type='text', label='_form_values_',
-                        cols=40, rows=5)
+        self.add_field('mvalue__', type='text', label='_form_values_', cols=40, rows=5)
         self.add_field('multiple__', type='checkbox', label='_form_mulitple_')
-        self.add_field('submit__', type='submit', label='_form_bt_change_',
-                   value='editField:method')
+        self.add_field('submit__', type='submit', label='_form_bt_change_', value='editField:method')
         self.add_field('join__', type='checkbox', label='_form_join_with_next_')
-
-    # ZPT default
-    _macros_pt='Form_macros'
-    _view_pt='Form_view'
-    _msg_pt='Form_msg'
-    _editForm_pt='Form_editForm'
-    _editField_pt='Form_editField'
+        return
     
     security.declarePrivate('post_init')
     def post_init(self, **kw):
-        """ setup tpl stuff
+        """ setup zpt stuff, valid kw are:
         view_pt: used to display the form + error input
         msg_pt: when action is performed
         editForm_pt: edit a form (add/move/rm field)
@@ -102,38 +99,17 @@ class Form(Base):
         self._editForm_pt=kw.get('editForm_pt', self._editForm_pt)
         self._editField_pt=kw.get('editField_pt', self._editField_pt)
         self._macros_pt=kw.get('macros_pt', self._macros_pt)
-
-    security.declarePrivate('_display_zpt')
-    def _display_zpt(self, zpt_name, **kw):
-        # call zpt_name
-        zpt = self.restrictedTraverse(zpt_name)
-        self._v_macros = self.restrictedTraverse(self._macros_pt)
-        return zpt(**kw)
-
-    ###
-    security.declareProtected(View, 'action')
-    def action(self, **kw):
-        "this method should be rewrite by child"
-        return self._display_zpt(self._msg_pt, **kw)
-
-    security.declareProtected(View, 'validator')
-    def validator(self, form):
-        "this method should be rewrite by child, should return error str"
-        return None
-
-    security.declarePrivate('notify_modified')
-    def notify_modified(self):
-        self._p_changed = 1
-        
-    ### ZOPE ACCESSORS / CONSTRUCTORS
+        return
+    
+    # WEB INTERFACE --------------------------------------------------
     security.declareProtected(View, 'index_html')
     def index_html(self, **kw):
-        "default view"
+        """ default view """
         return self.view(**kw)
-
+    
     security.declareProtected(View, 'view')
     def view(self, **kw):
-        "default view"
+        """ either dipslay form or run action page """
         self._set_status()
         status,err=self.check_form()
         if status == 'valid_form':
@@ -141,10 +117,15 @@ class Form(Base):
         if err:
             self._set_status(err)
         return self._display_zpt(self._view_pt, **kw)
-
+    
+    security.declareProtected(View, 'action')
+    def action(self, **kw):
+        """ this method should be overriden in a subclass """
+        return self._display_zpt(self._msg_pt, **kw)
+    
     security.declareProtected(ModifyPortalContent, 'editForm')
     def editForm(self, **kw):
-        "edit a form"
+        """ The form edition page """
         self._set_status()
         status,err=self.check_form()
         if status == 'not_yet_submited':
@@ -152,10 +133,10 @@ class Form(Base):
         elif status == 'bad_fields':
             self._set_status(err)
         return self._display_zpt(self._editForm_pt, **kw)
-
+    
     security.declareProtected(ModifyPortalContent, 'editField')
     def editField(self, **kw):
-        "edit field form"
+        """ The field edition page """
         form = self.REQUEST.form
         id = form.get('f_id') or form.get('id__')
         if not self.fields.has_key(id):
@@ -174,7 +155,6 @@ class Form(Base):
             form['id__']=id
             form['type__']=self.fields[id]['type']
             return self._display_zpt(self._editField_pt, **kw)
-
         # process form
         id = form.get('id__')
         if status == 'bad_fields':
@@ -184,23 +164,22 @@ class Form(Base):
         extra={}
         for f in self.field_attr[ self.fields[id]['type'] ]:
             extra[f[:-2]] = form.get(f)
-
         self.add_field(id, **extra)
         self._set_current_form(None)
         return self._display_zpt(self._editForm_pt, **kw)
-
+    
     security.declareProtected(ModifyPortalContent, 'addField')
     def addField(self, **kw):
-        "add a field"
+        """ web method """
         id = self.REQUEST.form.get('id')
         t = self.REQUEST.form.get('type')
         self.add_field(id, type=t)
         self.REQUEST.form['f_id']=id
         return self.editField(**kw)
-
+    
     security.declareProtected(ModifyPortalContent, 'delField')
     def delField(self, **kw):
-        "remove a field"
+        """ web method """
         f_id = self.REQUEST.form.get('f_id')
         if f_id and type(f_id) is type([]):
             for id in f_id:
@@ -208,10 +187,10 @@ class Form(Base):
         else:
             self.del_field(f_id)
         return self._display_zpt(self._editForm_pt, **kw)
-
+    
     security.declareProtected(ModifyPortalContent, 'moveFieldUp')
     def moveFieldUp(self, **kw):
-        "move a field up"
+        """ web method """
         f_id = self.REQUEST.form.get('f_id')
         if f_id and type(f_id) is type([]):
             for id in f_id:
@@ -219,10 +198,10 @@ class Form(Base):
         else:
             self.move_field(f_id, 'up')
         return self._display_zpt(self._editForm_pt, **kw)
-
+    
     security.declareProtected(ModifyPortalContent, 'moveFieldDown')
     def moveFieldDown(self, **kw):
-        "move a field down"
+        """ web method """
         f_id = self.REQUEST.form.get('f_id')
         if f_id and type(f_id) is type([]):
             f_id.reverse()
@@ -231,10 +210,10 @@ class Form(Base):
         else:
             self.move_field(f_id, 'down')
         return self._display_zpt(self._editForm_pt, **kw)
-
+    
     security.declareProtected(ModifyPortalContent, 'dumpFields')
     def dumpFields(self):
-        "dump fields"
+        """ dump py src that create the form """
         s = ''
         for f in self.fields_list:
             params=''
@@ -249,21 +228,9 @@ class Form(Base):
                 params = params[:-2]
             s += '        self.add_field(\''+f+'\', '+params+')\n'
         return s
-
-    security.declarePrivate('_set_current_form')
-    def _set_current_form(self, mode):
-        self.REQUEST.other['form_mode__']=mode
-
-    security.declarePrivate('_get_current_form')
-    def _get_current_form(self):
-        return self.REQUEST.other.get('form_mode__', None)
-
-    security.declarePrivate('_set_status')
-    def _set_status(self, s=None):
-        self.REQUEST.other['form_status'] = s
-
-
-    ### ZPT ACCESSORS / CONSTRUCTORS
+    
+    
+    # ZPT INTERFACE --------------------------------------------------
     security.declareProtected(View, 'getFList')
     def getFList(self, only_data=0):
         # return a list of field ids depending on the current form
@@ -279,7 +246,7 @@ class Form(Base):
                     l.append(f)
             return l
         return self.fields_list
-
+    
     security.declareProtected(View, 'getVList')
     def getVList(self, f_name):
         # return the list of value for a field
@@ -288,7 +255,7 @@ class Form(Base):
         l = self.fields[f_name]['mvalue'].keys()
         l.sort()
         return l
-
+    
     security.declareProtected(View, 'getV')
     def getV(self, f, k, default=None, as_list=None):
         # return the value of field f on request
@@ -302,7 +269,7 @@ class Form(Base):
             if type(v) is not type([]):
                 v = [v,]
         return v
-
+    
     security.declareProtected(View, 'getNbSlot')
     def getNbSlot(self, f_name):
         # return the number of cels used by a field
@@ -314,7 +281,7 @@ class Form(Base):
         else:
             n=2
         return n
-
+    
     security.declareProtected(View, 'getFMacro')
     def getFMacro(self,f_name):
         # return the zpt macro associated with the field
@@ -323,8 +290,7 @@ class Form(Base):
                   'url', 'date'):
             return self._v_macros.macros['string']
         return self._v_macros.macros[t]
-
-
+    
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
         # label starting with '_' are localized
@@ -338,7 +304,7 @@ class Form(Base):
         if not len(label) or label[0]!='_':
             return label
         return self.portal_messages(label)
-
+    
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
         # check if f_name is selected
@@ -350,7 +316,7 @@ class Form(Base):
         if type(v_) is type([]):
             return v in v_
         return v_ == v
-
+    
     security.declareProtected(View, 'getRows')
     def getRows(self):
         # return a list of rows
@@ -371,7 +337,7 @@ class Form(Base):
                 join = 1
             if nb_cols[-1] > max_cols:
                 max_cols = nb_cols[-1]
-
+                
         span = {}
         for r in rows:
             for f in r:
@@ -379,9 +345,30 @@ class Form(Base):
             span[f] = max_cols - nb_cols[rows.index(r)] + 1
         self.span = span
         return rows
-
-
-    ### INTERNAL ACCESSORS / CONSTRUCTORS
+    
+    
+    # INTERNAL ACCESSOR --------------------------------------------------
+    security.declarePrivate('get_values')
+    def get_values(self, no_fd=1):
+        # return dico field:value
+        v = {}
+        form = self.REQUEST.form
+        for f in self.getFList(1):
+            if no_fd and self.fields[f]['type'] == 'file':
+                v[f] = form.get(f).filename
+            else:
+                v[f] = form.get(f)
+        return v
+    
+    security.declarePrivate('set_values')
+    def set_values(self, values):
+        # set form values from dico
+        pp = self.REQUEST.form.get('pp')
+        self.REQUEST.form = values
+        self.REQUEST.form['is_form_setted'] = 'yes'
+        self.REQUEST.form['pp'] = pp
+        return
+    
     security.declarePrivate('add_field')
     def add_field(self, id, **extra):
         # add or modify field to the form
@@ -394,19 +381,18 @@ class Form(Base):
             self.fields[id]={}
             if id.find('__') == -1:
                 self.fields_list.append(id)
-
         f=self.fields[id]               # setting attributes
         for k in extra.keys():
             if k == 'mvalue':
                 f[k]=self._str_to_mvalue(extra[k])
             else:
                 f[k]=extra[k]
-
         t=f.get('type')                 #setting default type
         if not t in self.types:
             f['type']='string'
         self.notify_modified()
-        
+        return 1
+    
     security.declarePrivate('del_field')
     def del_field(self, id):
         # delete a field
@@ -415,7 +401,8 @@ class Form(Base):
         self.fields_list.remove(id)
         del self.fields[id]
         self.notify_modified()
-
+        return 1
+    
     security.declarePrivate('move_field')
     def move_field(self, id, direction='up'):
         # move a field up or down
@@ -429,7 +416,16 @@ class Form(Base):
             self.fields_list.remove(id)
             self.fields_list.insert(pos-1, id)
         self.notify_modified()
-
+        return 1
+    
+    
+    # VALIDATION  --------------------------------------------------
+    security.declareProtected(View, 'validator')
+    def validator(self, form):
+        """ this method should be overriden in a subclass 
+        its purpose is to valide the whole form """        
+        return None
+    
     security.declarePrivate('check_form')
     def check_form(self ):
         # check all the fields of a form and return a status and msg
@@ -457,14 +453,11 @@ class Form(Base):
         form['error__'] =  bf
         if not msg:
             msg = self.validator(form)
-
         if msg:
             err_l10n = mcat('_field_error_')
             return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
-
         if form.get('is_form_setted'):
             return ('setted_form', msg)
-
         return ('valid_form', 'Congratulation')
 
     security.declarePrivate('check_field')
@@ -548,9 +541,49 @@ class Form(Base):
                         err = '_field_too_big_file_'
                         self.REQUEST.form[id]=v.filename
                 v.seek(0)
-
+        
         return err
-
+    
+    
+    # SECRURITY Stuff used to raise an exception in skin
+    security.declarePrivate('assert_form_private')
+    def assert_form_private(self):
+        pass
+    
+    security.declareProtected(View, 'assert_form_view')
+    def assert_form_view(self):
+        pass
+    
+    security.declareProtected(ModifyPortalContent, 'assert_form_modify')
+    def assert_form_modify(self):
+        pass
+    
+    
+    # MISC --------------------------------------------------
+    security.declarePrivate('notify_modified')
+    def notify_modified(self):
+        self._p_changed = 1
+        return
+    
+    security.declarePrivate('_display_zpt')
+    def _display_zpt(self, zpt_name, **kw):
+        """ just display the appropriate zpt using macros """
+        zpt = self.restrictedTraverse(zpt_name)
+        self._v_macros = self.restrictedTraverse(self._macros_pt)
+        return zpt(**kw)
+    
+    security.declarePrivate('_set_current_form')
+    def _set_current_form(self, mode):
+        self.REQUEST.other['form_mode__']=mode
+    
+    security.declarePrivate('_get_current_form')
+    def _get_current_form(self):
+        return self.REQUEST.other.get('form_mode__', None)
+    
+    security.declarePrivate('_set_status')
+    def _set_status(self, s=None):
+        self.REQUEST.other['form_status'] = s
+    
     security.declarePrivate('_mvalue_to_str')
     def _mvalue_to_str(self, m, multiline=1):
         # convert a mvalue dico into a string
@@ -566,7 +599,7 @@ class Form(Base):
             else:
                 str += '\\n'
         return str
-
+    
     security.declarePrivate('_str_to_mvalue')
     def _str_to_mvalue(self, s):
         # convert a mvalue string to dico
@@ -585,26 +618,6 @@ class Form(Base):
             mvalue[t[0].strip()]=t[1].strip()
         return mvalue
 
-    security.declarePrivate('get_values')
-    def get_values(self, no_fd=1):
-        # return dico field:value
-        v = {}
-        form = self.REQUEST.form
-        for f in self.getFList(1):
-            if no_fd and self.fields[f]['type'] == 'file':
-                v[f] = form.get(f).filename
-            else:
-                v[f] = form.get(f)
-        return v
-
-    security.declarePrivate('set_values')
-    def set_values(self, values):
-        # set form values from dico
-        pp = self.REQUEST.form.get('pp')
-        self.REQUEST.form = values
-        self.REQUEST.form['is_form_setted'] = 'yes'
-        self.REQUEST.form['pp'] = pp
-    
 
 InitializeClass(Form)
 # EOC Form
