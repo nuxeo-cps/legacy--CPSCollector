@@ -9,6 +9,7 @@ Bug fixes:
 ~~~~~~~~~~
 - fix: creation into section result in wf error
 - i18n refactored (now done the new way)
+- removed X_ mvalue prefix sorting feature conflicting with default/correct value
 
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
