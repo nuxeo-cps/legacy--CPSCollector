@@ -136,7 +136,7 @@ class CollectorDocument(Form, BaseDocument):
         """ Export all collected data as csv file """
         fields = self.getFList(1)
         s = self._list_to_csv(['_date', '_user', '_ip']+fields)
-        for obj in self.objectValues('CollectorItem'):
+        for obj in self._get_item_values():
             user, ip, d = self._decode_id(obj.id)
             if not user:
                 continue
@@ -157,8 +157,8 @@ class CollectorDocument(Form, BaseDocument):
         """ Erase all collector item """
         mcat = self.portal_messages
         psm='portal_status_message=%s' % (mcat('_form_erased_data_'), )
-        for id in self.objectIds('CollectorItem'):
-            self._delObject(id)
+        for id in self._get_item_ids():
+            self._del_item(id)
         self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
         return
     
@@ -227,9 +227,9 @@ class CollectorDocument(Form, BaseDocument):
         if self.unique_submit:
             id = self._check_unique()
             if id:
-                self._delObject(id)
+                self._del_item(id)
         id = self._create_id()
-        self._setObject(id, CollectorItem(id, self._get_values()))
+        self._add_item(id, self._get_values())
         kw['display_msg'] = self.submit_msg
 
     security.declareProtected(View, 'get_stat_fields')
@@ -259,7 +259,7 @@ class CollectorDocument(Form, BaseDocument):
             else:
                 r[f]['on']=0
                 
-        for obj in self.objectValues('CollectorItem'):
+        for obj in self._get_item_values():
             _u, _ip, d = self._decode_id(obj.id)
             if not _u:
                 continue
@@ -292,6 +292,26 @@ class CollectorDocument(Form, BaseDocument):
     
     
     # INTERNAL --------------------------------------------------
+    security.declarePrivate('_add_item')
+    def _add_item(self, id, values):
+        """ Add item iterface """
+        self._setObject(id, CollectorItem(id, values))
+
+    security.declarePrivate('_del_item')
+    def _del_item(self, id):
+        """ Remove item, assert that id is valid """
+        self._delObject(id)
+    
+    security.declarePrivate('_get_item_ids')
+    def _get_item_ids(self):
+        """ Just do it """
+        return self.objectIds('CollectorItem')
+            
+    security.declarePrivate('_get_item_values')
+    def _get_item_values(self):
+        """ Just do it """
+        return self.objectValues('CollectorItem')
+            
     security.declarePrivate('_load_data')
     def _load_data(self, item_id=None):
         """ Load collectorItem data or latest if item_id is None """
@@ -315,7 +335,7 @@ class CollectorDocument(Form, BaseDocument):
         match_d = 0
         #log( 'Search '+ user+'_'+ip+':')
 
-        for id in self.objectIds('CollectorItem'):
+        for id in self._get_item_ids():
             user_, ip_, d_ = self._decode_id(id)
             if user == user_:
                 if user == 'anonymous' and ip != ip_:
@@ -357,7 +377,7 @@ class CollectorDocument(Form, BaseDocument):
             s = 'anonymous_'+self.REQUEST.environ.get('REMOTE_ADDR','')
         else:
             s = mtools.getAuthenticatedMember().getUserName()
-        for id in self.objectIds('CollectorItem'):
+        for id in self._get_item_ids():
             _u, _ip, d = self._decode_id(id)
             if id.find(s) != -1:
                 return id
