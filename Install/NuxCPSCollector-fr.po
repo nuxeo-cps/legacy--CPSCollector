@@ -172,7 +172,7 @@ msgid "_form_%s_data_from_%s_to_%s_"
 msgstr "%s informations collectées entre le %s et %s."
 
 msgid "_form_stat_empty_"
-msgstr "Il n'y a pas encore de données colléctées."
+msgstr "Il n'y a pas encore de données collectées."
 
 msgid "_form_stat_null_"
 msgstr "Aucun champs ne se prettent à faire des statistiques."
