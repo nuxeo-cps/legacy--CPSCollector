@@ -40,24 +40,24 @@ factory_type_information = (
      'product': 'NuxCPSCollector',
      'factory': 'addCollectorDocument',
      'meta_type': 'Collector Document',
-     'immediate_view': 'CollectorDocument_editForm',
+     'immediate_view': 'CollectorDocument_editProp',
      'allow_discussion': 1,
      'filter_content_types': 0,
      'actions': ({'id': 'view',
                   'name': '_action_view_',
-                  'action': 'view',
+                  'action': 'Form_view',
                   'permissions': (View,)},
                  {'id': 'view_stat',
                   'name': '_action_view_stat_',
-                  'action': 'viewStat',
+                  'action': 'CollectorDocument_viewStat',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'edit',
                   'name': '_action_modify_prop_',
-                  'action': 'CollectorDocument_editForm',
+                  'action': 'CollectorDocument_editProp',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'edit_form',
                   'name': '_action_modify_form_',
-                  'action': 'editForm',
+                  'action': 'Form_editForm',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'export',
                   'name': '_action_export_csv_',
@@ -82,7 +82,13 @@ factory_type_information = (
                   'action': 'issearchabledocument',
                   'visible': 0,
                   'permissions': ()},
+                 {'id': 'isproxytype',
+                  'name': 'isproxytype',
+                  'action': 'document',
+                  'visible': 0,
+                  'permissions': ()},
                  ),
+     
      
      },
                             )
@@ -114,70 +120,19 @@ class CollectorDocument(Form, BaseDocument):
         """ Guess what it is """
         BaseDocument.__init__(self, id, **kw)
         Form.__init__(self, id)
-        
-    security.declarePrivate('manage_afterAdd')
-    def manage_afterAdd(self, item, container):
-        """ Finilize the form init """
-        self.post_init(msg_pt='CollectorDocument_msg')
-        BaseDocument.manage_afterAdd(self, item, container)
+        self._action_pt = 'CollectorDocument_action'
 
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self):
         """ Used by the catalog for basic full text indexing """
         return '%s %s %s' % (self.title, self.description,
-                                self.related_links)
+                             self.related_links)
     
     
     # WEB INTERFACE --------------------------------------------------
-    security.declareProtected(View, 'view')
-    def view(self, **kw):
-        """ override view to handle persitent input """
-        self._set_status()
-        status,err=self.check_form()
-        if status == 'valid_form':
-            return self.action(**kw)
-        
-        if status == 'not_yet_submited' and self.persistent_data:
-            obj = self._load_data()
-            if obj:
-                self.set_values(obj.data)
-                status, err = self.check_form()
-                
-        if err:
-            self._set_status(err)
-              
-        return self._display_zpt(self._view_pt, **kw)
-    
-    security.declareProtected(View, 'display')
-    def display(self, **kw):
-        """ displaying a non editable form with lastest input """
-        input = self._load_data()
-        if input:
-                self.set_values(input.data)
-                status, err = self.check_form()
-        if err:
-            self._set_status(err)
-        _macros = self._macros_pt
-        self._macros_pt = 'Form_displayMacros'
-        ret = self._display_zpt(self._view_pt)
-        self._macros_pt = _macros
-        return ret
-        
-    security.declareProtected(View, 'action')
-    def action(self, **kw):
-        """ store valid input into a collector item """
-        if self.unique_submit:
-            id = self._check_unique()
-            if id:
-                self._delObject(id)
-        id = self._create_id()
-        self._setObject(id, CollectorItem(id, self.get_values()))
-        return self._display_zpt(self._msg_pt, display_msg=self.submit_msg)
-
-    
     security.declareProtected(ModifyPortalContent, 'exportData')
     def exportData(self, **kw):
-        """ export all collected data as csv file """
+        """ Export all collected data as csv file """
         fields = self.getFList(1)
         s = self._list_to_csv(['_date', '_user', '_ip']+fields)
         for obj in self.objectValues('CollectorItem'):
@@ -198,7 +153,7 @@ class CollectorDocument(Form, BaseDocument):
     
     security.declareProtected(ModifyPortalContent, 'eraseData')
     def eraseData(self, **kw):
-        """ erase all collector item """
+        """ Erase all collector item """
         mcat = self.portal_messages
         psm='portal_status_message=%s' % (mcat('_form_erased_data_'), )
         for id in self.objectIds('CollectorItem'):
@@ -206,14 +161,9 @@ class CollectorDocument(Form, BaseDocument):
         self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
         return
     
-    security.declareProtected(ModifyPortalContent, 'viewStat')
-    def viewStat(self, **kw):
-        "display stat for fields of type: selection/checkbox/radio"
-        return self.CollectorDocument_viewStat(**kw)
-    
     security.declareProtected(ModifyPortalContent, 'initTest')
     def initTest(self):
-        """ test that init a form with all kind of field """
+        """ Test that init a form with all kind of field """
         self.add_field('title', label='This is a title', type='title')
         self.add_field('string', label='This is a string', type='string', required='on', maxlength='14', join='on', size='16')
         self.add_field('string_ro', label='This is a read only string:', value='Read only value', type='string_ro')
@@ -240,7 +190,7 @@ class CollectorDocument(Form, BaseDocument):
     
     security.declareProtected(ModifyPortalContent, 'initTestSurvey')
     def initTestSurvey(self):
-        """ test that init a form with multilang survey """
+        """ Test that init a form with multilang survey """
         self.add_field('survey_title', label='_survey_title_', type='title')
         self.add_field('survey_id', label='_survey_bla_', value='12345', type='comment')
         self.add_field('survey_q1', label='_survey_q1_', checked='kind2', mvalue='kind1 | _survey_r1_\nkind2 | _survey_r2_\nkind3 | _survey_r3_\n', type='selection')
@@ -250,9 +200,40 @@ class CollectorDocument(Form, BaseDocument):
     
     
     # ZPT INTERFACE --------------------------------------------------
+    security.declareProtected(View, 'process_view')
+    def process_view(self, **kw):
+        # Override view to handle persitent input 
+        self._set_status()
+        status,err=self._check_form()
+        if status == 'valid_form':
+            self._action(**kw)
+            return self._action_pt
+        
+        if status == 'not_yet_submited' and self.persistent_data:
+            obj = self._load_data()
+            if obj:
+                self._set_values(obj.data)
+                status, err = self._check_form()
+                
+        if err:
+            self._set_status(err)
+              
+        return self._view_pt
+    
+    security.declarePrivate('_action')
+    def _action(self, **kw):
+        # Store valid input into a collector item
+        if self.unique_submit:
+            id = self._check_unique()
+            if id:
+                self._delObject(id)
+        id = self._create_id()
+        self._setObject(id, CollectorItem(id, self._get_values()))
+        kw['display_msg'] = self.submit_msg
+
     security.declareProtected(View, 'get_stat_fields')
     def get_stat_fields(self, **kw):
-        # return the list of field with statistic
+        # Return the list of field with statistic
         l=[]
         for f in self.getFList(1):
             if self.fields[f]['type'] not in ('checkbox','radio','selection'):
@@ -260,9 +241,10 @@ class CollectorDocument(Form, BaseDocument):
             l.append(f)
         return l
     
+    # XXX TODO rename compute_stat into process_stat
     security.declareProtected(View, 'compute_stat')
     def compute_stat(self, **kw):
-        # compute stat on selection/radio or checkbox fields
+        # Compute stat on selection/radio or checkbox fields
         r = {}
         date_start = time.localtime()
         date_end = time.localtime(0)
@@ -312,7 +294,7 @@ class CollectorDocument(Form, BaseDocument):
     # INTERNAL --------------------------------------------------
     security.declarePrivate('_load_data')
     def _load_data(self, item_id=None):
-        """ load collectorItem data or latest if item_id is None """
+        """ Load collectorItem data or latest if item_id is None """
         if not item_id:
             item_id = self._find_latest_item()
         if not item_id:
@@ -322,7 +304,7 @@ class CollectorDocument(Form, BaseDocument):
     
     security.declarePrivate('_find_latest_item')
     def _find_latest_item(self):
-        """ find the latest collectorItem id for the current logged user
+        """ Find the latest collectorItem id for the current logged user
         this feature does not work for anonymous user !
         """
         user, ip, d = self._decode_id(self._create_id())
@@ -346,7 +328,7 @@ class CollectorDocument(Form, BaseDocument):
     
     security.declarePrivate('_list_to_csv')
     def _list_to_csv(self, t):
-        """ convert list object into csv format """
+        """ Convert list object into csv format """
         l = ''
         for v in t:
             if v and type(v) is ListType:
@@ -369,7 +351,7 @@ class CollectorDocument(Form, BaseDocument):
     
     security.declarePrivate('_check_unique')
     def _check_unique(self):
-        """ check if user/remote ip have already been collected """
+        """ Check if user/remote ip have already been collected """
         mtools = self.portal_membership
         if mtools.isAnonymousUser():
             s = 'anonymous_'+self.REQUEST.environ.get('REMOTE_ADDR','')
@@ -397,7 +379,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declarePrivate('_decode_id')
     def _decode_id(self, id=''):
-        """ return a tuple (user,ip,date) or None for bad id """
+        """ Return a tuple (user,ip,date) or None for bad id """
         m=match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
         if m is None:
             return None, None, None
@@ -406,17 +388,22 @@ class CollectorDocument(Form, BaseDocument):
         ip=m.group(3)
         return (user,ip, d)
     
-    security.declarePrivate('notify_modified')
-    def notify_modified(self):
+    security.declarePrivate('_notify_modified')
+    def _notify_modified(self):
         self._p_changed = 1        
         # tell to the CMF that something changed
         self.notifyModified()
+        
+    security.declareProtected(View, 'getContent')
+    def getContent(self):
+        # This make most of CPS3 zpt compatible with CPS2
+        return self
 
 
 InitializeClass(CollectorDocument)
 
 def addCollectorDocument(dispatcher, id, REQUEST=None, **kw):
-    """Add a Collector Document"""
+    """ Add a Collector Document """
     ob = CollectorDocument(id, **kw)
     return BaseDocument_adder(dispatcher, id, ob, REQUEST=REQUEST)
 
