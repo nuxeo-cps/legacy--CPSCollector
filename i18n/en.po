@@ -1,14 +1,16 @@
+# translation of en.po to ben
 # translation of en.po to francais
 # Gettext Message File for default.
 # Your Name <your@email>, Year
 # emmanuel <epietriga@nuxeo.com>, 2003, 2004.
+# ben <ben@nuxeo.com>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
 "POT-Creation-Date: 2003-10-28 11:24default\n"
-"PO-Revision-Date: 2004-02-18 11:26+0100\n"
-"Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
-"Language-Team: francais <fr@li.org>\n"
+"PO-Revision-Date: 2004-02-20 10:28+0100\n"
+"Last-Translator: ben <ben@nuxeo.com>\n"
+"Language-Team: ben\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +19,7 @@ msgstr ""
 "Language-name: Language\n"
 "Preferred-encodings: utf-8 latin1\n"
 "Domain: default\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.0.1\n"
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -305,19 +307,19 @@ msgstr "Result"
 #.   <block />
 #: from ../skins/cps/Form_editField_pt.pt
 msgid "collector_modify_field"
-msgstr "Modify a field of "
+msgstr "Edit a field of "
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_modify_form"
-msgstr "Modify form"
+msgstr "Edit form"
 
 #.   <block>
 #.         Modify
 #.       </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_modify_props"
-msgstr "Modify properties of "
+msgstr "Edit properties of "
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
@@ -368,7 +370,7 @@ msgid "collector_confirm"
 msgstr "Are you sure?"
 
 msgid "collector_button_modify"
-msgstr "Modify"
+msgstr "Save"
 
 msgid "collector_date_%m/%d/%Y %H:%M"
 msgstr "%m/%d/%Y %H:%M"
@@ -416,7 +418,7 @@ msgid "collector_form_multiple"
 msgstr "Multiple selection:"
 
 msgid "collector_button_change"
-msgstr "Modify"
+msgstr "Save change"
 
 msgid "collector_form_join_with_next"
 msgstr "Join with next field:"
