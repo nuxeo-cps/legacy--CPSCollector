@@ -88,12 +88,10 @@ class CollectorDocument(Form, BaseDocument):
     security = ClassSecurityInfo()
 
     _properties = BaseDocument._properties + (
-        {'id':'author', 'type':'string', 'mode':'w', 'label':'Author'},
         {'id':'submit_msg', 'type':'string', 'mode':'w', 'label':'Message'},
         {'id':'unique_submit', 'type':'boolean', 'mode':'w',
          'label':'Unique Submit'},
         )
-    author=''
 
     def __init__(self, id, **kw):
         "Guess what it is."
@@ -109,10 +107,16 @@ class CollectorDocument(Form, BaseDocument):
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self):
         "Used by the catalog for basic full text indexing."
-        return '%s %s %s %s' % (self.title, self.description,
-                                self.author, self.related_links)
+        return '%s %s %s' % (self.title, self.description,
+                                self.related_links)
 
     ### collector action
+    security.declarePrivate('notify_modified')
+    def notify_modified(self):
+        self._p_changed = 1        
+        # tell to the CMF that something changed
+        self.notifyModified()
+        
     security.declareProtected(View, 'action')
     def action(self, **kw):
         if self.unique_submit:

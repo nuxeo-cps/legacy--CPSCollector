@@ -15,9 +15,6 @@
 
   <i><tal:block replace="python:mcat('_prop_description_')" />: 
   <tal:block replace="structure here/description" /></i><br>
-  <i><tal:block replace="python:mcat('_prop_author_')" />: 
-  <tal:block replace="structure here/author" /></i><br>
-
 
   <metal:block use-macro="here/main_widgets/macros/linksrender">
     Related links

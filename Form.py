@@ -95,6 +95,10 @@ class Form(Base):
         "this method should be rewrite by child, should return error str"
         return None
 
+    security.declarePrivate('notify_modified')
+    def notify_modified(self):
+        self._p_changed = 1
+        
     ### ZOPE ACCESSORS / CONSTRUCTORS
     security.declareProtected(View, 'index_html')
     def index_html(self, **kw):
@@ -340,8 +344,8 @@ class Form(Base):
         t=f.get('type')                 #setting default type
         if not t in self.types:
             f['type']='string'
-        self._p_changed = 1
-
+        self.notify_modified()
+        
     security.declarePrivate('del_field')
     def del_field(self, id):
         # delete a field
@@ -349,7 +353,7 @@ class Form(Base):
             return
         self.fields_list.remove(id)
         del self.fields[id]
-        self._p_changed = 1
+        self.notify_modified()
 
     security.declarePrivate('move_field')
     def move_field(self, id, direction='up'):
@@ -363,7 +367,7 @@ class Form(Base):
         else:
             self.fields_list.remove(id)
             self.fields_list.insert(pos-1, id)
-        self._p_changed = 1
+        self.notify_modified()
 
     security.declarePrivate('check_form')
     def check_form(self ):
