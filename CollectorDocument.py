@@ -293,20 +293,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('_add_item')
     def _add_item(self, id, values):
         """Add item interface"""
-        LOG('CollectorDocument._add_item', DEBUG,
-            "adding %s in %s" % (id, self.absolute_url()))
-        ob =  CollectorItem(id, values)
         self._setObject(id, ob)
-        obj = self._getOb(id)
-        LOG('CollectorDocument._add_item', DEBUG,
-            "obj = %s %s %s %s" % (obj, obj.absolute_url(), self._objects,
-                                self.objectIds()))
-        ids = self.contentIds()
-        vals = self.objectValues()
-        LOG('xxxxxxxxxxxxx', DEBUG,
-            "%s %s" % (ids, vals))
-
-
 
     security.declarePrivate('_del_item')
     def _del_item(self, id):
@@ -316,8 +303,6 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('_get_item_ids')
     def _get_item_ids(self):
         """Get item ids"""
-        LOG('CollectorDocument._get_items_ids', DEBUG,
-            "in %s = %s" % (self.absolute_url(), self.objectIds('CollectorItem')))
         return self.objectIds('CollectorItem')
 
     security.declarePrivate('_get_item_values')
