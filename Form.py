@@ -86,6 +86,41 @@ class Form(Base):
         self.add_field('join__', type='checkbox', label='_form_join_with_next_')
         return
     
+    security.declareProtected(ModifyPortalContent, 'personalizeZPT')
+    def personalizeZPT(self, macros=None, view=None, action=None,
+                       editForm=None, editField=None):
+        """ Personnalize the five hardcoding zpt for duplicate 
+        use of the class"""
+        
+        
+        if macros == None or macros == '':
+            self._macros_pt = 'Form_macros'
+        else:
+            self._macros_pt = macros
+        
+        if view == None or view == '':
+            self._view_pt = 'Form_view_pt'
+        else:
+            self._view_pt = view
+        
+        if action == None or action == '':
+            self._action_pt ='Form_action'
+        else:
+            self._action_pt = action
+
+        if editForm == None or editForm == '':
+            self._editForm_pt ='Form_editForm'
+        else:
+            self._editForm_pt = editForm
+
+        if editField == None or editField == '':
+            self._editForm ='Form_editField_pt'
+        else:
+            self._editField = editField_pt
+
+        return
+        
+   
     # WEB INTERFACE --------------------------------------------------
     security.declareProtected(ModifyPortalContent, 'dumpFields')
     def dumpFields(self):
