@@ -290,7 +290,7 @@ class Form(Base):
         return l
 
     security.declareProtected(View, 'getV')
-    def getV(self, f, k, default=None):
+    def getV(self, f, k, default=None, as_list=None):
         # return the value of field f on request
         form=self.REQUEST.form
         v=form.get(f)                   # form first
@@ -298,6 +298,9 @@ class Form(Base):
             v=self.fields[f].get(k)     # no form try object value
         if not v and len(form)==0:      # no form no object value try default
             v=default
+        if as_list:
+            if type(v) is not type([]):
+                v = [v,]
         return v
 
     security.declareProtected(View, 'getNbSlot')
