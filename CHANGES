@@ -3,11 +3,10 @@ Requires:
 -
 New features:
 ~~~~~~~~~~~~~
-- CPSDocument compliant (ie Collector and Quiz are CPSDocument)
-- lots of improvment and better cps css integration
+-
 Bug fixes:
 ~~~~~~~~~~
-- #214: Collector is frozen after publication
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.5.0 [R1 build 2004/02/11-13:38 by ben]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- CPSDocument compliant (ie Collector and Quiz are CPSDocument)
+- lots of improvment and better cps css integration
+Bug fixes:
+~~~~~~~~~~
+- #214: Collector is frozen after publication
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.4.2 [R1 build 2004/01/21-10:37 by ben]
 
 ZODB Requires:
