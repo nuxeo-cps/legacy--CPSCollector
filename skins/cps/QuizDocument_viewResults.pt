@@ -1,10 +1,9 @@
 <tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
-           xmlns:metal="http://xml.zope.org/namespaces/metal"
-           i18n:domain="cpscollector">
+           xmlns:metal="http://xml.zope.org/namespaces/metal">
   <tal:block define="current_action string:view_stat;">
     <html metal:use-macro="here/content_lib/macros/master">
       <body>
-        <metal:block fill-slot="main">
+        <metal:block fill-slot="main" i18n:domain="cpscollector">
           <tal:block define="_check_perm_ doc/assert_form_view" />
           <metal:block define-macro="display_quiz_results">
             <tal:block tal:define="doc here/getContent;

@@ -1,4 +1,4 @@
-<tal:block define="current_action string:view_stat;" i18n:domain="cpscollector">
+<tal:block define="current_action string:view_stat;">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/content_lib/macros/master">
@@ -12,7 +12,8 @@
 <metal:block define-macro="display_stat">
 <tal:block define="doc here/getContent;
                    stats python:doc.process_stat();
-                   fields python:doc.get_stat_fields();">
+                   fields python:doc.get_stat_fields();"
+  i18n:domain="cpscollector">
   <tal:block condition="python: not stats['_stat']['nb_item']">
     <div style="text-align:center; padding: 2em;"><strong i18n:translate="collector_empty_stats">no data</strong></div>
   </tal:block>

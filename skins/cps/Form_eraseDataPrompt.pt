@@ -1,10 +1,9 @@
 <tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
-           xmlns:metal="http://xml.zope.org/namespaces/metal"
-           i18n:domain="cpscollector">
+           xmlns:metal="http://xml.zope.org/namespaces/metal">
   <tal:block>
     <html metal:use-macro="here/content_lib/macros/master">
       <body>
-        <metal:block fill-slot="main">
+        <metal:block fill-slot="main" i18n:domain="cpscollector">
           <tal:block define="_check_perm_ doc/assert_form_modify" />
           <p i18n:translate="">collector_label_erase_warning</p>
           <form action="." method="post">
