@@ -591,7 +591,6 @@ class Form(Base):
     security.declarePrivate('_str_to_mvalue')
     def _str_to_mvalue(self, s):
         """Convert a mvalue string to dico"""
-        i = 1
         mvalue = {}
         lines = s.split('\n')
         if not len(lines):
