@@ -30,19 +30,19 @@ class TestFormValidation(unittest.TestCase):
         ob = Form('utest')
         ob.add_field('string', type='string', required='on')
         ret = ob.check_field('string', '')
-        self.assertEqual( ret, '_field_is_required_')
+        self.assertEqual( ret, 'collector_field_required')
 
     def test_required(self):
         self.assertEqual(checkField('string', '', required='on'),
-                         '_field_is_required_')
+                         'collector_field_required')
         self.assertEqual(checkField('string', None, required='on'),
-                         '_field_is_required_')
+                         'collector_field_required')
         
     def test_string_maxlength_1(self):
         self.assertEqual(checkField('string', '1234', maxlength=4), None)
     def test_string_maxlength_2(self):
         self.assertEqual(checkField('string', '1234', maxlength=3),
-                         '_field_is_too_long_')
+                         'collector_field_too_long')
 
     def test_float_1(self):
         self.assertEqual(checkField('float', '123,12'), None)
@@ -53,13 +53,13 @@ class TestFormValidation(unittest.TestCase):
 
     def test_float_100(self):
         self.assertEqual(checkField('float', '12.12.23'),
-                         '_field_float_invalid_')
+                         'collector_field_float_invalid')
     def test_float_101(self):
         self.assertEqual(checkField('float', '12a,23'),
-                         '_field_float_invalid_')                         
+                         'collector_field_float_invalid')                         
     def test_float_102(self):
         self.assertEqual(checkField('float', 'x12'),
-                         '_field_float_invalid_')                         
+                         'collector_field_float_invalid')
 
 
     def test_int_1(self):
@@ -71,13 +71,13 @@ class TestFormValidation(unittest.TestCase):
 
     def test_int_100(self):
         self.assertEqual(checkField('int', '12.23'),
-                         '_field_int_invalid_')
+                         'collector_field_int_invalid')
     def test_int_101(self):
         self.assertEqual(checkField('int', 'a1223'),
-                         '_field_int_invalid_')                         
+                         'collector_field_int_invalid')                   
     def test_int_102(self):
         self.assertEqual(checkField('int', '12-12'),
-                         '_field_int_invalid_')                         
+                         'collector_field_int_invalid')                   
 
     def test_identifier_1(self):
         self.assertEqual(checkField('identifier', 'id'), None)
@@ -90,16 +90,16 @@ class TestFormValidation(unittest.TestCase):
 
     def test_identifier_100(self):
         self.assertEqual(checkField('identifier', '1bla'),
-                         '_field_id_invalid_')
+                         'collector_field_id_invalid')
     def test_identifier_101(self):
         self.assertEqual(checkField('identifier', 'b-123'),
-                         '_field_id_invalid_')        
+                         'collector_field_id_invalid')  
     def test_identifier_102(self):
         self.assertEqual(checkField('identifier', '_bla'),
-                         '_field_id_invalid_')        
+                         'collector_field_id_invalid') 
     def test_identifier_102(self):
         self.assertEqual(checkField('identifier', 'a@bla'),
-                         '_field_id_invalid_')        
+                         'collector_field_id_invalid')
 
     # testing with default 'en' locale
     def test_date_1(self):
@@ -115,54 +115,54 @@ class TestFormValidation(unittest.TestCase):
         
     def test_date_100(self):
         self.assertEqual(checkField('date', '13/12/2003'),
-                         '_field_date_invalid_')
+                         'collector_field_date_invalid')
     def test_date_101(self):
         self.assertEqual(checkField('date', '12/32/2003'),
-                         '_field_date_invalid_')        
+                         'collector_field_date_invalid')
     def test_date_102(self):
         self.assertEqual(checkField('date', '01/41/2003'),
-                         '_field_date_invalid_')        
+                         'collector_field_date_invalid')
     def test_date_103(self):
         self.assertEqual(checkField('date', '01/01/03'),
-                         '_field_date_invalid_')        
+                         'collector_field_date_invalid')
 
 
     def test_email_invalid_1(self):
         self.assertEqual(checkField('email', 'bla'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_2(self):
         self.assertEqual(checkField('email', 'bla@bla'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_3(self):
         self.assertEqual(checkField('email', 'bla.com'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_4(self):
         self.assertEqual(checkField('email', 'bla@bla.balzke'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_5(self):
         self.assertEqual(checkField('email', 'azer@bla.111'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_6(self):
         self.assertEqual(checkField('email', 'bla@bl az.com'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_7(self):
         self.assertEqual(checkField('email', 'bla@-.com'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_8(self):
         self.assertEqual(checkField('email', 'bla@qsdf.m'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_9(self):
         self.assertEqual(checkField('email', '@az.com'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_10(self):
         self.assertEqual(checkField('email', 'bla@qsdf@qsdlf.com'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_11(self):
         self.assertEqual(checkField('email', '@qsdf@qsldkfj.com'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
     def test_email_invalid_12(self):
         self.assertEqual(checkField('email', 'bla@.com'),
-                         '_field_email_invalid_')
+                         'collector_field_email_invalid')
 
     def test_email_1(self):
         self.assertEqual(checkField('email', 'bla@bla.com'), None)
@@ -184,12 +184,12 @@ class TestFormValidation(unittest.TestCase):
     def test_selection_100(self):
         self.assertEqual(checkField('selection', 'sel4', multiple='on', 
                                     mvalue='sel1\nsel2\nsel3\n'),
-                         '_field_selection_invalid_')
+                         'collector_field_selection_invalid')
     def test_selection_101(self):
         self.assertEqual(checkField('selection', ['sel3','sel1'],
                                     multiple=None,
                                     mvalue='sel1\nsel2\nsel3\n'),
-                         '_field_multiselect_invalid_')
+                         'collector_field_multiselect_invalid')
 
 def test_suite():
     suite = unittest.TestSuite()
