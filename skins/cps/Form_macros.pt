@@ -23,8 +23,8 @@
                        value python:doc.getV(f_id, 'value',default)" />
 
 <!-- def title field -->
-<b metal:define-macro="title"
-   tal:content="python:colmcat(doc.getLabel(f_id))">label</b>
+<h4 metal:define-macro="title"
+   tal:content="python:colmcat(doc.getLabel(f_id))">label</h4>
 
 <!-- def hidden field -->
 <input metal:define-macro="hidden"
@@ -64,22 +64,32 @@
 <!-- def radio field -->
 <metal:block metal:define-macro="radio">
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
-    <input tal:attributes="name f_id;value v;
+    <input tal:attributes="id v;
+                           name f_id;value v;
                            checked python:doc.meta_type!='Quiz Document' and
                                           doc.getV(f_id,'checked')==v"
            name="_x_" type="radio" />
-    <tal:block tal:replace="python:doc.getLabel(f_id,v)">label</tal:block>
+    <label tal:attributes="for v"
+      tal:content="python:doc.getLabel(f_id,v)">label</label>
   </tal:block>
 </metal:block>
 
 <!-- def vradio field -->
 <metal:block metal:define-macro="vradio">
+  <div tal:attributes="class
+  python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
+  <span i18n:domain="cpscollector" i18n:translate=""
+    tal:content="python:doc.getLabel(f_id)" />
+  <span tal:replace="string:*" tal:condition="f/required|nothing" />
+  </div><br>
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
-    <input tal:attributes="name f_id;value v;
+    <input tal:attributes="id v;
+                           name f_id;value v;
                            checked python:doc.meta_type!='Quiz Document' and
                                           doc.getV(f_id,'checked')==v"
            name="_x_" type="radio" />
-    <tal:block tal:replace="python:doc.getLabel(f_id,v)">label</tal:block><br />
+    <label tal:attributes="for v"
+      tal:content="python:doc.getLabel(f_id,v)">label</label><br>
   </tal:block>
 </metal:block>
 
@@ -111,7 +121,7 @@
   <input type="submit"
          tal:attributes="name f/value|default;
                          value python:colmcat(doc.getLabel(f_id))"
-         class="context" />
+         class="standalone" />
 </metal:block>
 
 <!-- def reset field -->
@@ -132,35 +142,30 @@
     align="right"
     width="1%"
     nowrap>
-  <font tal:attributes="color python:test(f_id in request.form.get('error__',[]),
-                                          'red',
-                                          0)"
-        i18n:domain="cpscollector" i18n:translate=""
-        tal:content="python:doc.getLabel(f_id)"></font>
+  <div tal:attributes="class
+  python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
+  <span i18n:domain="cpscollector" i18n:translate=""
+    tal:content="python:doc.getLabel(f_id)" />
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
+  </div>
 </td>
 
 <!-- def display field -->
 <td metal:define-macro="display_field"
     tal:attributes="colspan python:test(doc.span[f_id],doc.span[f_id],nothing)"
-    width="1%" nowrap>
+    width="1%">
+  <div class="field">
   <span metal:use-macro="python:doc.getFMacro(f_id)" />
+  </div>
 </td>
 
 <!-- def display_form -->
 <form action="." method="post" enctype="multipart/form-data"
       metal:define-macro="display_form"
       i18n:domain="cpscollector">
-  <table tal:condition="request/other/form_status|nothing"
-         cellpadding="0" cellspacing="0" border="1" noshade width="100%">
-    <tr>
-      <td bgcolor="#EEEEEE">
-        <font color="990000">
-          <strong tal:content="request/other/form_status">error msg</strong>
-        </font>
-      </td>
-    </tr>
-  </table>
+  <div class="group">
+  <div class="message" tal:condition="request/other/form_status|nothing"
+    tal:content="request/other/form_status">error msg</div>
   <table>
     <tr>
       <td>
@@ -182,6 +187,7 @@
       </td>
     </tr>
   </table>
+  </div>
 </form>
 
 <!-- def display_edit_form -->

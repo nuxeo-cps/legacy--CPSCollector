@@ -27,82 +27,74 @@
   <form name="edit_form" action="." method="post" enctype="multipart/form-data"
         tal:attributes="action action">
 
-  <table>
-    <tr>
-      <td>
-        <span i18n:translate="collector_prop_title" />
-      </td>
-      <td>
-        <input type="text" name="title" value="title" tal:attributes="value
-        title" />
-      </td>
-    </tr>
-    <tr>
-      <td>
-      <!-- descr -->
-        <span i18n:translate="collector_prop_description" />
-      </td>
-      <td>
-        <textarea name="description:text" rows="5" cols="50" wrap="soft"
-        tal:content="description"></textarea>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span i18n:translate="collector_prop_submit_msg" />
-      </td>
-      <td>
-        <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
-        tal:content="submit_msg|default"></textarea>
-      </td>
-    </tr>
-    <tr>
-      <td tal:define="is_quiz python:doc.meta_type == 'Quiz Document'">
-        <span tal:condition="is_quiz"
-              i18n:translate="collector_prop_submit_msg_results" />
-        <span tal:condition="not: is_quiz"
-              i18n:translate="collector_prop_submit_msg_stats" />
-      </td>
-      <td>
-          <input type="hidden" name="submit_msg_stat:boolean:default" value="" />
-          <input type="checkbox" name="submit_msg_stat:boolean"
-            checked="." tal:attributes="checked submit_msg_stat" />
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span i18n:translate="collector_prop_unique" />
-      </td>
-      <td>
-        <input type="hidden" name="unique_submit:boolean:default" value="" />
-        <input type="checkbox" name="unique_submit:boolean"
-          checked="." tal:attributes="checked unique_submit" />
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span i18n:translate="collector_prop_persistent" />
-      </td>
-      <td>
-        <input type="hidden" name="persistent_data:boolean:default" value="" />
-        <input type="checkbox" name="persistent_data:boolean"
-          checked="." tal:attributes="checked persistent_data" />
-      </td>
-    </tr>
-  </table>
+  <div class="group">
+  <div class="row">
+  <div class="label"><span i18n:translate="collector_prop_title" /></div>
+  <div class="field">
+    <input type="text" name="title" value="title"
+      tal:attributes="value title">
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="label"><span i18n:translate="collector_prop_description" /></div>
+  <div class="field">
+    <textarea name="description:text" rows="5" cols="50" wrap="soft"
+      tal:content="description"></textarea>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="label"><span i18n:translate="collector_prop_submit_msg" /></div>
+  <div class="field">
+    <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
+      tal:content="submit_msg|default"></textarea>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="label"
+    tal:define="is_quiz python:doc.meta_type == 'Quiz Document'">
+    <span tal:condition="is_quiz"
+      i18n:translate="collector_prop_submit_msg_results" />
+    <span tal:condition="not: is_quiz"
+      i18n:translate="collector_prop_submit_msg_stats" />
+
+    <input type="hidden" name="submit_msg_stat:boolean:default" value="">
+    <input type="checkbox" name="submit_msg_stat:boolean"
+      checked="." tal:attributes="checked submit_msg_stat">
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="label"><span i18n:translate="collector_prop_unique" />
+    <input type="hidden" name="unique_submit:boolean:default" value="">
+    <input type="checkbox" name="unique_submit:boolean"
+      checked="." tal:attributes="checked unique_submit">
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="label"><span i18n:translate="collector_prop_persistent" />
+    <input type="hidden" name="persistent_data:boolean:default" value="">
+    <input type="checkbox" name="persistent_data:boolean"
+      checked="." tal:attributes="checked persistent_data">
+  </div>
+  </div>
 
   <input type="hidden" name="type_name" value="Collector Document">
   <tal:block condition="create">
-    <input type="hidden" name="default_id_from" value="title" />
-    <input type="hidden" name="default_title_from" value="description" />
-    <input type="hidden" name="default_description_from" value="title" />
+    <input type="hidden" name="default_id_from" value="title">
+    <input type="hidden" name="default_title_from" value="description">
+    <input type="hidden" name="default_description_from" value="title">
   </tal:block>
-  <input type="hidden" name="change_and_edit" value="plz" />
-  <input class="context" type="submit" value="." tal:attributes="value submitvalue" />
+  <input type="hidden" name="change_and_edit" value="plz">
+  <input class="standalone" type="submit" value="."
+    tal:attributes="value submitvalue">
   <input type="button" name="cancel" onclick="history.back()"
-    class="context"
-    i18n:attributes="value"
-    value="collector_button_cancel" />
+    class="context" i18n:attributes="value" value="collector_button_cancel">
+
+  </div>
   </form>
 
 </metal:block>
