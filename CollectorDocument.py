@@ -93,16 +93,18 @@ class CollectorDocument(Form, BaseDocument):
     author=''
 
     def __init__(self, id, **kw):
-        " azer " 
+        "Guess what it is." 
         BaseDocument.__init__(self, id, **kw)
-        Form.__init__(self, id, 'toto')
+        Form.__init__(self, id)
 
+    security.declarePrivate('manage_afterAdd')
+    def manage_afterAdd(self, item, container):
+        "Finilize the form init."
+        self.post_init( )
 
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self):
-        """
-        Used by the catalog for basic full text indexing.
-        """
+        "Used by the catalog for basic full text indexing."
         return '%s %s %s %s' % (self.title, self.description,
                                 self.author, self.related_links)
 
