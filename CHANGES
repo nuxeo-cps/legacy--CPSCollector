@@ -3,9 +3,7 @@ ZODB Requires:
 -
 New features:
 ~~~~~~~~~~~~~
-- Add vertical radio button
-- Label gets a textarea
-- respect order about radio button input (not alphanumeric by def)
+-
 Bug fixes:
 ~~~~~~~~~~
 -

@@ -1,4 +1,21 @@
 *******************************************
+** NuxCPSCollector V1.3.0 [R1 build 2003-07/11-15:40 by ben]
+
+ZODB Requires:
+~~~~~~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- Add vertical radio button
+- Label gets a textarea
+- respect order about radio button input (not alphanumeric by def)
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+*******************************************
 ** NuxCPSCollector V1.2.0 [R1 build 2003-03/26-10:27 by ben]
 
 ZODB Requires:
