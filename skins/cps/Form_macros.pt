@@ -81,7 +81,7 @@
 <!-- def display_form -->
 <form action="." method="post" enctype="multipart/form-data" metal:define-macro="display_form">
  <font color="990000" tal:condition="request/other/form_status|nothing"><b tal:content="request/other/form_status">error</b></font>
-<table bgcolor="lightblue"><tr><td>
+<table bgcolor="#98B2CB"><tr><td>
 <input type="hidden" name="is_form_submitted" value="yes" />
 <table border="0" width="100%">
  <tr tal:repeat="row here/getRows">
@@ -99,9 +99,9 @@
  <tr bgcolor="FF8888" tal:condition="request/other/form_status|nothing">
   <td colspan="5" tal:content="request/other/form_status">bla</td>
  </tr>
-  <tr><td bgcolor="lightblue" colspan="5"><b>Add a new field:</b></td></tr>
+  <tr><td bgcolor="#98B2CB" colspan="5"><b>Add a new field:</b></td></tr>
   <tr>
-    <td bgcolor="lightblue">&nbsp;</td><td colspan="4" nowrap>Id:
+    <td bgcolor="#98B2CB">&nbsp;</td><td colspan="4" nowrap>Id:
       <input type="text" name="id" size="20"/> type:
       <select name="type" size=1>
 	<option value="title">Title</option>
@@ -132,8 +132,8 @@
   <tr>
     <td colspan="5"><br></td>
   </tr>
-  <tr><td bgcolor="lightblue" colspan="6"><b>List of fields:</b></td></tr>
-  <tr bgcolor="lightblue">
+  <tr><td bgcolor="#98B2CB" colspan="6"><b>List of fields:</b></td></tr>
+  <tr bgcolor="#98B2CB">
     <td>&nbsp;</td>
     <td nowrap="1">id</td>
     <td nowrap="1">type</td>
@@ -143,7 +143,7 @@
   </tr>
   <tr tal:repeat="f_id here/getFList">
     <span tal:define="f python:here.fields[f_id]" tal:omit-tag="">
-    <td width="10" bgcolor="lightblue">
+    <td width="10" bgcolor="#98B2CB">
       <input tal:attributes="value f_id; checked python:here.isSelected('f_id',f_id)" name="f_id" type="checkbox" />
     </td>
     <td><a tal:attributes="href string:editField?f_id=$f_id" tal:content="f_id">&nbsp;</a></td>
@@ -153,7 +153,7 @@
     <td tal:content="f/join|default">&nbsp;</td>    
     </span>
   </tr>
-  <tr><td bgcolor="lightblue">&nbsp;</td>
+  <tr><td bgcolor="#98B2CB">&nbsp;</td>
   <td colspan="4">
     <input type="submit" name="moveFieldUp:method" value="Move Up" />
     <input type="submit" name="moveFieldDown:method" value="Move Down" />
