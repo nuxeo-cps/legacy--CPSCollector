@@ -69,21 +69,32 @@ class Form(Base):
         """ Construtor """
         self.id = id
         # creation of internal fields ending with '__'
-        self.add_field('title__', type='title', label='_form_field_edit_')
+        self.add_field('title__', type='title',
+                       label='collector_form_field_edit')
         self.add_field('id__', type='string_ro', label='Id:', join='on')
-        self.add_field('type__', type='string_ro', label='_form_type_')
-        self.add_field('label__', type='text', label='_form_label_', cols=20, rows=2)
-        self.add_field('size__', type='int', label='_form_size_')
-        self.add_field('cols__', type='int', label='_form_cols_')
-        self.add_field('rows__', type='int', label='_form_rows_')
-        self.add_field('maxlength__', type='int', label='_form_max_length_')
-        self.add_field('required__', type='checkbox', label='_form_required_')
-        self.add_field('checked__', type='string', label='_form_checked_')
-        self.add_field('value__', type='string', label='_form_value_')
-        self.add_field('mvalue__', type='text', label='_form_values_', cols=40, rows=5)
-        self.add_field('multiple__', type='checkbox', label='_form_mulitple_')
-        self.add_field('submit__', type='submit', label='_form_bt_change_', value='Form_editField:method')
-        self.add_field('join__', type='checkbox', label='_form_join_with_next_')
+        self.add_field('type__', type='string_ro', label='collector_form_type')
+        self.add_field('label__', type='text', label='collector_form_label',
+                       cols=20, rows=2)
+        self.add_field('size__', type='int', label='collector_form_size')
+        self.add_field('cols__', type='int', label='collector_form_cols')
+        self.add_field('rows__', type='int', label='collector_form_rows')
+        self.add_field('maxlength__', type='int',
+                       label='collector_form_max_length')
+        self.add_field('required__', type='checkbox',
+                       label='collector_form_required')
+        self.add_field('checked__', type='string',
+                       label='collector_form_checked')
+        self.add_field('value__', type='string',
+                       label='collector_form_value')
+        self.add_field('mvalue__', type='text',
+                       label='collector_form_values', cols=40, rows=5)
+        self.add_field('multiple__', type='checkbox',
+                       label='collector_form_mulitple')
+        self.add_field('submit__', type='submit',
+                       value='Form_editField:method',
+                       label='collector_button_change')
+        self.add_field('join__', type='checkbox',
+                       label='collector_form_join_with_next')
         return
 
     security.declareProtected(ModifyPortalContent, 'personalizeZPT')
@@ -322,12 +333,12 @@ class Form(Base):
         if t in ('string', 'identifier', 'email', 'int', 'float', 'phone', \
                   'url', 'date'):
             t = 'string'
-        """
-        if not hasattr(self, '_v_macros'):
-            self._v_macros = self.restrictedTraverse(self._macros_pt)
-        """
+##        """
+##        if not hasattr(self, '_v_macros'):
+##            self._v_macros = self.restrictedTraverse(self._macros_pt)
+##        """
         return self.restrictedTraverse(self._macros_pt).macros[t]
-
+        
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
         # Label starting with '_' are localized
@@ -411,11 +422,10 @@ class Form(Base):
     def _check_form(self ):
         """ Check all the fields of a form and return a status and msg """
         form = self.REQUEST.form
-        mcat = self.Localizer.default
-        locale = mcat.get_selected_language()
+        locale = self.Localizer.default.get_selected_language()
         if not ( form.get('is_form_submitted') or form.get('is_form_setted') ):
             if not len(self.fields_list):
-                msg = mcat('_form_is_empty_')
+                msg = self.Localizer.cpscollector('collector_empty_form')
             else:
                 msg = ''
             return ('not_yet_submitted', msg)
@@ -424,7 +434,7 @@ class Form(Base):
         for f in self.getFList():
             err = self._check_field(f, form.get(f), locale)
             if err:
-                err_l10n = mcat(err)
+                err_l10n = self.Localizer.default(err)
                 if err_l10n != err:
                     err = err_l10n % f
                 else:
@@ -435,7 +445,7 @@ class Form(Base):
         if not msg:
             msg = self._validator(form)
         if msg:
-            err_l10n = mcat('_field_error_')
+            err_l10n = self.Localizer.cpscollector('collector_field_error')
             return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
         if form.get('is_form_setted'):
             return ('setted_form', msg)
@@ -450,25 +460,25 @@ class Form(Base):
         err=None
 
         if not v and f.get('required', 0):
-            err='_field_is_required_'
+            err='collector_field_required'
         elif not v:
             pass
         elif t == 'string':
             max_len = f.get('maxlength', 128)
             if len(v) > max_len:
-                err = '_field_is_too_long_'
+                err = 'collector_field_too_long'
         elif t == 'email':
             if not match(r'^(\w(\.|\-)?)+@(\w(\.|\-)?)+\.[A-Za-z]{2,4}$', v):
-                err = '_field_email_invalid_'
+                err = 'collector_field_email_invalid'
         elif t == 'int':
             if not match(r'^(\-)?[0-9]+$', v):
-                err = '_field_int_invalid_'
+                err = 'collector_field_int_invalid'
         elif t == 'float':
             if not match(r'^[0-9]+((\.|\,)[0-9]+)?$', v):
-                err= '_field_float_invalid_'
+                err= 'collector_field_float_invalid'
         elif t == 'phone':
             if not match(r'^[\(\)0-9\t\ \-\.\+]{6,26}$', v):
-                err = '_field_phone_invalid_'
+                err = 'collector_field_phone_invalid'
         elif t == 'checkbox':
             pass
         elif t == 'hidden':
@@ -476,53 +486,53 @@ class Form(Base):
         elif t == 'string_ro':
             _v = self.fields[id].get('value')
             if _v and (_v != v):
-                err = '_field_is_read_only_'
+                err = 'collector_field_read_only'
         elif t == 'identifier':
             if not match(r'^[a-zA-Z]\w*$', v):
-                err = '_field_id_invalid_'
+                err = 'collector_field_id_invalid'
         elif t == 'text':
             pass
         elif t == 'selection':
             if type(v) is type([]):
                 if not f.get('multiple'):
-                    err = '_field_multiselect_invalid_'
+                    err = 'collector_field_multiselect_invalid'
                 for vv in v:
                     if vv not in f['mvalue'].keys():
-                        err = '_field_multiselect_invalid_'
+                        err = 'collector_field_multiselect_invalid'
                         break
             elif v not in f['mvalue'].keys():
-                err = '_field_selection_invalid_'
+                err = 'collector_field_selection_invalid'
         elif t == 'radio':
             if v not in f['mvalue'].keys():
-                err = '_field_selection_invalid_'
+                err = 'collector_field_selection_invalid'
         elif t == 'vradio':
             if v not in f['mvalue'].keys():
-                err = '_field_selection_invalid_'
+                err = 'collector_field_selection_invalid'
         elif t == 'date':
             if locale == 'en':
                 if not match(r'^((0?[1-9])|(1[0-2]))/((0?[1-9])|([12][0-9])|(3[01]))/[0-9]{4,4}$', v):
-                    err = '_field_date_invalid_'
+                    err = 'collector_field_date_invalid'
             elif locale == 'fr':
                 if not match(r'^((0?[1-9])|([12][0-9])|(3[01]))/((0?[1-9])|(1[0-2]))/[0-9]{4,4}$', v):
-                    err = '_field_date_invalid_'
+                    err = 'collector_field_date_invalid'
             elif not match(r'^[0-9]?[0-9]/[0-9]?[0-9]/[0-9]{4,4}$', v):
-                err = '_field_date_invalid_'
+                err = 'collector_field_date_invalid'
         elif t == 'url':
             if not match(r'^(http://)?([\w\~](\:|\.|\-|\/|\?|\=)?){2,}$', v):
-                err = '_field_url_invalid_'
+                err = 'collector_field_url_invalid'
         elif t == 'password':
             pass
         elif t == 'file':
             if not v.filename and f.get('required',0):
-                err = '_field_is_required_'
+                err = 'collector_field_required'
             elif v.filename:
                 ml = int(f.get('maxlength', '0'))
                 if v.read(1) == "":
-                    err = '_field_empty_file_'
+                    err = 'collector_field_empty_file'
                     self.REQUEST.form[id] = v.filename
                 elif ml:
                     if len(v.read(ml + 1)) == ml + 1:
-                        err = '_field_too_big_file_'
+                        err = 'collector_field_file_too_big'
                         self.REQUEST.form[id]=v.filename
                 v.seek(0)
 
