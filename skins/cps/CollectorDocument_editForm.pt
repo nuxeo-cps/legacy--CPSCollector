@@ -57,15 +57,15 @@
            tal:content="description"></textarea>
         </metal:block>
       </metal:block>
-      <!-- Categories -->
+      <!-- Theme -->
       <tal:block  condition="not:create">
       <metal:block use-macro="here/main_widgets/macros/form_property">
         <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_categories_')">Categories
+          tal:content="python:mcat('_newsletter_theme_')">Theme
         </metal:block>
         <metal:block fill-slot="content">
-          <select multiple="1" name="Categories" size="6">
-            <tal:block repeat="op python:here.md_getVocabularies('Categories', 1)">
+          <select multiple="1" name="Theme">
+            <tal:block repeat="op python:here.md_getVocabularies('Theme', 1)">
               <option tal:attributes="value python:op[0];selected python:op[1]" tal:content="python:op[0]"></option>
             </tal:block>
           </select>

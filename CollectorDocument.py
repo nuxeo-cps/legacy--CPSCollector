@@ -95,8 +95,8 @@ class CollectorDocument(Form, BaseDocument, Metadata):
     security = ClassSecurityInfo()
 
     _properties = BaseDocument._properties + (
-        {'id':'_Categories', 'type':'string', 'mode':'w',
-         'label':'Categories'},        
+        {'id':'_Theme', 'type':'string', 'mode':'w',
+         'label':'Theme'},        
         {'id':'submit_msg', 'type':'string', 'mode':'w',
          'label':'Message after submit'},
         {'id':'submit_msg_stat', 'type':'boolean', 'mode':'w',
@@ -128,20 +128,20 @@ class CollectorDocument(Form, BaseDocument, Metadata):
     security.declareProtected(ModifyPortalContent, 'edit')
     def edit(self, **kw):
         "called by editProperties"
-        self.setCategories(kw.get('Categories'))
+        self.setTheme(kw.get('Theme'))
         BaseDocument.edit(self, **kw)
 
 
     ### handle metadata
-    security.declareProtected(ModifyPortalContent, 'setCategories')
-    def setCategories(self, val):
+    security.declareProtected(ModifyPortalContent, 'setTheme')
+    def setTheme(self, val):
         "setter return 1 if set was successfull"
-        return self.md_set('Categories', val)
+        return self.md_set('Theme', val)
     
-    security.declareProtected(View, 'Categories')
-    def Categories(self):
+    security.declareProtected(View, 'Theme')
+    def Theme(self):
         "Accessor"
-        return self.md_get('Categories') or '' # None is not indexable !
+        return self.md_get('Theme') or '' # None is not indexable !
 
 
     ### collector action
