@@ -49,9 +49,9 @@
 <span metal:define-macro="selection" tal:omit-tag="">
   <select tal:attributes="name f_id;multiple f/multiple|python:0; size f/size|nothing" name="_x_">
     <span tal:repeat="v python:here.getVList(f_id)" tal:omit-tag="">
-    <option tal:attributes="value v;selected python:here.getV(f_id,'checked')==v" tal:content="python:here.getLabel(f_id,v)">_x_</option></span></select>
+      <option tal:attributes="value v;selected python:v in here.getV(f_id, 'value', '', 1)" tal:content="python:here.getLabel(f_id,v)">_x_</option></span></select>
 </span>
-    
+
 <!-- def separator field -->
 <span metal:define-macro="separator" tal:omit-tag="">
   <hr><span tal:replace="label|nothing" />
