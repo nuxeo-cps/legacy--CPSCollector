@@ -88,7 +88,8 @@ class CollectorDocument(Form, BaseDocument):
     security = ClassSecurityInfo()
 
     _properties = BaseDocument._properties + (
-        {'id':'author', 'type':'string', 'mode':'w', 'label':'Author'},        
+        {'id':'author', 'type':'string', 'mode':'w', 'label':'Author'},
+        {'id':'submit_msg', 'type':'string', 'mode':'w', 'label':'Message'},
         )
     author=''
 
@@ -100,7 +101,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('manage_afterAdd')
     def manage_afterAdd(self, item, container):
         "Finilize the form init."
-        self.post_init( )
+        self.post_init( msg_pt=self.CollectorDocument_msg )
 
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self):
@@ -115,7 +116,8 @@ class CollectorDocument(Form, BaseDocument):
         #    return "ALREADY SUBMITED"
         id = self._create_id()
         self._setObject(id, CollectorItem(id, self.get_values()))
-        return "YES DONE"
+        msg = self.submit_msg
+        return self._msg_pt(display_msg=msg, **kw)
 
     security.declareProtected(ModifyPortalContent, 'exportData')
     def exportData(self, **kw):
