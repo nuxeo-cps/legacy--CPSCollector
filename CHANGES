@@ -4,7 +4,7 @@ New features:
 - basic CPSDefault integration
 Bug fixes:
 ~~~~~~~~~~
--
+- fixing write access on view form
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
