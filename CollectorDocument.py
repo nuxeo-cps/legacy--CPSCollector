@@ -156,8 +156,8 @@ class CollectorDocument(Form, BaseDocument):
         psm = 'portal_status_message=%s' % (mcat('_form_erased_data_'), )
         for id in self._get_item_ids():
             self._del_item(id)
-        self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
-        return
+        #self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
+        return psm
 
     security.declareProtected(ModifyPortalContent, 'initTest')
     def initTest(self):
