@@ -25,7 +25,6 @@ class Form(Base):
 
     security.declareProtected(ModifyPortalContent, 'assert_form_modify')
     def assert_form_modify(self):
-        "azer"
         pass
 
     # DEFINITION OF FIELDS
@@ -65,23 +64,23 @@ class Form(Base):
         self.id = id
 
         # creation of internal fields
-        self.add_field('title__', type='title', label='Field edition:')
+        self.add_field('title__', type='title', label='_form_field_edit_')
         self.add_field('id__', type='string_ro', label='Id:', join='on')
-        self.add_field('type__', type='string_ro', label='Type:')
-        self.add_field('label__', type='string', label='Label:')
-        self.add_field('size__', type='int', label='Size:')
-        self.add_field('cols__', type='int', label='Column:')
-        self.add_field('rows__', type='int', label='Rows:')
-        self.add_field('maxlength__', type='int', label='Max Length:')
-        self.add_field('required__', type='checkbox', label='Required:')
-        self.add_field('checked__', type='string', label='Checked:')
-        self.add_field('value__', type='string', label='Value:')
-        self.add_field('mvalue__', type='text', label='Values:',
+        self.add_field('type__', type='string_ro', label='_form_type_')
+        self.add_field('label__', type='string', label='_form_label_')
+        self.add_field('size__', type='int', label='_form_size_')
+        self.add_field('cols__', type='int', label='_form_cols_')
+        self.add_field('rows__', type='int', label='_form_rows_')
+        self.add_field('maxlength__', type='int', label='_form_max_length_')
+        self.add_field('required__', type='checkbox', label='_form_required_')
+        self.add_field('checked__', type='string', label='_form_checked_')
+        self.add_field('value__', type='string', label='_form_value_')
+        self.add_field('mvalue__', type='text', label='_form_values_',
                         cols=40, rows=5)
-        self.add_field('multiple__', type='checkbox', label='Multiple:')
-        self.add_field('submit__', type='submit', label='Change',
+        self.add_field('multiple__', type='checkbox', label='_form_mulitple_')
+        self.add_field('submit__', type='submit', label='_form_bt_change_',
                    value='editField:method')
-        self.add_field('join__', type='checkbox', label='Join with the next field')
+        self.add_field('join__', type='checkbox', label='_form_join_with_next_')
 
     # ZPT default
     _macros_pt='Form_macros'
@@ -322,6 +321,18 @@ class Form(Base):
                   'url', 'date'):
             return self._macros.macros['string']
         return self._macros.macros[t]
+
+
+    security.declareProtected(View, 'getLabel')
+    def getLabel(self,f_name, multiple=0):
+        # label starting with '_' are localized
+        if multiple:
+            label = self.fields[f_name]['mvalue'].get(multiple, '')
+        else:
+            label = self.fields[f_name].get('label', '')
+        if not len(label) or label[0]!='_':
+            return label
+        return self.portal_messages(label)
 
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
