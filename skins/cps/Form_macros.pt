@@ -290,11 +290,11 @@
   <table border="0" cellspacing="1" cellpadding="1">
     <tr>
       <th>&nbsp;</th>
-      <th nowrap="1">id</th>
-      <th nowrap="1" i18n:translate="collector_form_field_type">type</th>
+      <th nowrap="nowrap">id</th>
+      <th nowrap="nowrap" i18n:translate="collector_form_field_type">type</th>
       <th width="50%" i18n:translate="collector_form_field_label">label</th>
-      <th nowrap="1" i18n:translate="collector_form_field_req">required</th>
-      <th nowrap i18n:translate="collector_form_field_join">join w/ next field</th>
+      <th nowrap="nowrap" i18n:translate="collector_form_field_req">required</th>
+      <th nowrap="nowrap" i18n:translate="collector_form_field_join">join w/ next field</th>
     </tr>
     <tr tal:repeat="f_id doc/getFList"
         tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
@@ -403,11 +403,11 @@
   <table border="0" cellspacing="1" cellpadding="1">
     <tr>
       <th>&nbsp;</th>
-      <th nowrap="1">id</th>
-      <th nowrap="1" i18n:translate="collector_form_field_type">type</th>
+      <th nowrap="nowrap">id</th>
+      <th nowrap="nowrap" i18n:translate="collector_form_field_type">type</th>
       <th width="50%" i18n:translate="collector_form_field_label">label</th>
-      <th nowrap="1" i18n:translate="collector_form_field_req">required</th>
-      <th nowrap i18n:translate="collector_form_field_join">join w/ next field</th>
+      <th nowrap="nowrap" i18n:translate="collector_form_field_req">required</th>
+      <th nowrap="nowrap" i18n:translate="collector_form_field_join">join w/ next field</th>
     </tr>
     <tr tal:repeat="f_id doc/getFList"
         tal:attributes="class python:test(repeat['f_id'].odd(),'odd','even')">
