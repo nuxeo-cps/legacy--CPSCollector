@@ -10,6 +10,7 @@ New features:
 Bug fixes:
 ~~~~~~~~~~
 - fix bug in add_item
+- searchable text doesn't contains metadata
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
