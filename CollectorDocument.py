@@ -9,6 +9,7 @@ Collector is able to display statistics about collected data
 """
 
 import time
+import strptime
 from random import randrange
 from re import match, sub
 from types import StringType, ListType
@@ -408,7 +409,15 @@ class CollectorDocument(Form, BaseDocument):
         m = match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
         if m is None:
             return None, None, None
-        d = time.strptime(m.group(1), '%y%m%d%H%M%S')
+        from zLOG import LOG, DEBUG
+        if hasattr(time,'strptime'):
+            LOG('XXXXXXXXXXXXXXX',DEBUG,'has it')
+            d = time.strptime(m.group(1), '%y%m%d%H%M%S')
+        else:
+            #call to a platform independant version if not provided
+            #by Zope's python (e.g. Win32 before python 2.3)
+            LOG('XXXXXXXXXXXXXXX',DEBUG,'does not')
+            d = strptime.strptime(m.group(1), '%y%m%d%H%M%S')
         user = m.group(2)
         ip = m.group(3)
         return (user, ip, d)
