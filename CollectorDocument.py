@@ -109,7 +109,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('manage_afterAdd')
     def manage_afterAdd(self, item, container):
         """ Finilize the form init """
-        self.post_init(msg_pt=self.CollectorDocument_msg)
+        self.post_init(msg_pt='CollectorDocument_msg')
         BaseDocument.manage_afterAdd(self, item, container)
 
     security.declareProtected(View, 'SearchableText')
@@ -150,7 +150,7 @@ class CollectorDocument(Form, BaseDocument):
             self._set_status(err)
         _macros = self._macros_pt
         self._macros_pt = 'Form_displayMacros'
-        ret = self._display_zpt(self._view_pt, macro_display=1)
+        ret = self._display_zpt(self._view_pt)
         self._macros_pt = _macros
         return ret
         
@@ -163,8 +163,8 @@ class CollectorDocument(Form, BaseDocument):
                 self._delObject(id)
         id = self._create_id()
         self._setObject(id, CollectorItem(id, self.get_values()))
-        msg = self.submit_msg
-        return self._msg_pt(display_msg=msg, **kw)
+        return self._display_zpt(self._msg_pt, display_msg=self.submit_msg)
+
     
     security.declareProtected(ModifyPortalContent, 'exportData')
     def exportData(self, **kw):
