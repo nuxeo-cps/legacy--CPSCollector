@@ -2,7 +2,7 @@
 
 <metal:block fill-slot="main">
 <div style="text-align:center; padding: 2em;">
-<strong><tal:block replace="doc/submit_msg">Thanks</tal:block></strong>
+<strong><tal:block replace="structure doc/submit_msg">Thanks</tal:block></strong>
 </div>
 <tal:block condition="doc/submit_msg_stat">
   <metal:block use-macro="here/CollectorDocument_viewStat/macros/display_stat" />
