@@ -15,18 +15,17 @@ class Form(Base):
     "Form class"
 
     security = ClassSecurityInfo()
-
+    #security_* used to raise an exception in skin 
     security.declarePrivate('security_private')
     def security_private(self):
-        # Used to raise an exception in skin when you don't have the perm
         pass
+
     security.declareProtected(View, 'security_view')
     def security_view(self):
-        # Used to raise an exception in skin when you don't have the perm
         pass
+
     security.declareProtected(ModifyPortalContent, 'security_modify')
     def security_modify(self):
-        # Used to raise an exception in skin when you don't have the perm
         pass
 
     # DEFINITION OF FIELDS
@@ -96,6 +95,7 @@ class Form(Base):
         self._msg_pt=kw.get('msg_pt', self.Form_msg)
         self._editForm_pt=kw.get('editForm_pt', self.Form_editForm)
         self._editField_pt=kw.get('editField_pt', self.Form_editField)
+        self._macros_pt=kw.get('macros_pt', self.Form_macros)
 
     ###
     security.declareProtected(View, 'action')
@@ -161,13 +161,13 @@ class Form(Base):
                     form[f]=self.fields[id].get(f[:-2] ,None)
             form['id__']=id
             form['type__']=self.fields[id]['type']
-            return self.Form_editField(**kw)
+            return self._editField_pt(**kw)
 
         # process form
         id = form.get('id__')
         if status == 'bad_fields':
             self._set_status(err)
-            return self.Form_editField(**kw)
+            return self._editField_pt(**kw)
         # setting new values_ and return to edit form
         extra={}
         for f in self.field_attr[ self.fields[id]['type'] ]:
@@ -288,8 +288,8 @@ class Form(Base):
         t = self.fields[f_name]['type']
         if t in ('string', 'identifier', 'email', 'int', 'float', 'phone', \
                   'url', 'date'):
-            return self.Form_macros.macros['string']
-        return self.Form_macros.macros[t]
+            return self._macros_pt.macros['string']
+        return self._macros_pt.macros[t]
 
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
