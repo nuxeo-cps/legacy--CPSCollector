@@ -1,0 +1,36 @@
+<tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
+           xmlns:metal="http://xml.zope.org/namespaces/metal"
+           define="_check_perm_ here/assert_form_modify">
+  <tal:block define="current_action string:view_stat;
+                     mcat python:here.getCPSmcat();">
+    <html metal:use-macro="here/main_template/macros/master">
+      <metal:block fill-slot="base">
+        <base href="." tal:attributes="href string:${here/absolute_url}/">
+      </metal:block>
+      <body>
+        <metal:block fill-slot="main">
+          <metal:block define-macro="display_quiz_results">
+            <tal:block tal:define="doc here/getContent;
+	                           results python:doc.check_quiz_answers();">
+              <p tal:content="string:collector_label_score ${results/nb_correct} collector_label_correct_over ${results/nb_all}"></p>
+              <table style="text-align:center;width:100%">
+                <th>Question</th>
+                <th>Chosen Answer</th>
+                <th>Correct Answer</th>
+                <th>Result</th>
+                <tr tal:repeat="result results/fields">
+                  <td tal:content="result/question"></td>
+                  <td tal:content="result/chosen_answ"></td>
+                  <td tal:content="result/correct_answ"></td>
+                  <td tal:content="python:test(result['is_correct'],
+                                               'Correct',
+                                               'Incorrect')"></td>
+                </tr>
+              </table>
+            </tal:block>
+          </metal:block>
+        </metal:block>
+      </body>
+    </html>
+  </tal:block>
+</tal:block>
