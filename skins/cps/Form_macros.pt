@@ -1,3 +1,5 @@
+<tal:block define="_check_perm here/security_private" />
+
 <!-- def form_page -->
 <html metal:define-macro="form_page">
   <head>
@@ -11,7 +13,6 @@
     </div>
   </body>
 </html>
-
 
 <!-- def string field -->
 <input metal:define-macro="string" type="text" tal:attributes="name f_id;size f/size|default;maxlength f/maxlength|default; value python:here.getV(f_id, 'value',default)" />
