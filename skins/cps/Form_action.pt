@@ -1,5 +1,5 @@
 <tal:block define="current_action string:view_msg;
-  mcat cpsmcat">
+  mcat python:here.getCPSmcat()">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master">

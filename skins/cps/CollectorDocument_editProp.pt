@@ -1,7 +1,7 @@
 <html metal:use-macro="here/content_lib/macros/master">
 
 <metal:block fill-slot="main"
-  tal:define="mcat nocall:cpsmcat;
+  tal:define="mcat python:here.getCPSmcat();
               create options/create|here/assert_form_modify;
               title python:(create and [''] or [doc.Title()])[0];
               description python:(create and [''] or [doc.description])[0];

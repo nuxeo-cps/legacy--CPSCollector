@@ -1,6 +1,6 @@
 <tal:block define="_check_perm_ here/assert_form_view" />
 <html metal:use-macro="here/content_lib/macros/master">
-<metal:block fill-slot="main" tal:define="mcat nocall:cpsmcat">
+<metal:block fill-slot="main" tal:define="mcat python:here.getCPSmcat()">
 <i tal:content="here/description" /><br>
 <p metal:use-macro="here/Form_macros/macros/display_form">The form</p>
 </metal:block>

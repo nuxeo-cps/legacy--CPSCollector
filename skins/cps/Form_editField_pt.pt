@@ -3,7 +3,7 @@
 <html metal:use-macro="here/content_lib/macros/master">
 
 <metal:block fill-slot="main"
-  tal:define="mcat nocall:cpsmcat;
+  tal:define="mcat python:here.getCPSmcat();
               create options/create|nothing;">
   <tal:block replace="python:mcat('_Modify_field(object name)_')" />
   «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»

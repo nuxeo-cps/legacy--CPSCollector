@@ -1,7 +1,7 @@
 <tal:block define="_check_perm_ here/assert_form_modify" />
 
 <tal:block define="current_action string:view_stat;
-  mcat cpsmcat;">
+  mcat python:here.getCPSmcat();">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master">
