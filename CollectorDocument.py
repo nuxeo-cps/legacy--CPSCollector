@@ -140,14 +140,22 @@ class CollectorDocument(Form, BaseDocument):
             for f in fields:
                 lv.append(obj.data.get(f, ''))
             s += self._list_to_csv(lv)
+        resp = self.REQUEST.RESPONSE
+        filename=self.title_or_id()+'.csv'
+        resp.setHeader('Content-Type', 'application/octet-stream')
+        resp.setHeader('Content-Disposition', 'filename='+filename)        
+        resp.setHeader('Cache-Control', 'no-cache')
         return s
 
     security.declareProtected(ModifyPortalContent, 'eraseData')
     def eraseData(self, **kw):
         "erase all item obj"
+        mcat = self.portal_messages
+        psm='portal_status_message=%s' % (mcat('_form_erased_data_'), )
         for obj in self.objectValues():
             self._delObject(obj.id)
-        return "ERASE DONE"
+        self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
+        return
 
     security.declareProtected(ModifyPortalContent, 'initTest')
     def initTest(self):
