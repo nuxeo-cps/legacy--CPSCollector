@@ -114,9 +114,9 @@ class Form(Base):
             self._editForm_pt = editForm
 
         if editField == None or editField == '':
-            self._editForm ='Form_editField_pt'
+            self._editField_pt ='Form_editField_pt'
         else:
-            self._editField = editField_pt
+            self._editField_pt = editField
 
         return
         
