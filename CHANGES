@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- fix: export use repository id for filename
+- fix: export use octet stream content type instead of application/csv
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
