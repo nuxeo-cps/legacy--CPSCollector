@@ -93,16 +93,21 @@ class CollectorDocument(Form, BaseDocument):
     security = ClassSecurityInfo()
 
     _properties = BaseDocument._properties + (
-        {'id':'submit_msg', 'type':'string', 'mode':'w', 'label':'Message'},
+        {'id':'submit_msg', 'type':'string', 'mode':'w',
+         'label':'Message after submit'},
+        {'id':'submit_msg_stat', 'type':'boolean', 'mode':'w',
+         'label':'View statistic after submit'},
         {'id':'unique_submit', 'type':'boolean', 'mode':'w',
          'label':'Unique Submit'},
         )
+    submit_msg=''
+    submit_msg_stat=0
+    unique_submit=1
 
     def __init__(self, id, **kw):
         "Guess what it is."
         BaseDocument.__init__(self, id, **kw)
         Form.__init__(self, id)
-        self.unique_submit=1
 
     security.declarePrivate('manage_afterAdd')
     def manage_afterAdd(self, item, container):
@@ -163,7 +168,7 @@ class CollectorDocument(Form, BaseDocument):
         self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
         return
 
-    security.declareProtected(View, 'viewStat')
+    security.declareProtected(ModifyPortalContent, 'viewStat')
     def viewStat(self, **kw):
         "display stat for fields of type: selection/checkbox/radio"
         return self.CollectorDocument_viewStat(**kw)
