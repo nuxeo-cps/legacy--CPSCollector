@@ -1,6 +1,6 @@
 <tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
            xmlns:metal="http://xml.zope.org/namespaces/metal"
-           define="_check_perm_ here/assert_form_modify"
+           define="_check_perm_ here/assert_form_view"
            i18n:domain="cpscollector">
   <tal:block define="current_action string:view_stat;">
     <html metal:use-macro="here/main_template/macros/master">
