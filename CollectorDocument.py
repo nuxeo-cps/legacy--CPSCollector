@@ -95,8 +95,6 @@ class CollectorDocument(Form, BaseDocument):
     security = ClassSecurityInfo()
 
     _properties = BaseDocument._properties + (
-        {'id':'_Theme', 'type':'string', 'mode':'w',
-         'label':'Theme'},        
         {'id':'submit_msg', 'type':'string', 'mode':'w',
          'label':'Message after submit'},
         {'id':'submit_msg_stat', 'type':'boolean', 'mode':'w',
@@ -127,24 +125,6 @@ class CollectorDocument(Form, BaseDocument):
         "Used by the catalog for basic full text indexing."
         return '%s %s %s' % (self.title, self.description,
                                 self.related_links)
-
-    security.declareProtected(ModifyPortalContent, 'edit')
-    def edit(self, **kw):
-        "called by editProperties"
-        self.setTheme(kw.get('Theme'))
-        BaseDocument.edit(self, **kw)
-
-
-    ### handle metadata
-    security.declareProtected(ModifyPortalContent, 'setTheme')
-    def setTheme(self, val):
-        "setter return 1 if set was successfull"
-        return self.md_set('Theme', val)
-    
-    security.declareProtected(View, 'Theme')
-    def Theme(self):
-        "Accessor"
-        return self.md_get('Theme') or '' # None is not indexable !
 
     ### collector action
     security.declarePrivate('notify_modified')
