@@ -24,7 +24,6 @@
 
 <metal:block fill-slot="main"
   tal:define="title python:(create and [''] or [here.Title()])[0];
-              author python:(create and [''] or [here.author])[0];
               description python:(create and [''] or [here.description])[0];
               submit_msg python:(create and ['Thank you'] or [here.submit_msg])[0];
               unique_submit python:create or here.unique_submit;
@@ -44,16 +43,6 @@
         </metal:block>
         <metal:block fill-slot="content">
           <input type="text" name="title" value="title" tal:attributes="value title" />
-        </metal:block>
-      </metal:block>
-      <!-- author -->
-      <metal:block use-macro="here/main_widgets/macros/form_property">
-        <metal:block fill-slot="title"
-          tal:content="python:mcat('_prop_author_')">
-          Author
-        </metal:block>
-        <metal:block fill-slot="content">
-          <input type="text" name="author" value="author" tal:attributes="value author" />
         </metal:block>
       </metal:block>
       <!-- descr -->
