@@ -9,7 +9,6 @@ from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
-
 ### class
 class Form(Base):
     "Form class"
@@ -26,6 +25,7 @@ class Form(Base):
 
     security.declareProtected(ModifyPortalContent, 'assert_form_modify')
     def assert_form_modify(self):
+        "azer"
         pass
 
     # DEFINITION OF FIELDS
@@ -83,6 +83,13 @@ class Form(Base):
                    value='editField:method')
         self.add_field('join__', type='checkbox', label='Join with the next field')
 
+    # ZPT default
+    _macros_pt='Form_macros'
+    _view_pt='Form_view'
+    _msg_pt='Form_msg'
+    _editForm_pt='Form_editForm'
+    _editField_pt='Form_editField'
+    
     security.declarePrivate('post_init')
     def post_init(self, **kw):
         """ setup tpl stuff
@@ -91,17 +98,24 @@ class Form(Base):
         editForm_pt: edit a form (add/move/rm field)
         editField_pt: edit a field (properties)
         """
-        self._view_pt=kw.get('view_pt', self.Form_view)
-        self._msg_pt=kw.get('msg_pt', self.Form_msg)
-        self._editForm_pt=kw.get('editForm_pt', self.Form_editForm)
-        self._editField_pt=kw.get('editField_pt', self.Form_editField)
-        self._macros_pt=kw.get('macros_pt', self.Form_macros)
+        self._view_pt=kw.get('view_pt', self._view_pt)
+        self._msg_pt=kw.get('msg_pt', self._msg_pt)
+        self._editForm_pt=kw.get('editForm_pt', self._editForm_pt)
+        self._editField_pt=kw.get('editField_pt', self._editField_pt)
+        self._macros_pt=kw.get('macros_pt', self._macros_pt)
+
+    security.declarePrivate('_display_zpt')
+    def _display_zpt(self, zpt_name, **kw):
+        # call zpt_name
+        zpt = self.restrictedTraverse(zpt_name)
+        self._macros = self.restrictedTraverse(self._macros_pt)
+        return zpt(**kw)
 
     ###
     security.declareProtected(View, 'action')
     def action(self, **kw):
         "this method should be rewrite by child"
-        return self._msg_pt(**kw)
+        return self._display_zpt(self._msg_pt, **kw)
 
     security.declareProtected(View, 'validator')
     def validator(self, form):
@@ -126,7 +140,7 @@ class Form(Base):
         if status != 'valid_form':
             if err:
                 self._set_status(err)
-            return self._view_pt(**kw)
+            return self._display_zpt(self._view_pt, **kw)
 
         return self.action(**kw)
 
@@ -136,10 +150,10 @@ class Form(Base):
         self._set_status()
         status,err=self.check_form()
         if status == 'not_yet_submited':
-            return self._editForm_pt(**kw)
+            return self._display_zpt(self._editForm_pt, **kw)
         elif status == 'bad_fields':
             self._set_status(err)
-        return self._editForm_pt(**kw)
+        return self._display_zpt(self._editForm_pt, **kw)
 
     security.declareProtected(ModifyPortalContent, 'editField')
     def editField(self, **kw):
@@ -147,7 +161,7 @@ class Form(Base):
         form = self.REQUEST.form
         id = form.get('f_id') or form.get('id__')
         if not self.fields.has_key(id):
-            return self._editForm_pt(**kw)  # wrong id
+            return self._display_zpt(self._editForm_pt, **kw) # wrong id
         self._set_current_form(self.fields[id]['type'])
         status,err = self.check_form()
         if status == 'not_yet_submited':
@@ -161,13 +175,13 @@ class Form(Base):
                     form[f]=self.fields[id].get(f[:-2] ,None)
             form['id__']=id
             form['type__']=self.fields[id]['type']
-            return self._editField_pt(**kw)
+            return self._display_zpt(self._editField_pt, **kw)
 
         # process form
         id = form.get('id__')
         if status == 'bad_fields':
             self._set_status(err)
-            return self._editField_pt(**kw)
+            return self._display_zpt(self._editField_pt, **kw)
         # setting new values_ and return to edit form
         extra={}
         for f in self.field_attr[ self.fields[id]['type'] ]:
@@ -175,7 +189,7 @@ class Form(Base):
 
         self.add_field(id, **extra)
         self._set_current_form(None)
-        return self._editForm_pt(**kw)
+        return self._display_zpt(self._editForm_pt, **kw)
 
     security.declareProtected(ModifyPortalContent, 'addField')
     def addField(self, **kw):
@@ -195,7 +209,7 @@ class Form(Base):
                 self.del_field(id)
         else:
             self.del_field(f_id)
-        return self._editForm_pt(**kw)
+        return self._display_zpt(self._editForm_pt, **kw)
 
     security.declareProtected(ModifyPortalContent, 'moveFieldUp')
     def moveFieldUp(self, **kw):
@@ -206,7 +220,7 @@ class Form(Base):
                 self.move_field(id, 'up')
         else:
             self.move_field(f_id, 'up')
-        return self._editForm_pt(**kw)
+        return self._display_zpt(self._editForm_pt, **kw)
 
     security.declareProtected(ModifyPortalContent, 'moveFieldDown')
     def moveFieldDown(self, **kw):
@@ -218,7 +232,7 @@ class Form(Base):
                 self.move_field(id, 'down')
         else:
             self.move_field(f_id, 'down')
-        return self._editForm_pt(**kw)
+        return self._display_zpt(self._editForm_pt, **kw)
 
     security.declareProtected(ModifyPortalContent, 'dumpFields')
     def dumpFields(self):
@@ -306,8 +320,8 @@ class Form(Base):
         t = self.fields[f_name]['type']
         if t in ('string', 'identifier', 'email', 'int', 'float', 'phone', \
                   'url', 'date'):
-            return self._macros_pt.macros['string']
-        return self._macros_pt.macros[t]
+            return self._macros.macros['string']
+        return self._macros.macros[t]
 
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
