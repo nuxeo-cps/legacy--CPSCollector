@@ -1,7 +1,9 @@
-## $Id$
+##parameters=REQUEST
+
+# $Id$
 doc = context.getContent()
 
-f_id = context.REQUEST.form.get('f_id')
+f_id = REQUEST.form.get('f_id')
 doc.del_fields(f_id)
 
 if doc.meta_type == 'Quiz Document':
