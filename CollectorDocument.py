@@ -67,7 +67,7 @@ factory_type_information = (
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'erase',
                   'name': 'action_erase_data',
-                  'action': 'eraseData',
+                  'action': 'Form_eraseDataPrompt',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'create',
                   'name': 'action_create',
@@ -140,12 +140,8 @@ class CollectorDocument(Form, BaseDocument):
     security.declareProtected(ModifyPortalContent, 'eraseData')
     def eraseData(self, **kw):
         """Erase all collector items"""
-        mcat = self.Localizer.cpscollector
-        psm = 'portal_status_message=%s' % (mcat('collector_erased_data'), )
         for id in self._get_item_ids():
             self._del_item(id)
-        #self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
-        return psm
 
     # FIXME: these tests should move to a unit test package
     security.declareProtected(ModifyPortalContent, 'initTest')
