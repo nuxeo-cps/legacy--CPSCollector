@@ -72,7 +72,7 @@ class Form(Base):
         self.add_field('title__', type='title', label='_form_field_edit_')
         self.add_field('id__', type='string_ro', label='Id:', join='on')
         self.add_field('type__', type='string_ro', label='_form_type_')
-        self.add_field('label__', type='string', label='_form_label_')
+        self.add_field('label__', type='text', label='_form_label_', cols=20, rows=2)
         self.add_field('size__', type='int', label='_form_size_')
         self.add_field('cols__', type='int', label='_form_cols_')
         self.add_field('rows__', type='int', label='_form_rows_')
@@ -556,6 +556,7 @@ class Form(Base):
     security.declarePrivate('_str_to_mvalue')
     def _str_to_mvalue(self, s):
         """ Convert a mvalue string to dico """
+        i = 1
         mvalue = {}
         lines = s.split('\n')
         if not len(lines):
@@ -564,8 +565,10 @@ class Form(Base):
             t = l.split('|')
             if len(t[0].strip()) < 1:
                 continue
-            if len(t) == 1:
+            if len(t) == 1: # pipe symbol not used               
                 t.append(t[0])
+                t[0] = str(i) + "_" + t[0] # build a new value
+                i = i + 1
             elif len(t) != 2:
                 continue
             mvalue[t[0].strip()]=t[1].strip()
