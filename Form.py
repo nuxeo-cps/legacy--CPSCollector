@@ -69,7 +69,7 @@ class Form(ExtensionClass.Base):
     ### 
     def action(self, **kw):
         "this method should be rewrite by child"
-        return self.CollectorDocument_view(**kw)
+        return self.Form_view(**kw)
 
     def validator(self, form):
         "this method should be rewrite by child, should return error str"
@@ -85,10 +85,10 @@ class Form(ExtensionClass.Base):
         self._set_status()
         status,err=self.check_form()
         if status == 'not_yet_submited':
-            return self.CollectorDocument_view(**kw)
+            return self.Form_view(**kw)
         elif status == 'bad_fields':
             self._set_status( err )
-            return self.CollectorDocument_view(**kw)
+            return self.Form_view(**kw)
         return self.action(**kw)        
 
     def editForm( self, **kw ):

@@ -1,0 +1,34 @@
+<tal:block define="current_action string:view;
+  mcat nocall:here/portal_messages">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+  <metal:block fill-slot="base">
+    <base href="." tal:attributes="href string:${here/absolute_url}/">
+  </metal:block>
+
+<body>
+<metal:block fill-slot="main">
+
+  <p metal:use-macro="here/Form_macros/macros/display_form">The form</p>
+
+
+  <i><tal:block replace="python:mcat('_prop_description_')" />: 
+  <tal:block replace="structure here/description" /></i><br>
+  <i><tal:block replace="python:mcat('_prop_author_')" />: 
+  <tal:block replace="structure here/author" /></i><br>
+
+
+  <metal:block use-macro="here/main_widgets/macros/linksrender">
+    Related links
+  </metal:block>
+  <metal:block use-macro="here/main_widgets/macros/discussion" />
+
+<!-- XXX TODO: remove this for debug purpose -->
+  <hr> debug info request was: <span tal:replace="request/form"/>
+
+</metal:block>
+
+</body>
+</html>
+</tal:block>
