@@ -1,0 +1,24 @@
+<tal:block define="current_action string:edit_field;
+  create options/create|nothing;
+  mcat nocall:here/portal_messages">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+
+<body>
+
+<metal:block fill-slot="header">
+  <tal:block replace="python:mcat('_Modify_field(object name)_')" />
+  «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»
+</metal:block>
+
+<metal:block fill-slot="header_plus" />
+
+<metal:block fill-slot="main">
+  <!-- form editor -->
+  <p metal:use-macro="here/Form_macros/macros/display_form">The form</p>
+</metal:block>
+
+</body>
+</html>
+</tal:block>

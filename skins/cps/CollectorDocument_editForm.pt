@@ -1,0 +1,93 @@
+<tal:block define="current_action string:edit;
+  create options/create|nothing;
+  mcat nocall:here/portal_messages">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master">
+
+<body>
+
+<metal:block fill-slot="header">
+  <tal:block condition="create"
+    tal:content="python:mcat('_Create_a_collector_')">
+    Create a Collector
+  </tal:block>
+  <tal:block condition="not:create">
+    <tal:block replace="python:mcat('_Modify_prop(object name)_')">
+      Modify
+    </tal:block>
+    «&nbsp;<span tal:replace="here/title_or_id">Title</span>&nbsp;»
+  </tal:block>
+</metal:block>
+
+<metal:block fill-slot="header_plus" />
+
+<metal:block fill-slot="main"
+  tal:define="title python:(create and [''] or [here.Title()])[0];
+              author python:(create and [''] or [here.author])[0];
+              description python:(create and [''] or [here.description])[0];
+              submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
+              action python:create and 'cpsdocument_create' or 'cpsdocument_edit';">
+
+  <form name="edit_form" action="." method="post" enctype="multipart/form-data"
+        tal:attributes="action action">
+
+  <metal:block use-macro="here/main_widgets/macros/form">
+    <metal:block fill-slot="content">
+      <!-- title -->
+      <metal:block use-macro="here/main_widgets/macros/form_property">
+        <metal:block fill-slot="title"
+          tal:content="python:mcat('_prop_title_')">
+          Title
+        </metal:block>
+        <metal:block fill-slot="content">
+          <input type="text" name="title" value="title" tal:attributes="value title" />
+        </metal:block>
+      </metal:block>
+      <!-- author -->
+      <metal:block use-macro="here/main_widgets/macros/form_property">
+        <metal:block fill-slot="title"
+          tal:content="python:mcat('_prop_author_')">
+          Author
+        </metal:block>
+        <metal:block fill-slot="content">
+          <input type="text" name="author" value="author" tal:attributes="value author" />
+        </metal:block>
+      </metal:block>
+      <!-- descr -->
+      <metal:block use-macro="here/main_widgets/macros/form_property">
+        <metal:block fill-slot="title"
+          tal:content="python:mcat('_prop_description_')">
+          Description
+        </metal:block>
+        <metal:block fill-slot="content">
+          <textarea name="description:text" rows="5" cols="50" wrap="soft"
+           tal:content="description"></textarea>
+        </metal:block>
+      </metal:block>
+
+      <!-- links -->
+      <metal:block use-macro="here/main_widgets/macros/linkswidget">
+        Related links
+      </metal:block>
+
+    </metal:block>
+
+</metal:block>
+
+  <input type="hidden" name="type_name" value="Collector Document">
+  <tal:block condition="create">
+    <input type="hidden" name="default_id_from" value="title" />
+    <input type="hidden" name="default_title_from" value="description" />
+    <input type="hidden" name="default_description_from" value="title" />
+  </tal:block>
+  <input class="mainbutton" type="submit" value="." tal:attributes="value submitvalue" />
+  <input type="button" name="cancel" onclick="history.back()"
+    tal:attributes="value python:mcat('_button_cancel_')" />
+  </form>
+
+</metal:block>
+
+</body>
+</html>
+</tal:block>
