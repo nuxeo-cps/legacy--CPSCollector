@@ -1,16 +1,18 @@
+# translation of NuxCPSCollector-en.po to francais
 # translation of NuxCPSCollector-en.po to Français
 #$Id$
-# Julien Anguenot <ja@nuxeo.com>, 2003
+# Julien Anguenot <ja@nuxeo.com>, 2003.
+# emmanuel <epietriga@nuxeo.com>, 2003.
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Julien Anguenot <ja@nuxeo.com>\n"
-"PO-Revision-Date: 2003-09-09 17:48+0200\n"
+"Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
+"PO-Revision-Date: 2003-10-20 10:59+0200\n"
 "Project-Id-Version: NuxCPSCollector-en\n"
-"Language-Team: Français <fr@li.org>\n"
-"X-Generator: KBabel 1.0\n"
+"Language-Team: francais <fr@li.org>\n"
+"X-Generator: KBabel 1.0.2\n"
 
 msgid "_portal_type_Collector Document"
 msgstr "Information Collector"
@@ -34,13 +36,13 @@ msgid "_action_erase_data_"
 msgstr "Erase collected data"
 
 msgid "_Modify_prop(object name)_"
-msgstr "Modify Property"
+msgstr "Modify property"
 
 msgid "_Modify_form(object name)_"
-msgstr "Modify Form"
+msgstr "Modify form"
 
 msgid "_Modify_field(object name)_"
-msgstr "Modify a Field of"
+msgstr "Modify a field of"
 
 msgid "_prop_submit_msg_"
 msgstr "Message after submit"
@@ -104,7 +106,7 @@ msgstr "This is an empty form"
 
 # Form_editForm
 msgid "_form_edit_help_"
-msgstr "This page manage the content of your form."
+msgstr "This page manages the content of your form."
 
 msgid "_form_add_new_field_"
 msgstr "Add a new field"
@@ -122,7 +124,7 @@ msgid "_form_bt_remove_"
 msgstr "Delete"
 
 msgid "_form_erased_data_"
-msgstr "Collected Data have been purged"
+msgstr "Collected Data has been purged"
 
 msgid "_form_join_with_next_"
 msgstr "Join with the next field:"
@@ -179,13 +181,13 @@ msgid "_form_stat_detail_"
 msgstr "Results:"
 
 msgid "_form_%s_data_from_%s_to_%s_"
-msgstr "%s information submitted from %s to %s."
+msgstr "%s information submitted since %s until %s."
 
 msgid "_form_stat_empty_"
 msgstr "Sorry, no data collected."
 
 msgid "_form_stat_null_"
-msgstr "Sorry, there are no field with statistic interest."
+msgstr "Sorry, there is no field with statistic interest."
 
 msgid "_action_view_stat_"
 msgstr "View statistics"
@@ -216,10 +218,10 @@ msgstr "%m/%d/%Y %H:%M"
 
 # for initTest
 msgid "_survey_title_"
-msgstr "This is an survey example"
+msgstr "This is a survey example"
 
 msgid "_survey_bla_"
-msgstr "Thanks to answer to the following questions:"
+msgstr "Thanks for answering the following questions:"
 
 msgid "_survey_q1_"
 msgstr "You think this is:"
@@ -261,7 +263,7 @@ msgid "_col_string_ro_"
 msgstr "String read only"
 
 msgid "_col_identifier_"
-msgstr "Identifiant"
+msgstr "Identifier"
 
 msgid "_col_email_"
 msgstr "Email"
@@ -285,7 +287,7 @@ msgid "_col_phonenumber_"
 msgstr "Phone Number"
 
 msgid "_col_textarea_"
-msgstr "Textarea"
+msgstr "Text Area"
 
 msgid "_col_radiobutton_"
 msgstr "Radio button"
