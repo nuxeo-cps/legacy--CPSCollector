@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.5.3 [R1 build 2004/02/25-08:44 by ben]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- i18n all field validation error
+- i18n fix Modify -> Edit
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- 
+
+*******************************************
 ** CPSCollector V1.5.2 [R1 build 2004/02/19-15:52 by ben]
 
 Requires:
