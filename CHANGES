@@ -1,13 +1,12 @@
-- this product was named NuxCPSCollector
+ZODB Requires:
+~~~~~~~~~~~~~~
+-
 New features:
 ~~~~~~~~~~~~~
-- basic CPSDefault integration
+-
 Bug fixes:
 ~~~~~~~~~~
-- fixing write access on view form
-- Form.py method getattr on span was returning an error. 
+-
 New internal features:
-~~~~~~~~~~~~~~~~~~~~~~ 
-- getCPSmcat() within ths skins directory returning the cat used for this product and using that in the templates files within the skins directory of the product.
-- Installer for the Product doing everything.(Check it out)
-- Update of the .po files out of date. (mlissing msgids)
+~~~~~~~~~~~~~~~~~~~~~~
+-
