@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2003-10-22 17:11default\n"
-"PO-Revision-Date: 2003-10-22 17:11+0200\n"
+"POT-Creation-Date: 2003-10-23 10:00default\n"
+"PO-Revision-Date: 2003-10-23 09:53+0200\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,9 @@ msgstr ""
 "${collector_label_nb_all} question(s)"
 
 #.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button" />
+#.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
+#: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Cancel"
 
@@ -64,7 +66,12 @@ msgstr "Move Down"
 msgid "collector_button_moveup"
 msgstr "Move Up"
 
-#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
+#.   <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
+#: from ../skins/cps/Form_eraseDataPrompt.pt
+msgid "collector_button_proceed"
+msgstr "Proceed"
+
+#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick 
 #.                                    python:
 #.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
@@ -280,6 +287,11 @@ msgstr "Correct answer"
 msgid "collector_label_create"
 msgstr "Create form"
 
+#.   <p>collector_label_erase_warning</p>
+#: from ../skins/cps/Form_eraseDataPrompt.pt
+msgid "collector_label_erase_warning"
+msgstr "All collected data will be lost"
+
 #.   <th>Question</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_question"
@@ -362,9 +374,6 @@ msgstr "Error:"
 msgid "collector_empty_form"
 msgstr "This form is empty"
 
-msgid "collector_erased_data"
-msgstr "Collected data has been erased"
-
 msgid "collector_form_label"
 msgstr "Label:"
 
@@ -413,3 +422,16 @@ msgstr "Correct answer:"
 msgid "collector_blank"
 msgstr " "
 
+#, fuzzy
+#~ msgid "collector_psm_erased_data"
+#~ msgstr "Collected data has been erased"
+
+#~ msgid "collector_psm_erase_data_cancel"
+#~ msgstr "Collected data has not been erased"
+
+#~ msgid "collector_erased_data"
+#~ msgstr "Collected data has been erased"
+
+#, fuzzy
+#~ msgid "collector_erased_data_failed"
+#~ msgstr "Collected data has been erased"

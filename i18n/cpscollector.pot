@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2003-10-22 17:11default\n"
+"POT-Creation-Date: 2003-10-23 10:00default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -46,7 +46,9 @@ msgid ""
 msgstr ""
 
 #.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button" />
+#.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
+#: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr ""
 
@@ -58,6 +60,11 @@ msgstr ""
 #.   <input value="collector_button_moveup" class="context" name="Form_moveFieldUp:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
+msgstr ""
+
+#.   <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
+#: from ../skins/cps/Form_eraseDataPrompt.pt
+msgid "collector_button_proceed"
 msgstr ""
 
 #.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick 
@@ -276,6 +283,11 @@ msgstr ""
 msgid "collector_label_create"
 msgstr ""
 
+#.   <p>collector_label_erase_warning</p>
+#: from ../skins/cps/Form_eraseDataPrompt.pt
+msgid "collector_label_erase_warning"
+msgstr ""
+
 #.   <th>Question</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_question"
@@ -356,9 +368,6 @@ msgid "collector_field_error"
 msgstr ""
 
 msgid "collector_empty_form"
-msgstr ""
-
-msgid "collector_erased_data"
 msgstr ""
 
 msgid "collector_form_label"

@@ -31,9 +31,6 @@ msgstr ""
 msgid "collector_empty_form"
 msgstr ""
 
-msgid "collector_erased_data"
-msgstr ""
-
 msgid "collector_form_label"
 msgstr ""
 
