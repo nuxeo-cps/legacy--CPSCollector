@@ -26,6 +26,7 @@
   tal:define="title python:(create and [''] or [here.Title()])[0];
               author python:(create and [''] or [here.author])[0];
               description python:(create and [''] or [here.description])[0];
+              submit_msg python:(create and ['Thank you'] or [here.submit_msg])[0];
               submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
               action python:create and 'cpsdocument_create' or 'cpsdocument_edit';">
 
@@ -65,7 +66,17 @@
            tal:content="description"></textarea>
         </metal:block>
       </metal:block>
-
+      <!-- submit_msg -->
+      <metal:block use-macro="here/main_widgets/macros/form_property">
+        <metal:block fill-slot="title"
+          tal:content="python:mcat('_prop_submit_msg_')">
+          Message
+        </metal:block>
+        <metal:block fill-slot="content">
+          <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
+           tal:content="submit_msg|default"></textarea>
+        </metal:block>
+      </metal:block>
       <!-- links -->
       <metal:block use-macro="here/main_widgets/macros/linkswidget">
         Related links
