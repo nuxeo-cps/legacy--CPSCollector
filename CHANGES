@@ -3,10 +3,10 @@ ZODB Requires:
 -
 New features:
 ~~~~~~~~~~~~~
-- setting default view to editProp instead of metadata edit
+-
 Bug fixes:
 ~~~~~~~~~~
-- fixing i18n of ptype description
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
-- Silence a few pychecker2 warnings
+-

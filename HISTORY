@@ -1,4 +1,19 @@
 *******************************************
+** CPSCollector V1.3.2 [R1 build 2003-10/06-10:28 by ben]
+
+ZODB Requires:
+~~~~~~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- setting default view to editProp instead of metadata edit
+Bug fixes:
+~~~~~~~~~~
+- fixing i18n of ptype description
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Silence a few pychecker2 warnings
+*******************************************
 ** NuxCPSCollector V1.3.1 [R1 build 2003-09/16-07:27 by anguenot]
 
 - this product was named NuxCPSCollector
