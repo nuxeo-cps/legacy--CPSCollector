@@ -1,0 +1,478 @@
+# translation of CPSCollector_en.po to Euskara
+# translation of en.po to ben
+# translation of en.po to francais
+# Gettext Message File for default.
+# Your Name <your@email>, Year
+# emmanuel <epietriga@nuxeo.com>, 2003, 2004.
+# ben <ben@nuxeo.com>, 2004.
+# Aitzol Naberan Burgaña <anaberan@codesyntax.com>, 2004.
+msgid ""
+msgstr ""
+"Project-Id-Version: CPSCollector_en\n"
+"POT-Creation-Date: 2004-02-20 12:35default\n"
+"PO-Revision-Date: 2004-09-24 09:40+0200\n"
+"Last-Translator: Aitzol Naberan Burgaña <anaberan@codesyntax.com>\n"
+"Language-Team: Euskara <eu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: eu\n"
+"Language-name: Euskara\n"
+"Preferred-encodings: utf-8 latin1\n"
+"Domain: default\n"
+"X-Generator: KBabel 1.3\n"
+
+#.   <span omit-tag="">
+#.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
+#.       forms collected between
+#.       ${collector_sdate (tal replace="python:stats['_stat']['date_start']")}
+#.       and
+#.       ${collector_edate (tal replace="python:stats['_stat']['date_end']")}
+#.     </span>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid ""
+"${collector_nb} forms collected between ${collector_sdate} and "
+"${collector_edate}"
+msgstr ""
+"${collector_nb} form(s) collected between ${collector_sdate} and "
+"${collector_edate}"
+
+#.   <p>
+#.                    Score:
+#.                    ${collector_label_nb_correct (tal replace="results/nb_correct")}
+#.                    correct answers out of
+#.                    ${collector_label_nb_all (tal replace="results/nb_all")}
+#.                    questions
+#.                 </p>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid ""
+"Score: ${collector_label_nb_correct} correct answers out of "
+"${collector_label_nb_all} questions"
+msgstr ""
+"Score: ${collector_label_nb_correct} correct answer(s) out of "
+"${collector_label_nb_all} question(s)"
+
+#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
+#.
+#.     </input>
+#.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+#: ../skins/cps/Form_eraseDataPrompt.pt
+msgid "collector_button_cancel"
+msgstr "Cancel"
+
+#.   <input value="collector_button_movedown" class="context moveDown" name="Form_moveFieldDown:method" type="submit" />
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_button_movedown"
+msgstr "Move Down"
+
+#.   <input value="collector_button_moveup" class="context moveUp" name="Form_moveFieldUp:method" type="submit" />
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_button_moveup"
+msgstr "Move Up"
+
+#.   <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
+#: from ../skins/cps/Form_eraseDataPrompt.pt
+msgid "collector_button_proceed"
+msgstr "Proceed"
+
+#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
+#.                                    python:
+#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_button_remove"
+msgstr "Delete"
+
+#.   <block />
+#: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
+msgid "collector_edit_help"
+msgstr "Use the commands on this page to add and edit fields in your form"
+
+#.   <strong>no data</strong>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_empty_stats"
+msgstr "No data collected yet"
+
+#.   <option value="submit">
+#.               Button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_button"
+msgstr "Submit Button"
+
+#.   <option value="checkbox">
+#.               Checkbox
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_checkbox"
+msgstr "Checkbox"
+
+#.   <option value="comment">
+#.               Comment
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_comment"
+msgstr "Comment"
+
+#.   <option value="date">Date</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_date"
+msgstr "Date"
+
+#.   <option value="email">
+#.               e-mail
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_email"
+msgstr "Email"
+
+#.   <option value="file">
+#.               File
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_file"
+msgstr "File"
+
+#.   <option value="float">Float</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_float"
+msgstr "Float"
+
+#.   <option value="hidden">
+#.               Hidden string
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_hiddenstring"
+msgstr "Hidden string"
+
+#.   <option value="identifier">
+#.               Identifier
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_identifier"
+msgstr "Identifier"
+
+#.   <option value="int">Integer</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_integer"
+msgstr "Integer"
+
+#.   <option value="password">Password</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_password"
+msgstr "Password"
+
+#.   <option value="phone">
+#.               Phone number
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_phonenumber"
+msgstr "Phone number"
+
+#.   <option value="radio">
+#.               Radio button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_radiobutton"
+msgstr "Radio Button"
+
+#.   <option value="reset">
+#.               Reset button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_resetbutton"
+msgstr "Reset Button"
+
+#.   <option value="selection">
+#.               Selection
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_selection"
+msgstr "Selection List"
+
+#.   <option value="separator">
+#.               Separator
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_separator"
+msgstr "Separator"
+
+#.   <option selected="1" value="string">String</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_string"
+msgstr "String"
+
+#.   <option value="string_ro">
+#.               String read only
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_string_ro"
+msgstr "String (read only)"
+
+#.   <option value="text">Text area</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_textarea"
+msgstr "Text area"
+
+#.   <option value="title">
+#.               Title
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_title"
+msgstr "Title"
+
+#.   <option value="url">
+#.               URL
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_url"
+msgstr "URL"
+
+#.   <option value="vradio">
+#.               Vertical Radio button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_vradiobutton"
+msgstr "Radio button (vertical layout)"
+
+#.   <div class="label">
+#.          Add a new field:
+#.        </div>
+#.   <input value="collector_form_add_new_field" class="standalone" name="Form_addField:method" type="submit">
+#.       </input>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_add_new_field"
+msgstr "Add new field"
+
+#.   <th nowrap="">join w/ next field</th>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_join"
+msgstr "Join:"
+
+#.   <th width="50%">label</th>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_label"
+msgstr "Label:"
+
+#.   <th nowrap="1">required</th>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_req"
+msgstr "Required:"
+
+#.   <th nowrap="1">type</th>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_type"
+msgstr "Type:"
+
+#.   <div class="label">
+#.         List of fields:
+#.       </div>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_list_of_fields"
+msgstr "List of fields:"
+
+#.   <h2>No statistic available</h2>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_form_stats_null"
+msgstr "There is no field on this form suited to the computation of statistics"
+
+#.   <th>Chosen Answer</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_chosen_answ"
+msgstr "Chosen answer"
+
+#.   <th>Correct Answer</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_correct_answ"
+msgstr "Correct answer"
+
+#.   <block condition="create">
+#.       Create a Collector
+#.     </block>
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_label_create"
+msgstr "Create form"
+
+#.   <p>collector_label_erase_warning</p>
+#: from ../skins/cps/Form_eraseDataPrompt.pt
+msgid "collector_label_erase_warning"
+msgstr "All collected data will be lost"
+
+#.   <th>Question</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_question"
+msgstr "Question"
+
+#.   <th>Result</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_result"
+msgstr "Result"
+
+#.   <block />
+#: from ../skins/cps/Form_editField_pt.pt
+msgid "collector_modify_field"
+msgstr "Edit a field of "
+
+#.   <block />
+#: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
+msgid "collector_modify_form"
+msgstr "Edit form"
+
+#.   <block>
+#.         Modify
+#.       </block>
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_modify_props"
+msgstr "Edit properties of "
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_description"
+msgstr "Description"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_persistent"
+msgstr "Display latest input"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_submit_msg"
+msgstr "Message to display after submission"
+
+#.   <span condition="is_quiz" />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_submit_msg_results"
+msgstr "Display results after submission"
+
+#.   <span condition="not: is_quiz" />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_submit_msg_stats"
+msgstr "Display statistics after submission"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_title"
+msgstr "Title"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_unique"
+msgstr "One form per user only"
+
+#.   <h2>Result</h2>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_stats_details"
+msgstr "Results:"
+
+#.   <h2>Result</h2>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_stats_header"
+msgstr "Collected information:"
+
+msgid "collector_confirm"
+msgstr "Are you sure?"
+
+msgid "collector_button_modify"
+msgstr "Save"
+
+msgid "collector_date_%m/%d/%Y %H:%M"
+msgstr "%m/%d/%Y %H:%M"
+
+msgid "collector_field_error"
+msgstr "Error:"
+
+msgid "collector_empty_form"
+msgstr "This form is empty"
+
+msgid "collector_form_label"
+msgstr "Label:"
+
+msgid "collector_form_field_edit"
+msgstr "Editing field:"
+
+msgid "collector_form_type"
+msgstr "Type:"
+
+msgid "collector_form_size"
+msgstr "Size:"
+
+msgid "collector_form_cols"
+msgstr "Number of characters per row:"
+
+msgid "collector_form_rows"
+msgstr "Number of rows:"
+
+msgid "collector_form_max_length"
+msgstr "Max. length:"
+
+msgid "collector_form_required"
+msgstr "Required:"
+
+msgid "collector_form_checked"
+msgstr "Default value:"
+
+msgid "collector_form_value"
+msgstr "Value:"
+
+msgid "collector_form_values"
+msgstr "Values:"
+
+msgid "collector_form_multiple"
+msgstr "Multiple selection:"
+
+msgid "collector_button_change"
+msgstr "Save change"
+
+msgid "collector_form_join_with_next"
+msgstr "Join with next field:"
+
+msgid "collector_form_good_answer"
+msgstr "Correct answer:"
+
+msgid "collector_blank"
+msgstr " "
+
+msgid "collector_field_required"
+msgstr "required"
+
+msgid "collector_field_too_long"
+msgstr "field too long"
+
+msgid "collector_field_email_invalid"
+msgstr "invalid email"
+
+msgid "collector_field_int_invalid"
+msgstr "invalid identifier"
+
+msgid "collector_field_float_invalid"
+msgstr "invalid float"
+
+msgid "collector_field_phone_invalid"
+msgstr "invalid phone number"
+
+msgid "collector_field_read_only"
+msgstr "read only field"
+
+msgid "collector_field_id_invalid"
+msgstr "invalid identifier"
+
+msgid "collector_field_multiselect_invalid"
+msgstr "invalid selection"
+
+msgid "collector_field_selection_invalid"
+msgstr "invalid selection"
+
+msgid "collector_field_date_invalid"
+msgstr "invalid date"
+
+msgid "collector_field_url_invalid"
+msgstr "invalid URL"
+
+msgid "collector_field_empty_file"
+msgstr "empty file"
+
+msgid "collector_field_file_too_big"
+msgstr "file too big"
+
