@@ -1,7 +1,7 @@
 <tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
            xmlns:metal="http://xml.zope.org/namespaces/metal">
   <tal:block define="current_action string:view_stat;">
-    <html metal:use-macro="here/content_lib/macros/master">
+    <html metal:use-macro="here/content_lib_master/macros/master">
       <body>
         <metal:block fill-slot="main" i18n:domain="cpscollector">
           <tal:block define="_check_perm_ doc/assert_form_view" />

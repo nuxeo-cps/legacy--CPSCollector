@@ -1,4 +1,4 @@
-<html metal:use-macro="here/content_lib/macros/master"
+<html metal:use-macro="here/content_lib_master/macros/master"
       i18n:domain="cpscollector">
 <metal:block fill-slot="header">
   <tal:block define="_check_perm_ doc/assert_form_modify" />

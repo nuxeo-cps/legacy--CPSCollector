@@ -10,3 +10,4 @@ Bug fixes:
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Changed explanatory comments to docstrings.
+- splitting macro in progress

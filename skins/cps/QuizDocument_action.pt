@@ -1,4 +1,4 @@
-<html metal:use-macro="here/content_lib/macros/master">
+<html metal:use-macro="here/content_lib_master/macros/master">
 
 <metal:block fill-slot="main">
 <h2><tal:block replace="doc/submit_msg">Thanks</tal:block></h2>

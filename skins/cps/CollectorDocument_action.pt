@@ -1,4 +1,4 @@
-<html metal:use-macro="here/content_lib/macros/master">
+<html metal:use-macro="here/content_lib_master/macros/master">
 
 <metal:block fill-slot="main">
 <div style="text-align:center; padding: 2em;">

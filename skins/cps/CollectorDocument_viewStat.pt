@@ -1,7 +1,7 @@
 <tal:block define="current_action string:view_stat;">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="here/content_lib/macros/master">
+      metal:use-macro="here/content_lib_master/macros/master">
   <metal:block fill-slot="base">
     <base href="." tal:attributes="href string:${here/absolute_url}/">
   </metal:block>
