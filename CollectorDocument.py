@@ -18,8 +18,17 @@ from Globals import InitializeClass
 from Acquisition import aq_base
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
-from Products.NuxCPSDocuments.BaseDocument import BaseDocument, \
-     BaseDocument_adder
+try:
+    # CPS3
+    from Products.NuxCPS3.CPSBase import CPSBaseDocument as BaseDocument, \
+         CPSBase_adder
+    def BaseDocument_adder(disp, id, ob, REQUEST=None):
+        return CPSBase_adder(disp, ob, REQUEST)
+except ImportError:
+    # CPS2
+    from Products.NuxCPSDocuments.BaseDocument import BaseDocument, \
+         BaseDocument_adder
+    
 from Products.NuxCPSCollector.Form import Form
 from Products.NuxCPSCollector.CollectorItem import CollectorItem
 
@@ -28,7 +37,7 @@ factory_type_information = (
      'description': 'A Collector Document.',
      'title': '_portal_type_Collector Document',
      'content_icon': 'CollectorDocument_icon.gif',
-     'product': 'GIL',
+     'product': 'NuxCPSCollector',
      'factory': 'addCollectorDocument',
      'meta_type': 'Collector Document',
      'immediate_view': 'CollectorDocument_editForm',

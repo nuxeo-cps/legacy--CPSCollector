@@ -7,7 +7,16 @@ from Products.CMFCore import utils
 from Products.CMFCore.DirectoryView import registerDirectory
 from Products.CMFCore.CMFCorePermissions import AddPortalContent
 
-from Products.NuxCPSDocuments import BaseDocument
+try:
+    # CPS3
+    from Products.NuxCPS3 import CPSBase
+    bases = (CPSBase.CPSBaseDocument,) # base zclasses
+
+except ImportError:
+    # CPS2
+    from Products.NuxCPSDocuments import BaseDocument
+    bases = (BaseDocument.BaseDocument,) # base zclasses
+    
 from Products.NuxCPSCollector import CollectorDocument
 from Products.NuxCPSCollector import CollectorItem
 
@@ -21,7 +30,6 @@ contentConstructors = (CollectorDocument.addCollectorDocument,
 fti = (CollectorDocument.factory_type_information +
        ())
 
-bases = (BaseDocument.BaseDocument,) # base zclasses
 
 this_module = sys.modules[__name__]
 z_bases = utils.initializeBasesPhase1(bases, this_module)
