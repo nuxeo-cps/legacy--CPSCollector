@@ -10,16 +10,20 @@ from Products.CMFCore.CMFCorePermissions import AddPortalContent
 from Products.CPSCore import CPSBase
 bases = (CPSBase.CPSBaseDocument,) # base zclasses
 from Products.CPSCollector import CollectorDocument
+from Products.CPSCollector import QuizDocument
 from Products.CPSCollector import CollectorItem
 
 contentClasses = (CollectorDocument.CollectorDocument,
+                  QuizDocument.QuizDocument,
                   CollectorItem.CollectorItem,
                   )
 
 contentConstructors = (CollectorDocument.addCollectorDocument,
+                       QuizDocument.addQuizDocument,
                        )
 
 fti = (CollectorDocument.factory_type_information +
+       QuizDocument.factory_type_information +
        ())
 
 
