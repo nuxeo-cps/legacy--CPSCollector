@@ -133,12 +133,12 @@ class CollectorDocument(Form, BaseDocument, Metadata):
 
 
     ### handle metadata
-    security.declareProtected(ModifyPortalContent, 'edit')
+    security.declareProtected(ModifyPortalContent, 'setCategories')
     def setCategories(self, val):
         "setter return 1 if set was successfull"
         return self.md_set('Categories', val)
     
-    security.declareProtected(View, 'edit')
+    security.declareProtected(View, 'Categories')
     def Categories(self):
         "Accessor"
         return self.md_get('Categories') or '' # None is not indexable !
