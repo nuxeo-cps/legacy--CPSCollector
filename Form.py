@@ -19,7 +19,7 @@ from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 class Form(Base):
     """ A Form know how to render and validate its fields and
     it knows how to edit itself using ... itself.
-    _action method should be overriden in subclasses
+    _action and _validator methods should be overriden in subclasses
     """
     
     # ZPT default
