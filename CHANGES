@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- fixing bad object reference to zpt obj in action
+	this fix will break previous Collector Object :(
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
