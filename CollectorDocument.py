@@ -4,7 +4,7 @@
 A Collector is a folderish Form, 
 the form action store user input into CollectorItem
 Collector can export its items into a csv file
-Collector is able to display static on data collected
+Collector is able to display statistics about collected data
 """
 
 import time
