@@ -600,8 +600,10 @@ class Form(Base):
     security.declarePrivate('set_values')
     def set_values(self, values):
         # set form values from dico
+        pp = self.REQUEST.form.get('pp')
         self.REQUEST.form = values
         self.REQUEST.form['is_form_setted'] = 'yes'
+        self.REQUEST.form['pp'] = pp
     
 
 InitializeClass(Form)
