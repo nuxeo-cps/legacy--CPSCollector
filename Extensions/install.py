@@ -125,18 +125,18 @@ def install(self):
     _log = []
     def pr(bla, zlog=1, _log=_log):
         if bla == 'flush':
-            return '<html><head><title>CPSForum Installer</title></head><body><pre>'+ \
+            return '<html><head><title>CPSCalendar Installer</title></head><body><pre>'+ \
                    '\n'.join(_log) + \
                    '</pre></body></html>'
 
         _log.append(bla)
         if bla and zlog:
-            LOG('CPSForum Install:', INFO, bla)
+            LOG('CPSCalendar Install:', INFO, bla)
 
     def prok(pr=pr):
         pr(" Already correctly installed")
 
-    pr("Starting CPSForum Install")
+    pr("Starting CPSCalendar Install")
 
     portal = self.portal_url.getPortalObject()
 
