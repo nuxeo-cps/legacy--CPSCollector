@@ -1,23 +1,124 @@
+# translation of ro.po to 
 # ##########################################################
 # ################# DON'T EDIT THIS FILE! ##################
 # ##########################################################
 # Gettext Message File for default.
 # Your Name <your@email>, Year
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: default\n"
+"Project-Id-Version: ro\n"
 "POT-Creation-Date: 2004-02-20 12:35default\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Your Name <your@email>\n"
-"Language-Team: Name <email>\n"
+"PO-Revision-Date: 2005-03-29 15:42+0300\n"
+"Last-Translator: \n"
+"Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-code: ro\n"
 "Language-name: Romanian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Preferred-encodings: utf-8 latin1\n"
 "Domain: default\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -31,6 +132,8 @@ msgid ""
 "${collector_nb} forms collected between ${collector_sdate} and "
 "${collector_edate}"
 msgstr ""
+"${collector_nb} fisa(e) collecta(e) intre ${collector_sdate} si"
+"${collector_edate}"
 
 #.   <p>
 #.                    Score:
@@ -44,54 +147,56 @@ msgid ""
 "Score: ${collector_label_nb_correct} correct answers out of "
 "${collector_label_nb_all} questions"
 msgstr ""
+"Scor: ${collector_label_nb_correct} raspuns(uri) correct(e) din"
+"${collector_label_nb_all} intrebare(intrebari)"
 
 #.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
-#.   
+#.
 #.     </input>
 #.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
-msgstr ""
+msgstr "Anuleaza"
 
 #.   <input value="collector_button_movedown" class="context moveDown" name="Form_moveFieldDown:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
-msgstr ""
+msgstr "Muta jos"
 
 #.   <input value="collector_button_moveup" class="context moveUp" name="Form_moveFieldUp:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
-msgstr ""
+msgstr "Muta sus"
 
 #.   <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
-msgstr ""
+msgstr "Continua"
 
 #.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
 #.                                    python:
 #.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
-msgstr ""
+msgstr "Sterge"
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
-msgstr ""
+msgstr "Utilizeaza comenzile din aceasta pagina pentru a adauga campuri la formular si pentru a le modifica"
 
 #.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_empty_stats"
-msgstr ""
+msgstr "Nu exista date colectate"
 
 #.   <option value="submit">
 #.               Button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_button"
-msgstr ""
+msgstr "Buton de validare"
 
 #.   <option value="checkbox">
 #.               Checkbox
@@ -105,128 +210,128 @@ msgstr ""
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_comment"
-msgstr ""
+msgstr "Comentariu"
 
 #.   <option value="date">Date</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_date"
-msgstr ""
+msgstr "Data"
 
 #.   <option value="email">
 #.               e-mail
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_email"
-msgstr ""
+msgstr "Email"
 
 #.   <option value="file">
 #.               File
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_file"
-msgstr ""
+msgstr "Fisier"
 
 #.   <option value="float">Float</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_float"
-msgstr ""
+msgstr "Numar real"
 
 #.   <option value="hidden">
 #.               Hidden string
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_hiddenstring"
-msgstr ""
+msgstr "Sir de caractere ascuns"
 
 #.   <option value="identifier">
 #.               Identifier
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_identifier"
-msgstr ""
+msgstr "Identificator"
 
 #.   <option value="int">Integer</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_integer"
-msgstr ""
+msgstr "Numar intreg"
 
 #.   <option value="password">Password</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_password"
-msgstr ""
+msgstr "Parola"
 
 #.   <option value="phone">
 #.               Phone number
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_phonenumber"
-msgstr ""
+msgstr "Numar de telefon"
 
 #.   <option value="radio">
 #.               Radio button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_radiobutton"
-msgstr ""
+msgstr "Buton radio"
 
 #.   <option value="reset">
 #.               Reset button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_resetbutton"
-msgstr ""
+msgstr "Buton de reinitializare"
 
 #.   <option value="selection">
 #.               Selection
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_selection"
-msgstr ""
+msgstr "Lista de selectie"
 
 #.   <option value="separator">
 #.               Separator
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_separator"
-msgstr ""
+msgstr "Separator"
 
 #.   <option selected="1" value="string">String</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_string"
-msgstr ""
+msgstr "Sir de caractere"
 
 #.   <option value="string_ro">
 #.               String read only
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_string_ro"
-msgstr ""
+msgstr "Sir de caractere (doar citit)"
 
 #.   <option value="text">Text area</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_textarea"
-msgstr ""
+msgstr "Zona de text"
 
 #.   <option value="title">
 #.               Title
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_title"
-msgstr ""
+msgstr "Titlu"
 
 #.   <option value="url">
 #.               URL
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_url"
-msgstr ""
+msgstr "URL"
 
 #.   <option value="vradio">
 #.               Vertical Radio button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_vradiobutton"
-msgstr ""
+msgstr "Buton radio (pozitionare verticala)"
 
 #.   <div class="label">
 #.          Add a new field:
@@ -235,235 +340,236 @@ msgstr ""
 #.       </input>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
-msgstr ""
+msgstr "Adauga un nou camp"
 
 #.   <th nowrap="">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
-msgstr ""
+msgstr "Unire:"
 
 #.   <th width="50%">label</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_label"
-msgstr ""
+msgstr "Eticheta:"
 
 #.   <th nowrap="1">required</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_req"
-msgstr ""
+msgstr "Obligatoriu:"
 
 #.   <th nowrap="1">type</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_type"
-msgstr ""
+msgstr "Tip: "
 
 #.   <div class="label">
 #.         List of fields:
 #.       </div>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_list_of_fields"
-msgstr ""
+msgstr "Lista de campuri: "
 
 #.   <h2>No statistic available</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_form_stats_null"
-msgstr ""
+msgstr "Nici un camp din aceasta forma nu permite calcularea statisticilor"
 
 #.   <th>Chosen Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_chosen_answ"
-msgstr ""
+msgstr "Raspuns ales"
 
 #.   <th>Correct Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_correct_answ"
-msgstr ""
+msgstr "Raspuns corect"
 
 #.   <block condition="create">
 #.       Create a Collector
 #.     </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_label_create"
-msgstr ""
+msgstr "Creeaza aceasta forma"
 
 #.   <p>collector_label_erase_warning</p>
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_label_erase_warning"
-msgstr ""
+msgstr "Toate datele colectate vor fi pierdute"
 
 #.   <th>Question</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_question"
-msgstr ""
+msgstr "Intrebare"
 
 #.   <th>Result</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_result"
-msgstr ""
+msgstr "Rezultat"
 
 #.   <block />
 #: from ../skins/cps/Form_editField_pt.pt
 msgid "collector_modify_field"
-msgstr ""
+msgstr "Modifica un camp al "
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_modify_form"
-msgstr ""
+msgstr "Modificarea formularului"
 
 #.   <block>
 #.         Modify
 #.       </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_modify_props"
-msgstr ""
+msgstr "Modificarea proprietatilor "
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_description"
-msgstr ""
+msgstr "Descriere"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_persistent"
-msgstr ""
+msgstr "Afiseaza ultima intrare"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg"
-msgstr ""
+msgstr "Mesaj final"
 
 #.   <span condition="is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_results"
-msgstr ""
+msgstr "Afiseaza rezultatele cu mesajul final"
 
 #.   <span condition="not: is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_stats"
-msgstr ""
+msgstr "Afiseaza statisticile cu mesajul final"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_title"
-msgstr ""
+msgstr "Titlu"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_unique"
-msgstr ""
+msgstr "Un singur formular pentru fiecare utilizator"
 
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_stats_details"
-msgstr ""
+msgstr "Rezultate:"
 
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_stats_header"
-msgstr ""
+msgstr "Informatii colectate : "
 
 msgid "collector_confirm"
-msgstr ""
+msgstr "Sunteti sigur?"
 
 msgid "collector_button_modify"
-msgstr ""
+msgstr "Salveaza"
 
 msgid "collector_date_%m/%d/%Y %H:%M"
-msgstr ""
+msgstr "%d/%m/%Y %Hh%M"
 
 msgid "collector_field_error"
-msgstr ""
+msgstr "Eroare:"
 
 msgid "collector_empty_form"
-msgstr ""
+msgstr "Acest formular este gol"
 
 msgid "collector_form_label"
-msgstr ""
+msgstr "Eticheta :"
 
 msgid "collector_form_field_edit"
-msgstr ""
+msgstr "Modificarea unui camp :"
 
 msgid "collector_form_type"
-msgstr ""
+msgstr "Tip :"
 
 msgid "collector_form_size"
-msgstr ""
+msgstr "Marime: "
 
 msgid "collector_form_cols"
-msgstr ""
+msgstr "Numarul de caractere pe linie :"
 
 msgid "collector_form_rows"
-msgstr ""
+msgstr "Numarul de linii :"
 
 msgid "collector_form_max_length"
-msgstr ""
+msgstr "Lungime max. :"
 
 msgid "collector_form_required"
-msgstr ""
+msgstr "Obligatoriu :"
 
 msgid "collector_form_checked"
-msgstr ""
+msgstr "Valoare initiala:"
 
 msgid "collector_form_value"
-msgstr ""
+msgstr "Valoare:"
 
 msgid "collector_form_values"
-msgstr ""
+msgstr "Valori:"
 
 msgid "collector_form_multiple"
-msgstr ""
+msgstr "Selectie multipla:"
 
 msgid "collector_button_change"
-msgstr ""
+msgstr "Salveaza"
 
 msgid "collector_form_join_with_next"
-msgstr ""
+msgstr "Ataseaza cu urmatorul camp:"
 
 msgid "collector_form_good_answer"
-msgstr ""
+msgstr "Raspuns corect:"
 
 msgid "collector_blank"
-msgstr ""
+msgstr " "
 
 msgid "collector_field_required"
-msgstr ""
+msgstr "obligatoriu"
 
 msgid "collector_field_too_long"
-msgstr ""
+msgstr "camp prea lung"
 
 msgid "collector_field_email_invalid"
-msgstr ""
+msgstr "email invalid"
 
 msgid "collector_field_int_invalid"
-msgstr ""
+msgstr "identificator invalid"
 
 msgid "collector_field_float_invalid"
-msgstr ""
+msgstr "numar real invalid"
 
 msgid "collector_field_phone_invalid"
-msgstr ""
+msgstr "numar de telefon invalid"
 
 msgid "collector_field_read_only"
-msgstr ""
+msgstr "camp doar de citit"
 
 msgid "collector_field_id_invalid"
-msgstr ""
+msgstr "identificator invalid"
 
 msgid "collector_field_multiselect_invalid"
-msgstr ""
+msgstr "selectie invalida"
 
 msgid "collector_field_selection_invalid"
-msgstr ""
+msgstr "selectie invalida"
 
 msgid "collector_field_date_invalid"
-msgstr ""
+msgstr "data invalida"
 
 msgid "collector_field_url_invalid"
-msgstr ""
+msgstr "URL invalid"
 
 msgid "collector_field_empty_file"
-msgstr ""
+msgstr "fisier gol"
 
 msgid "collector_field_file_too_big"
-msgstr ""
+msgstr "fisier prea mare"
+
