@@ -340,12 +340,13 @@ class Form(ExtensionClass.Base):
         # check all the fields of a form and return a status and msg
         form = self.REQUEST.form
         mcat = self.portal_messages
+        locale = mcat.get_selected_language()
         if not form.get('is_form_submitted'):
             return ( 'not_yet_submited', '' )
         msg=''
         bf=[]
         for f in self.getFList( ):
-            err = self.check_field( f, form.get(f) )
+            err = self.check_field(f, form.get(f), locale)
             if err:
                 err_l10n = mcat(err)
                 if err_l10n != err:
@@ -356,7 +357,7 @@ class Form(ExtensionClass.Base):
                 bf.append( f )
         form['error__'] =  bf
         if not msg:
-            msg = self.validator( form )            
+            msg = self.validator(form)       
 
         if msg:
             err_l10n = mcat('_field_error_')
@@ -364,7 +365,7 @@ class Form(ExtensionClass.Base):
 
         return ( 'valid_form', 'Congratulation' )
         
-    def check_field( self, id, v ):
+    def check_field( self, id, v, locale='en' ):
         # check input and set default value
         # assume id is valid
         f = self.fields[id]
@@ -416,8 +417,13 @@ class Form(ExtensionClass.Base):
             if v not in f['mvalue'].keys():
                 err = '_field_selection_invalid_'
         elif t == 'date':
-            if not match( r'^[0-9]?[0-9]/[0-9]?[0-9]/[0-9]{4,4}$', v):
-                # FIXME: i18n 
+            if locale == 'en':
+                if not match(r'^((0?[1-9])|(1[0-2]))/((0?[1-9])|([12][0-9])|(3[01]))/[0-9]{4,4}$', v):
+                    err = '_field_date_invalid_'
+            elif locale == 'fr':
+                if not match(r'^((0?[1-9])|([12][0-9])|(3[01]))/((0?[1-9])|(1[0-2]))/[0-9]{4,4}$', v):
+                    err = '_field_date_invalid_'                    
+            elif not match(r'^[0-9]?[0-9]/[0-9]?[0-9]/[0-9]{4,4}$', v):
                 err = '_field_date_invalid_'
         elif t == 'url':
             if not match( r'^(http://)?([\w\~](\:|\.|\-|\/|\?|\=)?){2,}$', v ):
