@@ -1,6 +1,6 @@
 # translation of pt-BR.po to Português do Brasil
-# translation of pt-br.po to Português do Brasil
-# translation of cpscollector.po to Português do Brasil
+# translation of pt-br.po to PortuguÃªs do Brasil
+# translation of cpscollector.po to PortuguÃªs do Brasil
 # ##########################################################
 # ################# DON'T EDIT THIS FILE! ##################
 # ##########################################################
@@ -11,13 +11,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt-BR\n"
 "POT-Creation-Date: 2004-02-20 12:35default\n"
-"PO-Revision-Date: 2004-06-08 11:25-0300\n"
+"PO-Revision-Date: 2004-08-26 10:01-0300\n"
 "Last-Translator: Mario Olimpio de Menezes <mario@curiango.ipen.br>\n"
-"Language-Team: Português do Brasil <pt@li.org>\n"
+"Language-Team: Portugues do Brasil <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -50,7 +49,7 @@ msgstr ""
 "${collector_label_nb_all} questões"
 
 #.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
-#.
+#.   
 #.     </input>
 #.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
