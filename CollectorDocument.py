@@ -124,7 +124,7 @@ class CollectorDocument(Form, BaseDocument):
                 lv.append(obj.data.get(f, ''))
             s += self._list_to_csv(lv)
         resp = self.REQUEST.RESPONSE
-        filename = self.title_or_id() + '.csv'
+        filename = self.getId() + '.csv'
         resp.setHeader('Content-Type', 'application/octet-stream')
         resp.setHeader('Content-Disposition', 'filename=' + filename)
         resp.setHeader('Cache-Control', 'no-cache')
