@@ -1,4 +1,19 @@
 *******************************************
+** CPSCollector V1.3.3 [R1 build 2003-10/08-15:01 by ben]
+
+ZODB Requires:
+~~~~~~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- fixing ptype description i18n
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+*******************************************
 ** CPSCollector V1.3.2 [R1 build 2003-10/06-10:28 by ben]
 
 ZODB Requires:
