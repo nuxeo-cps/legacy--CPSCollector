@@ -162,7 +162,7 @@ class Form(Base):
             return self._editForm_pt     # wrong id
         self._set_current_form(self.fields[id]['type'])
         status,err = self._check_form()
-        if status == 'not_yet_submited':
+        if status == 'not_yet_submitted':
             # display form
             id = form.get('f_id')
             # setting REQUEST.form
@@ -418,7 +418,7 @@ class Form(Base):
                 msg = mcat('_form_is_empty_')
             else:
                 msg = ''
-            return ('not_yet_submited', msg)
+            return ('not_yet_submitted', msg)
         msg=''
         bf=[]
         for f in self.getFList():
