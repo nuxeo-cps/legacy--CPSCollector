@@ -3,10 +3,13 @@ ZODB Requires:
 -
 New features:
 ~~~~~~~~~~~~~
--
+- Quiz Document
+
 Bug fixes:
 ~~~~~~~~~~
 - fix: creation into section result in wf error
+- i18n refactored (now done the new way)
+
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
