@@ -1,4 +1,21 @@
 *******************************************
+** NuxCPSCollector V1.1.0 [R1 build 2003-03/20-15:15 by ben]
+
+ZODB Requires:
+~~~~~~~~~~~~~~
+- cps2 require skins/cps
+- cps3 require skins/cp3 and skins/cps
+New features:
+~~~~~~~~~~~~~
+- CPS 3 compliant but without element skin
+Bug fixes:
+~~~~~~~~~~
+- fixing bad object reference to zpt obj in action
+	this fix will break compatibility w/ previous Collector Object :(
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- refactoring for cps3 compatibility
+*******************************************
 ** NuxCPSCollector V1.0.0 [R1 build 2003-03/10-15:58 by ben]
 
 NuxCPSCollector Creation
