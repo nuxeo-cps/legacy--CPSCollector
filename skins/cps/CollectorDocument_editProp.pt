@@ -57,8 +57,11 @@
       </td>
     </tr>
     <tr>
-      <td>
-        <span i18n:translate="collector_prop_submit_msg_stats" />
+      <td tal:define="is_quiz python:doc.meta_type == 'Quiz Document'">
+        <span tal:condition="is_quiz"
+              i18n:translate="collector_prop_submit_msg_results" />
+        <span tal:condition="not: is_quiz"
+              i18n:translate="collector_prop_submit_msg_stats" />
       </td>
       <td>
           <input type="hidden" name="submit_msg_stat:boolean:default" value="" />
