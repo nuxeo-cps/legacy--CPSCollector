@@ -1,4 +1,4 @@
-# (c) 2002 Nuxeo SARL <http://nuxeo.com>
+# Copyright (c) 2002-2004 Nuxeo SARL <http://nuxeo.com>
 # $Id$
 """
 The Form class is an HTML form generator.

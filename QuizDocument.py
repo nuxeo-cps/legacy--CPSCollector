@@ -1,4 +1,4 @@
-# (c) 2002 Nuxeo SARL <http://nuxeo.com>
+# Copyright (c) 2002-2004 Nuxeo SARL <http://nuxeo.com>
 # $Id$
 """
 A Quiz is a special collector that only allows a few widgets
