@@ -28,5 +28,3 @@ class CollectorItem(SimpleItem):
         return str(self.data)
 
 InitializeClass(CollectorItem)
-    
-# EOF

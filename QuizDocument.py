@@ -103,7 +103,7 @@ class QuizDocument(CollectorDocument):
 
     security.declareProtected(View, 'get_quiz_fields')
     def get_quiz_fields(self, **kw):
-        # Return the list of fields that can be used as quiz questions
+        """Return the list of fields that can be used as quiz questions."""
         l = []
         for f in self.getFList(1):
             if self.fields[f]['type'] not in ('vradio','radio','checkbox'):
@@ -113,7 +113,7 @@ class QuizDocument(CollectorDocument):
 
     security.declareProtected(View, 'check_answers')
     def check_quiz_answers(self, **kw):
-        # Retrieve latest filled form for current user
+        """Retrieve latest filled form for current user."""
         latest_item = self._load_data()
         if latest_item:
             dt = latest_item.data
@@ -134,9 +134,10 @@ class QuizDocument(CollectorDocument):
 
 
     def process_answer(self,f_id,f_value):
-        # For a given field, compare answer with correct answer
-        # build a summary of the question and result
-        # question, answer, correct answer, do they match
+        """For a given field, compare answer with correct answer
+        build a summary of the question and result
+        question, answer, correct answer, do they match.
+        """
         field = self.fields[f_id]
         result = {'question': field['label']}
         correct_answer = field['trueval']
@@ -185,5 +186,3 @@ def addQuizDocument(dispatcher, id, REQUEST=None, **kw):
     """Add a Collector Document"""
     ob = QuizDocument(id, **kw)
     return CPSBase_adder(dispatcher, ob, REQUEST=REQUEST)
-
-#EOF

@@ -149,7 +149,7 @@ class Form(Base):
     #   View helper --------------------------------------------------
     security.declareProtected(View, 'process_view')
     def process_view(self, **kw):
-        # Return a zpt_name to be displayed
+        """Return a zpt_name to be displayed."""
         self._set_status()
         status, err = self._check_form()
         if status == 'valid_form':
@@ -161,7 +161,7 @@ class Form(Base):
 
     security.declareProtected(ModifyPortalContent, 'process_edit_field')
     def process_edit_field(self, **kw):
-        # The field edition page use its own Form fields
+        """The field edition page use its own Form fields."""
         form = self.REQUEST.form
         id = form.get('f_id') or form.get('id__')
         if not self.fields.has_key(id):
@@ -197,7 +197,7 @@ class Form(Base):
     #   Fields Setters -----------------------------------------------
     security.declareProtected(ModifyPortalContent, 'add_field')
     def add_field(self, id, **extra):
-        # Add or modify field to the form
+        """Add or modify field to the form."""
         if not id:
             return
         if not hasattr(aq_base(self), 'fields'):
@@ -221,7 +221,7 @@ class Form(Base):
 
     security.declareProtected(ModifyPortalContent, 'del_field')
     def del_field(self, id):
-        # Delete a field
+        """Delete a field."""
         if not id or not id in self.fields_list:
             return
         self.fields_list.remove(id)
@@ -231,7 +231,7 @@ class Form(Base):
 
     security.declareProtected(ModifyPortalContent, 'del_fields')
     def del_fields(self, ids):
-        # Delete many fields
+        """Delete many fields."""
         if ids and type(ids) is type([]):
             ret = 1
             for id in ids:
@@ -242,7 +242,7 @@ class Form(Base):
 
     security.declareProtected(ModifyPortalContent, 'move_field')
     def move_field(self, id, direction='up'):
-        # Move a field up or down
+        """Move a field up or down."""
         if not id or not id in self.fields_list:
             return
         pos = self.fields_list.index(id)
@@ -257,7 +257,7 @@ class Form(Base):
 
     security.declareProtected(ModifyPortalContent, 'move_fields')
     def move_fields(self, ids, direction='up'):
-        # Move many fields
+        """Move many fields."""
         if ids and type(ids) is type([]):
             ret = 1
             if direction == 'down':
@@ -272,7 +272,7 @@ class Form(Base):
     #   Fields accessor ----------------------------------------------
     security.declareProtected(View, 'getFList')
     def getFList(self, only_data=0):
-        # Return a list of field ids depending on the current form
+        """Return a list of field ids depending on the current form."""
         form_name = self._get_current_form()
         if form_name and self.field_attr.has_key(form_name):
             return ('title__', 'id__', 'type__') + \
@@ -288,7 +288,7 @@ class Form(Base):
 
     security.declareProtected(View, 'getVList')
     def getVList(self, f_name):
-        # Return the list of value for a field
+        """Return the list of value for a field."""
         if not self.fields[f_name].has_key('mvalue'):
             return (f_name)
         l = self.fields[f_name]['mvalue'].keys()
@@ -297,7 +297,7 @@ class Form(Base):
 
     security.declareProtected(View, 'getV')
     def getV(self, f, k, default=None, as_list=None):
-        # Return the value of field f on request
+        """Return the value of field f on request."""
         form = self.REQUEST.form
         v = form.get(f)                   # form first
         if not v and len(form) == 0:
@@ -311,7 +311,7 @@ class Form(Base):
 
     security.declareProtected(View, 'getNbSlot')
     def getNbSlot(self, f_name):
-        # Return the number of cels used by a field
+        """Return the number of cels used by a field."""
         t = self.fields[f_name]['type']
         if t in ('submit', 'reset', 'separator', 'title', 'comment', 'vradio'):
             n = 1
@@ -323,7 +323,7 @@ class Form(Base):
 
     security.declareProtected(View, 'getFMacro')
     def getFMacro(self, f_name):
-        # Return the zpt macro associated with the field
+        """Return the zpt macro associated with the field."""
         t = self.fields[f_name]['type']
         if t in ('string', 'identifier', 'email', 'int', 'float', 'phone',
                  'url', 'date'):
@@ -336,7 +336,7 @@ class Form(Base):
 
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
-        # Label starting with '_' are localized
+        """Label starting with '_' are localized."""
         if multiple:
             if self.fields[f_name].get('mvalue'):
                 label = self.fields[f_name]['mvalue'].get(multiple, '')
@@ -350,7 +350,7 @@ class Form(Base):
 
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
-        # Check if f_name is selected
+        """Check if f_name is selected."""
         if not f or not v:
             return 0
         v_ = self.REQUEST.form.get(f)
@@ -362,7 +362,7 @@ class Form(Base):
 
     security.declareProtected(View, 'getRows')
     def getRows(self):
-        # Return a list of rows
+        """Return a list of rows."""
         rows = []
         join = 0
         nb_cols = []
@@ -606,6 +606,4 @@ class Form(Base):
             mvalue[t[0].strip()] = t[1].strip()
         return mvalue
 
-
 InitializeClass(Form)
-# EOC Form

@@ -198,7 +198,7 @@ class CollectorDocument(Form, BaseDocument):
     # ZPT INTERFACE --------------------------------------------------
     security.declareProtected(View, 'process_view')
     def process_view(self, **kw):
-        # Override view to handle persitent input
+        """Override view to handle persitent input."""
         self._set_status()
         status,err = self._check_form()
         if status == 'valid_form':
@@ -218,7 +218,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declarePrivate('_action')
     def _action(self, **kw):
-        # Store valid input into a collector item
+        """Store valid input into a collector item."""
         if self.unique_submit:
             id = self._check_unique()
             if id:
@@ -229,7 +229,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declareProtected(View, 'get_stat_fields')
     def get_stat_fields(self, **kw):
-        # Return the list of fields with statistics
+        """Return the list of fields with statistics."""
         l = []
         for f in self.getFList(1):
             if self.fields[f]['type'] not in ('checkbox','vradio', 'radio','selection'):
@@ -239,7 +239,7 @@ class CollectorDocument(Form, BaseDocument):
 
     security.declareProtected(View, 'process_stat')
     def process_stat(self, **kw):
-        # Compute stat on selection/radio or checkbox fields
+        """Compute stat on selection/radio or checkbox fields."""
         r = {}
         date_start = time.localtime()
         date_end = time.localtime(0)
@@ -432,5 +432,3 @@ def addCollectorDocument(dispatcher, id, REQUEST=None, **kw):
     """Add a Collector Document"""
     ob = CollectorDocument(id, **kw)
     return CPSBase_adder(dispatcher, ob, REQUEST=REQUEST)
-
-#EOF
