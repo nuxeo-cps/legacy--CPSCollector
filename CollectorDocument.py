@@ -108,6 +108,7 @@ class CollectorDocument(Form, BaseDocument):
     def manage_afterAdd(self, item, container):
         "Finilize the form init."
         self.post_init(msg_pt=self.CollectorDocument_msg)
+        BaseDocument.manage_afterAdd(self, item, container)
 
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self):
