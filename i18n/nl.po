@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
-"POT-Creation-Date: 2003-10-28 11:24default\n"
+"POT-Creation-Date: 2004-02-20 12:25default\n"
 "PO-Revision-Date: 2004-02-18 11:26+0100\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
@@ -50,19 +50,21 @@ msgstr ""
 "Score: ${collector_label_nb_correct} correct answer(s) out of "
 "${collector_label_nb_all} question(s)"
 
-#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button" />
+#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
+#.   
+#.     </input>
 #.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Annulering"
 
-#.   <input value="collector_button_movedown" class="context" name="Form_moveFieldDown:method" type="submit" />
+#.   <input value="collector_button_movedown" class="context moveDown" name="Form_moveFieldDown:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr "Naar beneden"
 
-#.   <input value="collector_button_moveup" class="context" name="Form_moveFieldUp:method" type="submit" />
+#.   <input value="collector_button_moveup" class="context moveUp" name="Form_moveFieldUp:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr "Naar boven"
@@ -82,9 +84,11 @@ msgstr "Verwijderin"
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
-msgstr "Gebruik de knoppen op deze pagina om velden in je formulier toe te voegen en te wijzigen"
+msgstr ""
+"Gebruik de knoppen op deze pagina om velden in je formulier toe te voegen en "
+"te wijzigen"
 
-#.   <h2>no data</h2>
+#.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_empty_stats"
 msgstr "Nog geen gevevens verzameld"
@@ -231,37 +235,38 @@ msgstr "URL"
 msgid "collector_field_vradiobutton"
 msgstr "Keuzerondje (verticale indeling)"
 
-#.   <strong>
-#.             Add a new field:
-#.           </strong>
-#.   <input value="collector_form_add_new_field" class="context" name="Form_addField:method" type="submit" />
+#.   <div class="label">
+#.          Add a new field:
+#.        </div>
+#.   <input value="collector_form_add_new_field" class="standalone" name="Form_addField:method" type="submit">
+#.       </input>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr "Voeg een nieuw veld toe"
 
-#.   <td nowrap="">join w/ next field</td>
+#.   <th nowrap="">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
 msgstr "Samenvoegen:"
 
-#.   <td width="50%">label</td>
+#.   <th width="50%">label</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_label"
 msgstr "Etiket:"
 
-#.   <td nowrap="1">required</td>
+#.   <th nowrap="1">required</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_req"
 msgstr "Verplicht:"
 
-#.   <td nowrap="1">type</td>
+#.   <th nowrap="1">type</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_type"
 msgstr "Soort:"
 
-#.   <strong>
-#.             List of fields:
-#.           </strong>
+#.   <div class="label">
+#.         List of fields:
+#.       </div>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_list_of_fields"
 msgstr "Lijst van de velden:"
@@ -269,7 +274,8 @@ msgstr "Lijst van de velden:"
 #.   <h2>No statistic available</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_form_stats_null"
-msgstr "Er is geen veld in dit formulier dat geschikt is om statistieken te berekenen"
+msgstr ""
+"Er is geen veld in dit formulier dat geschikt is om statistieken te berekenen"
 
 #.   <th>Chosen Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
@@ -441,4 +447,3 @@ msgstr " "
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Verzamelde gegevens zijn niet verwijderd"
-

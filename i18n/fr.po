@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
-"POT-Creation-Date: 2003-10-28 11:24default\n"
+"POT-Creation-Date: 2004-02-20 12:25default\n"
 "PO-Revision-Date: 2004-02-20 11:13+0100\n"
 "Last-Translator: ben <ben@nuxeo.com>\n"
 "Language-Team: ben\n"
@@ -51,19 +51,21 @@ msgstr ""
 "Score: ${collector_label_nb_correct} réponse(s) correcte(s) sur "
 "${collector_label_nb_all} question(s)"
 
-#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button" />
+#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
+#.   
+#.     </input>
 #.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Annuler"
 
-#.   <input value="collector_button_movedown" class="context" name="Form_moveFieldDown:method" type="submit" />
+#.   <input value="collector_button_movedown" class="context moveDown" name="Form_moveFieldDown:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr "Déplacer vers le bas"
 
-#.   <input value="collector_button_moveup" class="context" name="Form_moveFieldUp:method" type="submit" />
+#.   <input value="collector_button_moveup" class="context moveUp" name="Form_moveFieldUp:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr "Déplacer vers le haut"
@@ -87,7 +89,7 @@ msgstr ""
 "Utilisez les commandes de cette page pour ajouter des champs au formulaire "
 "et les modifier"
 
-#.   <h2>no data</h2>
+#.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_empty_stats"
 msgstr "Il n'y a pas encore de données collectées"
@@ -234,37 +236,38 @@ msgstr "URL"
 msgid "collector_field_vradiobutton"
 msgstr "Bouton radio (disposition verticale)"
 
-#.   <strong>
-#.             Add a new field:
-#.           </strong>
-#.   <input value="collector_form_add_new_field" class="context" name="Form_addField:method" type="submit" />
+#.   <div class="label">
+#.          Add a new field:
+#.        </div>
+#.   <input value="collector_form_add_new_field" class="standalone" name="Form_addField:method" type="submit">
+#.       </input>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr "Ajouter un champ"
 
-#.   <td nowrap="">join w/ next field</td>
+#.   <th nowrap="">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
 msgstr "Enchaîner :"
 
-#.   <td width="50%">label</td>
+#.   <th width="50%">label</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_label"
 msgstr "Libellé :"
 
-#.   <td nowrap="1">required</td>
+#.   <th nowrap="1">required</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_req"
 msgstr "Obligatoire :"
 
-#.   <td nowrap="1">type</td>
+#.   <th nowrap="1">type</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_type"
 msgstr "Type :"
 
-#.   <strong>
-#.             List of fields:
-#.           </strong>
+#.   <div class="label">
+#.         List of fields:
+#.       </div>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_list_of_fields"
 msgstr "Liste des champs :"
@@ -444,4 +447,3 @@ msgstr " "
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Les données collectées ont été effacées"
-
