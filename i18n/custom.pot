@@ -76,4 +76,6 @@ msgstr ""
 msgid "collector_form_join_with_next"
 msgstr ""
 
+msgid "collector_form_good_answer"
+msgstr ""
 

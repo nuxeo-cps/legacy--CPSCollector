@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2003-10-22 16:02default\n"
-"PO-Revision-Date: 2003-10-22 16:03+0200\n"
+"POT-Creation-Date: 2003-10-22 17:05default\n"
+"PO-Revision-Date: 2003-10-22 17:06+0200\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -371,7 +371,6 @@ msgstr "Label:"
 msgid "collector_form_field_edit"
 msgstr "Editing field:"
 
-#, fuzzy
 msgid "collector_form_type"
 msgstr "Type:"
 
@@ -387,7 +386,6 @@ msgstr "Number of rows:"
 msgid "collector_form_max_length"
 msgstr "Max. length:"
 
-#, fuzzy
 msgid "collector_form_required"
 msgstr "Required:"
 
@@ -408,4 +406,7 @@ msgstr "Modify"
 
 msgid "collector_form_join_with_next"
 msgstr "Join with next field:"
+
+msgid "collector_form_good_answer"
+msgstr "Correct answer:"
 
