@@ -6,7 +6,7 @@ ln -s $ZS/lib/python/Products $ZS/Products/CMFCore
 """
 import unittest
 
-import ZODB.cPersistence, Persistence
+import ZODB
 import OFS.Application
 
 from Products.GIL.Form import Form
