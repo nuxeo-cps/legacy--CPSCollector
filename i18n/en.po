@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: en\n"
-"POT-Creation-Date: 2003-10-23 10:00default\n"
-"PO-Revision-Date: 2003-10-23 09:53+0200\n"
+"POT-Creation-Date: 2003-10-28 11:24default\n"
+"PO-Revision-Date: 2003-10-28 11:25+0100\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr "Move Up"
 msgid "collector_button_proceed"
 msgstr "Proceed"
 
-#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick 
+#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
 #.                                    python:
 #.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
 #: from ../skins/cps/Form_macros.pt
@@ -334,7 +334,12 @@ msgstr "Display latest input"
 msgid "collector_prop_submit_msg"
 msgstr "Message to display after submission"
 
-#.   <span />
+#.   <span condition="is_quiz" />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_submit_msg_results"
+msgstr "Display results after submission"
+
+#.   <span condition="not: is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_stats"
 msgstr "Display statistics after submission"
@@ -435,3 +440,4 @@ msgstr " "
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Collected data has been erased"
+

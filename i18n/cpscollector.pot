@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2003-10-23 10:00default\n"
+"POT-Creation-Date: 2003-10-28 11:24default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -330,7 +330,12 @@ msgstr ""
 msgid "collector_prop_submit_msg"
 msgstr ""
 
-#.   <span />
+#.   <span condition="is_quiz" />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_submit_msg_results"
+msgstr ""
+
+#.   <span condition="not: is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_stats"
 msgstr ""
