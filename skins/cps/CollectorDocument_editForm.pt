@@ -26,6 +26,7 @@
   tal:define="title python:(create and [''] or [here.Title()])[0];
               description python:(create and [''] or [here.description])[0];
               submit_msg python:(create and ['Thank you'] or [here.submit_msg])[0];
+              submit_msg_stat python:(create and [0] or [here.submit_msg_stat])[0];
               unique_submit python:create or here.unique_submit;
               submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
               action python:create and 'cpsdocument_create' or 'cpsdocument_edit';">
@@ -65,6 +66,18 @@
         <metal:block fill-slot="content">
           <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
            tal:content="submit_msg|default"></textarea>
+        </metal:block>
+      </metal:block>
+      <!-- submit msg stat -->
+      <metal:block use-macro="here/main_widgets/macros/form_property">
+        <metal:block fill-slot="title"
+          tal:content="python:mcat('_prop_submit_msg_stat_')">
+          Display stat after submit
+        </metal:block>
+        <metal:block fill-slot="content">
+          <input type="hidden" name="submit_msg_stat:boolean:default" value="" />
+          <input type="checkbox" name="submit_msg_stat:boolean"
+            checked="." tal:attributes="checked submit_msg_stat" />
         </metal:block>
       </metal:block>
       <!-- unique submit -->
