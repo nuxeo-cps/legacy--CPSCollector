@@ -19,9 +19,11 @@ from Globals import DTMLFile
 from Globals import InitializeClass
 
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
+
 from Products.NuxCPSDocuments.BaseDocument import BaseDocument, \
      BaseDocument_adder
 
+from Metadata import Metadata
 from Form import Form
 from CollectorItem import CollectorItem
 
@@ -83,7 +85,7 @@ factory_type_information = (
 
 
 ### class
-class CollectorDocument(Form, BaseDocument):
+class CollectorDocument(Form, BaseDocument, Metadata):
     """
     Collector Document
     """
@@ -93,6 +95,8 @@ class CollectorDocument(Form, BaseDocument):
     security = ClassSecurityInfo()
 
     _properties = BaseDocument._properties + (
+        {'id':'_Categories', 'type':'string', 'mode':'w',
+         'label':'Categories'},        
         {'id':'submit_msg', 'type':'string', 'mode':'w',
          'label':'Message after submit'},
         {'id':'submit_msg_stat', 'type':'boolean', 'mode':'w',
@@ -120,6 +124,25 @@ class CollectorDocument(Form, BaseDocument):
         "Used by the catalog for basic full text indexing."
         return '%s %s %s' % (self.title, self.description,
                                 self.related_links)
+
+    security.declareProtected(ModifyPortalContent, 'edit')
+    def edit(self, **kw):
+        "called by editProperties"
+        self.setCategories(kw.get('Categories'))
+        BaseDocument.edit(self, **kw)
+
+
+    ### handle metadata
+    security.declareProtected(ModifyPortalContent, 'edit')
+    def setCategories(self, val):
+        "setter return 1 if set was successfull"
+        return self.md_set('Categories', val)
+    
+    security.declareProtected(View, 'edit')
+    def Categories(self):
+        "Accessor"
+        return self.md_get('Categories') or '' # None is not indexable !
+
 
     ### collector action
     security.declarePrivate('notify_modified')
