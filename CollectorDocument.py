@@ -90,6 +90,8 @@ class CollectorDocument(Form, BaseDocument):
     _properties = BaseDocument._properties + (
         {'id':'author', 'type':'string', 'mode':'w', 'label':'Author'},
         {'id':'submit_msg', 'type':'string', 'mode':'w', 'label':'Message'},
+        {'id':'unique_submit', 'type':'boolean', 'mode':'w',
+         'label':'Unique Submit'},
         )
     author=''
 
@@ -97,6 +99,7 @@ class CollectorDocument(Form, BaseDocument):
         "Guess what it is." 
         BaseDocument.__init__(self, id, **kw)
         Form.__init__(self, id)
+        self.unique_submit=1
 
     security.declarePrivate('manage_afterAdd')
     def manage_afterAdd(self, item, container):
@@ -112,8 +115,10 @@ class CollectorDocument(Form, BaseDocument):
     ### collector action
     security.declareProtected(View, 'action')
     def action(self, **kw):
-        # if self._check_ip():
-        #    return "ALREADY SUBMITED"
+        if self.unique_submit:
+            id = self._check_unique()
+            if id:
+                self._delObject(id)
         id = self._create_id()
         self._setObject(id, CollectorItem(id, self.get_values()))
         msg = self.submit_msg
@@ -123,11 +128,11 @@ class CollectorDocument(Form, BaseDocument):
     def exportData(self, **kw):
         "export"
         fields = self.getFList(1)
-        s = self._list_to_csv(['_date','_ip']+fields)
-        for obj in self.objectValues():
-            ip, d = self._decode_id(obj.id)
+        s = self._list_to_csv(['_date', '_user', '_ip']+fields)
+        for obj in self.objectValues('CollectorItem'):
+            user, ip, d = self._decode_id(obj.id)
             d = time.strftime('%Y-%m-%dT%H:%M:%S', d)
-            lv=[d, ip]
+            lv=[d, user, ip]
             for f in fields:
                 lv.append(obj.data.get(f, ''))
             s += self._list_to_csv(lv)
@@ -172,15 +177,6 @@ class CollectorDocument(Form, BaseDocument):
 
 
     ### Private 
-    def _check_ip(self):
-        # check if current ip has already submit a form return date or None
-        ip = self.REQUEST.environ.get('REMOTE_ADDR','')
-        for id in self.objectIds():
-            _ip, d = self._decode_id(id)
-            if _ip == ip:
-                return d
-        return None
-
     def _list_to_csv(self, t):
         l = ''
         for v in t:
@@ -190,29 +186,48 @@ class CollectorDocument(Form, BaseDocument):
             l += str(v) + ','
         return l[:-1] + '\n'
 
+    def _check_unique(self):
+        # check if user/remote ip have already been collected
+        mtools = self.portal_membership
+        if mtools.isAnonymousUser():
+            s = 'anonymous_'+self.REQUEST.environ.get('REMOTE_ADDR','')
+        else:
+            s = mtools.getAuthenticatedMember().getUserName()
+        for id in self.objectIds('CollectorItem'):
+            _u, _ip, d = self._decode_id(id)
+            if id.find(s) != -1:
+                return id
+        return None
+
     def _create_id(self):
-        # id format is like 020920094119_127.0.0.1_589 
+        # id format is like time_user_ip_random
+        # 021126143959_member_127.0.0.1_814
+        # todo: should add the wg/hierarchie one day
         id = time.strftime('%y%m%d%H%M%S', time.localtime())+'_'
+        mtools = self.portal_membership
+        if mtools.isAnonymousUser():
+            id += 'anonymous_'
+        else:
+            id += mtools.getAuthenticatedMember().getUserName()+'_'
         id += self.REQUEST.environ.get('REMOTE_ADDR', 'unknown_ip')+'_'
-        id += str(randrange(1000))
+        id += '%3.3d' % randrange(999)
         return id
 
     def _decode_id(self, id=''):
-        # return a tuple (ip,date) or None for bad id
-        m=match(r'^(\d+)_([^_]+)_\d+$', id)
+        # return a tuple (user,ip,date) or None for bad id
+        m=match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
         if m is None:
             return None
         d=time.strptime(m.group(1), '%y%m%d%H%M%S')
-        ip=m.group(2)
-        return ip, d
-    
-
+        user=m.group(2)
+        ip=m.group(3)
+        return (user,ip, d)
 
 
 InitializeClass(CollectorDocument)
 
 def addCollectorDocument(dispatcher, id, REQUEST=None, **kw):
-    """Add a News Collector Document"""
+    """Add a Collector Document"""
     ob = CollectorDocument(id, **kw)
     return BaseDocument_adder(dispatcher, id, ob, REQUEST=REQUEST)
 
