@@ -168,6 +168,8 @@ class CollectorDocument(Form, BaseDocument, Metadata):
         s = self._list_to_csv(['_date', '_user', '_ip']+fields)
         for obj in self.objectValues('CollectorItem'):
             user, ip, d = self._decode_id(obj.id)
+            if not user:
+                continue
             d = time.strftime('%Y-%m-%dT%H:%M:%S', d)
             lv=[d, user, ip]
             for f in fields:
