@@ -73,7 +73,7 @@ class Form(Base):
         self.add_field('id__', type='string_ro', label='Id:', join='on')
         self.add_field('type__', type='string_ro', label='collector_form_type')
         self.add_field('label__', type='text', label='collector_form_label',
-                       cols=20, rows=2)
+                       cols=40, rows=2)
         self.add_field('size__', type='int', label='collector_form_size')
         self.add_field('cols__', type='int', label='collector_form_cols')
         self.add_field('rows__', type='int', label='collector_form_rows')
@@ -313,7 +313,7 @@ class Form(Base):
     def getNbSlot(self, f_name):
         # Return the number of cels used by a field
         t = self.fields[f_name]['type']
-        if t in ('submit', 'reset', 'separator', 'title', 'comment'):
+        if t in ('submit', 'reset', 'separator', 'title', 'comment', 'vradio'):
             n = 1
         elif t in ('hidden',):
             n = 0
