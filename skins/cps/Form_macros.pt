@@ -80,7 +80,10 @@
 
 <!-- def display_form -->
 <form action="." method="post" enctype="multipart/form-data" metal:define-macro="display_form">
- <font color="990000" tal:condition="request/other/form_status|nothing"><b tal:content="request/other/form_status">error</b></font>
+
+<table tal:condition="request/other/form_status|nothing" cellpadding="0" cellspacing="0" border="1" noshade width="100%">
+<tr><td bgcolor="#EEEEEE"><font color="990000"><b tal:content="request/other/form_status">error msg</b></font></td></tr></table>
+
 <table bgcolor="#98B2CB"><tr><td>
 <input type="hidden" name="is_form_submitted" value="yes" />
 <table border="0" width="100%">
