@@ -1,8 +1,8 @@
 # (c) 2002 Nuxeo SARL <http://nuxeo.com>
 # $Id$
-""" 
+"""
 The Form Class is an html form generator.
-This is a very simple 'Formulator like' tool, a Form object display a web 
+This is a very simple 'Formulator like' tool, a Form object display a web
 form until input are correct then it executes the action method.
 The Form is editable TTW.
 """
@@ -21,14 +21,14 @@ class Form(Base):
     it knows how to edit itself using ... itself.
     _action and _validator methods should be overriden in subclasses
     """
-    
+
     # ZPT default
     _macros_pt='Form_macros'
     _view_pt='Form_view_pt'
     _action_pt='Form_action'
     _editForm_pt='Form_editForm'
     _editField_pt='Form_editField_pt'
-    
+
     # Type of fields
     types = ('title', 'separator', 'comment',
              'string', 'email', 'identifier', 'string_ro', 'phone',
@@ -37,7 +37,7 @@ class Form(Base):
              'text', 'file',
              'checkbox', 'radio', 'vradio', 'selection',
              'submit', 'reset', 'hidden')
-    
+
     # Fields attributes that describe fields
     # title__, id__, type__ and submit__ are automaticly added
     field_attr = {}
@@ -62,9 +62,9 @@ class Form(Base):
     field_attr['vradio']=('label__', 'mvalue__', 'checked__', 'join__')
     field_attr['selection']=('label__', 'mvalue__', 'checked__',
                              'multiple__', 'size__', 'required__', 'join__')
-    
+
     security = ClassSecurityInfo()
-    
+
     def __init__(self, id):
         """ Construtor """
         self.id = id
@@ -85,24 +85,24 @@ class Form(Base):
         self.add_field('submit__', type='submit', label='_form_bt_change_', value='Form_editField:method')
         self.add_field('join__', type='checkbox', label='_form_join_with_next_')
         return
-    
+
     security.declareProtected(ModifyPortalContent, 'personalizeZPT')
     def personalizeZPT(self, macros=None, view=None, action=None,
                        editForm=None, editField=None):
-        """ Personnalize the five hardcoding zpt for duplicate 
+        """ Personnalize the five hardcoding zpt for duplicate
         use of the class"""
-        
-        
+
+
         if macros == None or macros == '':
             self._macros_pt = 'Form_macros'
         else:
             self._macros_pt = macros
-        
+
         if view == None or view == '':
             self._view_pt = 'Form_view_pt'
         else:
             self._view_pt = view
-        
+
         if action == None or action == '':
             self._action_pt ='Form_action'
         else:
@@ -119,8 +119,8 @@ class Form(Base):
             self._editField_pt = editField
 
         return
-        
-   
+
+
     # WEB INTERFACE --------------------------------------------------
     security.declareProtected(ModifyPortalContent, 'dumpFields')
     def dumpFields(self):
@@ -139,7 +139,7 @@ class Form(Base):
                 params = params[:-2]
             s += '        self.add_field(\''+f+'\', '+params+')\n'
         return s
-    
+
     # ZTP INTERFACE --------------------------------------------------
     #   View helper --------------------------------------------------
     security.declareProtected(View, 'process_view')
@@ -153,7 +153,7 @@ class Form(Base):
         if err:
             self._set_status(err)
         return self._view_pt
-    
+
     security.declareProtected(ModifyPortalContent, 'process_edit_field')
     def process_edit_field(self, **kw):
         # The field edition page use its own Form fields
@@ -188,11 +188,11 @@ class Form(Base):
         self._set_current_form(None)
         return self._editForm_pt
 
-    
+
     #   Fields Setters -----------------------------------------------
     security.declareProtected(ModifyPortalContent, 'add_field')
     def add_field(self, id, **extra):
-        # Add or modify field to the form 
+        # Add or modify field to the form
         if not id:
             return
         if not hasattr(aq_base(self), 'fields'):
@@ -213,7 +213,7 @@ class Form(Base):
             f['type']='string'
         self._notify_modified()
         return 1
-    
+
     security.declareProtected(ModifyPortalContent, 'del_field')
     def del_field(self, id):
         # Delete a field
@@ -234,7 +234,7 @@ class Form(Base):
         else:
             ret = self.del_field(ids)
         return ret
-    
+
     security.declareProtected(ModifyPortalContent, 'move_field')
     def move_field(self, id, direction='up'):
         # Move a field up or down
@@ -280,7 +280,7 @@ class Form(Base):
                     l.append(f)
             return l
         return self.fields_list
-    
+
     security.declareProtected(View, 'getVList')
     def getVList(self, f_name):
         # Return the list of value for a field
@@ -289,7 +289,7 @@ class Form(Base):
         l = self.fields[f_name]['mvalue'].keys()
         l.sort()
         return l
-    
+
     security.declareProtected(View, 'getV')
     def getV(self, f, k, default=None, as_list=None):
         # Return the value of field f on request
@@ -303,7 +303,7 @@ class Form(Base):
             if type(v) is not type([]):
                 v = [v,]
         return v
-    
+
     security.declareProtected(View, 'getNbSlot')
     def getNbSlot(self, f_name):
         # Return the number of cels used by a field
@@ -315,7 +315,7 @@ class Form(Base):
         else:
             n=2
         return n
-    
+
     security.declareProtected(View, 'getFMacro')
     def getFMacro(self,f_name):
         # Return the zpt macro associated with the field
@@ -328,7 +328,7 @@ class Form(Base):
             self._v_macros = self.restrictedTraverse(self._macros_pt)
         """
         return self.restrictedTraverse(self._macros_pt).macros[t]
-    
+
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
         # Label starting with '_' are localized
@@ -342,7 +342,7 @@ class Form(Base):
         if not len(label) or label[0]!='_':
             return label
         return self.Localizer.default(label)
-    
+
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
         # Check if f_name is selected
@@ -354,7 +354,7 @@ class Form(Base):
         if type(v_) is type([]):
             return v in v_
         return v_ == v
-    
+
     security.declareProtected(View, 'getRows')
     def getRows(self):
         # Return a list of rows
@@ -375,13 +375,13 @@ class Form(Base):
                 join = 1
             if nb_cols[-1] > max_cols:
                 max_cols = nb_cols[-1]
-                
+
         span = {}
         for r in rows:
             for f in r:
                 span[f]=0
             span[f] = max_cols - nb_cols[rows.index(r)] + 1
-        if span != getattr(self, 'span'):
+        if span != getattr(self, 'span', None):
             self.span = span
         return rows
 
@@ -389,25 +389,25 @@ class Form(Base):
     security.declarePrivate('assert_form_private')
     def assert_form_private(self):
         pass
-    
+
     security.declareProtected(View, 'assert_form_view')
     def assert_form_view(self):
         pass
-    
+
     security.declareProtected(ModifyPortalContent, 'assert_form_modify')
     def assert_form_modify(self):
         pass
-    
-    
+
+
     # INTERNAL -------------------------------------------------------
     #   Form validation ----------------------------------------------
     security.declarePrivate('_validator')
     def _validator(self, form):
-        """ This method should be overriden in a subclass 
-        its purpose is to valide the whole form 
+        """ This method should be overriden in a subclass
+        its purpose is to valide the whole form
         called after the _check_form method """
         pass
-    
+
     security.declarePrivate('_check_form')
     def _check_form(self ):
         """ Check all the fields of a form and return a status and msg """
@@ -526,9 +526,9 @@ class Form(Base):
                         err = '_field_too_big_file_'
                         self.REQUEST.form[id]=v.filename
                 v.seek(0)
-        
+
         return err
-    
+
     #   Misc  --------------------------------------------------------
     security.declarePrivate('_action')
     def _action(self, **kw):
@@ -546,7 +546,7 @@ class Form(Base):
             else:
                 v[f] = form.get(f)
         return v
-    
+
     security.declarePrivate('_set_values')
     def _set_values(self, values):
         """ Set form values from dico """
@@ -555,7 +555,7 @@ class Form(Base):
         self.REQUEST.form['is_form_setted'] = 'yes'
         self.REQUEST.form['pp'] = pp
         return
-    
+
     security.declarePrivate('_notify_modified')
     def _notify_modified(self):
         self._p_changed = 1
@@ -564,15 +564,15 @@ class Form(Base):
     security.declarePrivate('_set_current_form')
     def _set_current_form(self, mode):
         self.REQUEST.other['form_mode__']=mode
-    
+
     security.declarePrivate('_get_current_form')
     def _get_current_form(self):
         return self.REQUEST.other.get('form_mode__', None)
-    
+
     security.declarePrivate('_set_status')
     def _set_status(self, s=None):
         self.REQUEST.other['form_status'] = s
-    
+
     security.declarePrivate('_mvalue_to_str')
     def _mvalue_to_str(self, m, multiline=1):
         """ Convert a mvalue dico into a string """
@@ -588,7 +588,7 @@ class Form(Base):
             else:
                 str += '\\n'
         return str
-    
+
     security.declarePrivate('_str_to_mvalue')
     def _str_to_mvalue(self, s):
         """ Convert a mvalue string to dico """
@@ -601,7 +601,7 @@ class Form(Base):
             t = l.split('|')
             if len(t[0].strip()) < 1:
                 continue
-            if len(t) == 1: # pipe symbol not used               
+            if len(t) == 1: # pipe symbol not used
                 t.append(t[0])
                 t[0] = str(i) + "_" + t[0] # build a new value
                 i = i + 1
@@ -609,8 +609,8 @@ class Form(Base):
                 continue
             mvalue[t[0].strip()]=t[1].strip()
         return mvalue
-   
-    
+
+
 
 
 InitializeClass(Form)
