@@ -136,12 +136,11 @@ class Form(Base):
         "default view"
         self._set_status()
         status,err=self.check_form()
-        if status != 'valid_form':
-            if err:
-                self._set_status(err)
-            return self._display_zpt(self._view_pt, **kw)
-
-        return self.action(**kw)
+        if status == 'valid_form':
+            return self.action(**kw)
+        if err:
+            self._set_status(err)
+        return self._display_zpt(self._view_pt, **kw)
 
     security.declareProtected(ModifyPortalContent, 'editForm')
     def editForm(self, **kw):
@@ -434,7 +433,7 @@ class Form(Base):
         form = self.REQUEST.form
         mcat = self.portal_messages
         locale = mcat.get_selected_language()
-        if not form.get('is_form_submitted'):
+        if not ( form.get('is_form_submitted') or form.get('is_form_setted') ):
             if not len(self.fields_list):
                 msg = mcat('_form_is_empty_')
             else:
@@ -459,6 +458,9 @@ class Form(Base):
         if msg:
             err_l10n = mcat('_field_error_')
             return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
+
+        if form.get('is_form_setted'):
+            return ('setted_form', None)
 
         return ('valid_form', 'Congratulation')
 
@@ -592,6 +594,12 @@ class Form(Base):
                 v[f] = form.get(f)
         return v
 
+    security.declarePrivate('set_values')
+    def set_values(self, values):
+        # set form values from dico
+        self.REQUEST.form = values
+        self.REQUEST.form['is_form_setted'] = 'yes'
+    
 
 InitializeClass(Form)
 # EOC Form

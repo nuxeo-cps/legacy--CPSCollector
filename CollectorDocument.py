@@ -17,6 +17,7 @@ from OFS.Folder import Folder
 from AccessControl import ClassSecurityInfo
 from Globals import DTMLFile
 from Globals import InitializeClass
+from Acquisition import aq_base
 
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
@@ -26,6 +27,7 @@ from Products.NuxCPSDocuments.BaseDocument import BaseDocument, \
 from Metadata import Metadata
 from Form import Form
 from CollectorItem import CollectorItem
+from tools import log
 
 factory_type_information = (
     {'id': 'Collector Document',
@@ -78,9 +80,9 @@ factory_type_information = (
                   'visible': 0,
                   'permissions': ()},
                  ),
-
+     
      },
-    )
+                            )
 
 
 ### class
@@ -102,11 +104,14 @@ class CollectorDocument(Form, BaseDocument, Metadata):
          'label':'View statistic after submit'},
         {'id':'unique_submit', 'type':'boolean', 'mode':'w',
          'label':'Unique Submit'},
+        {'id':'persistent_data', 'type':'boolean', 'mode':'w',
+         'label':'Persistent data'},
         )
     submit_msg=''
     submit_msg_stat=0
     unique_submit=1
-
+    persistent_data=0
+    
     def __init__(self, id, **kw):
         "Guess what it is."
         BaseDocument.__init__(self, id, **kw)
@@ -142,7 +147,6 @@ class CollectorDocument(Form, BaseDocument, Metadata):
         "Accessor"
         return self.md_get('Theme') or '' # None is not indexable !
 
-
     ### collector action
     security.declarePrivate('notify_modified')
     def notify_modified(self):
@@ -150,6 +154,24 @@ class CollectorDocument(Form, BaseDocument, Metadata):
         # tell to the CMF that something changed
         self.notifyModified()
         
+    security.declareProtected(View, 'view')
+    def view(self, **kw):
+        """ view """
+        self._set_status()
+        status,err=self.check_form()
+        if status == 'valid_form':
+            return self.action(**kw)
+
+        if status == 'not_yet_submited' and self.persistent_data:
+            obj = self._load_data()
+            if obj:
+                self.set_values(obj.data)
+        if err:
+            self._set_status(err)
+              
+        return self._display_zpt(self._view_pt, **kw)
+            
+      
     security.declareProtected(View, 'action')
     def action(self, **kw):
         if self.unique_submit:
@@ -293,6 +315,41 @@ class CollectorDocument(Form, BaseDocument, Metadata):
         return r
 
     ### Private
+    security.declarePrivate('_load_data')
+    def _load_data(self, item_id=None):
+        """ load collectorItem data or latest if item_id is None """
+        if not item_id:
+            item_id = self._find_latest_item()
+        if not item_id:
+            return
+        
+        return getattr(aq_base(self), item_id)
+    
+    security.declarePrivate('_find_latest_item')
+    def _find_latest_item(self):
+        """ 
+        find the latest collectorItem id for the current logged user
+        this feature does not work for anonymous user !
+        """
+        user, ip, d = self._decode_id(self._create_id())
+        if user == 'anonymous':
+            return
+        
+        match_id = None
+        match_d = 0
+        #log( 'Search '+ user+'_'+ip+':')
+
+        for id in self.objectIds('CollectorItem'):
+            user_, ip_, d_ = self._decode_id(id)
+            if user == user_:
+                if user == 'anonymous' and ip != ip_:
+                    continue;
+                #log( user+'_'+ip_ +': ok')
+                if d_ > match_d:
+                    match_id = id
+                    match_d = d_
+        return match_id
+
     security.declarePrivate('_list_to_csv')
     def _list_to_csv(self, t):
         l = ''

@@ -37,6 +37,7 @@ function open_metadata_editor(input_id) {
               submit_msg python:(create and ['Thank you'] or [here.submit_msg])[0];
               submit_msg_stat python:(create and [0] or [here.submit_msg_stat])[0];
               unique_submit python:create or here.unique_submit;
+              persistent_data python:create or here.persistent_data;
               submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
               action python:create and 'cpsdocument_create' or 'cpsdocument_edit';">
 
@@ -115,6 +116,18 @@ function open_metadata_editor(input_id) {
           <input type="hidden" name="unique_submit:boolean:default" value="" />
           <input type="checkbox" name="unique_submit:boolean"
             checked="." tal:attributes="checked unique_submit" />
+        </metal:block>
+      </metal:block>
+      <!-- persistent data -->
+      <metal:block use-macro="here/main_widgets/macros/form_property">
+        <metal:block fill-slot="title"
+          tal:content="python:mcat('_prop_persistent_data_')">
+          Single submit
+        </metal:block>
+        <metal:block fill-slot="content">
+          <input type="hidden" name="persistent_data:boolean:default" value="" />
+          <input type="checkbox" name="persistent_data:boolean"
+            checked="." tal:attributes="checked persistent_data" />
         </metal:block>
       </metal:block>
       <!-- links -->
