@@ -327,7 +327,10 @@ class Form(Base):
     def getLabel(self,f_name, multiple=0):
         # label starting with '_' are localized
         if multiple:
-            label = self.fields[f_name]['mvalue'].get(multiple, '')
+            if self.fields[f_name].get('mvalue'):
+                label = self.fields[f_name]['mvalue'].get(multiple, '')
+            else:
+                label = multiple
         else:
             label = self.fields[f_name].get('label', '')
         if not len(label) or label[0]!='_':
