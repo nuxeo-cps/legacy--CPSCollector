@@ -323,11 +323,11 @@ class Form(Base):
         if t in ('string', 'identifier', 'email', 'int', 'float', 'phone', \
                   'url', 'date'):
             t = 'string'
-
+        """
         if not hasattr(self, '_v_macros'):
             self._v_macros = self.restrictedTraverse(self._macros_pt)
-
-        return self._v_macros.macros[t]
+        """
+        return self.restrictedTraverse(self._macros_pt).macros[t]
     
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
