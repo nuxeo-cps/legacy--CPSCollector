@@ -220,6 +220,24 @@ class Form(Base):
             self.move_field(f_id, 'down')
         return self._editForm_pt(**kw)
 
+    security.declareProtected(ModifyPortalContent, 'dumpFields')
+    def dumpFields(self):
+        "dump fields"
+        s = ''
+        for f in self.fields_list:
+            params=''
+            for p in self.fields[f].keys():
+                v = self.fields[f].get(p, None)
+                if not v:
+                    continue
+                if p == 'mvalue':
+                    v = self._mvalue_to_str(v,0)
+                params += '%s=\'%s\'' % (p, v) +', '
+            if params:
+                params = params[:-2]
+            s += '        self.add_field(\''+f+'\', '+params+')\n'
+        return s
+
     security.declarePrivate('_set_current_form')
     def _set_current_form(self, mode):
         self.REQUEST.other['form_mode__']=mode
@@ -499,7 +517,7 @@ class Form(Base):
         return err
 
     security.declarePrivate('_mvalue_to_str')
-    def _mvalue_to_str(self, m):
+    def _mvalue_to_str(self, m, multiline=1):
         # convert a mvalue dico into a string
         if type(m) is not type({}) :
             return ''
@@ -507,7 +525,11 @@ class Form(Base):
         keys = m.keys()
         keys.sort()
         for k in keys:
-            str = str + k + ' | ' + m[k] + '\n'
+            str = str + k + ' | ' + m[k]
+            if multiline:
+                str += '\n'
+            else:
+                str += '\\n'
         return str
 
     security.declarePrivate('_str_to_mvalue')
@@ -539,6 +561,7 @@ class Form(Base):
             else:
                 v[f] = form.get(f)
         return v
+
 
 InitializeClass(Form)
 # EOC Form
