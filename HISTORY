@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.4.2 [R1 build 2004/01/21-10:37 by ben]
+
+ZODB Requires:
+~~~~~~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Cosmetic changes on docstrings and comments.
+- new icon for QuizDocument
+
+*******************************************
 ** CPSCollector V1.4.1 [R1 build 2003/12/23-11:02 by ben]
 
 ZODB Requires:
