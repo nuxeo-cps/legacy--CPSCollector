@@ -612,8 +612,6 @@ class Form(Base):
                 continue
             if len(t) == 1: # pipe symbol not used
                 t.append(t[0])
-                t[0] = str(i) + "_" + t[0] # build a new value
-                i = i + 1
             elif len(t) != 2:
                 continue
             mvalue[t[0].strip()]=t[1].strip()
