@@ -14,7 +14,7 @@ from Products.NuxCPSCollector.Form import Form
 def checkField(typ, val, **kw):
     ob = Form('utest')
     ob.add_field('foo', type=typ, **kw)
-    ret = ob.check_field('foo', val)
+    ret = ob._check_field('foo', val)
     return ret
 
 class TestFormValidation(unittest.TestCase):
