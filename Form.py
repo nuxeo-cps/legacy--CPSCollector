@@ -92,28 +92,27 @@ class Form(Base):
         """ Personnalize the five hardcoding zpt for duplicate
         use of the class"""
 
-
-        if macros == None or macros == '':
+        if macros is None or macros == '':
             self._macros_pt = 'Form_macros'
         else:
             self._macros_pt = macros
 
-        if view == None or view == '':
+        if view is None or view == '':
             self._view_pt = 'Form_view_pt'
         else:
             self._view_pt = view
 
-        if action == None or action == '':
+        if action is None or action == '':
             self._action_pt ='Form_action'
         else:
             self._action_pt = action
 
-        if editForm == None or editForm == '':
+        if editForm is None or editForm == '':
             self._editForm_pt ='Form_editForm'
         else:
             self._editForm_pt = editForm
 
-        if editField == None or editField == '':
+        if editField is None or editField == '':
             self._editField_pt ='Form_editField_pt'
         else:
             self._editField_pt = editField

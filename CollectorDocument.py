@@ -144,6 +144,7 @@ class CollectorDocument(Form, BaseDocument):
         #self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
         return psm
 
+    # FIXME: these tests should move to a unit test package
     security.declareProtected(ModifyPortalContent, 'initTest')
     def initTest(self):
         """Test that init a form with all kind of field"""
