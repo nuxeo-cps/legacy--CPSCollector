@@ -463,7 +463,7 @@ class Form(Base):
             return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
 
         if form.get('is_form_setted'):
-            return ('setted_form', None)
+            return ('setted_form', msg)
 
         return ('valid_form', 'Congratulation')
 

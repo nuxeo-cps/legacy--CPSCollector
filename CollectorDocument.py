@@ -166,12 +166,28 @@ class CollectorDocument(Form, BaseDocument, Metadata):
             obj = self._load_data()
             if obj:
                 self.set_values(obj.data)
+                status, err = self.check_form()
+
         if err:
             self._set_status(err)
               
         return self._display_zpt(self._view_pt, **kw)
-            
-      
+    
+    security.declareProtected(View, 'display')
+    def display(self, **kw):
+        """ return html displaying a non editable form with last input """
+        input = self._load_data()
+        if input:
+                self.set_values(input.data)
+                status, err = self.check_form()
+        if err:
+            self._set_status(err)
+        _macros = self._macros_pt
+        self._macros_pt = 'Form_displayMacros'
+        ret = self._display_zpt(self._view_pt, macro_display=1)
+        self._macros_pt = _macros
+        return ret
+        
     security.declareProtected(View, 'action')
     def action(self, **kw):
         if self.unique_submit:
