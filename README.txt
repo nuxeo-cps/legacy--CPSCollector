@@ -1,13 +1,13 @@
 NuxCPSCollector
 
 
-The goal of Collector Document is to create html form TTW
-The Collector Document make the validation and error handling. 
+The goal of Collector Document is to create html form TTW.
+The Collector Document takes care of the validation and error handling. 
 The action taken by the Collector is to store the inputs into a CollectorItem.
-Collector Document is folderish and contains its CollectorItems.
+A Collector Document is folderish and contains its CollectorItems.
 Of course ColletorsItems can be exported.
 
-here is a short list of features:
+Here is a short list of features:
 - Collector handle the following field types:
   title, separator, comment, string, email, identifier, string_ro, phone,
   date, url, password, int, float, text, file, checkbox, radio, selection,
