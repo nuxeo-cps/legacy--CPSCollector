@@ -47,9 +47,9 @@ class TestFormValidation(unittest.TestCase):
     def test_float_1(self):
         self.assertEqual(checkField('float', '123,12'), None)
     def test_float_2(self):
-        self.assertEqual(checkField('float', '1x3.12'), None)
+        self.assertEqual(checkField('float', '13.12'), None)
     def test_float_3(self):
-        self.assertEqual(checkField('float', '1a23'), None)
+        self.assertEqual(checkField('float', '123'), None)
 
     def test_float_100(self):
         self.assertEqual(checkField('float', '12.12.23'),
