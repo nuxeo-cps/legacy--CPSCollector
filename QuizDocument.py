@@ -58,7 +58,7 @@ factory_type_information = (
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'erase',
                   'name': 'action_erase_data',
-                  'action': 'eraseData',
+                  'action': 'Form_eraseDataPrompt',
                   'permissions': (ModifyPortalContent,)},
                  {'id': 'create',
                   'name': 'action_create',
@@ -85,15 +85,16 @@ class QuizDocument(CollectorDocument):
     _editForm_pt='Form_editQuizForm'
 
     field_attr = CollectorDocument.field_attr.copy()
+    #adding field trueval__, removing checked__ and required__
     field_attr['checkbox'] = CollectorDocument.field_attr['checkbox'][:1] +\
                              ('trueval__',) +\
-                             CollectorDocument.field_attr['checkbox'][1:]
+                             CollectorDocument.field_attr['checkbox'][3:]
     field_attr['radio'] = CollectorDocument.field_attr['radio'][:2] +\
                           ('trueval__',) +\
-                          CollectorDocument.field_attr['radio'][2:]
+                          CollectorDocument.field_attr['radio'][3:]
     field_attr['vradio'] = CollectorDocument.field_attr['vradio'][:2] +\
                            ('trueval__',) +\
-                           CollectorDocument.field_attr['vradio'][2:]
+                           CollectorDocument.field_attr['vradio'][3:]
     
     def __init__(self, id, **kw):
         """Constructor"""
