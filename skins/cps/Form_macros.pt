@@ -7,7 +7,7 @@
    <title tal:content="template/title">The Title</title>
    </metal:block>
   </head>
-  <body> 
+  <body>
     <div metal:define-slot="body">
     This is where the page's body text goes.
     </div>
@@ -15,9 +15,9 @@
 </html>
 
 <!-- def string field -->
-<input metal:define-macro="string" 
-       type="text" 
-       tal:attributes="name f_id; 
+<input metal:define-macro="string"
+       type="text"
+       tal:attributes="name f_id;
                        size f/size|default;
                        maxlength f/maxlength|default;
                        value python:doc.getV(f_id, 'value',default)" />
@@ -25,7 +25,7 @@
 <!-- def title field -->
 <b metal:define-macro="title"
    tal:content="python:colmcat(doc.getLabel(f_id))">label</b>
-  
+
 <!-- def hidden field -->
 <input metal:define-macro="hidden"
        type="hidden"
@@ -33,7 +33,7 @@
        tal:condition="f/value|nothing" />
 
 <!-- def password field -->
-<input metal:define-macro="password" 
+<input metal:define-macro="password"
        type="password"
        tal:attributes="name f_id;size f/size|default;
                        maxlength f/maxlength|default;
@@ -47,15 +47,15 @@
 </span>
 
 <!-- def text field -->
-<textarea metal:define-macro="text" 
+<textarea metal:define-macro="text"
           tal:attributes="name f_id;
                           cols f/cols|default;
-                          rows f/rows|default" 
+                          rows f/rows|default"
           tal:content="python:doc.getV(f_id, 'value',default)"
           cols="50" rows="7"></textarea>
 
 <!-- def checkbox field -->
-<input metal:define-macro="checkbox" 
+<input metal:define-macro="checkbox"
        tal:attributes="name f_id;checked python:doc.meta_type!='Quiz Document' and
                                                 doc.getV(f_id,'checked')"
        name="_x_"
@@ -87,7 +87,7 @@
 <metal:block metal:define-macro="selection">
   <select tal:attributes="name f_id;
                           multiple f/multiple|python:0;
-                          size f/size|nothing" 
+                          size f/size|nothing"
           name="_x_">
     <tal:block tal:repeat="v python:doc.getVList(f_id)">
       <option tal:attributes="value v;
@@ -116,7 +116,7 @@
 
 <!-- def reset field -->
 <metal:block metal:define-macro="reset">
-  <input type="reset" tal:attributes="name f/value|default; value label|default" 
+  <input type="reset" tal:attributes="name f/value|default; value label|default"
          value=""
          class="context" />
 </metal:block>
@@ -125,9 +125,9 @@
 <input metal:define-macro="file" type="file"
        tal:attributes="name f_id; value python:doc.getV(f_id, 'value',default)"
        value="" />
-    
+
 <!-- def display label -->
-<td metal:define-macro="display_label" 
+<td metal:define-macro="display_label"
     tal:condition="python:nb_slot==2"
     align="right"
     width="1%"
@@ -148,7 +148,7 @@
 </td>
 
 <!-- def display_form -->
-<form action="." method="post" enctype="multipart/form-data" 
+<form action="." method="post" enctype="multipart/form-data"
       metal:define-macro="display_form"
       i18n:domain="cpscollector">
   <table tal:condition="request/other/form_status|nothing"
@@ -213,7 +213,7 @@
           <option value="string_ro"
                   i18n:translate="collector_field_string_ro">
             String read only
-          </option>	  
+          </option>
           <option value="identifier"
                   i18n:translate="collector_field_identifier">
             Identifier
@@ -229,7 +229,7 @@
           <option value="date"
                   i18n:translate="collector_field_date">Date</option>
           <option value="password"
-                  i18n:translate="collector_field_password">Password</option>  	  
+                  i18n:translate="collector_field_password">Password</option>
           <option value="int"
                   i18n:translate="collector_field_integer">Integer</option>
           <option value="float"
@@ -259,7 +259,7 @@
           <option value="separator"
                   i18n:translate="collector_field_separator">
             Separator
-          </option>	  
+          </option>
           <option value="submit"
                   i18n:translate="collector_field_button">
             Button
@@ -277,7 +277,7 @@
           <option value="file"
                   i18n:translate="collector_field_file">
             File
-          </option>	  
+          </option>
         </select>
         <input type="submit" name="Form_addField:method"
                i18n:attributes="value" value="collector_form_add_new_field"
@@ -318,7 +318,7 @@
         <td tal:content="f/type|default">&nbsp;</td>
         <td tal:content="label|default">&nbsp;</td>
         <td tal:content="f/required|default">&nbsp;</td>
-        <td tal:content="f/join|default">&nbsp;</td>    
+        <td tal:content="f/join|default">&nbsp;</td>
       </tal:block>
     </tr>
     <tr colspan="5">
@@ -336,7 +336,7 @@
         <input type="submit" name="Form_delField:method"
                i18n:attributes="value" value="collector_button_remove"
                tal:define="colmcat nocall:here/Localizer/cpscollector"
-               tal:attributes="onClick 
+               tal:attributes="onClick
                                  python:
                                    'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)"
                class="destructive"/>
@@ -384,7 +384,7 @@
           <option value="separator"
                   i18n:translate="collector_field_separator">
             Separator
-          </option>	  
+          </option>
           <option value="submit"
                   i18n:translate="collector_field_button">
             Button
@@ -439,7 +439,7 @@
         <td tal:content="f/type|default">&nbsp;</td>
         <td tal:content="label|default">&nbsp;</td>
         <td tal:content="f/required|default">&nbsp;</td>
-        <td tal:content="f/join|default">&nbsp;</td>    
+        <td tal:content="f/join|default">&nbsp;</td>
       </tal:block>
     </tr>
     <tr colspan="5">
@@ -457,7 +457,7 @@
         <input type="submit" name="Form_delField:method"
                i18n:attributes="value" value="collector_button_remove"
                tal:define="colmcat nocall:here/Localizer/cpscollector"
-               tal:attributes="onClick 
+               tal:attributes="onClick
                                  python:
                                    'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)"
                class="destructive"/>
