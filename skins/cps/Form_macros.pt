@@ -160,7 +160,7 @@
   <td colspan="4">
     <input type="submit" name="moveFieldUp:method" tal:attributes="value python:mcat('_form_bt_move_up_')" />
     <input type="submit" name="moveFieldDown:method" tal:attributes="value python:mcat('_form_bt_move_down_')" />
-    <input type="submit" name="delField:method" tal:attributes="value python:mcat('_form_bt_remove_')" />
+    <input type="submit" name="delField:method" tal:attributes="value python:mcat('_form_bt_remove_');onClick python:'return window.confirm(\'%s\')' % (mcat('_Are_you_sure?_'),)"  />
   </td></tr>
 </table>
 </form>
