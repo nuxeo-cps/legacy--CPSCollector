@@ -1,3 +1,4 @@
+<tal:block define="_check_perm_ here/assert_form_view" />
 <tal:block define="current_action string:view;
   mcat nocall:here/portal_messages">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
