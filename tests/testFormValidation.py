@@ -6,11 +6,6 @@ ln -s $ZS/lib/python/Products $ZS/Products/CMFCore
 """
 import unittest
 
-# Add the product directory to the path
-import os, sys
-sys.path.insert(0, '../')
-sys.path.insert(0, os.environ.get('ZOPE_HOME', '../../..')+'/lib/python/')
-
 import ZODB.cPersistence, Persistence
 import OFS.Application
 
