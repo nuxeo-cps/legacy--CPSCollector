@@ -505,6 +505,8 @@ class Form(Base):
             pass
         elif t == 'selection':
             if type(v) is type([]):
+                if not f.get('multiple'):
+                    err = '_field_multiselect_invalid_'
                 for vv in v:
                     if vv not in f['mvalue'].keys():
                         err = '_field_multiselect_invalid_'
