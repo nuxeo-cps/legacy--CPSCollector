@@ -108,11 +108,6 @@ class CollectorDocument(Form, BaseDocument):
         Form.__init__(self, id)
         self._action_pt = 'CollectorDocument_action'
 
-    security.declareProtected(View, 'SearchableText')
-    def SearchableText(self):
-        """Used by the catalog for basic full text indexing"""
-        return '%s %s' % (self.title, self.description)
-
     # WEB INTERFACE --------------------------------------------------
     security.declareProtected(ModifyPortalContent, 'exportData')
     def exportData(self, **kw):
@@ -293,6 +288,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('_add_item')
     def _add_item(self, id, values):
         """Add item interface"""
+        ob =  CollectorItem(id, values)
         self._setObject(id, ob)
 
     security.declarePrivate('_del_item')
