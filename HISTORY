@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.8.0 [R1 build 2005/01/20-11:26 by ben]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Changed explanatory comments to docstrings.
+- macro lib splitted
+
+*******************************************
 ** CPSCollector V1.7.4 [R1 build 2004/07/30-09:47 by ben]
 
 Requires:
