@@ -1,0 +1,213 @@
+# $Id$
+
+msgid "_portal_type_Collector Document"
+msgstr "Information Collector"
+
+msgid "_Create_a_collector_"
+msgstr "Create an information collector"
+
+msgid "_action_export_csv_"
+msgstr "Export collected data"
+
+msgid "_action_modify_prop_"
+msgstr "Modify Properties"
+
+msgid "_action_modify_form_"
+msgstr "Modify Form"
+
+msgid "_action_erase_data_"
+msgstr "Erase collected data"
+
+msgid "_Modify_prop(object name)_"
+msgstr "Modify Property"
+
+msgid "_Modify_form(object name)_"
+msgstr "Modify Form"
+
+msgid "_Modify_field(object name)_"
+msgstr "Modify a Field of"
+
+msgid "_prop_submit_msg_"
+msgstr "Message after submit"
+
+msgid "_prop_submit_msg_stat_"
+msgstr "Display statistic after submit"
+
+msgid "_prop_unique_submit_"
+msgstr "One answer per user"
+
+msgid "_prop_persistent_data_"
+msgstr "Display latest input"
+
+msgid "_field_error_"
+msgstr "Error: "
+
+msgid "_field_is_required_"
+msgstr "[%s] is required"
+
+msgid "_field_is_too_long_"
+msgstr "[%s] is too long"
+
+msgid "_field_email_invalid_"
+msgstr "Invalid email format for [%s]"
+
+msgid "_field_int_invalid_"
+msgstr "[%s] is not an integer"
+
+msgid "_field_float_invalid_"
+msgstr "[%s] is not a float"
+
+msgid "_field_phone_invalid_"
+msgstr "[%s] is not a valid phone number"
+
+msgid "_field_is_read_only_"
+msgstr "[%s] is read only"
+
+msgid "_field_id_invalid_"
+msgstr "[%s] is not a valid identifier"
+
+msgid "_field_multiselect_invalid_"
+msgstr "Invalid multi selection for [%s]"
+
+msgid "_field_selection_invalid_"
+msgstr "Invalid selection for [%s]"
+
+msgid "_field_date_invalid_"
+msgstr "[%s] invalid date should be like 12/31/1999"
+
+msgid "_field_url_invalid_"
+msgstr "[%s] is not a valid url"
+
+msgid "_field_empty_file_"
+msgstr "[%s] is an empty file"
+
+msgid "_field_too_big_file_"
+msgstr "file [%s] is too big"
+
+msgid "_form_is_empty_"
+msgstr "This is an empty form"
+
+# Form_editForm
+msgid "_form_edit_help_"
+msgstr "This page lets you add fields and a button to your form."
+
+msgid "_form_add_new_field_"
+msgstr "Add a new field"
+
+msgid "_form_list_of_fields_"
+msgstr "List of fields:"
+
+msgid "_form_bt_move_up_"
+msgstr "Move Up"
+
+msgid "_form_bt_move_down_"
+msgstr "Move Down"
+
+msgid "_form_bt_remove_"
+msgstr "Delete"
+
+msgid "_form_erased_data_"
+msgstr "Collected Data have been purged"
+
+msgid "_form_join_with_next_"
+msgstr "Join with the next field:"
+
+msgid "_form_title_"
+msgstr "Title"
+
+msgid "_form_field_edit_"
+msgstr "Edit a field:"
+
+msgid "_form_bt_change_"
+msgstr "Change"
+
+msgid "_form_size_"
+msgstr "Size:"
+
+msgid "_form_max_length_"
+msgstr "Max Length:"
+
+msgid "_form_required_"
+msgstr "Required:"
+
+msgid "_form_value_"
+msgstr "Value:"
+
+msgid "_form_values_"
+msgstr "Values:"
+
+msgid "_form_checked_"
+msgstr "Checked:"
+
+msgid "_form_mulitple_"
+msgstr "Multiple:"
+
+msgid "_form_cols_"
+msgstr "Columns:"
+
+msgid "_form_rows_"
+msgstr "Rows:"
+
+msgid "_form_label_"
+msgstr "Label:"
+
+msgid "_form_type_"
+msgstr "Type:"
+
+msgid "_form_join_"
+msgstr "Join:"
+
+msgid "_form_stat_header_"
+msgstr "Data Collected:"
+
+msgid "_form_stat_detail_"
+msgstr "Results:"
+
+msgid "_form_%s_data_from_%s_to_%s_"
+msgstr "%s information submitted from %s to %s."
+
+msgid "_form_stat_empty_"
+msgstr "Sorry, no data collected."
+
+msgid "_form_stat_null_"
+msgstr "Sorry, there are no field with statistic interest."
+
+msgid "_action_view_stat_"
+msgstr "View statistics"
+
+# for initTest
+msgid "_survey_title_"
+msgstr "This is an survey example"
+
+msgid "_survey_bla_"
+msgstr "Thanks to answer to the following questions:"
+
+msgid "_survey_q1_"
+msgstr "You think this is:"
+
+msgid "_survey_q2_"
+msgstr "You are going to:"
+
+msgid "_survey_r1_"
+msgstr "amazing"
+
+msgid "_survey_r2_"
+msgstr "not interesting"
+
+msgid "_survey_r3_"
+msgstr "4 l3merz"
+
+msgid "_survey_s1_"
+msgstr "eat"
+
+msgid "_survey_s2_"
+msgstr "work"
+
+msgid "_survey_s3_"
+msgstr "sleep"
+
+msgid "_survey_bt_"
+msgstr "Vote"
+
+msgid "_survey_thanks_"
+msgstr "Thank you"

@@ -1,0 +1,213 @@
+# $Id$
+
+msgid "_portal_type_Collector Document"
+msgstr "Fiche d'information"
+
+msgid "_Create_a_collector_"
+msgstr "Créer une Fiche"
+
+msgid "_action_export_csv_"
+msgstr "Exporter les données en CSV"
+
+msgid "_action_modify_prop_"
+msgstr "Modifier les propriétés"
+
+msgid "_action_modify_form_"
+msgstr "Modifier le formulaire"
+
+msgid "_action_erase_data_"
+msgstr "Purger les données collectées"
+
+msgid "_Modify_prop(object name)_"
+msgstr "Modifier les propriétés"
+
+msgid "_Modify_form(object name)_"
+msgstr "Modifier le formulaire"
+
+msgid "_Modify_field(object name)_"
+msgstr "Modifier un champ de"
+
+msgid "_prop_submit_msg_"
+msgstr "Message final"
+
+msgid "_prop_submit_msg_stat_"
+msgstr "Afficher des statistiques avec le message final"
+
+msgid "_prop_unique_submit_"
+msgstr "Une seul réponse par utilisateur"
+
+msgid "_prop_persistent_data_"
+msgstr "Afficher la dernière saisie"
+
+msgid "_field_error_"
+msgstr "Erreur : "
+
+msgid "_field_is_required_"
+msgstr "[%s] est obligatoire"
+
+msgid "_field_is_too_long_"
+msgstr "[%s] est trop long"
+
+msgid "_field_email_invalid_"
+msgstr "[%s] n'est pas un email valide"
+
+msgid "_field_int_invalid_"
+msgstr "[%s] n'est pas un entier valide"
+
+msgid "_field_float_invalid_"
+msgstr "[%s] n'est pas un réel valide"
+
+msgid "_field_phone_invalid_"
+msgstr "[%s] n'est pas un numéro de téléphone valide"
+
+msgid "_field_is_read_only_"
+msgstr "[%s] est en lecture seul"
+
+msgid "_field_id_invalid_"
+msgstr "[%s] n'est pas un identifiant valide"
+
+msgid "_field_multiselect_invalid_"
+msgstr "multi selection invalide pour [%s]"
+
+msgid "_field_selection_invalid_"
+msgstr "selection invalide pour [%s]"
+
+msgid "_field_date_invalid_"
+msgstr "[%s] n'est pas une date valide, le format attendu est 31/12/1999"
+
+msgid "_field_url_invalid_"
+msgstr "[%s] n'est pas une URL valide"
+
+msgid "_field_empty_file_"
+msgstr "le fichier [%s] est vide"
+
+msgid "_field_too_big_file_"
+msgstr "le fichier [%s] est trop gros"
+
+msgid "_form_is_empty_"
+msgstr "Ceci est un formulaire vide"
+
+# Form_editForm
+msgid "_form_edit_help_"
+msgstr "Cette page vous permez d'ajouter des champs à votre formulaire."
+
+msgid "_form_add_new_field_"
+msgstr "Ajouter un champ"
+
+msgid "_form_list_of_fields_"
+msgstr "Liste des champs :"
+
+msgid "_form_bt_move_up_"
+msgstr "Déplacer vers le haut"
+
+msgid "_form_bt_move_down_"
+msgstr "Déplacer vers le bas"
+
+msgid "_form_bt_remove_"
+msgstr "Supprimer"
+
+msgid "_form_erased_data_"
+msgstr "Les données collectées ont été éffacé"
+
+msgid "_form_join_with_next_"
+msgstr "Concatener avec le prochain champ :"
+
+msgid "_form_title_"
+msgstr "Titre"
+
+msgid "_form_field_edit_"
+msgstr "Edition d'un champ :"
+
+msgid "_form_bt_change_"
+msgstr "Changer"
+
+msgid "_form_size_"
+msgstr "Taille :"
+
+msgid "_form_max_length_"
+msgstr "Taille max :"
+
+msgid "_form_required_"
+msgstr "Obligatoire :"
+
+msgid "_form_value_"
+msgstr "Valeur :"
+
+msgid "_form_values_"
+msgstr "Valeurs :"
+
+msgid "_form_checked_"
+msgstr "Selectio par défaut :"
+
+msgid "_form_mulitple_"
+msgstr "Sélection multiple :"
+
+msgid "_form_cols_"
+msgstr "Nombre de colonnes :"
+
+msgid "_form_rows_"
+msgstr "Nombre de lignes :"
+
+msgid "_form_label_"
+msgstr "Libellé :"
+
+msgid "_form_type_"
+msgstr "Type :"
+
+msgid "_form_join_"
+msgstr "Concaténation :"
+
+msgid "_form_stat_header_"
+msgstr "Informations collectées :"
+
+msgid "_form_stat_detail_"
+msgstr "Résultats :"
+
+msgid "_form_%s_data_from_%s_to_%s_"
+msgstr "%s informations collectées entre le %s et %s."
+
+msgid "_form_stat_empty_"
+msgstr "Il n'y a pas encore de données colléctées."
+
+msgid "_form_stat_null_"
+msgstr "Aucun champs ne se prettent à faire des statistiques."
+
+msgid "_action_view_stat_"
+msgstr "Voir les statistiques"
+
+# for initTest
+msgid "_survey_title_"
+msgstr "Ceci est un example de sondage multilingue"
+
+msgid "_survey_bla_"
+msgstr "Répondez aux questions suivantes:"
+
+msgid "_survey_q1_"
+msgstr "Vous pensez que :"
+
+msgid "_survey_q2_"
+msgstr "Vous allez :"
+
+msgid "_survey_r1_"
+msgstr "c'est tip top"
+
+msgid "_survey_r2_"
+msgstr "vous avez autre chose a faire"
+
+msgid "_survey_r3_"
+msgstr "c'est nul"
+
+msgid "_survey_s1_"
+msgstr "manger"
+
+msgid "_survey_s2_"
+msgstr "travailler"
+
+msgid "_survey_s3_"
+msgstr "dormir"
+
+msgid "_survey_bt_"
+msgstr "Votez"
+
+msgid "_survey_thanks_"
+msgstr "Merci"
