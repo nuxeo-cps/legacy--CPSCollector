@@ -35,7 +35,7 @@ class Form(Base):
              'date', 'url', 'password',
              'int', 'float',
              'text', 'file',
-             'checkbox', 'radio', 'selection',
+             'checkbox', 'radio', 'vradio', 'selection',
              'submit', 'reset', 'hidden')
     
     # Fields attributes that describe fields
@@ -59,6 +59,7 @@ class Form(Base):
                         'required__', 'join__')
     field_attr['checkbox']=('label__', 'checked__', 'required__', 'join__')
     field_attr['radio']=('label__', 'mvalue__', 'checked__', 'join__')
+    field_attr['vradio']=('label__', 'mvalue__', 'checked__', 'join__')
     field_attr['selection']=('label__', 'mvalue__', 'checked__',
                              'multiple__', 'size__', 'required__', 'join__')
     
@@ -457,6 +458,9 @@ class Form(Base):
             elif v not in f['mvalue'].keys():
                 err = '_field_selection_invalid_'
         elif t == 'radio':
+            if v not in f['mvalue'].keys():
+                err = '_field_selection_invalid_'
+        elif t == 'vradio':
             if v not in f['mvalue'].keys():
                 err = '_field_selection_invalid_'
         elif t == 'date':

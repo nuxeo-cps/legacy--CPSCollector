@@ -28,6 +28,13 @@
   </span>
 </span>
 
+<!-- def vradio field -->
+<span metal:define-macro="vradio" tal:omit-tag="">
+  <span tal:repeat="v python:here.getVList(f_id)" tal:omit-tag="">
+    <b tal:condition="python:here.getV(f_id,'checked')==v" tal:content="python:here.getLabel(f_id, v)" />
+  </span>
+</span>
+
 <!-- def selection field -->
 <b metal:define-macro="selectionX" tal:content="python:here.getV(f_id, 'value', default, 1)" />
 
@@ -102,6 +109,7 @@
 	<option value="phone">Phone number</option>
 	<option value="text">Text area</option>
 	<option value="radio">Radio button</option>
+        <option value="vradio">Vertical Radio button</option>
 	<option value="checkbox">Checkbox</option>
 	<option value="selection">Selection</option>
 	<option value="separator">Separator</option>	  

@@ -237,7 +237,7 @@ class CollectorDocument(Form, BaseDocument):
         # Return the list of field with statistic
         l=[]
         for f in self.getFList(1):
-            if self.fields[f]['type'] not in ('checkbox','radio','selection'):
+            if self.fields[f]['type'] not in ('checkbox','vradio', 'radio','selection'):
                 continue
             l.append(f)
         return l

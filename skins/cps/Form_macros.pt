@@ -45,6 +45,13 @@
     </span>
 </span>
 
+<!-- def vradio field -->
+<span metal:define-macro="vradio" tal:omit-tag="">
+  <span tal:repeat="v python:doc.getVList(f_id)" tal:omit-tag="">
+      <input tal:attributes="name f_id;value v;checked python:doc.getV(f_id,'checked')==v" name="_x_" type="radio" /><span tal:replace="python:doc.getLabel(f_id,v)">label</span><br />
+  </span>
+</span>
+
 <!-- def selection field -->
 <span metal:define-macro="selection" tal:omit-tag="">
   <select tal:attributes="name f_id;multiple f/multiple|python:0; size f/size|nothing" name="_x_">
@@ -121,7 +128,8 @@
 	<option value="phone">Phone number</option>
 	<option value="text">Text area</option>
 	<option value="radio">Radio button</option>
-	<option value="checkbox">Checkbox</option>
+	<option value="vradio">Vertical Radio button</option>
+        <option value="checkbox">Checkbox</option>
 	<option value="selection">Selection</option>
 	<option value="separator">Separator</option>	  
 	<option value="submit">Button</option>
