@@ -1,18 +1,18 @@
-# emmanuel <epietriga@nuxeo.com>, 2003, 2004.
-# ben <ben@nuxeo.com>, 2004.
-# Georg Hennemann <georg.hennemann@dhl.com>, 2004.
+# Georg Hennemann <georg.hennemann@dhl.com>, 2005.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: en\n"
+"Project-Id-Version: CPSCollector-de CPS-3.2.4\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-02-20 12:35default\n"
-"PO-Revision-Date: 2004-07-12 18:41+0100\n"
+"PO-Revision-Date: 2005-03-14 09:49+0100\n"
 "Last-Translator: Georg Hennemann <georg.hennemann@dhl.com>\n"
-"Language-Team: german <rheinland@dzug.org>\n"
+"Language-Team: de <rheinland@dzug.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.0.2\n"
+"Plural-Forms: nplurals=1; plural=0;"
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -26,8 +26,7 @@ msgid ""
 "${collector_nb} forms collected between ${collector_sdate} and "
 "${collector_edate}"
 msgstr ""
-"${collector_nb} Formular(e) ausgewertet zwischen ${collector_sdate} und "
-"${collector_edate}"
+"${collector_nb} Formular(e) ausgewertet zwischen ${collector_sdate} und ${collector_edate}"
 
 #.   <p>
 #.                    Score:
@@ -234,12 +233,12 @@ msgstr "Radio Taste (vertikales Layout)"
 #.       </input>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
-msgstr "Anfügen neues Feld"
+msgstr "Anfügen eines neuen Feldes"
 
 #.   <th nowrap="">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
-msgstr "Verbinden:"
+msgstr "Verbinden mit nächstem Feld:"
 
 #.   <th width="50%">label</th>
 #: from ../skins/cps/Form_macros.pt
@@ -360,7 +359,7 @@ msgstr "Ergebnisse:"
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_stats_header"
-msgstr "Gewonne Informationen:"
+msgstr "Gewonnene Informationen:"
 
 msgid "collector_confirm"
 msgstr "Sind Sie sicher?"
@@ -465,7 +464,7 @@ msgid "collector_field_empty_file"
 msgstr "leere Datei "
 
 msgid "collector_field_file_too_big"
-msgstr "Datei zu gross"
+msgstr "Datei zu groß"
 
 #, fuzzy
 #~ msgid "collector_form_mulitple"
@@ -484,4 +483,3 @@ msgstr "Datei zu gross"
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Collected data has been erased"
-
