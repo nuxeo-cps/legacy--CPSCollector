@@ -16,16 +16,16 @@ class Form(Base):
 
     security = ClassSecurityInfo()
     #security_* used to raise an exception in skin 
-    security.declarePrivate('security_private')
-    def security_private(self):
+    security.declarePrivate('assert_form_private')
+    def assert_form_private(self):
         pass
 
-    security.declareProtected(View, 'security_view')
-    def security_view(self):
+    security.declareProtected(View, 'assert_form_view')
+    def assert_form_view(self):
         pass
 
-    security.declareProtected(ModifyPortalContent, 'security_modify')
-    def security_modify(self):
+    security.declareProtected(ModifyPortalContent, 'assert_form_modify')
+    def assert_form_modify(self):
         pass
 
     # DEFINITION OF FIELDS

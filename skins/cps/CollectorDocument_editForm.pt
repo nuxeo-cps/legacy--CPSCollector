@@ -1,5 +1,5 @@
 <tal:block define="current_action string:edit;
-  create options/create|here/security_modify;
+  create options/create|here/assert_form_modify;
   mcat nocall:here/portal_messages; ">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"

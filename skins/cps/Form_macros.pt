@@ -1,4 +1,4 @@
-<tal:block define="_check_perm here/security_private" />
+<tal:block define="_check_perm_ here/assert_form_private" />
 
 <!-- def form_page -->
 <html metal:define-macro="form_page">
