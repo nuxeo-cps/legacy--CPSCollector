@@ -16,6 +16,19 @@ class Form(Base):
 
     security = ClassSecurityInfo()
 
+    security.declarePrivate('security_private')
+    def security_private(self):
+        # Used to raise an exception in skin when you don't have the perm
+        pass
+    security.declareProtected(View, 'security_view')
+    def security_view(self):
+        # Used to raise an exception in skin when you don't have the perm
+        pass
+    security.declareProtected(ModifyPortalContent, 'security_modify')
+    def security_modify(self):
+        # Used to raise an exception in skin when you don't have the perm
+        pass
+
     # DEFINITION OF FIELDS
     types = ('title', 'separator', 'comment',
              'string', 'email', 'identifier', 'string_ro', 'phone',
