@@ -89,7 +89,7 @@ msgstr "This is an empty form"
 
 # Form_editForm
 msgid "_form_edit_help_"
-msgstr "This page lets you add fields and a button to your form."
+msgstr "This page manage the content of your form."
 
 msgid "_form_add_new_field_"
 msgstr "Add a new field"
@@ -175,6 +175,27 @@ msgstr "Sorry, there are no field with statistic interest."
 msgid "_action_view_stat_"
 msgstr "View statistics"
 
+msgid "_action_view_"
+msgstr "View"
+
+msgid "_prop_title_"
+msgstr "Title"
+
+msgid "_prop_description_"
+msgstr "Description"
+
+msgid "_button_modify_"
+msgstr "Modify"
+
+msgid "_button_cancel_"
+msgstr "Cancel"
+
+msgid "_Are_you_sure?_"
+msgstr "Are you sure?"
+
+msgid "_date_%m/%d/%Y %H:%M"
+msgstr "%m/%d/%Y %H:%M"
+
 # for initTest
 msgid "_survey_title_"
 msgstr "This is an survey example"
@@ -211,3 +232,4 @@ msgstr "Vote"
 
 msgid "_survey_thanks_"
 msgstr "Thank you"
+

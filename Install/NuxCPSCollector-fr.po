@@ -175,6 +175,27 @@ msgstr "Aucun champs ne se prettent à faire des statistiques."
 msgid "_action_view_stat_"
 msgstr "Voir les statistiques"
 
+msgid "_action_view_"
+msgstr "Voir"
+
+msgid "_prop_title_"
+msgstr "Titre"
+
+msgid "_prop_description_"
+msgstr "Description"
+
+msgid "_button_modify_"
+msgstr "Modifier"
+
+msgid "_button_cancel_"
+msgstr "Annuler"
+
+msgid "_Are_you_sure?_"
+msgstr "Êtes-vous certain ?"
+
+msgid "_date_%m/%d/%Y %H:%M"
+msgstr "%d/%m/%Y %Hh%M"
+
 # for initTest
 msgid "_survey_title_"
 msgstr "Ceci est un example de sondage multilingue"
