@@ -1,9 +1,10 @@
 # (c) 2002 Nuxeo SARL <http://nuxeo.com>
 # $Id$
 """
-A Collector is a Form container, the form action store user input
-into CollectorItem that can be exported as csv file.
-Collector is able to display stat on data collected.
+A Collector is a folderish Form, 
+the form action store user input into CollectorItem
+Collector can export its items into a csv file
+Collector is able to display static on data collected
 """
 
 import time
