@@ -88,7 +88,7 @@ class Form(Base):
         self.add_field('mvalue__', type='text',
                        label='collector_form_values', cols=40, rows=5)
         self.add_field('multiple__', type='checkbox',
-                       label='collector_form_mulitple')
+                       label='collector_form_multiple')
         self.add_field('submit__', type='submit',
                        value='Form_editField:method',
                        label='collector_button_change')
@@ -333,7 +333,7 @@ class Form(Base):
 ##            self._v_macros = self.restrictedTraverse(self._macros_pt)
 ##        """
         return self.restrictedTraverse(self._macros_pt).macros[t]
-        
+
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
         # Label starting with '_' are localized
