@@ -41,6 +41,10 @@ factory_type_information = (
                   'name': '_action_view_',
                   'action': 'view',
                   'permissions': (View,)},
+                 {'id': 'view_stat',
+                  'name': '_action_view_stat_',
+                  'action': 'viewStat',
+                  'permissions': (ModifyPortalContent,)},
                  {'id': 'edit',
                   'name': '_action_modify_prop_',
                   'action': 'CollectorDocument_editForm',
@@ -158,9 +162,9 @@ class CollectorDocument(Form, BaseDocument):
         self.REQUEST.RESPONSE.redirect('%s/?%s' % (self.absolute_url(), psm))
         return
 
+    security.declareProtected(View, 'viewStat')
     def viewStat(self, **kw):
         "display stat for fields of type: selection/checkbox/radio"
-        r=self.compute_stat()
         return self.CollectorDocument_viewStat(**kw)
 
     security.declareProtected(ModifyPortalContent, 'initTest')
@@ -190,13 +194,25 @@ class CollectorDocument(Form, BaseDocument):
         self.add_field('comment', label='This is a comment !', type='comment')
         return "DONE"
 
-    security.declarePrivate('compute_stat')
-    def compute_stat(self, **kw):
-        # compute stat on selection/radio or checkbox fields
-        r = {}
+    security.declareProtected(View, 'get_stat_fields')
+    def get_stat_fields(self, **kw):
+        # return the list of field with statistic
+        l=[]
         for f in self.getFList(1):
             if self.fields[f]['type'] not in ('checkbox','radio','selection'):
                 continue
+            l.append(f)
+        return l
+
+    security.declareProtected(View, 'compute_stat')
+    def compute_stat(self, **kw):
+        # compute stat on selection/radio or checkbox fields
+        r = {}
+        date_start = time.localtime()
+        date_end = time.localtime(0)
+        nb_item=0
+
+        for f in self.get_stat_fields():
             r[f]={}
             mv=self.fields[f].get('mvalue')
             if mv:
@@ -205,9 +221,13 @@ class CollectorDocument(Form, BaseDocument):
             else:
                 r[f]['on']=0
 
-        nbItem=0
         for obj in self.objectValues('CollectorItem'):
-            nbItem += 1
+            _u, _ip, d = self._decode_id(obj.id)
+            if d < date_start:
+                date_start = d
+            if d > date_end:
+                date_end = d
+            nb_item += 1
             for f in r.keys():
                 mv = obj.data.get(f)
                 if not mv:
@@ -217,7 +237,18 @@ class CollectorDocument(Form, BaseDocument):
                 for v in mv:
                     if r[f].get(v,-1) != -1:
                         r[f][v] += 1
-        return nbItem, r
+
+        if nb_item:
+            for f in r.keys():
+                for v in r[f].keys():
+                    nb = r[f][v]
+                    r[f][v] = '%3.f' % (nb * 100.0 / nb_item)
+        mcat = self.portal_messages
+        date_start=time.strftime(mcat('_date_%m/%d/%Y %H:%M'), date_start)
+        date_end=time.strftime(mcat('_date_%m/%d/%Y %H:%M'), date_end)
+        r['_stat']={ 'nb_item':nb_item, 'date_start':date_start,
+                     'date_end':date_end }
+        return r
 
     ### Private
     security.declarePrivate('_list_to_csv')
