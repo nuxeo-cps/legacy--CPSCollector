@@ -123,8 +123,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self):
         """Used by the catalog for basic full text indexing"""
-        return '%s %s %s' % (self.title, self.description,
-                             self.related_links)
+        return '%s %s' % (self.title, self.description)
 
 
     # WEB INTERFACE --------------------------------------------------
