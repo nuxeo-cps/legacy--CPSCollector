@@ -72,7 +72,7 @@ factory_type_information = (
                   'visible': 0,
                   'permissions': ()},
                  ),
-     
+
      },
     )
 
@@ -96,7 +96,7 @@ class CollectorDocument(Form, BaseDocument):
     author=''
 
     def __init__(self, id, **kw):
-        "Guess what it is." 
+        "Guess what it is."
         BaseDocument.__init__(self, id, **kw)
         Form.__init__(self, id)
         self.unique_submit=1
@@ -104,7 +104,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('manage_afterAdd')
     def manage_afterAdd(self, item, container):
         "Finilize the form init."
-        self.post_init( msg_pt=self.CollectorDocument_msg )
+        self.post_init(msg_pt=self.CollectorDocument_msg)
 
     security.declareProtected(View, 'SearchableText')
     def SearchableText(self):
@@ -157,12 +157,12 @@ class CollectorDocument(Form, BaseDocument):
         self.add_field('isMale', type='checkbox',
                         label='Are you a Male', checked=1)
         self.add_field('rad_1', type='radio',
-                        mvalue='radvalue_1|Label v1\n'+ 
+                        mvalue='radvalue_1|Label v1\n'+
                         'radvalue_2|Label v2\nradvalue_3|label v3',
                         checked='radvalue_2')
         self.add_field('rad_1', label='Radio choose')
         self.add_field('rad2', type='radio',
-                        mvalue='value_1|Label 1\n'+ 
+                        mvalue='value_1|Label 1\n'+
                         'value_2|Label v 2\nvalue_3|label 3')
         self.add_field('rad2', label='Radio 2 choose', checked='value_3')
         self.add_field('drop2', type='selection',
@@ -176,14 +176,14 @@ class CollectorDocument(Form, BaseDocument):
         return "DONE"
 
 
-    ### Private 
+    ### Private
     security.declarePrivate('_list_to_csv')
     def _list_to_csv(self, t):
         l = ''
         for v in t:
             if v and (v.find('\n')!=-1 or v.find('"')!=-1 or \
                        v.find(',')!=-1):
-                v = '"'+sub('"', '""', v)+'"'                
+                v = '"'+sub('"', '""', v)+'"'
             l += str(v) + ','
         return l[:-1] + '\n'
 

@@ -18,12 +18,12 @@ class Form(Base):
 
     # DEFINITION OF FIELDS
     types = ('title', 'separator', 'comment',
-              'string', 'email', 'identifier', 'string_ro', 'phone',
-              'date', 'url', 'password',
-              'int', 'float',
-              'text', 'file',
-              'checkbox', 'radio', 'selection',
-              'submit', 'reset', 'hidden')
+             'string', 'email', 'identifier', 'string_ro', 'phone',
+             'date', 'url', 'password',
+             'int', 'float',
+             'text', 'file',
+             'checkbox', 'radio', 'selection',
+             'submit', 'reset', 'hidden')
 
     # field attributes
     # title__, id__, type__ and submit__ are automaticly added
