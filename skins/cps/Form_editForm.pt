@@ -16,6 +16,9 @@
 <metal:block fill-slot="main">
   <!-- form editor -->
   <p metal:use-macro="here/Form_macros/macros/display_edit_form">The form</p>
+
+<i><tal:block replace="python:mcat('_form_edit_help_')" /></i>
+
 </metal:block>
 
 </body>

@@ -102,7 +102,7 @@
  <tr bgcolor="FF8888" tal:condition="request/other/form_status|nothing">
   <td colspan="5" tal:content="request/other/form_status">bla</td>
  </tr>
-  <tr><td bgcolor="#98B2CB" colspan="5"><b>Add a new field:</b></td></tr>
+  <tr><td bgcolor="#98B2CB" colspan="5"><b tal:content="python:mcat('_form_add_new_field_')">Add a new field:</b></td></tr>
   <tr>
     <td bgcolor="#98B2CB">&nbsp;</td><td colspan="4" nowrap>Id:
       <input type="text" name="id" size="20"/> type:
@@ -129,13 +129,13 @@
 	<option value="comment">Comment</option>
 	<option value="file">File</option>	  
       </select>
-      <input type="submit" name="addField:method" value="Add new field" />
+      <input type="submit" name="addField:method" tal:attributes="value python:mcat('_form_add_new_field_')" />
     </td>
   </tr>
   <tr>
     <td colspan="5"><br></td>
   </tr>
-  <tr><td bgcolor="#98B2CB" colspan="6"><b>List of fields:</b></td></tr>
+  <tr><td bgcolor="#98B2CB" colspan="6"><b tal:content="python:mcat('_form_list_of_fields_')">List of fields:</b></td></tr>
   <tr bgcolor="#98B2CB">
     <td>&nbsp;</td>
     <td nowrap="1">id</td>
@@ -158,9 +158,9 @@
   </tr>
   <tr><td bgcolor="#98B2CB">&nbsp;</td>
   <td colspan="4">
-    <input type="submit" name="moveFieldUp:method" value="Move Up" />
-    <input type="submit" name="moveFieldDown:method" value="Move Down" />
-    <input type="submit" name="delField:method" value="Remove field" />
+    <input type="submit" name="moveFieldUp:method" tal:attributes="value python:mcat('_form_bt_move_up_')" />
+    <input type="submit" name="moveFieldDown:method" tal:attributes="value python:mcat('_form_bt_move_down_')" />
+    <input type="submit" name="delField:method" tal:attributes="value python:mcat('_form_bt_remove_')" />
   </td></tr>
 </table>
 </form>

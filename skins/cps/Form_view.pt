@@ -24,9 +24,6 @@
   </metal:block>
   <metal:block use-macro="here/main_widgets/macros/discussion" />
 
-<!-- XXX TODO: remove this for debug purpose -->
-  <hr> debug info request was: <span tal:replace="request/form"/>
-
 </metal:block>
 
 </body>

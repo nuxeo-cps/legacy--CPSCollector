@@ -5,8 +5,10 @@
 from re import match
 from Globals import InitializeClass
 from ExtensionClass import Base
+from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
+
 
 ### class
 class Form(Base):
@@ -104,11 +106,11 @@ class Form(Base):
         "default view"
         self._set_status()
         status,err=self.check_form()
-        if status == 'not_yet_submited':
+        if status != 'valid_form':
+            if err:
+                self._set_status(err)
             return self._view_pt(**kw)
-        elif status == 'bad_fields':
-            self._set_status( err )
-            return self._view_pt(**kw)
+            
         return self.action(**kw)        
 
     security.declareProtected(ModifyPortalContent, 'editForm')
@@ -320,7 +322,7 @@ class Form(Base):
         # add or modify field to the form
         if not id:
             return
-        if not hasattr(self, 'fields'):
+        if not hasattr(aq_base(self), 'fields'):
             self.fields = {}
             self.fields_list = []
         if not self.fields.has_key( id ):
@@ -370,7 +372,11 @@ class Form(Base):
         mcat = self.portal_messages
         locale = mcat.get_selected_language()
         if not form.get('is_form_submitted'):
-            return ( 'not_yet_submited', '' )
+            if not len(self.fields_list):
+                msg = mcat('_form_is_empty_')
+            else:
+                msg = ''
+            return ( 'not_yet_submited', msg )
         msg=''
         bf=[]
         for f in self.getFList( ):
