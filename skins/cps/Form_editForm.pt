@@ -1,6 +1,7 @@
 <tal:block define="_check_perm_ here/assert_form_modify" />
 <tal:block define="current_action string:edit_form;
-  mcat nocall:here/portal_messages;">
+  mcat nocall:here/portal_messages;
+  doc here/getContent;">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master">

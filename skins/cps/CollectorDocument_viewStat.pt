@@ -1,6 +1,5 @@
 <tal:block define="_check_perm_ here/assert_form_modify" />
 
-
 <tal:block define="current_action string:view_stat;
   mcat nocall:here/portal_messages;">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
@@ -14,8 +13,9 @@
 <metal:block fill-slot="main">
 
 <metal:block define-macro="display_stat">
-<tal:block define="stats python:here.compute_stat();
-                   fields python:here.get_stat_fields();">
+<tal:block define="doc here/getContent;
+                   stats python:doc.compute_stat();
+                   fields python:doc.get_stat_fields();">
   <tal:block condition="python: not stats['_stat']['nb_item']">
     <h2 tal:content="python:mcat('_form_stat_empty_')">no data</h2>
   </tal:block>
@@ -29,11 +29,11 @@
   <table width="60%" tal:condition="fields">
   <tal:block repeat="field fields">
     <tr><th colspan=2>
-    <tal:block replace="python:here.getLabel(field)" />
+    <tal:block replace="python:doc.getLabel(field)" />
     </th></tr>
     <tal:block repeat="value python:stats[field].keys()">
       <tr><td align="right">&nbsp;
-        <tal:block replace="python:here.getLabel(field,value)" />:
+        <tal:block replace="python:doc.getLabel(field,value)" />:
       </td><td align="center">
         <tal:block replace="python:stats[field][value]" /> %
       </td></tr>

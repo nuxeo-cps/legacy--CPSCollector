@@ -1,3 +1,3 @@
 ## $Id$
 
-return context.CollectorDocument_editForm(create=1)
+return context.CollectorDocument_editProp(create=1)

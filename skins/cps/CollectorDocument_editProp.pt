@@ -1,6 +1,7 @@
 <tal:block define="current_action string:edit;
   create options/create|here/assert_form_modify;
-  mcat nocall:here/portal_messages; ">
+  mcat nocall:here/portal_messages;
+  doc python:(create and [here] or [here.getContent()])[0];">
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master">
@@ -16,7 +17,7 @@
     <tal:block replace="python:mcat('_Modify_prop(object name)_')">
       Modify
     </tal:block>
-    «&nbsp;<span tal:replace="here/title_or_id">Title</span>&nbsp;»
+    «&nbsp;<span tal:replace="doc/title_or_id">Title</span>&nbsp;»
   </tal:block>
 </metal:block>
 
@@ -32,12 +33,12 @@ function open_metadata_editor(input_id) {
 </metal:block>
 
 <metal:block fill-slot="main"
-  tal:define="title python:(create and [''] or [here.Title()])[0];
-              description python:(create and [''] or [here.description])[0];
-              submit_msg python:(create and ['Thank you'] or [here.submit_msg])[0];
-              submit_msg_stat python:(create and [0] or [here.submit_msg_stat])[0];
-              unique_submit python:create or here.unique_submit;
-              persistent_data python:create or here.persistent_data;
+  tal:define="title python:(create and [''] or [doc.Title()])[0];
+              description python:(create and [''] or [doc.description])[0];
+              submit_msg python:(create and ['Thank you'] or [doc.submit_msg])[0];
+              submit_msg_stat python:(create and [0] or [doc.submit_msg_stat])[0];
+              unique_submit python:create or doc.unique_submit;
+              persistent_data python:create or doc.persistent_data;
               submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
               action python:create and 'cpsdocument_create' or 'cpsdocument_edit';">
 
@@ -114,11 +115,6 @@ function open_metadata_editor(input_id) {
             checked="." tal:attributes="checked persistent_data" />
         </metal:block>
       </metal:block>
-      <!-- links -->
-      <metal:block use-macro="here/main_widgets/macros/linkswidget">
-        Related links
-      </metal:block>
-
     </metal:block>
 
 </metal:block>
