@@ -3,9 +3,8 @@ Requires:
 -
 New features:
 ~~~~~~~~~~~~~
-- CPSDocument compliant
-- better cps css integration
-- now vertical radio button is displayed in 2 rows
+- CPSDocument compliant (ie Collector and Quiz are CPSDocument)
+- lots of improvment and better cps css integration
 Bug fixes:
 ~~~~~~~~~~
 - #214: Collector is frozen after publication
