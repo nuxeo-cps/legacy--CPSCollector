@@ -6,14 +6,17 @@
 # ben <ben@nuxeo.com>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: en\n"
+"Project-Id-Version: CPSCollector\n"
 "POT-Creation-Date: 2004-02-20 12:35default\n"
-"PO-Revision-Date: 2004-05-10 15:31+0100\n"
-"Last-Translator: Paolo Dina <paolo@php3.it>\n"
-"Language-Team: francais <fr@li.org>\n"
+"PO-Revision-Date: 2004-10-01 08:34+0100\n"
+"Last-Translator: Fabio Nosari <fabnos@fastwebnet.it>\n"
+"Language-Team: ita <fabnos@fastwebnet.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #    <span omit-tag="">
 #        ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -25,7 +28,7 @@ msgstr ""
 #: from
 #: ../skins/cps/CollectorDocument_viewStat.pt
 msgid "${collector_nb} forms collected between ${collector_sdate} and ${collector_edate}"
-msgstr "${collector_nb} file(s) collezionato(i) tra il ${collector_sdate} e il ${collector_edate}"
+msgstr "${collector_nb} file (s) collezionato (i) tra il ${collector_sdate} e il ${collector_edate}"
 
 #    <p>
 #                     Score:
@@ -37,7 +40,7 @@ msgstr "${collector_nb} file(s) collezionato(i) tra il ${collector_sdate} e il $
 #: from
 #: ../skins/cps/QuizDocument_viewResults.pt
 msgid "Score: ${collector_label_nb_correct} correct answers out of ${collector_label_nb_all} questions"
-msgstr "Score: ${collector_label_nb_correct} risposta(e) corretta(e) su ${collector_label_nb_all} domanda(e)"
+msgstr "Punteggio: ${collector_label_nb_correct} risposta (e) corretta (e) su ${collector_label_nb_all} domanda (e)"
 
 #    <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
 #      </input>
@@ -79,13 +82,13 @@ msgstr "Rimuovi"
 #: ../skins/cps/Form_editForm.pt
 #: ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
-msgstr "Utilizza i comandi di questa pagina per aggiungere e modificare i campi nel modulo"
+msgstr "Utilizza i comandi di questa pagina per aggiungere e modificare i campi del modulo"
 
 #    <strong>no data</strong>
 #: from
 #: ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_empty_stats"
-msgstr "Ancora nessun dato raccolto"
+msgstr "Non è stato ancora raccolto alcun dato!"
 
 #    <option value="submit">
 #                Button
@@ -93,7 +96,7 @@ msgstr "Ancora nessun dato raccolto"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_field_button"
-msgstr "Pulsante di validazione"
+msgstr "Pulsante di conferma"
 
 #    <option value="checkbox">
 #                Checkbox
@@ -123,7 +126,7 @@ msgstr "Data"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_field_email"
-msgstr "Email"
+msgstr "E-mail"
 
 #    <option value="file">
 #                File
@@ -165,7 +168,7 @@ msgstr "Intero"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_field_password"
-msgstr "Parola chiave"
+msgstr "Password"
 
 #    <option value="phone">
 #                Phone number
@@ -181,7 +184,7 @@ msgstr "Numero di telefono"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_field_radiobutton"
-msgstr "Bottone di scelta"
+msgstr "Pulsante di scelta"
 
 #    <option value="reset">
 #                Reset button
@@ -189,7 +192,7 @@ msgstr "Bottone di scelta"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_field_resetbutton"
-msgstr "Buttone di annullamento"
+msgstr "Pulsante di reinizializzazione"
 
 #    <option value="selection">
 #                Selection
@@ -249,7 +252,7 @@ msgstr "URL"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_field_vradiobutton"
-msgstr "Bottone di scelta (disposizione verticale)"
+msgstr "Pulsante di scelta (layout verticale)"
 
 #    <div class="label">
 #           Add a new field:
@@ -259,13 +262,13 @@ msgstr "Bottone di scelta (disposizione verticale)"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
-msgstr "Aggiungi un nuovo campo"
+msgstr "Aggiungi un nuovo campo:"
 
 #    <th nowrap="">join w/ next field</th>
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
-msgstr "Entra:"
+msgstr "Collegato:"
 
 #    <th width="50%">label</th>
 #: from
@@ -291,13 +294,13 @@ msgstr "Tipo:"
 #: from
 #: ../skins/cps/Form_macros.pt
 msgid "collector_form_list_of_fields"
-msgstr "Elenco di campi:"
+msgstr "Elenco dei campi:"
 
 #    <h2>No statistic available</h2>
 #: from
 #: ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_form_stats_null"
-msgstr "Non ci sono campi su questo modulo adatti ad un calcolo statistico"
+msgstr "In questo modulo, non esistono campi adatti ad un calcolo statistico"
 
 #    <th>Chosen Answer</th>
 #: from
@@ -317,13 +320,13 @@ msgstr "Risposta corretta"
 #: from
 #: ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_label_create"
-msgstr "Crea un file"
+msgstr "Crea un modulo"
 
 #    <p>collector_label_erase_warning</p>
 #: from
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_label_erase_warning"
-msgstr "Tutti i dati raccolti verranno persi"
+msgstr "Attenzione, tutti i dati raccolti saranno cancellati."
 
 #    <th>Question</th>
 #: from
@@ -348,7 +351,7 @@ msgstr "Modifica un campo"
 #: ../skins/cps/Form_editForm.pt
 #: ../skins/cps/Form_editQuizForm.pt
 msgid "collector_modify_form"
-msgstr "Modifica il formulario"
+msgstr "Modifica il modulo"
 
 #    <block>
 #          Modify
@@ -368,25 +371,25 @@ msgstr "Descrizione"
 #: from
 #: ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_persistent"
-msgstr "Mostra l'ultimo inserimento"
+msgstr "Visualizza l'ultimo inserimento"
 
 #    <span />
 #: from
 #: ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg"
-msgstr "Messaggio da mostrare dopo l'inserimento"
+msgstr "Messaggio da visualizzare dopo l'inserimento"
 
 #    <span condition="is_quiz" />
 #: from
 #: ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_results"
-msgstr "Mostra i risultati dopo l'inserimento"
+msgstr "Visualizza i risultati dopo l'inserimento"
 
 #    <span condition="not: is_quiz" />
 #: from
 #: ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_stats"
-msgstr "Mostra statistiche dopo l'inserimento"
+msgstr "Visualizza le statistiche dopo l'inserimento"
 
 #    <span />
 #: from
@@ -398,7 +401,7 @@ msgstr "Titolo"
 #: from
 #: ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_unique"
-msgstr "Un solo file per utilizzatore"
+msgstr "Un solo modulo per utilizzatore"
 
 #    <h2>Result</h2>
 #: from
@@ -464,10 +467,10 @@ msgid "collector_form_multiple"
 msgstr "Selezione multipla:"
 
 msgid "collector_button_change"
-msgstr "Salva le modifiche"
+msgstr "Salva le variazioni"
 
 msgid "collector_form_join_with_next"
-msgstr "Connetti con il seguente campo:"
+msgstr "Collega con il seguente campo:"
 
 msgid "collector_form_good_answer"
 msgstr "Risposta corretta:"
@@ -482,7 +485,7 @@ msgid "collector_field_too_long"
 msgstr "campo troppo lungo"
 
 msgid "collector_field_email_invalid"
-msgstr "email non valida"
+msgstr "e-mail non valida"
 
 msgid "collector_field_int_invalid"
 msgstr "identificatore non valido"
@@ -500,7 +503,7 @@ msgid "collector_field_id_invalid"
 msgstr "identificatore non valido"
 
 msgid "collector_field_multiselect_invalid"
-msgstr "selezione non valida"
+msgstr "selezione multipla non valida"
 
 msgid "collector_field_selection_invalid"
 msgstr "selezione non valida"
@@ -515,5 +518,5 @@ msgid "collector_field_empty_file"
 msgstr "file vuoto"
 
 msgid "collector_field_file_too_big"
-msgstr "file troppo grosso"
+msgstr "file di dimensione eccessiva"
 
