@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Quiz and Collector are hidden in the default folder_view
+- ugly border on radio and checkbox input under IE
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
