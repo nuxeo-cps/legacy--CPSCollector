@@ -1,8 +1,9 @@
 # (c) 2002 Nuxeo SARL <http://nuxeo.com>
 # $Id$
-
 """
   Collector Document
+
+
 """
 
 __version__ = '$Revision$'[11:-2]
@@ -24,10 +25,8 @@ from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 from Products.NuxCPSDocuments.BaseDocument import BaseDocument, \
      BaseDocument_adder
 
-from Metadata import Metadata
-from Form import Form
-from CollectorItem import CollectorItem
-from tools import log
+from Products.NuxCPSCollector.Form import Form
+from Products.NuxCPSCollector.CollectorItem import CollectorItem
 
 factory_type_information = (
     {'id': 'Collector Document',
@@ -86,7 +85,7 @@ factory_type_information = (
 
 
 ### class
-class CollectorDocument(Form, BaseDocument, Metadata):
+class CollectorDocument(Form, BaseDocument):
     """
     Collector Document
     """
