@@ -155,7 +155,7 @@ def install(self):
     }
 
     #################################################
-    # AUTHORIZATING PORTAL TYPES (ws and sections)
+    # AUTHORIZATING PORTAL TYPES (ws only)
     #################################################
 
     if 'Workspace' in ttool.objectIds():
@@ -163,18 +163,10 @@ def install(self):
     else:
         workspaceACT = []
 
-    if 'Section' in ttool.objectIds():
-        sectionACT = list(ttool['Section'].allowed_content_types)
-    else:
-        sectionACT = []
-
     if 'Collector Document' not in  workspaceACT:
         workspaceACT.append('Collector Document')
-    if 'Collector Document' not in  sectionACT:
-        sectionACT.append('Collector Document')
 
     allowed_content_type = {
-                            'Section' : sectionACT,
                             'Workspace' : workspaceACT,
                             }
 
