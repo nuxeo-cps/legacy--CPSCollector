@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.5.2 [R1 build 2004/02/19-15:52 by ben]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Quiz and Collector are hidden in the default folder_view
+- ugly border on radio and checkbox input under IE
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.5.1 [R1 build 2004/02/11-17:10 by ben]
 
 Requires:
