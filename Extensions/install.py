@@ -95,7 +95,7 @@ def cps_collector_i18n_update(self):
         po_path = os.path.join(i18n_path, po_filename)
         try:
             po_file = open(po_path)
-        except NameError:
+        except (IOError, NameError):
             pr("    %s file not found" % po_path)
         else:
             defaultCatalog.manage_import(lang, po_file)
