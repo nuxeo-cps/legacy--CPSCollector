@@ -213,7 +213,7 @@ class LocaleTime:
         if time.daylight:
             has_saving = sets_ImmutableSet([time.tzname[1].lower()])
         else:
-            has_saving = sets_ImmutableSet()
+            has_saving = sets_ImmutableSet([])
         self.timezone = (no_saving, has_saving)
 
 
