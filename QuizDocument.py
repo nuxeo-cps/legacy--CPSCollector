@@ -83,20 +83,22 @@ class QuizDocument(CollectorDocument):
 
     #overrides Form_editForm in Form.py
     _editForm_pt='Form_editQuizForm'
+
+    field_attr = CollectorDocument.field_attr.copy()
+    field_attr['checkbox'] = CollectorDocument.field_attr['checkbox'][:1] +\
+                             ('trueval__',) +\
+                             CollectorDocument.field_attr['checkbox'][1:]
+    field_attr['radio'] = CollectorDocument.field_attr['radio'][:2] +\
+                          ('trueval__',) +\
+                          CollectorDocument.field_attr['radio'][2:]
+    field_attr['vradio'] = CollectorDocument.field_attr['vradio'][:2] +\
+                           ('trueval__',) +\
+                           CollectorDocument.field_attr['vradio'][2:]
     
     def __init__(self, id, **kw):
         """Constructor"""
         CollectorDocument.__init__(self, id, **kw)
-        self.add_field('trueval__', type='string', label='_form_good_answer_')
-        QuizDocument.field_attr['checkbox'] = CollectorDocument.field_attr['checkbox'][:1] +\
-                                              ('trueval__',) +\
-                                              CollectorDocument.field_attr['checkbox'][1:]
-        QuizDocument.field_attr['radio'] = CollectorDocument.field_attr['radio'][:2] +\
-                                           ('trueval__',) +\
-                                           CollectorDocument.field_attr['radio'][2:]
-        QuizDocument.field_attr['vradio'] = CollectorDocument.field_attr['vradio'][:2] +\
-                                            ('trueval__',) +\
-                                            CollectorDocument.field_attr['vradio'][2:]
+        self.add_field('trueval__', type='string', label='collector_form_good_answer')
         
     security.declareProtected(View, 'get_quiz_fields')
     def get_quiz_fields(self, **kw):
