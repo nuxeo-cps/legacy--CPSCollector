@@ -312,19 +312,19 @@ msgstr "Résultat"
 #.   <block />
 #: from ../skins/cps/Form_editField_pt.pt
 msgid "collector_modify_field"
-msgstr "Edition du champ"
+msgstr "Modification du champ"
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_modify_form"
-msgstr "Edition du formulaire"
+msgstr "Modification du formulaire"
 
 #.   <block>
 #.         Modify
 #.       </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_modify_props"
-msgstr "Edition des propriétés de "
+msgstr "Modification des propriétés de "
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
@@ -390,7 +390,7 @@ msgid "collector_form_label"
 msgstr "Libellé :"
 
 msgid "collector_form_field_edit"
-msgstr "Edition d'un champ :"
+msgstr "Modification d'un champ :"
 
 msgid "collector_form_type"
 msgstr "Type :"
