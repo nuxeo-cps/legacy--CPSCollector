@@ -43,10 +43,10 @@ class Form(ExtensionClass.Base):
     field_attr['selection']=( 'label__', 'mvalue__', 'checked__',
                               'multiple__', 'size__', 'required__', 'join__' )
 
-    def __init__( self, id, title ):
-        "construtor"
+    def __init__(self, id):
+        "construtor, but you have to call post_init"
         self.id = id
-        self.title = title
+
         # creation of internal fields
         self.add_field( 'title__', type='title', label='Field edition:' )
         self.add_field( 'id__', type='string_ro', label='Id:', join='on' )
@@ -66,10 +66,17 @@ class Form(ExtensionClass.Base):
                    value='editField:method' )
         self.add_field( 'join__', type='checkbox', label='Join with the next field')
 
+    def post_init(self, form_view=None):
+        "setup tpl view"
+        if not form_view:
+            self._form_view=self.Form_view
+        else:
+            self._form_view=form_view
+
     ### 
     def action(self, **kw):
         "this method should be rewrite by child"
-        return self.Form_view(**kw)
+        return self._form_view(**kw)
 
     def validator(self, form):
         "this method should be rewrite by child, should return error str"
@@ -85,10 +92,10 @@ class Form(ExtensionClass.Base):
         self._set_status()
         status,err=self.check_form()
         if status == 'not_yet_submited':
-            return self.Form_view(**kw)
+            return self._form_view(**kw)
         elif status == 'bad_fields':
             self._set_status( err )
-            return self.Form_view(**kw)
+            return self._form_view(**kw)
         return self.action(**kw)        
 
     def editForm( self, **kw ):
