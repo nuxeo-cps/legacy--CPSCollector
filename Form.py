@@ -430,10 +430,7 @@ class Form(Base):
             err = self._check_field(f, form.get(f), locale)
             if err:
                 err_l10n = self.Localizer.cpscollector(err)
-                if err_l10n != err:
-                    err = err_l10n % f
-                else:
-                    err = '[' + f + '] ' + err
+                err = '[' + f + '] ' + err_l10n
                 msg = msg + err + ', '
                 bf.append(f)
         form['error__'] =  bf
