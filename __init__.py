@@ -46,4 +46,5 @@ def initialize(registrar):
         extra_constructors = contentConstructors,
         fti = fti,
         ).initialize(registrar)
+
 # EOF

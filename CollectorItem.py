@@ -14,18 +14,18 @@ class CollectorItem(SimpleItem):
 
     meta_type = 'CollectorItem'
     manage_options = ( { 'label':'View', 'action':'view' },
-                       )+SimpleItem.manage_options 
+                       ) + SimpleItem.manage_options 
     
-    def __init__( self, id, form ):
-        """ construtor """
+    def __init__(self, id, form):
+        """Construtor"""
         self.id = id
         self.data = form
         self._p_changed = 1
         
     security.declareProtected(ModifyPortalContent, 'view')
-    def view( self ):
-        """ view """
-        return str( self.data )
+    def view(self):
+        """View"""
+        return str(self.data)
 
 InitializeClass(CollectorItem)
     
