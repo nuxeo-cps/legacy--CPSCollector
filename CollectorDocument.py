@@ -311,7 +311,12 @@ class CollectorDocument(Form, BaseDocument):
     def _get_item_values(self):
         """ Just do it """
         return self.objectValues('CollectorItem')
-            
+
+    security.declarePrivate('_get_item')
+    def _get_item(self, id):
+        """ Assert id is valid """
+        return getattr(aq_base(self), id)
+        
     security.declarePrivate('_load_data')
     def _load_data(self, item_id=None):
         """ Load collectorItem data or latest if item_id is None """
@@ -320,7 +325,7 @@ class CollectorDocument(Form, BaseDocument):
         if not item_id:
             return
         
-        return getattr(aq_base(self), item_id)
+        return self._get_item(item_id)
     
     security.declarePrivate('_find_latest_item')
     def _find_latest_item(self):
