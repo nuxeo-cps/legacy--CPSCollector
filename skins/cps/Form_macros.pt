@@ -156,7 +156,7 @@
     <tr>
       <td bgcolor="#EEEEEE">
         <font color="990000">
-          <strong tal:content="request/other/form_status">error msg</strong>schmol
+          <strong tal:content="request/other/form_status">error msg</strong>
         </font>
       </td>
     </tr>
