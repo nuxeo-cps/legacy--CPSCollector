@@ -5,9 +5,9 @@ you (may) need to make a symlink to run this testsuite:
 ln -s $ZS/lib/python/Products $ZS/Products/CMFCore
 """
 import unittest
+from Testing import ZopeTestCase
 
-import ZODB
-import OFS.Application
+#import CPSDefaultTestCase
 
 from Products.CPSCollector.Form import Form
 
@@ -18,13 +18,6 @@ def checkField(typ, val, **kw):
     return ret
 
 class TestFormValidation(unittest.TestCase):
-    def setUp(self):
-        # Set up some preconditions
-        pass
-
-    def tearDown(self):
-        # Clean up after each test
-        pass
 
     def test_required(self):
         ob = Form('utest')
