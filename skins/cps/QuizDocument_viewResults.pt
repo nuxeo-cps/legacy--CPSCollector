@@ -21,12 +21,14 @@
                             tal:replace="results/nb_all" />
                  questions
               </p>
-              <table style="text-align:center;width:100%">
+              <table style="text-align:center;width:100%"
+                     cellspacing='0' cellpadding='0'>
                 <th i18n:translate="collector_label_question">Question</th>
                 <th i18n:translate="collector_label_chosen_answ">Chosen Answer</th>
                 <th i18n:translate="collector_label_correct_answ">Correct Answer</th>
                 <th i18n:translate="collector_label_result">Result</th>
-                <tr tal:repeat="result results/fields">
+                <tr tal:repeat="result results/fields"
+                    tal:attributes="class python:test(repeat['result'].odd(),'odd','even')">
                   <td tal:content="result/question"></td>
                   <td tal:content="result/chosen_answ"></td>
                   <td tal:content="result/correct_answ"></td>
