@@ -8,7 +8,7 @@ New features:
 - now vertical radio button is displayed in 2 rows
 Bug fixes:
 ~~~~~~~~~~
--
+- #214: Collector is frozen after publication
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
