@@ -1,13 +1,14 @@
 <tal:block define="_check_perm_ here/assert_form_modify" />
 
-<html metal:use-macro="here/content_lib/macros/master">
-<metal:block fill-slot="main" tal:define="mcat python:here.getCPSmcat()">
-  <tal:block replace="python:mcat('_Modify_form(object name)_')" />
+<html metal:use-macro="here/content_lib/macros/master"
+      i18n:domain="cpscollector">
+<metal:block fill-slot="main">
+  <tal:block i18n:translate="collector_modify_form" />
   «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»
   <!-- form editor -->
   <p metal:use-macro="here/Form_macros/macros/display_quiz_edit_form">The form</p>
 
-  <i><tal:block replace="python:mcat('_form_edit_help_')" /></i>
+  <em><tal:block i18n:translate="collector_edit_help" /></em>
 
 </metal:block>
 </html>

@@ -1,7 +1,8 @@
-<html metal:use-macro="here/content_lib/macros/master">
+<html metal:use-macro="here/content_lib/macros/master"
+      i18n:domain="cpscollector">
 
 <metal:block fill-slot="main"
-  tal:define="mcat python:here.getCPSmcat();
+  tal:define="colmcat nocall:here/Localizer/cpscollector;
               create options/create|here/assert_form_modify;
               title python:(create and [''] or [doc.Title()])[0];
               description python:(create and [''] or [doc.description])[0];
@@ -9,14 +10,15 @@
               submit_msg_stat python:(create and [0] or [doc.submit_msg_stat])[0];
               unique_submit python:create or doc.unique_submit;
               persistent_data python:create or doc.persistent_data;
-              submitvalue python:create and mcat('_button_create_') or mcat('_button_modify_');
+              submitvalue python:create and colmcat('collector_button_create')
+                                 or colmcat('collector_button_modify');
               action python:create and 'content_create' or 'content_edit';">
   <tal:block condition="create"
-    tal:content="python:mcat('_Create_a_collector_')">
+    i18n:translate="collector_label_create">
     Create a Collector
   </tal:block>
   <tal:block condition="not:create">
-    <tal:block replace="python:mcat('_Modify_prop(object name)_')">
+    <tal:block i18n:translate="collector_modify_props">
       Modify
     </tal:block>
     «&nbsp;<span tal:replace="doc/title_or_id">Title</span>&nbsp;»
@@ -28,7 +30,7 @@
   <table>
     <tr>
       <td>
-        <span tal:content="python:mcat('_prop_title_')" />
+        <span i18n:translate="collector_prop_title" />
       </td>
       <td>
         <input type="text" name="title" value="title" tal:attributes="value
@@ -38,7 +40,7 @@
     <tr>
       <td>
       <!-- descr -->
-        <span tal:content="python:mcat('_prop_description_')" />
+        <span i18n:translate="collector_prop_description" />
       </td>
       <td>
         <textarea name="description:text" rows="5" cols="50" wrap="soft"
@@ -47,7 +49,7 @@
     </tr>
     <tr>
       <td>
-        <span tal:content="python:mcat('_prop_submit_msg_')" />
+        <span i18n:translate="collector_prop_submit_msg" />
       </td>
       <td>
         <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
@@ -56,7 +58,7 @@
     </tr>
     <tr>
       <td>
-        <span tal:content="python:mcat('_prop_submit_msg_stat_')" />
+        <span i18n:translate="collector_prop_submit_msg_stats" />
       </td>
       <td>
           <input type="hidden" name="submit_msg_stat:boolean:default" value="" />
@@ -66,7 +68,7 @@
     </tr>
     <tr>
       <td>
-        <span tal:content="python:mcat('_prop_unique_submit_')" />
+        <span i18n:translate="collector_prop_unique" />
       </td>
       <td>
         <input type="hidden" name="unique_submit:boolean:default" value="" />
@@ -76,7 +78,7 @@
     </tr>
     <tr>
       <td>
-        <span tal:content="python:mcat('_prop_persistent_data_')" />
+        <span i18n:translate="collector_prop_persistent" />
       </td>
       <td>
         <input type="hidden" name="persistent_data:boolean:default" value="" />
@@ -93,9 +95,11 @@
     <input type="hidden" name="default_description_from" value="title" />
   </tal:block>
   <input type="hidden" name="change_and_edit" value="plz" />
-  <input class="mainbutton" type="submit" value="." tal:attributes="value submitvalue" />
+  <input class="context" type="submit" value="." tal:attributes="value submitvalue" />
   <input type="button" name="cancel" onclick="history.back()"
-    tal:attributes="value python:mcat('_button_cancel_')" />
+    class="context"
+    i18n:attributes="value"
+    value="collector_button_cancel" />
   </form>
 
 </metal:block>
