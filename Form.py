@@ -2,14 +2,17 @@
 # an html form generator
 
 ### import
-import Globals
-import ExtensionClass
 from re import match
+from Globals import InitializeClass
+from ExtensionClass import Base
+from AccessControl import ClassSecurityInfo
+from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
 
 ### class
-class Form(ExtensionClass.Base):
+class Form(Base):
     "Form class"
-    # TEMPLATES
+
+    security = ClassSecurityInfo()
 
     # DEFINITION OF FIELDS
     types = ( 'title', 'separator', 'comment',
@@ -66,6 +69,7 @@ class Form(ExtensionClass.Base):
                    value='editField:method' )
         self.add_field( 'join__', type='checkbox', label='Join with the next field')
 
+    security.declarePrivate('post_init')
     def post_init(self, **kw):
         """ setup tpl stuff
         view_pt: used to display the form + error input
@@ -79,19 +83,23 @@ class Form(ExtensionClass.Base):
         self._editField_pt=kw.get('editField_pt', self.Form_editField)
 
     ### 
+    security.declareProtected(View, 'action')
     def action(self, **kw):
         "this method should be rewrite by child"
         return self._msg_pt(**kw)
-
+    
+    security.declareProtected(View, 'validator')
     def validator(self, form):
         "this method should be rewrite by child, should return error str"
         return None
 
     ### ZOPE ACCESSORS / CONSTRUCTORS
+    security.declareProtected(View, 'index_html')
     def index_html( self, **kw ):
         "default view"
         return self.view(**kw)
 
+    security.declareProtected(View, 'view')
     def view( self, **kw ):
         "default view"
         self._set_status()
@@ -103,6 +111,7 @@ class Form(ExtensionClass.Base):
             return self._view_pt(**kw)
         return self.action(**kw)        
 
+    security.declareProtected(ModifyPortalContent, 'editForm')
     def editForm( self, **kw ):
         "edit a form"
         self._set_status()
@@ -113,6 +122,7 @@ class Form(ExtensionClass.Base):
             self._set_status(err)
         return self._editForm_pt(**kw)
 
+    security.declareProtected(ModifyPortalContent, 'editField')
     def editField( self, **kw ):
         "edit field form"
         form = self.REQUEST.form
@@ -147,7 +157,8 @@ class Form(ExtensionClass.Base):
         self.add_field( id, **extra )
         self._set_current_form(None)
         return self._editForm_pt( **kw )
-            
+
+    security.declareProtected(ModifyPortalContent, 'addField')            
     def addField( self, **kw ):
         "add a field"
         id = self.REQUEST.form.get('id')
@@ -156,6 +167,7 @@ class Form(ExtensionClass.Base):
         self.REQUEST.form['f_id']=id
         return self.editField( **kw )
     
+    security.declareProtected(ModifyPortalContent, 'delField')
     def delField( self, **kw ):
         "remove a field"
         f_id = self.REQUEST.form.get('f_id')
@@ -166,6 +178,7 @@ class Form(ExtensionClass.Base):
             self.del_field( f_id )
         return self._editForm_pt(**kw)
     
+    security.declareProtected(ModifyPortalContent, 'moveFieldUp')
     def moveFieldUp( self, **kw ):
         "move a field up"
         f_id = self.REQUEST.form.get('f_id')
@@ -176,6 +189,7 @@ class Form(ExtensionClass.Base):
             self.move_field( f_id, 'up' )
         return self._editForm_pt(**kw)
 
+    security.declareProtected(ModifyPortalContent, 'moveFieldDown')
     def moveFieldDown( self, **kw ):
         "move a field down"
         f_id = self.REQUEST.form.get('f_id')
@@ -187,17 +201,21 @@ class Form(ExtensionClass.Base):
             self.move_field( f_id, 'down' )
         return self._editForm_pt(**kw)
 
+    security.declarePrivate('_set_current_form')
     def _set_current_form( self, mode ):
         self.REQUEST.other['form_mode__']=mode
 
+    security.declarePrivate('_get_current_form')
     def _get_current_form( self ):
         return self.REQUEST.other.get('form_mode__', None )
 
+    security.declarePrivate('_set_status')
     def _set_status( self, s=None ):
         self.REQUEST.other['form_status'] = s
 
     
     ### ZPT ACCESSORS / CONSTRUCTORS
+    security.declareProtected(View, 'getFList')
     def getFList( self, only_data=0 ):
         # return a list of field ids depending on the current form
         form_name=self._get_current_form()
@@ -213,6 +231,7 @@ class Form(ExtensionClass.Base):
             return l
         return self.fields_list            
 
+    security.declareProtected(View, 'getVList')
     def getVList( self, f_name):
         # return the list of value for a field
         if not self.fields[f_name].has_key('mvalue'):
@@ -221,6 +240,7 @@ class Form(ExtensionClass.Base):
         l.sort()
         return l
 
+    security.declareProtected(View, 'getV')
     def getV( self, f, k, default=None):
         # return the value of field f on request
         form=self.REQUEST.form
@@ -231,6 +251,7 @@ class Form(ExtensionClass.Base):
             v=default
         return v
 
+    security.declareProtected(View, 'getNbSlot')
     def getNbSlot( self, f_name ):
         # return the number of cels used by a field
         t = self.fields[f_name]['type'] 
@@ -241,7 +262,8 @@ class Form(ExtensionClass.Base):
         else:
             n=2
         return n
-    
+
+    security.declareProtected(View, 'getFMacro')
     def getFMacro( self,f_name):
         # return the zpt macro associated with the field
         t = self.fields[f_name]['type']
@@ -250,6 +272,7 @@ class Form(ExtensionClass.Base):
             return self.Form_macros.macros['string']
         return self.Form_macros.macros[t]
 
+    security.declareProtected(View, 'isSelected')
     def isSelected( self, f=None, v=None ):
         # check if f_name is selected
         if not f or not v:
@@ -261,6 +284,7 @@ class Form(ExtensionClass.Base):
             return v in v_
         return v_ == v
 
+    security.declareProtected(View, 'getRows')
     def getRows( self ):
         # return a list of rows
         rows = []
@@ -291,6 +315,7 @@ class Form(ExtensionClass.Base):
     
 
     ### INTERNAL ACCESSORS / CONSTRUCTORS
+    security.declarePrivate('add_field')
     def add_field( self, id, **extra ):
         # add or modify field to the form
         if not id:
@@ -314,7 +339,8 @@ class Form(ExtensionClass.Base):
         if not t in self.types:
             f['type']='string'
         self._p_changed = 1
-
+        
+    security.declarePrivate('del_field')
     def del_field( self, id ):
         # delete a field
         if not id or not id in self.fields_list:
@@ -323,6 +349,7 @@ class Form(ExtensionClass.Base):
         del self.fields[id]
         self._p_changed = 1
 
+    security.declarePrivate('move_field')
     def move_field( self, id, direction='up' ):
         # move a field up or down
         if not id or not id in self.fields_list:
@@ -336,6 +363,7 @@ class Form(ExtensionClass.Base):
             self.fields_list.insert( pos-1, id )
         self._p_changed = 1
 
+    security.declarePrivate('check_form')
     def check_form( self  ):
         # check all the fields of a form and return a status and msg
         form = self.REQUEST.form
@@ -364,7 +392,8 @@ class Form(ExtensionClass.Base):
             return ( 'bad_fields', err_l10n + ' ' + msg[:-2] +'.' )
 
         return ( 'valid_form', 'Congratulation' )
-        
+
+    security.declarePrivate('check_field')
     def check_field( self, id, v, locale='en' ):
         # check input and set default value
         # assume id is valid
@@ -446,6 +475,7 @@ class Form(ExtensionClass.Base):
 
         return err
 
+    security.declarePrivate('_mvalue_to_str')
     def _mvalue_to_str( self, m ):
         # convert a mvalue dico into a string
         if type(m) is not type({}) :
@@ -457,6 +487,7 @@ class Form(ExtensionClass.Base):
             str = str + k + ' | ' + m[k] + '\n'
         return str
 
+    security.declarePrivate('_str_to_mvalue')
     def _str_to_mvalue( self, s ):
         # convert a mvalue string to dico
         mvalue = {}
@@ -474,6 +505,7 @@ class Form(ExtensionClass.Base):
             mvalue[t[0].strip()]=t[1].strip()
         return mvalue
 
+    security.declarePrivate('get_values')
     def get_values( self, no_fd=1 ):
         # return dico field:value
         v = {}
@@ -485,5 +517,5 @@ class Form(ExtensionClass.Base):
                 v[f] = form.get(f)
         return v
 
-Globals.InitializeClass(Form)
+InitializeClass(Form)
 # EOC Form

@@ -177,6 +177,7 @@ class CollectorDocument(Form, BaseDocument):
 
 
     ### Private 
+    security.declarePrivate('_list_to_csv')
     def _list_to_csv(self, t):
         l = ''
         for v in t:
@@ -186,6 +187,7 @@ class CollectorDocument(Form, BaseDocument):
             l += str(v) + ','
         return l[:-1] + '\n'
 
+    security.declarePrivate('_check_unique')
     def _check_unique(self):
         # check if user/remote ip have already been collected
         mtools = self.portal_membership
@@ -199,6 +201,7 @@ class CollectorDocument(Form, BaseDocument):
                 return id
         return None
 
+    security.declarePrivate('_create_id')
     def _create_id(self):
         # id format is like time_user_ip_random
         # 021126143959_member_127.0.0.1_814
@@ -213,6 +216,7 @@ class CollectorDocument(Form, BaseDocument):
         id += '%3.3d' % randrange(999)
         return id
 
+    security.declarePrivate('_decode_id')
     def _decode_id(self, id=''):
         # return a tuple (user,ip,date) or None for bad id
         m=match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
