@@ -85,7 +85,7 @@
 <table tal:condition="request/other/form_status|nothing" cellpadding="0" cellspacing="0" border="1" noshade width="100%">
 <tr><td bgcolor="#EEEEEE"><font color="990000"><b tal:content="request/other/form_status">error msg</b></font></td></tr></table>
 
-<table bgcolor="#FFDCB7"><tr><td>
+<table bgcolor="#98B2CB"><tr><td>
 <input type="hidden" name="is_form_submitted" value="yes" />
 <table border="0" width="100%">
  <tr tal:repeat="row here/getRows">
@@ -103,9 +103,9 @@
  <tr bgcolor="FF8888" tal:condition="request/other/form_status|nothing">
   <td colspan="5" tal:content="request/other/form_status">bla</td>
  </tr>
-  <tr><td bgcolor="#FFDCB7" colspan="5"><b tal:content="python:mcat('_form_add_new_field_')">Add a new field:</b></td></tr>
+  <tr><td bgcolor="#98B2CB" colspan="5"><b tal:content="python:mcat('_form_add_new_field_')">Add a new field:</b></td></tr>
   <tr>
-    <td bgcolor="#FFDCB7">&nbsp;</td><td colspan="4" nowrap>Id:
+    <td bgcolor="#98B2CB">&nbsp;</td><td colspan="4" nowrap>Id:
       <input type="text" name="id" size="20"/> type:
       <select name="type" size=1>
 	<option value="title">Title</option>
@@ -136,8 +136,8 @@
   <tr>
     <td colspan="5"><br></td>
   </tr>
-  <tr><td bgcolor="#FFDCB7" colspan="6"><b tal:content="python:mcat('_form_list_of_fields_')">List of fields:</b></td></tr>
-  <tr bgcolor="#FFDCB7">
+  <tr><td bgcolor="#98B2CB" colspan="6"><b tal:content="python:mcat('_form_list_of_fields_')">List of fields:</b></td></tr>
+  <tr bgcolor="#98B2CB">
     <td>&nbsp;</td>
     <td nowrap="1">id</td>
     <td nowrap="1" tal:content="python:mcat('_form_type_')">type</td>
@@ -147,7 +147,7 @@
   </tr>
   <tr tal:repeat="f_id here/getFList">
     <span tal:define="f python:here.fields[f_id]; label python:here.getLabel(f_id)" tal:omit-tag="">
-    <td width="10" bgcolor="#FFDCB7">
+    <td width="10" bgcolor="#98B2CB">
       <input tal:attributes="value f_id; checked python:here.isSelected('f_id',f_id)" name="f_id" type="checkbox" />
     </td>
     <td><a tal:attributes="href string:editField?f_id=$f_id" tal:content="f_id">&nbsp;</a></td>
@@ -157,7 +157,7 @@
     <td tal:content="f/join|default">&nbsp;</td>    
     </span>
   </tr>
-  <tr><td bgcolor="#FFDCB7">&nbsp;</td>
+  <tr><td bgcolor="#98B2CB">&nbsp;</td>
   <td colspan="4">
     <input type="submit" name="moveFieldUp:method" tal:attributes="value python:mcat('_form_bt_move_up_')" />
     <input type="submit" name="moveFieldDown:method" tal:attributes="value python:mcat('_form_bt_move_down_')" />
