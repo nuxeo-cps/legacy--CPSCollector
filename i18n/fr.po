@@ -1,0 +1,349 @@
+# translation of fr.po to francais
+# Gettext Message File for default.
+# Your Name <your@email>, Year
+# emmanuel <epietriga@nuxeo.com>, 2003.
+msgid ""
+msgstr ""
+"Project-Id-Version: fr\n"
+"POT-Creation-Date: 2003-10-22 11:22default\n"
+"PO-Revision-Date: 2003-10-22 11:24+0200\n"
+"Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
+"Language-Team: francais <fr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-code: LL\n"
+"Language-name: Language\n"
+"Preferred-encodings: utf-8 latin1\n"
+"Domain: default\n"
+"X-Generator: KBabel 1.0.2\n"
+
+#.   <span omit-tag="">
+#.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
+#.       forms collected between
+#.       ${collector_sdate (tal replace="python:stats['_stat']['date_start']")}
+#.       and
+#.       ${collector_edate (tal replace="python:stats['_stat']['date_end']")}
+#.     </span>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid ""
+"${collector_nb} forms collected between ${collector_sdate} and "
+"${collector_edate}"
+msgstr ""
+"${collector_nb} fiche(s) collectée(s) entre le ${collector_sdate} et le "
+"${collector_edate}"
+
+#.   <p>
+#.                    Score:
+#.                    ${collector_label_nb_correct (tal replace="results/nb_correct")}
+#.                    correct answers out of
+#.                    ${collector_label_nb_all (tal replace="results/nb_all")}
+#.                    questions
+#.                 </p>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid ""
+"Score: ${collector_label_nb_correct} correct answers out of "
+"${collector_label_nb_all} questions"
+msgstr ""
+"Score: ${collector_label_nb_correct} réponse(s) correcte(s) sur "
+"${collector_label_nb_all} question(s)"
+
+#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button" />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_button_cancel"
+msgstr "Annuler"
+
+#.   <input value="collector_button_movedown" class="context" name="Form_moveFieldDown:method" type="submit" />
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_button_movedown"
+msgstr "Déplacer vers le bas"
+
+#.   <input value="collector_button_moveup" class="context" name="Form_moveFieldUp:method" type="submit" />
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_button_moveup"
+msgstr "Déplacer vers le haut"
+
+#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
+#.                                    python:
+#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_button_remove"
+msgstr "Supprimer"
+
+#.   <h2>no data</h2>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_empty_stats"
+msgstr "Il n'y a pas encore de données collectées"
+
+#.   <option value="submit">
+#.               Button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_button"
+msgstr "Bouton"
+
+#.   <option value="checkbox">
+#.               Checkbox
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_checkbox"
+msgstr "Case à cocher"
+
+#.   <option value="comment">
+#.               Comment
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_comment"
+msgstr "Commentaire"
+
+#.   <option value="date">Date</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_date"
+msgstr "Date"
+
+#.   <option value="email">
+#.               e-mail
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_email"
+msgstr "Courriel"
+
+#.   <option value="file">
+#.               File
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_file"
+msgstr "Fichier"
+
+#.   <option value="float">Float</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_float"
+msgstr "Nombre réel"
+
+#.   <option value="hidden">
+#.               Hidden string
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_hiddenstring"
+msgstr "Chaîne de caractères cachée"
+
+#.   <option value="identifier">
+#.               Identifier
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_identifier"
+msgstr "Identifiant"
+
+#.   <option value="int">Integer</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_integer"
+msgstr "Nombre entier"
+
+#.   <option value="password">Password</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_password"
+msgstr "Mot de passe"
+
+#.   <option value="phone">
+#.               Phone number
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_phonenumber"
+msgstr "Numéro de téléphone"
+
+#.   <option value="radio">
+#.               Radio button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_radiobutton"
+msgstr "Bouton radio"
+
+#.   <option value="reset">
+#.               Reset button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_resetbutton"
+msgstr "Bouton réinitialisation"
+
+#.   <option value="selection">
+#.               Selection
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_selection"
+msgstr "Liste de sélection"
+
+#.   <option value="separator">
+#.               Separator
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_separator"
+msgstr "Séparateur"
+
+#.   <option selected="1" value="string">String</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_string"
+msgstr "Chaîne de caractères"
+
+#.   <option value="string_ro">
+#.               String read only
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_string_ro"
+msgstr "Chaîne de caractères (lecture seule)"
+
+#.   <option value="text">Text area</option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_textarea"
+msgstr "Zone de texte"
+
+#.   <option value="title">
+#.               Title
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_title"
+msgstr "Titre"
+
+#.   <option value="url">
+#.               URL
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_url"
+msgstr "URL"
+
+#.   <option value="vradio">
+#.               Vertical Radio button
+#.             </option>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_field_vradiobutton"
+msgstr "Bouton radio (disposition verticale)"
+
+#.   <strong>
+#.             Add a new field:
+#.           </strong>
+#.   <input value="collector_form_add_new_field" class="context" name="Form_addField:method" type="submit" />
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_add_new_field"
+msgstr "Ajouter un champ"
+
+#.   <td nowrap="">join w/ next field</td>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_join"
+msgstr "Concaténation :"
+
+#.   <td width="50%">label</td>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_label"
+msgstr "Libellé :"
+
+#.   <td nowrap="1">required</td>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_req"
+msgstr "Obligatoire :"
+
+#.   <td nowrap="1">type</td>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_field_type"
+msgstr "Type :"
+
+#.   <strong>
+#.             List of fields:
+#.           </strong>
+#: from ../skins/cps/Form_macros.pt
+msgid "collector_form_list_of_fields"
+msgstr "Liste des champs :"
+
+#.   <h2>No statistic available</h2>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_form_stats_null"
+msgstr "Aucun champ de cette fiche ne permet de calculer des statistiques"
+
+#.   <th>Chosen Answer</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_chosen_answ"
+msgstr "Réponse choisie"
+
+#.   <th>Correct Answer</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_correct_answ"
+msgstr "Réponse correcte"
+
+#.   <block condition="create">
+#.       Create a Collector
+#.     </block>
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_label_create"
+msgstr "Créer une fiche"
+
+#.   <th>Question</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_question"
+msgstr "Question"
+
+#.   <th>Result</th>
+#: from ../skins/cps/QuizDocument_viewResults.pt
+msgid "collector_label_result"
+msgstr "Résultat"
+
+#.   <block>
+#.         Modify
+#.       </block>
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_modify_props"
+msgstr "Modifier les propriétés"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_description"
+msgstr "Description"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_persistent"
+msgstr "Afficher la dernière saisie"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_submit_msg"
+msgstr "Message final"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_submit_msg_stats"
+msgstr "Afficher les statistiques avec le message final"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_title"
+msgstr "Titre"
+
+#.   <span />
+#: from ../skins/cps/CollectorDocument_editProp.pt
+msgid "collector_prop_unique"
+msgstr "Une seule fiche par utilisateur"
+
+#.   <h2>Result</h2>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_stats_details"
+msgstr "Résultats :"
+
+#.   <h2>Result</h2>
+#: from ../skins/cps/CollectorDocument_viewStat.pt
+msgid "collector_stats_header"
+msgstr "Informations collectées :"
+
+msgid "collector_confirm"
+msgstr "Etes-vous certain?"
+
+msgid "collector_button_modify"
+msgstr "Modifier"
+
+msgid "collector_date_%m/%d/%Y %H:%M"
+msgstr "%d/%m/%Y %Hh%M"
+
+msgid "collector_field_error"
+msgstr "Erreur :"
+
+msgid "collector_empty_form"
+msgstr "Cette fiche est vide"
+
