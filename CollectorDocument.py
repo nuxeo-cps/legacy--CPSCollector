@@ -28,7 +28,7 @@ from Products.CPSCollector.CollectorItem import CollectorItem
 
 factory_type_information = (
     {'id': 'Collector Document',
-     'description': 'A Collector Document.',
+     'description': 'A_portal_type_Collector Document_description',
      'title': '_portal_type_Collector Document',
      'content_icon': 'CollectorDocument_icon.gif',
      'product': 'CPSCollector',

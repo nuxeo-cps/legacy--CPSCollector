@@ -15,6 +15,9 @@ msgstr ""
 msgid "_portal_type_Collector Document"
 msgstr "Fiche d'information"
 
+msgid "_portal_type_Collector Document_description"
+msgstr "Génération d'un formulaire de saisie"
+
 msgid "_Create_a_collector_"
 msgstr "Créer une Fiche"
 

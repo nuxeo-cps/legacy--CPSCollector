@@ -15,6 +15,9 @@ msgstr ""
 msgid "_portal_type_Collector Document"
 msgstr "Information Collector"
 
+msgid "_portal_type_Collector Document_description"
+msgstr "A form generator to collect data"
+
 msgid "_Create_a_collector_"
 msgstr "Create an information collector"
 
