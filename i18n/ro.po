@@ -508,7 +508,7 @@ msgid "collector_form_required"
 msgstr "Obligatoriu :"
 
 msgid "collector_form_checked"
-msgstr "Valoare initiala:"
+msgstr "Valoare implicita:"
 
 msgid "collector_form_value"
 msgstr "Valoare:"
