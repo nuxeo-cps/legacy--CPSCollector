@@ -37,7 +37,7 @@
 
   <div class="group">
   <div class="row">
-  <div class="label"><span i18n:translate="collector_prop_title" /></div>
+  <div class="label"><span i18n:translate="collector_prop_title"></span></div>
   <div class="field">
     <input type="text" name="Title" value="title" size="72" maxlength="100"
       tal:attributes="value title" />
@@ -45,7 +45,7 @@
   </div>
 
   <div class="row">
-  <div class="label"><span i18n:translate="collector_prop_description" /></div>
+  <div class="label"><span i18n:translate="collector_prop_description"></span></div>
   <div class="field">
     <textarea name="Description:text" rows="5" cols="72" wrap="soft"
       tal:content="description"></textarea>
@@ -53,7 +53,7 @@
   </div>
 
   <div class="row">
-  <div class="label"><span i18n:translate="collector_prop_submit_msg" /></div>
+  <div class="label"><span i18n:translate="collector_prop_submit_msg"></span></div>
   <div class="field">
     <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
       tal:content="submit_msg|default"></textarea>
@@ -64,9 +64,9 @@
   <div class="label"
     tal:define="is_quiz python:doc.meta_type == 'Quiz Document'">
     <span tal:condition="is_quiz"
-      i18n:translate="collector_prop_submit_msg_results" />
+      i18n:translate="collector_prop_submit_msg_results"></span>
     <span tal:condition="not: is_quiz"
-      i18n:translate="collector_prop_submit_msg_stats" />
+      i18n:translate="collector_prop_submit_msg_stats"></span>
 
     <input type="hidden" name="submit_msg_stat:boolean:default" value="" />
     <input type="checkbox" name="submit_msg_stat:boolean"
@@ -75,7 +75,7 @@
   </div>
 
   <div class="row">
-  <div class="label"><span i18n:translate="collector_prop_unique" />
+  <div class="label"><span i18n:translate="collector_prop_unique"></span>
     <input type="hidden" name="unique_submit:boolean:default" value="" />
     <input type="checkbox" name="unique_submit:boolean"
       checked="." tal:attributes="checked unique_submit" />
@@ -83,7 +83,7 @@
   </div>
 
   <div class="row">
-  <div class="label"><span i18n:translate="collector_prop_persistent" />
+  <div class="label"><span i18n:translate="collector_prop_persistent"></span>
     <input type="hidden" name="persistent_data:boolean:default" value="" />
     <input type="checkbox" name="persistent_data:boolean"
       checked="." tal:attributes="checked persistent_data" />
