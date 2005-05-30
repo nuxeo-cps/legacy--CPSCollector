@@ -1,5 +1,3 @@
-# translation of en.po to ben
-# translation of en.po to francais
 # Gettext Message File for default.
 # Your Name <your@email>, Year
 # emmanuel <epietriga@nuxeo.com>, 2003, 2004.
@@ -17,6 +15,9 @@ msgstr ""
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Domain: default\n"
 
 #    <span omit-tag="">
 #        ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}

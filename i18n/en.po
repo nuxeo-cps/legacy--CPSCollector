@@ -1,5 +1,3 @@
-# translation of en.po to ben
-# translation of en.po to francais
 # Gettext Message File for default.
 # Your Name <your@email>, Year
 # emmanuel <epietriga@nuxeo.com>, 2003, 2004.
@@ -15,11 +13,12 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language-code: LL\n"
-"Language-name: Language\n"
 "Preferred-encodings: utf-8 latin1\n"
-"Domain: default\n"
 "X-Generator: KBabel 1.0.2\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Domain: default\n"
+
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
