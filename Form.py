@@ -13,7 +13,7 @@ from Globals import InitializeClass
 from ExtensionClass import Base
 from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
+from Products.CMFCore.permissions import View, ModifyPortalContent
 
 class Form(Base):
     """A Form knows how to render and validate its fields and

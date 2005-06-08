@@ -5,7 +5,7 @@ import sys
 
 from Products.CMFCore import utils
 from Products.CMFCore.DirectoryView import registerDirectory
-from Products.CMFCore.CMFCorePermissions import AddPortalContent
+from Products.CMFCore.permissions import AddPortalContent
 
 from Products.CPSCore import CPSBase
 bases = (CPSBase.CPSBaseDocument,) # base zclasses

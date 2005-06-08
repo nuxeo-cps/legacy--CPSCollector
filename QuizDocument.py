@@ -10,7 +10,7 @@ from AccessControl import ClassSecurityInfo
 
 from Globals import InitializeClass
 
-from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
+from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CPSCollector.CollectorDocument import CollectorDocument
 from Products.CPSCore.CPSBase import CPSBase_adder
 from zLOG import LOG, DEBUG

@@ -7,7 +7,7 @@ A collector item encapsulates input from a form
 from Globals import InitializeClass
 from OFS.SimpleItem import SimpleItem
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore.CMFCorePermissions import ModifyPortalContent
+from Products.CMFCore.permissions import ModifyPortalContent
 
 class CollectorItem(SimpleItem):
     security = ClassSecurityInfo()    

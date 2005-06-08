@@ -18,7 +18,7 @@ from AccessControl import ClassSecurityInfo
 from Globals import InitializeClass
 from Acquisition import aq_base
 
-from Products.CMFCore.CMFCorePermissions import View, ModifyPortalContent
+from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CPSCore.CPSBase import CPSBase_adder
 try:
     from Products.CPSDocument.CPSDocument import CPSDocument as BaseDocument
