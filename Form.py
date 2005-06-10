@@ -333,6 +333,9 @@ class Form(Base):
 ##        """
         return self.restrictedTraverse(self._macros_pt).macros[t]
 
+    def mcat(s):
+        return context.translation_service.translate('cpscollector', s)
+
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
         """Label starting with '_' are localized."""
@@ -345,7 +348,8 @@ class Form(Base):
             label = self.fields[f_name].get('label', '')
         if not len(label) or label[0] != '_':
             return label
-        return self.Localizer.cpscollector(label)
+        
+        return mcat(label)
 
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):

@@ -237,6 +237,9 @@ class CollectorDocument(Form, BaseDocument):
             l.append(f)
         return l
 
+    def mcat(s):
+        return context.translation_service.translate('cpscollector', s)
+
     security.declareProtected(View, 'process_stat')
     def process_stat(self, **kw):
         """Compute stat on selection/radio or checkbox fields."""
@@ -278,7 +281,7 @@ class CollectorDocument(Form, BaseDocument):
                 for v in r[f].keys():
                     nb = r[f][v]
                     r[f][v] = '%3.f' % (nb * 100.0 / nb_item)
-        mcat = self.Localizer.cpscollector
+        #mcat = self.Localizer.cpscollector
         date_start = time.strftime(mcat('collector_date_%m/%d/%Y %H:%M'), date_start)
         date_end = time.strftime(mcat('collector_date_%m/%d/%Y %H:%M'), date_end)
         r['_stat'] = { 'nb_item': nb_item, 'date_start': date_start,

@@ -6,4 +6,4 @@
 Return the message catalog used for the translation.
 """
 
-return context.Localizer.default
+return context.translation_service

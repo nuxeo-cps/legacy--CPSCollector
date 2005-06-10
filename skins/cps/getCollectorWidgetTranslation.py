@@ -28,8 +28,11 @@ widget2msgid = {
     'vradio': 'collector_field_vradiobutton',
     }
 
+def mcat(s):
+    return context.translation_service.translate('cpscollector', s)
+
 if widget and widget2msgid.has_key(widget):
-    mcat = context.Localizer.cpscollector
+    #mcat = context.Localizer.cpscollector
     return mcat(widget2msgid.get(widget))
 else:
     return widget

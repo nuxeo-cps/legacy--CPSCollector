@@ -175,7 +175,7 @@
               <span tal:define="f python:doc.fields[f_id];
                                 nb_slot python:doc.getNbSlot(f_id);
                                 label python:doc.getLabel(f_id);
-		                colmcat nocall:here/Localizer/cpscollector"
+                                colmcat nocall:here/Localizer/cpscollector"
                     tal:omit-tag="">
                 <metal:block metal:use-macro="here/Form_macros/macros/display_label" />
                 <metal:block metal:use-macro="here/Form_macros/macros/display_field" />

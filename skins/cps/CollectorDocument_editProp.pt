@@ -19,6 +19,7 @@
     Document Description goes here.
   </div>
 </metal:block>
+
 <metal:block fill-slot="main"
   tal:define="colmcat nocall:here/Localizer/cpscollector;
               create options/create|nothing;
