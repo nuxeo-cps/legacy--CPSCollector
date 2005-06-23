@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector\n"
-"POT-Creation-Date: 2004-02-20 12:35default\n"
+"POT-Creation-Date: 2005-06-23 17:33default\n"
 "PO-Revision-Date: 2005-05-18 16:12+0100\n"
 "Last-Translator: Jesús <jesusmartin@lasalle.es>\n"
 "Language-Team: español <jesusmartin@lasalle.es>\n"
@@ -31,8 +31,12 @@ msgstr ""
 #.       ${collector_edate (tal replace="python:stats['_stat']['date_end']")}
 #.     </span>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
-msgid "${collector_nb} forms collected between ${collector_sdate} and ${collector_edate}"
-msgstr "${collector_nb} ficha(s) recogida(s) entre el ${collector_sdate} y el ${collector_edate}"
+msgid ""
+"${collector_nb} forms collected between ${collector_sdate} and "
+"${collector_edate}"
+msgstr ""
+"${collector_nb} ficha(s) recogida(s) entre el ${collector_sdate} y el "
+"${collector_edate}"
 
 #.   <p>
 #.                    Score:
@@ -42,36 +46,38 @@ msgstr "${collector_nb} ficha(s) recogida(s) entre el ${collector_sdate} y el ${
 #.                    questions
 #.                 </p>
 #: from ../skins/cps/QuizDocument_viewResults.pt
-msgid "Score: ${collector_label_nb_correct} correct answers out of ${collector_label_nb_all} questions"
-msgstr "Resultado: ${collector_label_nb_correct} respuesta(s) correcta(s) en ${collector_label_nb_all} pregunta(s)"
+msgid ""
+"Score: ${collector_label_nb_correct} correct answers out of "
+"${collector_label_nb_all} questions"
+msgstr ""
+"Resultado: ${collector_label_nb_correct} respuesta(s) correcta(s) en "
+"${collector_label_nb_all} pregunta(s)"
 
-#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
-#.
-#.     </input>
-#.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
+#.   <input name="cancel" onclick="history.back()" type="button" class="context" value="collector_button_cancel" />
+#.   <input name="Data_cancel_erase:method" type="submit" class="context" value="collector_button_cancel" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Cancelar"
 
-#.   <input value="collector_button_movedown" class="context moveDown" name="Form_moveFieldDown:method" type="submit" />
+#.   <input name="Form_moveFieldDown:method" type="submit" class="context moveDown" value="collector_button_movedown" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr "Desplazar hacia abajo"
 
-#.   <input value="collector_button_moveup" class="context moveUp" name="Form_moveFieldUp:method" type="submit" />
+#.   <input name="Form_moveFieldUp:method" type="submit" class="context moveUp" value="collector_button_moveup" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr "Desplazar hacia arriba"
 
-#.   <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
+#.   <input name="Data_erase:method" type="submit" class="destructive" value="collector_button_proceed" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
 msgstr "Continuar"
 
-#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
+#.   <input name="Form_delField:method" type="submit" class="destructive" value="collector_button_remove" attributes="onClick
 #.                                    python:
-#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
+#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
 msgstr "Eliminar"
@@ -79,7 +85,9 @@ msgstr "Eliminar"
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
-msgstr "Utilizar los comandos de esta página para añadir campos al formulario y modificarlos"
+msgstr ""
+"Utilizar los comandos de esta página para añadir campos al formulario y "
+"modificarlos"
 
 #.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
@@ -190,7 +198,7 @@ msgstr "Lista de selección"
 msgid "collector_field_separator"
 msgstr "Separador"
 
-#.   <option selected="1" value="string">String</option>
+#.   <option selected="selected" value="string">String</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_string"
 msgstr "Cadena de caracteres"
@@ -231,13 +239,12 @@ msgstr "Botón de radio (disposición vertical)"
 #.   <div class="label">
 #.          Add a new field:
 #.        </div>
-#.   <input value="collector_form_add_new_field" class="standalone" name="Form_addField:method" type="submit">
-#.       </input>
+#.   <input name="Form_addField:method" type="submit" class="standalone" value="collector_form_add_new_field" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr "Añadir un campo"
 
-#.   <th nowrap="">join w/ next field</th>
+#.   <th nowrap="nowrap">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
 msgstr "Encadenar"
@@ -247,12 +254,12 @@ msgstr "Encadenar"
 msgid "collector_form_field_label"
 msgstr "Etiquetado"
 
-#.   <th nowrap="1">required</th>
+#.   <th nowrap="nowrap">required</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_req"
 msgstr "Obligatorio"
 
-#.   <th nowrap="1">type</th>
+#.   <th nowrap="nowrap">type</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_type"
 msgstr "Tipo :"
@@ -469,18 +476,19 @@ msgid "collector_field_file_too_big"
 msgstr "archivo demasiado largo"
 
 #, fuzzy
-#~ msgid "collector_form_mulitple"
-#~ msgstr "Sélection multiple :"
+msgid "collector_form_mulitple"
+msgstr "Multiple selection:"
 
 #, fuzzy
-#~ msgid "collector_psm_erased_data"
-#~ msgstr "Les données collectées ont été effacées"
-#~ msgid "collector_psm_erase_data_cancel"
-#~ msgstr "Les données collectées n'ont pas été effacées"
-#~ msgid "collector_erased_data"
-#~ msgstr "Les données collectées ont été effacées"
+msgid "collector_psm_erased_data"
+msgstr "Collected data has been erased"
+
+msgid "collector_psm_erase_data_cancel"
+msgstr "Les données collectées n'ont pas été effacées"
+
+msgid "collector_erased_data"
+msgstr "Les données collectées ont été effacées"
 
 #, fuzzy
-#~ msgid "collector_erased_data_failed"
-#~ msgstr "Les données collectées ont été effacées"
-
+msgid "collector_erased_data_failed"
+msgstr "Collected data has been erased"

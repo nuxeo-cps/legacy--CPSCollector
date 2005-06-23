@@ -29,7 +29,8 @@ msgid ""
 "${collector_nb} forms collected between ${collector_sdate} and "
 "${collector_edate}"
 msgstr ""
-"${collector_nb} Formular(e) ausgewertet zwischen ${collector_sdate} und ${collector_edate}"
+"${collector_nb} Formular(e) ausgewertet zwischen ${collector_sdate} und "
+"${collector_edate}"
 
 #.   <p>
 #.                    Score:
@@ -80,7 +81,9 @@ msgstr "Löschen"
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
-msgstr "Verwende die Befehle auf dieser Seite um Felder ins Formular hinzuzufügen und zu bearbeiten"
+msgstr ""
+"Verwende die Befehle auf dieser Seite um Felder ins Formular hinzuzufügen "
+"und zu bearbeiten"
 
 #.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
@@ -470,19 +473,19 @@ msgid "collector_field_file_too_big"
 msgstr "Datei zu groß"
 
 #, fuzzy
-#~ msgid "collector_form_mulitple"
-#~ msgstr "Multiple selection:"
+msgid "collector_form_mulitple"
+msgstr "Multiple selection:"
 
 #, fuzzy
-#~ msgid "collector_psm_erased_data"
-#~ msgstr "Collected data has been erased"
+msgid "collector_psm_erased_data"
+msgstr "Collected data has been erased"
 
-#~ msgid "collector_psm_erase_data_cancel"
-#~ msgstr "Collected data has not been erased"
+msgid "collector_psm_erase_data_cancel"
+msgstr "Collected data has not been erased"
 
-#~ msgid "collector_erased_data"
-#~ msgstr "Collected data has been erased"
+msgid "collector_erased_data"
+msgstr "Collected data has been erased"
 
 #, fuzzy
-#~ msgid "collector_erased_data_failed"
-#~ msgstr "Collected data has been erased"
+msgid "collector_erased_data_failed"
+msgstr "Collected data has been erased"
