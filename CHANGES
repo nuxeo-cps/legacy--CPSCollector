@@ -12,3 +12,4 @@ Bug fixes:
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Don't use deprecated CMFCorePermissions.
+- replaced gif icons by png

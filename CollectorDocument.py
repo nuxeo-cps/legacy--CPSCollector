@@ -32,7 +32,7 @@ factory_type_information = (
     {'id': 'Collector Document',
      'description': 'portal_type_CollectorDocument_description',
      'title': 'portal_type_CollectorDocument_title',
-     'content_icon': 'CollectorDocument_icon.gif',
+     'content_icon': 'CollectorDocument_icon.png',
      'product': 'CPSCollector',
      'factory': 'addCollectorDocument',
      'meta_type': 'Collector Document',

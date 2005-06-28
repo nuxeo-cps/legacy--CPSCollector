@@ -7,7 +7,7 @@ the collector in CPSDocument
 collector_type = {
     'title': 'portal_type_CollectorDocument_title',
     'description': 'portal_type_CollectorDocument_description',
-    'content_icon': 'CollectorDocument_icon.gif',
+    'content_icon': 'CollectorDocument_icon.png',
     'product': 'CPSCollector',
     'factory': 'addCollectorDocument',
     'immediate_view': 'CollectorDocument_editProp',
@@ -48,7 +48,7 @@ collector_type = {
 quiz_type = {
     'title': 'portal_type_QuizDocument_title',
     'description': 'portal_type_QuizDocument_description',
-    'content_icon': 'QuizDocument_icon.gif',
+    'content_icon': 'QuizDocument_icon.png',
     'product': 'CPSCollector',
     'factory': 'addQuizDocument',
     'immediate_view': 'CollectorDocument_editProp',
