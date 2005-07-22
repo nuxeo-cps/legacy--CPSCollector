@@ -24,6 +24,7 @@ try:
     from Products.CPSDocument.CPSDocument import CPSDocument as BaseDocument
 except ImportError:
     from Products.CPSCore.CPSBase import CPSBaseDocument as BaseDocument
+from Products.CMFCore.utils import getToolByName
 from Products.CPSCollector.Form import Form
 from Products.CPSCollector.CollectorItem import CollectorItem
 from zLOG import DEBUG, LOG
@@ -237,8 +238,12 @@ class CollectorDocument(Form, BaseDocument):
             l.append(f)
         return l
 
-    def mcat(s):
-        return context.translation_service.translate('cpscollector', s)
+    security.declarePublic('mcat')
+    def mcat(self, s):
+        """Return a translation.
+        """
+        translation_service = getToolByName(self, 'translation_service')
+        return translation_service.translate('cpscollector', s)
 
     security.declareProtected(View, 'process_stat')
     def process_stat(self, **kw):
@@ -281,9 +286,10 @@ class CollectorDocument(Form, BaseDocument):
                 for v in r[f].keys():
                     nb = r[f][v]
                     r[f][v] = '%3.f' % (nb * 100.0 / nb_item)
-        #mcat = self.Localizer.cpscollector
-        date_start = time.strftime(mcat('collector_date_%m/%d/%Y %H:%M'), date_start)
-        date_end = time.strftime(mcat('collector_date_%m/%d/%Y %H:%M'), date_end)
+        date_start = time.strftime(self.mcat('collector_date_%m/%d/%Y %H:%M'),
+                                   date_start)
+        date_end = time.strftime(self.mcat('collector_date_%m/%d/%Y %H:%M'),
+                                 date_end)
         r['_stat'] = { 'nb_item': nb_item, 'date_start': date_start,
                      'date_end': date_end }
         return r
