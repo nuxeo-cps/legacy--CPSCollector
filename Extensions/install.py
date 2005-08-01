@@ -53,21 +53,22 @@ def install(self):
     #################################################
     # PORTAL TYPES
     #################################################
-    installer.allowContentTypes(('Collector Document','Quiz Document'),
-                                 'Workspace')
+    t = 'typeinfo_name'
     ptypes = {
-        'Collector Document' : {
-            'allowed_content_types': (),
-            'typeinfo_name': 'CPSCollector: Collector Document',
+        'Collector Document': {
+            t: 'CPSCollector: Collector Document (Collector Document)',
             'add_meta_type': 'Factory-based Type Information',
-        },
-       'Quiz Document' : {
             'allowed_content_types': (),
-            'typeinfo_name': 'CPSCollector: Quiz Document',
+            },
+       'Quiz Document': {
+            t: 'CPSCollector: Quiz Document (Quiz Document)',
             'add_meta_type': 'Factory-based Type Information',
-       },
+            'allowed_content_types': (),
+            },
     }
     installer.verifyContentTypes(ptypes)
+    installer.allowContentTypes(('Collector Document','Quiz Document'),
+                                'Workspace')
 
     ########################################
     #   WORKFLOW ASSOCIATIONS
