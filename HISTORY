@@ -1,4 +1,23 @@
 *******************************************
+** CPSCollector V1.9.0 [R1 build 2005/08/05-15:36 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 25544
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Taking advantage of the new centralized CPSI18n.tests.translations module.
+- Fixed translation files through the CPSI18n/bin/fix_pos script.
+- Fixed corrupted icon files.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Don't use deprecated CMFCorePermissions.
+- replaced gif icons by png
+
+*******************************************
 ** CPSCollector V1.8.2 [R1 build 2005/06/02-11:46 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 22108
 Requires:
