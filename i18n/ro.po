@@ -363,7 +363,7 @@ msgstr "Rezultate:"
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_stats_header"
-msgstr "Informatii colectate : "
+msgstr "Informatii colectate: "
 
 msgid "collector_confirm"
 msgstr "Sunteti sigur?"
@@ -381,28 +381,28 @@ msgid "collector_empty_form"
 msgstr "Acest formular este gol"
 
 msgid "collector_form_label"
-msgstr "Eticheta :"
+msgstr "Eticheta:"
 
 msgid "collector_form_field_edit"
 msgstr "Modificarea unui camp :"
 
 msgid "collector_form_type"
-msgstr "Tip :"
+msgstr "Tip:"
 
 msgid "collector_form_size"
 msgstr "Marime: "
 
 msgid "collector_form_cols"
-msgstr "Numarul de caractere pe linie :"
+msgstr "Numarul de caractere pe linie:"
 
 msgid "collector_form_rows"
-msgstr "Numarul de linii :"
+msgstr "Numarul de linii:"
 
 msgid "collector_form_max_length"
-msgstr "Lungime max. :"
+msgstr "Lungime max.:"
 
 msgid "collector_form_required"
-msgstr "Obligatoriu :"
+msgstr "Obligatoriu:"
 
 msgid "collector_form_checked"
 msgstr "Valoare implicita:"
@@ -447,7 +447,7 @@ msgid "collector_field_phone_invalid"
 msgstr "numar de telefon invalid"
 
 msgid "collector_field_read_only"
-msgstr "camp doar de citit"
+msgstr "camp exclusiv de citit"
 
 msgid "collector_field_id_invalid"
 msgstr "identificator invalid"
