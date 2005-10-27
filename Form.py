@@ -12,8 +12,9 @@ from re import match
 from Globals import InitializeClass
 from ExtensionClass import Base
 from Acquisition import aq_base
-from AccessControl import ClassSecurityInfo
+from AccessControl import ClassSecurityInfo, Unauthorized
 from Products.CMFCore.permissions import View, ModifyPortalContent
+from Products.CMFCore.utils import _checkPermission
 
 class Form(Base):
     """A Form knows how to render and validate its fields and
@@ -158,8 +159,11 @@ class Form(Base):
             self._set_status(err)
         return self._view_pt
 
-    security.declareProtected(ModifyPortalContent, 'process_edit_field')
-    def process_edit_field(self, **kw):
+    ## This is not protected by ModifyPortalContent, because the object
+    # may be frozen. As in CPSDocument/CPSSchema, a call to getEditableContent
+    # performs the check from the proxy and provides a new object when necesary
+    security.declareProtected(View, 'process_edit_field')
+    def process_edit_field(self, proxy=None, **kw):
         """The field edition page use its own Form fields."""
         form = self.REQUEST.form
         id = form.get('f_id') or form.get('id__')
@@ -184,7 +188,13 @@ class Form(Base):
         if status == 'bad_fields':
             self._set_status(err)
             return self._editField_pt
+
         # setting new values_ and return to edit form
+        if proxy is not None:
+            self = proxy.getEditableContent()
+            
+        if not _checkPermission(ModifyPortalContent, self):
+            raise Unauthorized('You have no right to edit this document')
         extra = {}
         for f in self.field_attr[self.fields[id]['type']]:
             extra[f[:-2]] = form.get(f)
@@ -194,6 +204,8 @@ class Form(Base):
 
 
     #   Fields Setters -----------------------------------------------
+    ## All methods that always change the object are to be called
+    ## on the result of getEditableContents
     security.declareProtected(ModifyPortalContent, 'add_field')
     def add_field(self, id, **extra):
         """Add or modify field to the form."""
@@ -402,7 +414,12 @@ class Form(Base):
     def assert_form_view(self):
         pass
 
-    security.declareProtected(ModifyPortalContent, 'assert_form_modify')
+    ## XXX GR: this stuff had no meaning anymore. To access the form but not
+    # be able to do anything with it is what happens with cpsdocument_edit_form
+    # anyway. 
+    # Permission changed to 'View' to ensure that nothing gets broken, before
+    # getting rid of it.
+    security.declareProtected(View, 'assert_form_modify')
     def assert_form_modify(self):
         pass
 

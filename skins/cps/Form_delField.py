@@ -1,9 +1,9 @@
 ##parameters=REQUEST
 
 # $Id$
-doc = context.getContent()
 
 f_id = REQUEST.form.get('f_id')
+doc = context.getEditableContent() # del_fields will always change the doc
 doc.del_fields(f_id)
 
 if doc.meta_type == 'Quiz Document':
