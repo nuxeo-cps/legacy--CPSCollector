@@ -6,8 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- Could not edit the working copy after any freezing action 
-  (publish, submit, for instance)
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
-- Adaptation to current proxy security model 
+-
