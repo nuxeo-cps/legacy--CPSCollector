@@ -18,19 +18,40 @@
 # 02111-1307, USA.
 #
 from Testing import ZopeTestCase
+from Globals import InitializeClass
+from ExtensionClass import Base
+from AccessControl import ClassSecurityInfo
+from AccessControl.SecurityManagement import newSecurityManager
+
 from Products.CPSDefault.tests import CPSTestCase
 
-CPSCollectorTestCase = CPSTestCase.CPSTestCase
+class CPSCollectorTestCase(CPSTestCase.CPSTestCase):
+
+    def CpsLogin(self, uid):
+        uf = self.portal.acl_users
+        user = uf.getUserById(uid).__of__(uf)        
+        newSecurityManager(None, user)
+
 
 class CPSCollectorInstaller(CPSTestCase.CPSInstaller):
+
+    def addMember(self, uid, passwd, roles=[]):
+        mdir = self.portal.portal_directories['members']
+        mdir._createEntry({'id' : uid,
+                           'sn' : uid,
+                           'passwd' : passwd,
+                           'roles' : roles,
+                           }
+                          )
 
     def install(self, portal_id):
         self.addUser()
         self.login()
         self.addPortal(portal_id)
+        self.portal = getattr(self.app, portal_id)
         self.fixupTranslationServices(portal_id)
+        self.addMember('wsman', 'secret', roles=['Member', 'WorkspaceManager', 'SectionReader'])
         self.logout()
-
 
 """ setting up a portal for tests
 
@@ -44,7 +65,7 @@ def setupPortal(PortalInstaller=CPSCollectorInstaller):
     ZopeTestCase.close(app)
 
 
-# needeed products besides cps default onces
+# needeed products besides cps default ones
 ZopeTestCase.installProduct('CPSCollector')
 
 # sets up the portal

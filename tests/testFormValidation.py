@@ -5,7 +5,7 @@ you (may) need to make a symlink to run this testsuite:
 ln -s $ZS/lib/python/Products $ZS/Products/CMFCore
 """
 import unittest
-from Testing import ZopeTestCase
+#from Testing import ZopeTestCase
 
 #import CPSDefaultTestCase
 

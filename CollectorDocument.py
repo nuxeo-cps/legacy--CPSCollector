@@ -139,6 +139,7 @@ class CollectorDocument(Form, BaseDocument):
             self._del_item(id)
 
     # FIXME: these tests should move to a unit test package
+    # GR: it looks like init of test objects, right ? 
     security.declareProtected(ModifyPortalContent, 'initTest')
     def initTest(self):
         """Test the initialization of a form with all kinds of field"""
