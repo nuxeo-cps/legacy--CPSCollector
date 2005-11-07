@@ -1,4 +1,20 @@
 *******************************************
+** CPSCollector V1.10.2 [R1 build 2005/11/07-15:13 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 29072
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Fixed publishing behavior.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.10.1 [R1 build 2005/10/27-15:42 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 28725
 Requires:
