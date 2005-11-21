@@ -538,7 +538,7 @@ class Form(Base):
             if not v.filename and f.get('required',0):
                 err = 'collector_field_required'
             elif v.filename:
-                ml = int(f.get('maxlength', '0'))
+                ml = int(f.get('maxlength', '0').strip() or 0)
                 if v.read(1) == "":
                     err = 'collector_field_empty_file'
                     self.REQUEST.form[id] = v.filename
