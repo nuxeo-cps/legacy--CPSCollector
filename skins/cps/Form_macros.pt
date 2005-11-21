@@ -271,7 +271,8 @@
           <option value="comment" i18n:translate="collector_field_comment">
             Comment
           </option>
-          <option value="file"
+          <option tal:condition="nothing"
+            value="file"
                   i18n:translate="collector_field_file">
             File
           </option>
