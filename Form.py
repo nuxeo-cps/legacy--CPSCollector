@@ -192,7 +192,7 @@ class Form(Base):
         # setting new values_ and return to edit form
         if proxy is not None:
             self = proxy.getEditableContent()
-            
+
         if not _checkPermission(ModifyPortalContent, self):
             raise Unauthorized('You have no right to edit this document')
         extra = {}
@@ -360,7 +360,7 @@ class Form(Base):
             label = self.fields[f_name].get('label', '')
         if not len(label) or label[0] != '_':
             return label
-        
+
         return mcat(label)
 
     security.declareProtected(View, 'isSelected')
@@ -416,7 +416,7 @@ class Form(Base):
 
     ## XXX GR: this stuff had no meaning anymore. To access the form but not
     # be able to do anything with it is what happens with cpsdocument_edit_form
-    # anyway. 
+    # anyway.
     # Permission changed to 'View' to ensure that nothing gets broken, before
     # getting rid of it.
     security.declareProtected(View, 'assert_form_modify')
