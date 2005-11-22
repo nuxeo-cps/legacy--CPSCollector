@@ -6,8 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- disabled file-type field creation at the UI to preserve backward
-  compatibility
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.10.3 [R1 build 2005/11/22-17:20 by gracinet]
+** SVN URL: http://svn/pub/CPSCollector/trunk Revision: 29732
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- disabled file-type field creation at the UI to preserve backward
+  compatibility
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.10.2 [R1 build 2005/11/07-15:13 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 29072
 Requires:
