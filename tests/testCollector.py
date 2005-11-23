@@ -17,21 +17,7 @@ class TestCollector(CPSCollectorTestCase.CPSCollectorTestCase):
         self.CpsLogin('wsman')
         self.ws = self.portal.workspaces
         self.wftool = self.portal.portal_workflow
-        dispatcher = self.ws.manage_addProduct['CPSCollector']
-        dispatcher.addCollectorDocument('collector')
-        self.collector = self.ws.collector
 
-    def beforeTearDown(self):
-        del self.portal.collector_fake_view_zpt
-        self.logout()
-
-    # Collector objects hold the id of zpts to be called back
-    def fakify(self, proxy):
-        doc = proxy.getContent()
-        doc._view_pt = 'collector_fake_view_zpt'
-        doc._edit_pt = 'collector_view_zpt'
-
-    def test_security(self):
         # prepare a doc
         oid = self.ws.invokeFactory('Collector Document', 'tosubmit')
         ob = getattr(self.ws, oid)
@@ -44,11 +30,22 @@ class TestCollector(CPSCollectorTestCase.CPSCollectorTestCase):
                            dest_container='sections',
                            initial_transition='submit')
 
-        submitted = getattr(self.portal.sections, oid)
-        self.fakify(submitted)
-        working = getattr(self.ws, oid)
-        self.fakify(working)
+        self.submitted = getattr(self.portal.sections, oid)
+        self.fakify(self.submitted)
+        self.working = getattr(self.ws, oid)
+        self.fakify(self.working)
 
+    def beforeTearDown(self):
+        del self.portal.collector_fake_view_zpt
+        self.logout()
+
+    # Collector objects hold the id of zpts to be called back
+    def fakify(self, proxy):
+        doc = proxy.getContent()
+        doc._view_pt = 'collector_fake_view_zpt'
+        doc._edit_pt = 'collector_view_zpt'
+
+    def test_submitted_perms(self):
         REQUEST = self.app.REQUEST
 
         ## permissions on the submitted copy
@@ -57,37 +54,57 @@ class TestCollector(CPSCollectorTestCase.CPSCollectorTestCase):
 
         REQUEST.form = {'f_id' : 'name', 'type' : 'email',
                         'is_form_submitted' : 1}
-        self.assertRaises(Unauthorized, submitted.Form_editField)
-        self.assertRaises(Unauthorized, submitted.Form_delField,
+        self.assertRaises(Unauthorized,self.submitted.Form_editField)
+        self.assertRaises(Unauthorized,self.submitted.Form_delField,
                           REQUEST=REQUEST)
 
-        self.assertRaises(Unauthorized, submitted.Form_moveFieldUp,
+        self.assertRaises(Unauthorized,self.submitted.Form_moveFieldUp,
                           REQUEST=REQUEST)
-        self.assertRaises(Unauthorized, submitted.Form_moveFieldDown,
+        self.assertRaises(Unauthorized,self.submitted.Form_moveFieldDown,
                           REQUEST=REQUEST)
-        self.assertRaises(Unauthorized, submitted.Data_erase,
+        self.assertRaises(Unauthorized,self.submitted.Data_erase,
                           REQUEST=REQUEST)
-
-        
-
-        ## permissions on the working copy
-
-        REQUEST.form = {'id' : 'title', 'type' : 'title'}
-        working.Form_addField(REQUEST=REQUEST) # will also call Form_editField
-
-        REQUEST.form['f_id'] = 'title' # normally has already been done
-        working.Form_moveFieldUp(REQUEST=REQUEST)
-        working.Form_moveFieldDown(REQUEST=REQUEST)
-        working.Form_delField(REQUEST=REQUEST)
 
         # calling the fake view to check View perm and grab fields
         REQUEST.form = {}
-        working.Form_view() 
-        
-        working.Data_erase(REQUEST=REQUEST)
+        self.working.Form_view() 
 
-        REQUEST.form = {}
-        fields = submitted.Form_view()
+
+
+    ## permissions on the working copy
+    def test_working_perms_add(self):
+        REQUEST = self.app.REQUEST
+        
+        REQUEST.form = {'id' : 'newfield', 'type' : 'title'}
+        self.working.Form_addField(REQUEST=REQUEST) # will also call Form_editField
+
+    def test_working_perms_move_up(self):
+        REQUEST = self.app.REQUEST
+
+        REQUEST.form['f_id'] = 'number' 
+        self.working.Form_moveFieldUp(REQUEST=REQUEST)
+
+    def test_working_perms_move_down(self):
+        REQUEST = self.app.REQUEST
+
+        REQUEST.form['f_id'] = 'name'
+        self.working.Form_moveFieldDown(REQUEST=REQUEST)
+
+    def test_working_perms_del(self):
+        REQUEST = self.app.REQUEST
+        
+        REQUEST.form['f_id'] = 'number'
+        self.working.Form_delField(REQUEST=REQUEST)
+
+    def test_working_perms_data_erase(self):
+        REQUEST = self.app.REQUEST
+
+        self.working.Data_erase(REQUEST=REQUEST)
+
+    def test_working_perms_export(self):
+        REQUEST = self.app.REQUEST
+
+        self.working.CollectorDocument_exportData(REQUEST=REQUEST)
         
 
 def test_suite():

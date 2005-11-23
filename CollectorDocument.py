@@ -29,6 +29,8 @@ from Products.CPSCollector.Form import Form
 from Products.CPSCollector.CollectorItem import CollectorItem
 from zLOG import DEBUG, LOG
 
+### XXX GR
+### This FTI seems never to be instantiated. Look in skins/cps/getCollectorTypes
 factory_type_information = (
     {'id': 'Collector Document',
      'description': 'portal_type_CollectorDocument_description',

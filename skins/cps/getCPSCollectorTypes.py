@@ -36,7 +36,7 @@ collector_type = {
                  'permissions': ('Modify portal content',)},
                 {'id': 'export',
                  'name': 'action_export_csv',
-                 'action': 'exportData',
+                 'action': 'CollectorDocument_exportData',
                   'permissions': ('Modify portal content',)},
                 {'id': 'erase',
                  'name': 'action_erase_data',
