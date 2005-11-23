@@ -1,4 +1,20 @@
 *******************************************
+** CPSCollector V1.10.4 [R1 build 2005/11/23-15:57 by gracinet]
+** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 29827
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Export was not available on working copy after submission/freeze
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Better permission tests
+
+*******************************************
 ** CPSCollector V1.10.3 [R1 build 2005/11/22-17:20 by gracinet]
 ** SVN URL: http://svn/pub/CPSCollector/trunk Revision: 29732
 Requires:
