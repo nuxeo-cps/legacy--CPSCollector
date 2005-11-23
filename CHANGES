@@ -6,7 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Export was not available on working copy after submission/freeze
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
--
+- Better permission tests
