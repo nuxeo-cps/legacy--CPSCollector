@@ -111,7 +111,7 @@ class QuizDocument(CollectorDocument):
             l.append(f)
         return l
 
-    security.declareProtected(View, 'check_answers')
+    security.declareProtected(View, 'check_quiz_answers')
     def check_quiz_answers(self, **kw):
         """Retrieve latest filled form for current user."""
         latest_item = self._load_data()
