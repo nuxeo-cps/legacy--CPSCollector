@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
-"POT-Creation-Date: 2005-06-23 17:33default\n"
+"POT-Creation-Date: 2005-12-29 16:06default\n"
 "PO-Revision-Date: 2004-02-18 11:26+0100\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
@@ -124,7 +124,7 @@ msgstr "Datum"
 msgid "collector_field_email"
 msgstr "Email"
 
-#.   <option value="file">
+#.   <option condition="nothing" value="file">
 #.               File
 #.             </option>
 #: from ../skins/cps/Form_macros.pt

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector-de CPS-3.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-20 12:35default\n"
+"POT-Creation-Date: 2005-06-23 17:33default\n"
 "PO-Revision-Date: 2005-03-14 09:49+0100\n"
 "Last-Translator: Georg Hennemann <georg.hennemann@dhl.com>\n"
 "Language-Team: de <rheinland@dzug.org>\n"
@@ -47,33 +47,31 @@ msgstr ""
 "Rangliste: ${collector_label_nb_correct} richtige Antwort(en) aus "
 "${collector_label_nb_all} Frage(n)"
 
-#.   <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
-#.
-#.     </input>
-#.   <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
+#.   <input name="cancel" onclick="history.back()" type="button" class="context" value="collector_button_cancel" />
+#.   <input name="Data_cancel_erase:method" type="submit" class="context" value="collector_button_cancel" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Abbrechen"
 
-#.   <input value="collector_button_movedown" class="context moveDown" name="Form_moveFieldDown:method" type="submit" />
+#.   <input name="Form_moveFieldDown:method" type="submit" class="context moveDown" value="collector_button_movedown" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr "Runter"
 
-#.   <input value="collector_button_moveup" class="context moveUp" name="Form_moveFieldUp:method" type="submit" />
+#.   <input name="Form_moveFieldUp:method" type="submit" class="context moveUp" value="collector_button_moveup" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr "Hoch"
 
-#.   <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
+#.   <input name="Data_erase:method" type="submit" class="destructive" value="collector_button_proceed" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
 msgstr "Weiter"
 
-#.   <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
+#.   <input name="Form_delField:method" type="submit" class="destructive" value="collector_button_remove" attributes="onClick
 #.                                    python:
-#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
+#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
 msgstr "Löschen"
@@ -194,7 +192,7 @@ msgstr "Auswahl Liste"
 msgid "collector_field_separator"
 msgstr "Separator"
 
-#.   <option selected="1" value="string">String</option>
+#.   <option selected="selected" value="string">String</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_string"
 msgstr "String"
@@ -235,13 +233,12 @@ msgstr "Radio Taste (vertikales Layout)"
 #.   <div class="label">
 #.          Add a new field:
 #.        </div>
-#.   <input value="collector_form_add_new_field" class="standalone" name="Form_addField:method" type="submit">
-#.       </input>
+#.   <input name="Form_addField:method" type="submit" class="standalone" value="collector_form_add_new_field" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr "Anfügen eines neuen Feldes"
 
-#.   <th nowrap="">join w/ next field</th>
+#.   <th nowrap="nowrap">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
 msgstr "Verbinden mit nächstem Feld:"
@@ -251,12 +248,12 @@ msgstr "Verbinden mit nächstem Feld:"
 msgid "collector_form_field_label"
 msgstr "Label:"
 
-#.   <th nowrap="1">required</th>
+#.   <th nowrap="nowrap">required</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_req"
 msgstr "Notwendig:"
 
-#.   <th nowrap="1">type</th>
+#.   <th nowrap="nowrap">type</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_type"
 msgstr "Typ:"

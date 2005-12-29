@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pt-BR\n"
-"POT-Creation-Date: 2005-06-23 17:33default\n"
+"POT-Creation-Date: 2005-12-29 16:06default\n"
 "PO-Revision-Date: 2005-06-15 14:08-0300\n"
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portugues do Brasil <pt@li.org>\n"
@@ -123,7 +123,7 @@ msgstr "Data"
 msgid "collector_field_email"
 msgstr "E-mail"
 
-#.   <option value="file">
+#.   <option condition="nothing" value="file">
 #.               File
 #.             </option>
 #: from ../skins/cps/Form_macros.pt

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
-"POT-Creation-Date: 2005-06-23 17:33default\n"
+"POT-Creation-Date: 2005-12-29 16:06default\n"
 "PO-Revision-Date: 2005-03-29 15:42+0300\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "Data"
 msgid "collector_field_email"
 msgstr "Email"
 
-#.   <option value="file">
+#.   <option condition="nothing" value="file">
 #.               File
 #.             </option>
 #: from ../skins/cps/Form_macros.pt

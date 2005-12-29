@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector\n"
-"POT-Creation-Date: 2005-06-23 17:33default\n"
+"POT-Creation-Date: 2005-12-29 16:06default\n"
 "PO-Revision-Date: 2005-05-18 16:12+0100\n"
 "Last-Translator: Jesús <jesusmartin@lasalle.es>\n"
 "Language-Team: español <jesusmartin@lasalle.es>\n"
@@ -127,7 +127,7 @@ msgstr "Fecha"
 msgid "collector_field_email"
 msgstr "Correo electrónico"
 
-#.   <option value="file">
+#.   <option condition="nothing" value="file">
 #.               File
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
