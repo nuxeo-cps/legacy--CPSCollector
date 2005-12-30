@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector_en\n"
-"POT-Creation-Date: 2005-12-29 16:06default\n"
+"POT-Creation-Date: 2005-12-30 12:40default\n"
 "PO-Revision-Date: 2004-09-24 09:40+0200\n"
 "Last-Translator: Aitzol Naberan Burgaña <anaberan@codesyntax.com>\n"
 "Language-Team: Euskara <eu@li.org>\n"
