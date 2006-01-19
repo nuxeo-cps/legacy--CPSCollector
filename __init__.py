@@ -12,6 +12,11 @@ from Products.CPSCollector import CollectorDocument
 from Products.CPSCollector import QuizDocument
 from Products.CPSCollector import CollectorItem
 
+from Products.GenericSetup import profile_registry
+from Products.GenericSetup import EXTENSION
+
+from Products.CPSCore.interfaces import ICPSSite
+
 contentClasses = (CollectorDocument.CollectorDocument,
                   QuizDocument.QuizDocument,
                   CollectorItem.CollectorItem,
@@ -35,3 +40,11 @@ def initialize(registrar):
         extra_constructors = contentConstructors,
         fti = fti,
         ).initialize(registrar)
+    profile_registry.registerProfile(
+        'default',
+        'CPS Collector',
+        "CPSCollector product for CPS.",
+        'profiles/default',
+        'CPSCollector',
+        EXTENSION,
+        for_=ICPSSite)

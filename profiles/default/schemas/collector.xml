@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object name="collector" meta_type="CPS Schema">
+ <field name="submit_msg" meta_type="CPS String Field">
+  <property name="is_searchabletext">True</property>
+ </field>
+ <field name="submit_msg_stat" meta_type="CPS Int Field">
+  <property name="is_searchabletext">False</property>
+  <property name="default_expr">python:0</property>
+ </field>
+ <field name="unique_submit" meta_type="CPS Int Field">
+  <property name="is_searchabletext">False</property>
+  <property name="default_expr">python:1</property>
+ </field>
+ <field name="persistent_data" meta_type="CPS Int Field">
+  <property name="is_searchabletext">False</property>
+  <property name="default_expr">python:0</property>
+ </field>
+</object>

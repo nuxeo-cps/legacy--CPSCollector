@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="Workspace">
+ <property name="allowed_content_types">
+  <element value="Quiz Document"/>
+  <element value="Collector Document"/>
+ </property>
+</object>
