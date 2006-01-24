@@ -1,20 +1,20 @@
 # $Id$
 
 import unittest
-from Testing import ZopeTestCase
 from AccessControl import Unauthorized
 
-import CPSCollectorTestCase
+from CPSCollectorTestCase import CPSCollectorTestCase
 
 def view_zpt(*args, **kwargs):
 
     pass
 
-class TestCollector(CPSCollectorTestCase.CPSCollectorTestCase):
+class TestCollector(CPSCollectorTestCase):
     def afterSetUp(self):
+        CPSCollectorTestCase.afterSetUp(self)
         self.portal.collector_fake_view_zpt = view_zpt
 
-        self.CpsLogin('wsman')
+        self.login('wsman')
         self.ws = self.portal.workspaces
         self.wftool = self.portal.portal_workflow
 

@@ -18,22 +18,29 @@
 # 02111-1307, USA.
 #
 from Testing import ZopeTestCase
-from Globals import InitializeClass
-from ExtensionClass import Base
-from AccessControl import ClassSecurityInfo
-from AccessControl.SecurityManagement import newSecurityManager
+from Products.ExternalMethod.ExternalMethod import ExternalMethod
+from Products.CPSDefault.tests.CPSTestCase import CPSTestCase, MANAGER_ID
 
-from Products.CPSDefault.tests import CPSTestCase
+# needeed products besides cps default ones
+ZopeTestCase.installProduct('CPSCollector')
 
-class CPSCollectorTestCase(CPSTestCase.CPSTestCase):
+class CPSCollectorTestCase(CPSTestCase):
 
-    def CpsLogin(self, uid):
-        uf = self.portal.acl_users
-        user = uf.getUserById(uid).__of__(uf)        
-        newSecurityManager(None, user)
-
-
-class CPSCollectorInstaller(CPSTestCase.CPSInstaller):
+    def afterSetUp(self):
+        CPSTestCase.afterSetUp(self)
+        # XXX AT: it makes no sense to set up local roles globally...
+        self.login(MANAGER_ID)
+        self.addMember('wsman', 'secret',
+                       roles=['Member', 'WorkspaceManager', 'SectionReader'])
+        if 'cps_collector_installer' not in self.portal.objectIds():
+            installer = ExternalMethod(
+                'cps_collector_installer',
+                '',
+                'CPSCollector.install',
+                'install')
+            self.portal._setObject('cps_collector_installer',
+                                   installer)
+        self.portal.cps_collector_installer()
 
     def addMember(self, uid, passwd, roles=[]):
         mdir = self.portal.portal_directories['members']
@@ -43,30 +50,3 @@ class CPSCollectorInstaller(CPSTestCase.CPSInstaller):
                            'roles' : roles,
                            }
                           )
-
-    def install(self, portal_id):
-        self.addUser()
-        self.login()
-        self.addPortal(portal_id)
-        self.portal = getattr(self.app, portal_id)
-        self.fixupTranslationServices(portal_id)
-        self.addMember('wsman', 'secret', roles=['Member', 'WorkspaceManager', 'SectionReader'])
-        self.logout()
-
-""" setting up a portal for tests
-
-"""
-def setupPortal(PortalInstaller=CPSCollectorInstaller):
-    app = ZopeTestCase.app()
-
-    if hasattr(app, 'portal'):
-        app.manage_delObjects(['portal'])
-    CPSCollectorInstaller(app).install('portal')
-    ZopeTestCase.close(app)
-
-
-# needeed products besides cps default ones
-ZopeTestCase.installProduct('CPSCollector')
-
-# sets up the portal
-setupPortal()
