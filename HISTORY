@@ -6,7 +6,7 @@ Requires:
 -
 New features:
 ~~~~~~~~~~~~~
--
+- Added support for GenericSetup profiles.
 Bug fixes:
 ~~~~~~~~~~
 - Fixed security declarations on a method.

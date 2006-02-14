@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Fixed the HISTORY file that was not reflecting when the support for
+  GenericSetup was added.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
