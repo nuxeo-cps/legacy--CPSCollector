@@ -1,4 +1,21 @@
 *******************************************
+** CPSCollector V1.10.6 [R1 build 2006/02/17-20:15 by fermigier]
+** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 32986
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Fixed the HISTORY file that was not reflecting when the support for
+  GenericSetup was added.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.10.5 [R1 build 2006/01/23-17:27 by fermigier]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 31976
 Requires:
