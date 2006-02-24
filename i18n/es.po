@@ -1,15 +1,9 @@
-# translation of fr.po to ben
-# translation of fr.po to francais
-# Gettext Message File for default.
-# Your Name <your@email>, Year
-# emmanuel <epietriga@nuxeo.com>, 2003, 2004.
-# ben <ben@nuxeo.com>, 2003,2004.
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector\n"
-"POT-Creation-Date: 2006-01-03 14:48default\n"
-"PO-Revision-Date: 2005-05-18 16:12+0100\n"
-"Last-Translator: Jesús <jesusmartin@lasalle.es>\n"
+"POT-Creation-Date: 2005-06-23 17:33default\n"
+"PO-Revision-Date: 2006-02-23 16:41+0100\n"
+"Last-Translator: Jesús Martín <jesusmartin@lasalle.es>\n"
 "Language-Team: español <jesusmartin@lasalle.es>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
@@ -31,12 +25,8 @@ msgstr ""
 #.       ${collector_edate (tal replace="python:stats['_stat']['date_end']")}
 #.     </span>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
-msgid ""
-"${collector_nb} forms collected between ${collector_sdate} and "
-"${collector_edate}"
-msgstr ""
-"${collector_nb} ficha(s) recogida(s) entre el ${collector_sdate} y el "
-"${collector_edate}"
+msgid "${collector_nb} forms collected between ${collector_sdate} and ${collector_edate}"
+msgstr "${collector_nb} ficha(s) recogida(s) entre el ${collector_sdate} y el ${collector_edate}"
 
 #.   <p>
 #.                    Score:
@@ -46,12 +36,8 @@ msgstr ""
 #.                    questions
 #.                 </p>
 #: from ../skins/cps/QuizDocument_viewResults.pt
-msgid ""
-"Score: ${collector_label_nb_correct} correct answers out of "
-"${collector_label_nb_all} questions"
-msgstr ""
-"Resultado: ${collector_label_nb_correct} respuesta(s) correcta(s) en "
-"${collector_label_nb_all} pregunta(s)"
+msgid "Score: ${collector_label_nb_correct} correct answers out of ${collector_label_nb_all} questions"
+msgstr "Resultado: ${collector_label_nb_correct} respuesta(s) correcta(s) en ${collector_label_nb_all} pregunta(s)"
 
 #.   <input name="cancel" onclick="history.back()" type="button" class="context" value="collector_button_cancel" />
 #.   <input name="Data_cancel_erase:method" type="submit" class="context" value="collector_button_cancel" />
@@ -85,9 +71,7 @@ msgstr "Eliminar"
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
-msgstr ""
-"Utilizar los comandos de esta página para añadir campos al formulario y "
-"modificarlos"
+msgstr "Utilizar los comandos de esta página para añadir campos al formulario y modificarlos"
 
 #.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
@@ -127,12 +111,12 @@ msgstr "Fecha"
 msgid "collector_field_email"
 msgstr "Correo electrónico"
 
-#.   <option condition="nothing" value="file">
+#.   <option value="file">
 #.               File
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_file"
-msgstr "Fichero"
+msgstr "Archivo"
 
 #.   <option value="float">Float</option>
 #: from ../skins/cps/Form_macros.pt
@@ -213,7 +197,7 @@ msgstr "Cadena de caracteres (sólo lectura)"
 #.   <option value="text">Text area</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_textarea"
-msgstr "Zona de texto"
+msgstr "Área de texto"
 
 #.   <option value="title">
 #.               Title
@@ -262,7 +246,7 @@ msgstr "Obligatorio"
 #.   <th nowrap="nowrap">type</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_type"
-msgstr "Tipo :"
+msgstr "Tipo:"
 
 #.   <div class="label">
 #.         List of fields:
@@ -374,7 +358,7 @@ msgid "collector_confirm"
 msgstr "¿Está usted seguro?"
 
 msgid "collector_button_modify"
-msgstr "Registrar"
+msgstr "Guardar"
 
 msgid "collector_date_%m/%d/%Y %H:%M"
 msgstr "%d/%m/%Y %Hh%M"
@@ -422,7 +406,7 @@ msgid "collector_form_multiple"
 msgstr "Selección múltiple:"
 
 msgid "collector_button_change"
-msgstr "Registrar"
+msgstr "Guardar"
 
 msgid "collector_form_join_with_next"
 msgstr "Enlazar con el campo siguiente:"
@@ -440,7 +424,7 @@ msgid "collector_field_too_long"
 msgstr "demasiado largo"
 
 msgid "collector_field_email_invalid"
-msgstr "E-mail no válido"
+msgstr "Correo electrónico inválido"
 
 msgid "collector_field_int_invalid"
 msgstr "identificador no válido"
@@ -452,7 +436,7 @@ msgid "collector_field_phone_invalid"
 msgstr "número de teléfono no válido"
 
 msgid "collector_field_read_only"
-msgstr "campo sólo de lectura"
+msgstr "campo de sólo lectura"
 
 msgid "collector_field_id_invalid"
 msgstr "identificador no válido"
@@ -475,20 +459,3 @@ msgstr "archivo vacío"
 msgid "collector_field_file_too_big"
 msgstr "archivo demasiado largo"
 
-#, fuzzy
-msgid "collector_form_mulitple"
-msgstr "Multiple selection:"
-
-#, fuzzy
-msgid "collector_psm_erased_data"
-msgstr "Collected data has been erased"
-
-msgid "collector_psm_erase_data_cancel"
-msgstr "Les données collectées n'ont pas été effacées"
-
-msgid "collector_erased_data"
-msgstr "Les données collectées ont été effacées"
-
-#, fuzzy
-msgid "collector_erased_data_failed"
-msgstr "Collected data has been erased"
