@@ -24,7 +24,7 @@
 
 <!-- def title field -->
 <h4 metal:define-macro="title"
-   tal:content="python:colmcat(doc.getLabel(f_id))">label</h4>
+   tal:content="python:cpsmcat(doc.getLabel(f_id))">label</h4>
 
 <!-- def hidden field -->
 <input metal:define-macro="hidden"
@@ -79,7 +79,7 @@
 <metal:block metal:define-macro="vradio">
   <div tal:attributes="class
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
-  <span i18n:domain="cpscollector" i18n:translate=""
+  <span i18n:translate=""
     tal:content="python:doc.getLabel(f_id)"></span>
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
   </div><br />
@@ -121,7 +121,7 @@
 <metal:block metal:define-macro="submit">
   <input type="submit"
          tal:attributes="name f/value|default;
-                         value python:colmcat(doc.getLabel(f_id))"
+                         value python:cpsmcat(doc.getLabel(f_id))"
          class="standalone" />
 </metal:block>
 
@@ -142,7 +142,7 @@
     tal:condition="python:nb_slot==2">
   <div tal:attributes="class
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
-  <span i18n:domain="cpscollector" i18n:translate=""
+  <span i18n:translate=""
     tal:content="python:doc.getLabel(f_id)"></span>
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
   </div>
@@ -159,8 +159,7 @@
 
 <!-- def display_form -->
 <form action="." method="post" enctype="multipart/form-data"
-      metal:define-macro="display_form"
-      i18n:domain="cpscollector">
+      metal:define-macro="display_form">
   <div class="group">
   <div class="message"
     tal:condition="request/other/form_status|nothing"
@@ -174,8 +173,7 @@
             <span tal:repeat="f_id row" tal:omit-tag="">
               <span tal:define="f python:doc.fields[f_id];
                                 nb_slot python:doc.getNbSlot(f_id);
-                                label python:doc.getLabel(f_id);
-                                colmcat nocall:here/Localizer/cpscollector"
+                                label python:doc.getLabel(f_id);"
                     tal:omit-tag="">
                 <metal:block metal:use-macro="here/Form_macros/macros/display_label" />
                 <metal:block metal:use-macro="here/Form_macros/macros/display_field" />
@@ -190,8 +188,7 @@
 </form>
 
 <!-- def display_edit_form -->
-<form action="." method="post" metal:define-macro="display_edit_form"
-      i18n:domain="cpscollector">
+<form action="." method="post" metal:define-macro="display_edit_form">
   <div class="message" tal:condition="request/other/form_status|nothing">
      tal:content="request/other/form_status">bla</div>
   <div class="group">
@@ -330,10 +327,9 @@
                class="context moveDown" />
         <input type="submit" name="Form_delField:method"
                i18n:attributes="value" value="collector_button_remove"
-               tal:define="colmcat nocall:here/Localizer/cpscollector"
                tal:attributes="onClick
                                  python:
-                                   'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)"
+                                   'return window.confirm(\'%s\')' % (cpsmcat('collector_confirm'),)"
                class="destructive" />
       </td>
     </tr>
@@ -343,8 +339,7 @@
 </form>
 
 <!-- def display_quiz_edit_form -->
-<form action="." method="post" metal:define-macro="display_quiz_edit_form"
-      i18n:domain="cpscollector">
+<form action="." method="post" metal:define-macro="display_quiz_edit_form">
 
   <div class="message" tal:condition="request/other/form_status|nothing">
      tal:content="request/other/form_status">bla</div>
@@ -444,10 +439,9 @@
                class="context moveDown" />
         <input type="submit" name="Form_delField:method"
                i18n:attributes="value" value="collector_button_remove"
-               tal:define="colmcat nocall:here/Localizer/cpscollector"
                tal:attributes="onClick
                                  python:
-                                   'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)"
+                                   'return window.confirm(\'%s\')' % (cpsmcat('collector_confirm'),)"
                class="destructive" />
       </td>
     </tr>

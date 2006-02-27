@@ -3,7 +3,7 @@
   <tal:block define="current_action string:view_stat;">
     <html metal:use-macro="here/content_lib_master/macros/master">
       <body>
-        <metal:block fill-slot="main" i18n:domain="cpscollector">
+        <metal:block fill-slot="main">
           <tal:block define="_check_perm_ doc/assert_form_view" />
           <metal:block define-macro="display_quiz_results">
             <tal:block tal:define="doc here/getContent;

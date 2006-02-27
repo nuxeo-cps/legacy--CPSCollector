@@ -91,8 +91,7 @@ def install(self):
     ##############################################
     # i18n support
     ##############################################
-    installer.verifyMessageCatalog('cpscollector', 'CPSCollector messages')
-    installer.setupTranslations(message_catalog='cpscollector')
+    installer.setupTranslations(product_name='CPSCollector')
 
     ##############################################
     # Finished!

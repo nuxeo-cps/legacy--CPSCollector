@@ -1,8 +1,6 @@
 <html metal:use-macro="here/content_lib_master/macros/master">
 <metal:block fill-slot="main">
-<div  i18n:domain="cpscollector">
 <tal:block define="_check_perm_ doc/assert_form_view" />
 <p metal:use-macro="here/Form_macros/macros/display_form">The form</p>
-</div>
 </metal:block>
 </html>

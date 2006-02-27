@@ -346,7 +346,7 @@ class Form(Base):
         return self.restrictedTraverse(self._macros_pt).macros[t]
 
     def mcat(s):
-        return context.translation_service.translate('cpscollector', s)
+        return context.translation_service.translateDefault(s)
 
     security.declareProtected(View, 'getLabel')
     def getLabel(self,f_name, multiple=0):
@@ -437,10 +437,10 @@ class Form(Base):
     def _check_form(self):
         """Check all the fields of a form and return a status and msg """
         form = self.REQUEST.form
-        locale = self.Localizer.cpscollector.get_selected_language()
+        locale = self.translation_service.getSelectedLanguage()
         if not (form.get('is_form_submitted') or form.get('is_form_setted')):
             if not len(self.fields_list):
-                msg = self.Localizer.cpscollector('collector_empty_form')
+                msg = self.translation_service.translateDefault('collector_empty_form')
             else:
                 msg = ''
             return ('not_yet_submitted', msg)
@@ -449,7 +449,7 @@ class Form(Base):
         for f in self.getFList():
             err = self._check_field(f, form.get(f), locale)
             if err:
-                err_l10n = self.Localizer.cpscollector(err)
+                err_l10n = self.translation_service.translateDefault(err)
                 err = '[' + f + '] ' + err_l10n
                 msg = msg + err + ', '
                 bf.append(f)
@@ -457,7 +457,7 @@ class Form(Base):
         if not msg:
             msg = self._validator(form)
         if msg:
-            err_l10n = self.Localizer.cpscollector('collector_field_error')
+            err_l10n = self.translation_service.translateDefault('collector_field_error')
             return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
         if form.get('is_form_setted'):
             return ('setted_form', msg)

@@ -1,5 +1,4 @@
-<html metal:use-macro="here/content_lib_master/macros/master"
-      i18n:domain="cpscollector">
+<html metal:use-macro="here/content_lib_master/macros/master">
 <metal:block fill-slot="header"
   tal:define="_check_perm_ doc/assert_form_modify;
               create options/create|nothing;">
@@ -21,16 +20,15 @@
 </metal:block>
 
 <metal:block fill-slot="main"
-  tal:define="colmcat nocall:here/Localizer/cpscollector;
-              create options/create|nothing;
+  tal:define="create options/create|nothing;
               title python:(create and [''] or [doc.Title()])[0];
               description python:(create and [''] or [doc.description])[0];
               submit_msg python:(create and ['Thank you'] or [doc.submit_msg])[0];
               submit_msg_stat python:(create and [0] or [doc.submit_msg_stat])[0];
               unique_submit python:create or doc.unique_submit;
               persistent_data python:create or doc.persistent_data;
-              submitvalue python:create and colmcat('collector_button_create')
-                                 or colmcat('collector_button_modify');
+              submitvalue python:create and cpsmcat('collector_button_create')
+                                 or cpsmcat('collector_button_modify');
               action python:create and 'content_create' or 'content_edit';">
 
   <form name="edit_form" action="." method="post" enctype="multipart/form-data"

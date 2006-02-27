@@ -246,7 +246,7 @@ class CollectorDocument(Form, BaseDocument):
         """Return a translation.
         """
         translation_service = getToolByName(self, 'translation_service')
-        return translation_service.translate('cpscollector', s)
+        return translation_service.translateDefault(s)
 
     security.declareProtected(View, 'process_stat')
     def process_stat(self, **kw):
