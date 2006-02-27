@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector\n"
 "POT-Creation-Date: 2005-06-23 17:33default\n"
-"PO-Revision-Date: 2006-02-23 16:41+0100\n"
+"PO-Revision-Date: 2006-02-25 16:21+0100\n"
 "Last-Translator: Jesús Martín <jesusmartin@lasalle.es>\n"
 "Language-Team: español <jesusmartin@lasalle.es>\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "Continuar"
 #.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
-msgstr "Eliminar"
+msgstr "Borrar"
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
@@ -83,14 +83,14 @@ msgstr "Todavía no se han recogido datos"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_button"
-msgstr "Botón de validación"
+msgstr "Botón de envío"
 
 #.   <option value="checkbox">
 #.               Checkbox
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_checkbox"
-msgstr "Campo de recogida"
+msgstr "Recuadro de selección"
 
 #.   <option value="comment">
 #.               Comment
@@ -128,7 +128,7 @@ msgstr "Número real"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_hiddenstring"
-msgstr "Cadena de caracteres"
+msgstr "Caracteres ocultos"
 
 #.   <option value="identifier">
 #.               Identifier
@@ -166,14 +166,14 @@ msgstr "Botón de radio"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_resetbutton"
-msgstr "Botón de reinicio"
+msgstr "Botón de reinicialización"
 
 #.   <option value="selection">
 #.               Selection
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_selection"
-msgstr "Lista de selección"
+msgstr "Listado desplegable"
 
 #.   <option value="separator">
 #.               Separator
