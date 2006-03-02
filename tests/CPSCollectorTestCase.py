@@ -1,7 +1,6 @@
-#!/usr/bin/python
-# -*- encoding: iso-8859-15 -*-
-# (C) Copyright 2004 Nuxeo SARL <http://nuxeo.com>
-# Author: Tarek Ziadé <tz@nuxeo.com>
+# (C) Copyright 2006 Nuxeo SAS <http://nuxeo.com>
+# Authors: Tarek Ziadé <tz@nuxeo.com>
+#          Dragos Ivan <div@nuxeo.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 as published
@@ -17,14 +16,20 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 #
-from Testing import ZopeTestCase
-from Products.ExternalMethod.ExternalMethod import ExternalMethod
-from Products.CPSDefault.tests.CPSTestCase import CPSTestCase, MANAGER_ID
+# $Id$
 
-# needeed products besides cps default ones
-ZopeTestCase.installProduct('CPSCollector')
+from Products.CPSDefault.tests.CPSTestCase import CPSTestCase
+from Products.CPSDefault.tests.CPSTestCase import ExtensionProfileLayerClass
+from Products.CPSDefault.tests.CPSTestCase import MANAGER_ID
+
+class LayerClass(ExtensionProfileLayerClass):
+    extension_ids = ('CPSCollector:default',)
+
+CPSCollectorLayer = LayerClass(__name__, 'CPSCollectorLayer')
+
 
 class CPSCollectorTestCase(CPSTestCase):
+    layer = CPSCollectorLayer
 
     def afterSetUp(self):
         CPSTestCase.afterSetUp(self)
@@ -32,15 +37,6 @@ class CPSCollectorTestCase(CPSTestCase):
         self.login(MANAGER_ID)
         self.addMember('wsman', 'secret',
                        roles=['Member', 'WorkspaceManager', 'SectionReader'])
-        if 'cps_collector_installer' not in self.portal.objectIds():
-            installer = ExternalMethod(
-                'cps_collector_installer',
-                '',
-                'CPSCollector.install',
-                'install')
-            self.portal._setObject('cps_collector_installer',
-                                   installer)
-        self.portal.cps_collector_installer()
 
     def addMember(self, uid, passwd, roles=[]):
         mdir = self.portal.portal_directories['members']
