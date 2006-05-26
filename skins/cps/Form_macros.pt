@@ -65,13 +65,15 @@
 <!-- def radio field -->
 <metal:block metal:define-macro="radio">
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
-    <input tal:attributes="id v;
-                           name f_id;value v;
-                           checked python:doc.meta_type!='Quiz Document' and
-                                          doc.getV(f_id,'checked')==v"
-           name="_x_" type="radio" class="noborder" />
-    <label tal:attributes="for v"
-      tal:content="python:doc.getLabel(f_id,v)">label</label>
+    <tal:block define="id python:f_id + v">
+      <input tal:attributes="id id;
+                             name f_id;value v;
+                             checked python:doc.meta_type!='Quiz Document' and
+                                            doc.getV(f_id,'checked')==v"
+             name="_x_" type="radio" class="noborder" />
+      <label tal:attributes="for id"
+             tal:content="python:doc.getLabel(f_id,v)">label</label>
+      </tal:block>
   </tal:block>
 </metal:block>
 
@@ -84,13 +86,15 @@
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
   </div><br />
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
-    <input tal:attributes="id v;
-                           name f_id;value v;
-                           checked python:doc.meta_type!='Quiz Document' and
-                                          doc.getV(f_id,'checked')==v"
-           name="_x_" type="radio" class="noborder" />
-    <label tal:attributes="for v"
-      tal:content="python:doc.getLabel(f_id,v)">label</label><br />
+    <tal:block define="id python:f_id + v">
+      <input tal:attributes="id id;
+                             name f_id;value v;
+                             checked python:doc.meta_type!='Quiz Document' and
+                                            doc.getV(f_id,'checked')==v"
+             name="_x_" type="radio" class="noborder" />
+      <label tal:attributes="for id"
+             tal:content="python:doc.getLabel(f_id,v)">label</label><br />
+      </tal:block>
   </tal:block>
 </metal:block>
 
