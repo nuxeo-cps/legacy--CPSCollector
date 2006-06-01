@@ -1,4 +1,22 @@
 *******************************************
+** CPSCollector V1.11.1 [R1 build 2006/06/01-08:21 by ben]
+** SVN URL: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/trunk Revision: 46118
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Fixed HTML validity of the CPSCollector answer form and wrong label
+  assignments.
+- Fix: CollectorDocument display last input does not work properly
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSCollector V1.11.0 [R1 build 2006/03/03-17:27 by ben]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSCollector/trunk Revision: 33854
 Requires:

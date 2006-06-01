@@ -6,9 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- Fixed HTML validity of the CPSCollector answer form and wrong label
-  assignments.
-- Fix: CollectorDocument display last input does not work properly
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
