@@ -107,7 +107,7 @@
     <tal:block tal:repeat="v python:doc.getVList(f_id)">
       <option tal:attributes="value v;
                               selected python:v in doc.getV(f_id, 'value',
-	                                                    nothing, 'selected')"
+	                                                    nothing, True)"
               tal:content="python:doc.getLabel(f_id,v)">_x_</option>
     </tal:block>
   </select>

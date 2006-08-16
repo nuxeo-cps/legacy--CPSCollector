@@ -6,7 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- fix erroneous usage of getV
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
