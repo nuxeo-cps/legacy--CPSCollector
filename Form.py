@@ -450,7 +450,7 @@ class Form(Base):
             err = self._check_field(f, form.get(f), locale)
             if err:
                 err_l10n = self.translation_service.translateDefault(err)
-                err = '[' + f + '] ' + err_l10n
+                err = '[' + f.decode('ISO-8859-15') + '] ' + err_l10n
                 msg = msg + err + ', '
                 bf.append(f)
         form['error__'] =  bf

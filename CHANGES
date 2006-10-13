@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- fix erroneous usage of getV
+- Fixed erroneous usage of getV
+- Fixed unicode error if the required field's id contains french characters
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
