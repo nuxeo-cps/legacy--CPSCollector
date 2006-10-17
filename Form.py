@@ -1,4 +1,4 @@
-# Copyright (c) 2002-2004 Nuxeo SARL <http://nuxeo.com>
+# Copyright (c) 2002-2006 Nuxeo SAS <http://nuxeo.com>
 # $Id$
 """
 The Form class is an HTML form generator.
@@ -437,10 +437,11 @@ class Form(Base):
     def _check_form(self):
         """Check all the fields of a form and return a status and msg """
         form = self.REQUEST.form
-        locale = self.translation_service.getSelectedLanguage()
+        mcat = self.translation_service
+        locale = mcat.getSelectedLanguage()
         if not (form.get('is_form_submitted') or form.get('is_form_setted')):
             if not len(self.fields_list):
-                msg = self.translation_service.translateDefault('collector_empty_form')
+                msg = mcat.translateDefault('collector_empty_form')
             else:
                 msg = ''
             return ('not_yet_submitted', msg)
@@ -449,16 +450,18 @@ class Form(Base):
         for f in self.getFList():
             err = self._check_field(f, form.get(f), locale)
             if err:
-                err_l10n = self.translation_service.translateDefault(err)
-                err = '[' + f.decode('ISO-8859-15') + '] ' + err_l10n
+                err_l10n = mcat.translateDefault(err)
+                err_l10n_enc = err_l10n.encode('ISO-8859-15', 'ignore')
+                err = '[' + f + '] ' + err_l10n_enc
                 msg = msg + err + ', '
                 bf.append(f)
         form['error__'] =  bf
         if not msg:
             msg = self._validator(form)
         if msg:
-            err_l10n = self.translation_service.translateDefault('collector_field_error')
-            return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
+            err_l10n = mcat.translateDefault('collector_field_error')
+            err_l10n_enc = err_l10n.encode('ISO-8859-15', 'ignore')
+            return ('bad_fields', err_l10n_enc + ' ' + msg[:-2] +'.')
         if form.get('is_form_setted'):
             return ('setted_form', msg)
         return ('valid_form', 'Congratulation')
