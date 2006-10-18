@@ -57,8 +57,8 @@ class Form(Base):
     field_attr['text'] = ('label__', 'cols__', 'rows__', 'value__',
                           'required__', 'join__')
     field_attr['checkbox'] = ('label__', 'checked__', 'required__', 'join__')
-    field_attr['radio'] = ('label__', 'mvalue__', 'checked__', 'join__')
-    field_attr['vradio'] = ('label__', 'mvalue__', 'checked__', 'join__')
+    field_attr['radio'] = ('label__', 'mvalue__', 'checked__', 'required__', 'join__')
+    field_attr['vradio'] = ('label__', 'mvalue__', 'checked__', 'required__', 'join__')
     field_attr['selection'] = ('label__', 'mvalue__', 'checked__',
                                'multiple__', 'size__', 'required__', 'join__')
 
