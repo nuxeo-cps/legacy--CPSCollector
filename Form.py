@@ -42,7 +42,7 @@ class Form(Base):
     # title__, id__, type__ and submit__ are automaticly added
     field_attr = {}
     field_attr['string'] = ('label__', 'size__', 'maxlength__',
-                            'value__', 'required__', 'join__')
+                            'value__', 'required__', 'join__', 'regexp__')
     field_attr['identifier'] = field_attr['email'] = field_attr['phone'] = \
         field_attr['int'] = field_attr['float'] = \
         field_attr['url'] = field_attr['password'] = \
@@ -94,6 +94,8 @@ class Form(Base):
                        label='collector_button_change')
         self.add_field('join__', type='checkbox',
                        label='collector_form_join_with_next')
+        self.add_field('regexp__', type='string',
+                       label='collector_form_regexp')
 
     security.declareProtected(ModifyPortalContent, 'personalizeZPT')
     def personalizeZPT(self, macros=None, view=None, action=None,
@@ -482,6 +484,9 @@ class Form(Base):
             max_len = f.get('maxlength', 128)
             if len(v) > max_len:
                 err = 'collector_field_too_long'
+            elif f.get('regexp', ''):
+                if not match(f.get('regexp', ''), v):
+                    err = 'collector_field_regexp_nomatch'
         elif t == 'email':
             if not match(r'^(\w(\.|\-)?)+@(\w(\.|\-)?)+\.[A-Za-z]{2,4}$', v):
                 err = 'collector_field_email_invalid'

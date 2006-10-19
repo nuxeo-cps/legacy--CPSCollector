@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector Italian Translation\n"
-"POT-Creation-Date: 2006-01-03 14:48default\n"
+"POT-Creation-Date: 2006-10-19 16:44default\n"
 "PO-Revision-Date: 2005-11-10 09:07+0100\n"
 "Last-Translator: Stefano Schintu <schintu@gmail.com>\n"
 "Language-Team: CPS Italian <schintu@gmail.com>\n"
@@ -65,27 +65,27 @@ msgstr ""
 #    <input onclick="history.back()" class="context" name="cancel" value="collector_button_cancel" type="button">
 #      </input>
 #    <input value="collector_button_cancel" class="context" name="Data_cancel_erase:method" type="submit" />
-#.   <input name="cancel" onclick="history.back()" type="button" class="context" value="collector_button_cancel" />
-#.   <input name="Data_cancel_erase:method" type="submit" class="context" value="collector_button_cancel" />
+#.   <input class="context" type="button" name="cancel" value="collector_button_cancel" onclick="history.back()" />
+#.   <input type="submit" name="Data_cancel_erase:method" value="collector_button_cancel" class="context" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Annulla"
 
 #    <input value="collector_button_movedown" class="context moveDown" name="Form_moveFieldDown:method" type="submit" />
-#.   <input name="Form_moveFieldDown:method" type="submit" class="context moveDown" value="collector_button_movedown" />
+#.   <input type="submit" name="Form_moveFieldDown:method" value="collector_button_movedown" class="context moveDown" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr "Sposta in basso"
 
 #    <input value="collector_button_moveup" class="context moveUp" name="Form_moveFieldUp:method" type="submit" />
-#.   <input name="Form_moveFieldUp:method" type="submit" class="context moveUp" value="collector_button_moveup" />
+#.   <input type="submit" name="Form_moveFieldUp:method" value="collector_button_moveup" class="context moveUp" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr "Sposta in alto"
 
 #    <input value="collector_button_proceed" class="destructive" name="Data_erase:method" type="submit" />
-#.   <input name="Data_erase:method" type="submit" class="destructive" value="collector_button_proceed" />
+#.   <input type="submit" name="Data_erase:method" value="collector_button_proceed" class="destructive" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
 msgstr "Continua"
@@ -93,9 +93,9 @@ msgstr "Continua"
 #    <input define="colmcat nocall:here/Localizer/cpscollector" attributes="onClick
 #                                     python:
 #                                       'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" value="collector_button_remove" class="destructive" name="Form_delField:method" type="submit" />
-#.   <input name="Form_delField:method" type="submit" class="destructive" value="collector_button_remove" attributes="onClick
+#.   <input attributes="onClick
 #.                                    python:
-#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
+#.                                      'return window.confirm(\'%s\')' % (cpsmcat('collector_confirm'),)" type="submit" name="Form_delField:method" value="collector_button_remove" class="destructive" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
 msgstr "Rimuovi"
@@ -318,7 +318,7 @@ msgstr "Pulsante di scelta (layout verticale)"
 #.   <div class="label">
 #.          Add a new field:
 #.        </div>
-#.   <input name="Form_addField:method" type="submit" class="standalone" value="collector_form_add_new_field" />
+#.   <input type="submit" name="Form_addField:method" value="collector_form_add_new_field" class="standalone" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr "Aggiungi un nuovo campo:"
@@ -530,6 +530,10 @@ msgstr "Valori:"
 msgid "collector_form_multiple"
 msgstr "Selezione multipla:"
 
+#, fuzzy
+msgid "collector_form_regexp"
+msgstr "Obligatoire :"
+
 msgid "collector_button_change"
 msgstr "Salva le variazioni"
 
@@ -583,3 +587,25 @@ msgstr "file vuoto"
 
 msgid "collector_field_file_too_big"
 msgstr "file di dimensione eccessiva"
+
+#, fuzzy
+msgid "collector_field_regexp_nomatch"
+msgstr "Courriel"
+
+#, fuzzy
+msgid "collector_form_mulitple"
+msgstr "Sélection multiple :"
+
+#, fuzzy
+msgid "collector_psm_erased_data"
+msgstr "Les données collectées ont été effacées"
+
+msgid "collector_psm_erase_data_cancel"
+msgstr "Les données collectées n'ont pas été effacées"
+
+msgid "collector_erased_data"
+msgstr "Les données collectées ont été effacées"
+
+#, fuzzy
+msgid "collector_erased_data_failed"
+msgstr "Les données collectées ont été effacées"

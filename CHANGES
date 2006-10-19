@@ -9,6 +9,8 @@ Bug fixes:
 - Fixed erroneous usage of getV.
 - Fixed unicode error if the required field's id contains Latin characters.
 - Added the "required" attribute to radio boxes
+- Implemented regular expression checking for string fields (can be extended
+  to other fields)
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

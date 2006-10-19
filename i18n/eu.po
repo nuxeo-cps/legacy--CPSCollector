@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector_en\n"
-"POT-Creation-Date: 2006-01-03 14:48default\n"
+"POT-Creation-Date: 2006-10-19 16:44default\n"
 "PO-Revision-Date: 2004-09-24 09:40+0200\n"
 "Last-Translator: Aitzol Naberan Burgaña <anaberan@codesyntax.com>\n"
 "Language-Team: Euskara <eu@li.org>\n"
@@ -51,31 +51,31 @@ msgstr ""
 "Score: ${collector_label_nb_correct} correct answer(s) out of "
 "${collector_label_nb_all} question(s)"
 
-#.   <input name="cancel" onclick="history.back()" type="button" class="context" value="collector_button_cancel" />
-#.   <input name="Data_cancel_erase:method" type="submit" class="context" value="collector_button_cancel" />
+#.   <input class="context" type="button" name="cancel" value="collector_button_cancel" onclick="history.back()" />
+#.   <input type="submit" name="Data_cancel_erase:method" value="collector_button_cancel" class="context" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Cancel"
 
-#.   <input name="Form_moveFieldDown:method" type="submit" class="context moveDown" value="collector_button_movedown" />
+#.   <input type="submit" name="Form_moveFieldDown:method" value="collector_button_movedown" class="context moveDown" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr "Move Down"
 
-#.   <input name="Form_moveFieldUp:method" type="submit" class="context moveUp" value="collector_button_moveup" />
+#.   <input type="submit" name="Form_moveFieldUp:method" value="collector_button_moveup" class="context moveUp" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr "Move Up"
 
-#.   <input name="Data_erase:method" type="submit" class="destructive" value="collector_button_proceed" />
+#.   <input type="submit" name="Data_erase:method" value="collector_button_proceed" class="destructive" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
 msgstr "Proceed"
 
-#.   <input name="Form_delField:method" type="submit" class="destructive" value="collector_button_remove" attributes="onClick
+#.   <input attributes="onClick
 #.                                    python:
-#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
+#.                                      'return window.confirm(\'%s\')' % (cpsmcat('collector_confirm'),)" type="submit" name="Form_delField:method" value="collector_button_remove" class="destructive" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
 msgstr "Delete"
@@ -235,7 +235,7 @@ msgstr "Radio button (vertical layout)"
 #.   <div class="label">
 #.          Add a new field:
 #.        </div>
-#.   <input name="Form_addField:method" type="submit" class="standalone" value="collector_form_add_new_field" />
+#.   <input type="submit" name="Form_addField:method" value="collector_form_add_new_field" class="standalone" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr "Add new field"
@@ -417,6 +417,10 @@ msgstr "Values:"
 msgid "collector_form_multiple"
 msgstr "Multiple selection:"
 
+#, fuzzy
+msgid "collector_form_regexp"
+msgstr "Required:"
+
 msgid "collector_button_change"
 msgstr "Save change"
 
@@ -470,3 +474,25 @@ msgstr "empty file"
 
 msgid "collector_field_file_too_big"
 msgstr "file too big"
+
+#, fuzzy
+msgid "collector_field_regexp_nomatch"
+msgstr "Email"
+
+#, fuzzy
+msgid "collector_form_mulitple"
+msgstr "Multiple selection:"
+
+#, fuzzy
+msgid "collector_psm_erased_data"
+msgstr "Collected data has been erased"
+
+msgid "collector_psm_erase_data_cancel"
+msgstr "Collected data has not been erased"
+
+msgid "collector_erased_data"
+msgstr "Collected data has been erased"
+
+#, fuzzy
+msgid "collector_erased_data_failed"
+msgstr "Collected data has been erased"

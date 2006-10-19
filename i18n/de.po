@@ -467,17 +467,17 @@ msgstr "leere Datei "
 msgid "collector_field_file_too_big"
 msgstr "Datei zu groß"
 
-#~ msgid "collector_form_mulitple"
-#~ msgstr "Mehrfach Auswahl:"
+msgid "collector_form_mulitple"
+msgstr "Mehrfach Auswahl:"
 
-#~ msgid "collector_psm_erased_data"
-#~ msgstr "Gesammelte Daten wurden gelöscht"
+msgid "collector_psm_erased_data"
+msgstr "Gesammelte Daten wurden gelöscht"
 
-#~ msgid "collector_psm_erase_data_cancel"
-#~ msgstr "Gesammelte Daten wurden nicht gelöscht"
+msgid "collector_psm_erase_data_cancel"
+msgstr "Gesammelte Daten wurden nicht gelöscht"
 
-#~ msgid "collector_erased_data"
-#~ msgstr "Gesammelte Daten wurden gelöscht"
+msgid "collector_erased_data"
+msgstr "Gesammelte Daten wurden gelöscht"
 
-#~ msgid "collector_erased_data_failed"
-#~ msgstr "Löschung gesammelter Daten fehlgeschlagen"
+msgid "collector_erased_data_failed"
+msgstr "Löschung gesammelter Daten fehlgeschlagen"

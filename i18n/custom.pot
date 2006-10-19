@@ -67,6 +67,9 @@ msgstr ""
 msgid "collector_form_multiple"
 msgstr ""
 
+msgid "collector_form_regexp"
+msgstr ""
+
 msgid "collector_button_change"
 msgstr ""
 
@@ -121,5 +124,5 @@ msgstr ""
 msgid "collector_field_file_too_big"
 msgstr ""
 
-	
-
+msgid "collector_field_regexp_nomatch"
+msgstr ""

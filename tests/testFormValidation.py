@@ -37,6 +37,13 @@ class TestFormValidation(unittest.TestCase):
         self.assertEqual(checkField('string', '1234', maxlength=3),
                          'collector_field_too_long')
 
+    def test_string_regexp_1(self):
+        self.assertEqual(checkField('string', 'abcd123a', regexp='^([a-z])*([0-9])+$'),
+                         'collector_field_regexp_nomatch')
+    def test_string_regexp_2(self):
+        self.assertEqual(checkField('string', 'abcd123', regexp='^([a-z])*([0-9])+$'),
+                         None)
+
     def test_float_1(self):
         self.assertEqual(checkField('float', '123,12'), None)
     def test_float_2(self):

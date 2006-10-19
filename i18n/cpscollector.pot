@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: default\n"
-"POT-Creation-Date: 2006-01-03 14:48default\n"
+"POT-Creation-Date: 2006-10-19 16:44default\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Your Name <your@email>\n"
 "Language-Team: Name <email>\n"
@@ -42,31 +42,31 @@ msgid ""
 "${collector_label_nb_all} questions"
 msgstr ""
 
-#.   <input name="cancel" onclick="history.back()" type="button" class="context" value="collector_button_cancel" />
-#.   <input name="Data_cancel_erase:method" type="submit" class="context" value="collector_button_cancel" />
+#.   <input class="context" type="button" name="cancel" value="collector_button_cancel" onclick="history.back()" />
+#.   <input type="submit" name="Data_cancel_erase:method" value="collector_button_cancel" class="context" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr ""
 
-#.   <input name="Form_moveFieldDown:method" type="submit" class="context moveDown" value="collector_button_movedown" />
+#.   <input type="submit" name="Form_moveFieldDown:method" value="collector_button_movedown" class="context moveDown" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr ""
 
-#.   <input name="Form_moveFieldUp:method" type="submit" class="context moveUp" value="collector_button_moveup" />
+#.   <input type="submit" name="Form_moveFieldUp:method" value="collector_button_moveup" class="context moveUp" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr ""
 
-#.   <input name="Data_erase:method" type="submit" class="destructive" value="collector_button_proceed" />
+#.   <input type="submit" name="Data_erase:method" value="collector_button_proceed" class="destructive" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
 msgstr ""
 
-#.   <input name="Form_delField:method" type="submit" class="destructive" value="collector_button_remove" attributes="onClick
+#.   <input attributes="onClick
 #.                                    python:
-#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
+#.                                      'return window.confirm(\'%s\')' % (cpsmcat('collector_confirm'),)" type="submit" name="Form_delField:method" value="collector_button_remove" class="destructive" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
 msgstr ""
@@ -226,7 +226,7 @@ msgstr ""
 #.   <div class="label">
 #.          Add a new field:
 #.        </div>
-#.   <input name="Form_addField:method" type="submit" class="standalone" value="collector_form_add_new_field" />
+#.   <input type="submit" name="Form_addField:method" value="collector_form_add_new_field" class="standalone" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr ""
@@ -408,6 +408,9 @@ msgstr ""
 msgid "collector_form_multiple"
 msgstr ""
 
+msgid "collector_form_regexp"
+msgstr ""
+
 msgid "collector_button_change"
 msgstr ""
 
@@ -460,4 +463,7 @@ msgid "collector_field_empty_file"
 msgstr ""
 
 msgid "collector_field_file_too_big"
+msgstr ""
+
+msgid "collector_field_regexp_nomatch"
 msgstr ""
