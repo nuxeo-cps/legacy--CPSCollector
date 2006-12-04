@@ -1,3 +1,27 @@
+===========================================================
+Package: CPSCollector 1.11.2
+===========================================================
+First release built by: madarche at: 2006-12-04T16:20:59
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/tags/1.11.2
+Build from: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/trunk@50488
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Fixed erroneous usage of getV.
+- Fixed unicode error if the required field's id contains Latin characters.
+- Added the "required" attribute to radio boxes
+- Implemented regular expression checking for string fields (can be extended
+  to other fields)
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
 *******************************************
 ** CPSCollector V1.11.1 [R1 build 2006/06/01-08:21 by ben]
 ** SVN URL: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/trunk Revision: 46118
