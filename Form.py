@@ -16,6 +16,14 @@ from AccessControl import ClassSecurityInfo, Unauthorized
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CMFCore.utils import _checkPermission
 
+def cleanQuotes(text):
+    """Remove extended quotes that breaks representation."""
+    if type(text) is not str:
+        return text
+    for pattern in ('&#8217;', '&#8216;', '&#8221', '&#8222'):
+        text = text.replace(pattern, "'")
+    return text
+
 class Form(Base):
     """A Form knows how to render and validate its fields and
     it knows how to edit itself using... itself.
@@ -223,9 +231,9 @@ class Form(Base):
         f = self.fields[id]               # setting attributes
         for k in extra.keys():
             if k == 'mvalue':
-                f[k] = self._str_to_mvalue(extra[k])
+                f[k] = self._str_to_mvalue(cleanQuotes(extra[k]))
             else:
-                f[k] = extra[k]
+                f[k] = cleanQuotes(extra[k])
         t = f.get('type')                 #setting default type
         if not t in self.types:
             f['type'] = 'string'
