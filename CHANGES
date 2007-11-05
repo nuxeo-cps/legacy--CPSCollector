@@ -6,7 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
-- 
+-
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
-- Add an upgrade method to add a regex__ field to an old Form instance.
+- 
