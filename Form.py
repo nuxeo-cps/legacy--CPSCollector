@@ -105,6 +105,15 @@ class Form(Base):
         self.add_field('regexp__', type='string',
                        label='collector_form_regexp')
 
+
+    security.declareProtected(ModifyPortalContent, 'upgrade')
+    def upgrade(self):
+        """Upgrade form if needed."""
+        if not self.fields.has_key('regexp__'):
+            self.add_field('regexp__', type='string',
+                           label='collector_form_regexp')
+
+
     security.declareProtected(ModifyPortalContent, 'personalizeZPT')
     def personalizeZPT(self, macros=None, view=None, action=None,
                        editForm=None, editField=None):
