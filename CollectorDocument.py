@@ -129,9 +129,11 @@ class CollectorDocument(Form, BaseDocument):
         resp = self.REQUEST.RESPONSE
         title = self.computeId(compute_from=self.Title())
         filename = title + '.csv'
-        resp.setHeader('Content-Type', 'application/csv')
-        resp.setHeader('Content-Disposition', 'filename=' + filename)
-        resp.setHeader('Cache-Control', 'no-cache')
+        resp.setHeader('Expires', '0')
+        resp.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
+        resp.setHeader('Cache-Control', 'post-check=0, pre-check=0')
+        resp.setHeader('Content-Disposition', 'attachement; filename="' + filename + '"')
+        resp.setHeader('Content-Type', 'application/binary')
         return s
 
     security.declareProtected(ModifyPortalContent, 'eraseData')
