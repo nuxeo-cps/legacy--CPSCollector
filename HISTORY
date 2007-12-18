@@ -1,4 +1,24 @@
 ===========================================================
+Package: CPSCollector 1.12.1
+===========================================================
+First release built by: ben at: 2007-12-18T16:13:11
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/tags/1.12.1
+Build from: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/trunk@52332
+
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- fix csv download for IE in weird cases.
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.12.0
 ===========================================================
 First release built by: ben at: 2007-11-05T11:53:34
