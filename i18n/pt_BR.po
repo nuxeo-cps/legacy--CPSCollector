@@ -1,6 +1,6 @@
-# translation of pt-BR.po to PortuguÍs do Brasil
-# translation of pt-br.po to Portugu√™s do Brasil
-# translation of cpscollector.po to Portugu√™s do Brasil
+# translation of pt-BR.po to Portugu√™s do Brasil
+# translation of pt-br.po to Portugu√É¬™s do Brasil
+# translation of cpscollector.po to Portugu√É¬™s do Brasil
 # ##########################################################
 # ################# DON'T EDIT THIS FILE! ##################
 # ##########################################################
@@ -15,11 +15,12 @@ msgstr ""
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portugues do Brasil <pt@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Code: pt_BR\n"
 "Language-Name: Portuguese Brazilian\n"
 "Domain: default\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -33,7 +34,7 @@ msgid ""
 "${collector_nb} forms collected between ${collector_sdate} and "
 "${collector_edate}"
 msgstr ""
-"${collector_nb} formul·rios coletados entre ${collector_sdate} e"
+"${collector_nb} formul√°rios coletados entre ${collector_sdate} e"
 "${collector_edate}"
 
 #.   <p>
@@ -49,7 +50,7 @@ msgid ""
 "${collector_label_nb_all} questions"
 msgstr ""
 "Resultado: ${collector_label_nb_correct} respostas corretas de "
-"${collector_label_nb_all} questıes"
+"${collector_label_nb_all} quest√µes"
 
 #.   <input class="context" type="button" name="cancel" value="collector_button_cancel" onclick="history.back()" />
 #.   <input type="submit" name="Data_cancel_erase:method" value="collector_button_cancel" class="context" />
@@ -95,7 +96,7 @@ msgstr "Nenhum dado"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_button"
-msgstr "Bot„o Submeter"
+msgstr "Bot√£o Submeter"
 
 #.   <option value="checkbox">
 #.               Checkbox
@@ -109,7 +110,7 @@ msgstr "Checkbox"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_comment"
-msgstr "Coment·rio"
+msgstr "Coment√°rio"
 
 #.   <option value="date">Date</option>
 #: from ../skins/cps/Form_macros.pt
@@ -164,28 +165,28 @@ msgstr "Senha"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_phonenumber"
-msgstr "N˙mero de telefone"
+msgstr "N√∫mero de telefone"
 
 #.   <option value="radio">
 #.               Radio button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_radiobutton"
-msgstr "Bot„o tipo r·dio"
+msgstr "Bot√£o tipo r√°dio"
 
 #.   <option value="reset">
 #.               Reset button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_resetbutton"
-msgstr "Bot„o de Reset"
+msgstr "Bot√£o de Reset"
 
 #.   <option value="selection">
 #.               Selection
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_selection"
-msgstr "SeleÁ„o"
+msgstr "Sele√ß√£o"
 
 #.   <option value="separator">
 #.               Separator
@@ -209,14 +210,14 @@ msgstr "String somente leitura"
 #.   <option value="text">Text area</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_textarea"
-msgstr "¡rea de Texto"
+msgstr "√Årea de Texto"
 
 #.   <option value="title">
 #.               Title
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_title"
-msgstr "TÌtulo"
+msgstr "T√≠tulo"
 
 #.   <option value="url">
 #.               URL
@@ -230,7 +231,7 @@ msgstr "URL"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_vradiobutton"
-msgstr "Bot„o tipo r·dio vertical"
+msgstr "Bot√£o tipo r√°dio vertical"
 
 #.   <div class="label">
 #.          Add a new field:
@@ -248,7 +249,7 @@ msgstr "Juntar"
 #.   <th width="50%">label</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_label"
-msgstr "RÛtulo"
+msgstr "R√≥tulo"
 
 #.   <th nowrap="nowrap">required</th>
 #: from ../skins/cps/Form_macros.pt
@@ -270,7 +271,7 @@ msgstr "Lista de Campos:"
 #.   <h2>No statistic available</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_form_stats_null"
-msgstr "Nenhuma estatÌstica disponÌvel"
+msgstr "Nenhuma estat√≠stica dispon√≠vel"
 
 #.   <th>Chosen Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
@@ -292,12 +293,12 @@ msgstr "Criar um Coletor"
 #.   <p>collector_label_erase_warning</p>
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_label_erase_warning"
-msgstr "VocÍ est· prestes a apagar todos os dados!"
+msgstr "Voc√™ est√° prestes a apagar todos os dados!"
 
 #.   <th>Question</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_question"
-msgstr "Quest„o"
+msgstr "Quest√£o"
 
 #.   <th>Result</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
@@ -312,7 +313,7 @@ msgstr "Modificar campo"
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_modify_form"
-msgstr "Modificar formul·rio"
+msgstr "Modificar formul√°rio"
 
 #.   <block>
 #.         Modify
@@ -324,37 +325,37 @@ msgstr "Modificar as propriedades de"
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_description"
-msgstr "DescriÁ„o das propriedades"
+msgstr "Descri√ß√£o das propriedades"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_persistent"
-msgstr "Mostrar a ˙ltima entrada"
+msgstr "Mostrar a √∫ltima entrada"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg"
-msgstr "Mensagem apÛs a submiss„o"
+msgstr "Mensagem ap√≥s a submiss√£o"
 
 #.   <span condition="is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_results"
-msgstr "Mostra resultados apÛs a submiss„o"
+msgstr "Mostra resultados ap√≥s a submiss√£o"
 
 #.   <span condition="not: is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_stats"
-msgstr "Mostra estatÌsticas apÛs a submiss„o"
+msgstr "Mostra estat√≠sticas ap√≥s a submiss√£o"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_title"
-msgstr "TÌtulo do Coletor de Dados"
+msgstr "T√≠tulo do Coletor de Dados"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_unique"
-msgstr "Um formul·rio apenas por usu·rio"
+msgstr "Um formul√°rio apenas por usu√°rio"
 
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
@@ -364,7 +365,7 @@ msgstr "Resultados"
 #.   <h2>Result</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_stats_header"
-msgstr "Formul·rios Coletados"
+msgstr "Formul√°rios Coletados"
 
 msgid "collector_confirm"
 msgstr "Tem certeza?"
@@ -379,10 +380,10 @@ msgid "collector_field_error"
 msgstr "Erro"
 
 msgid "collector_empty_form"
-msgstr "Formul·rio Vazio"
+msgstr "Formul√°rio Vazio"
 
 msgid "collector_form_label"
-msgstr "RÛtulo"
+msgstr "R√≥tulo"
 
 msgid "collector_form_field_edit"
 msgstr "Editar campo"
@@ -400,7 +401,7 @@ msgid "collector_form_rows"
 msgstr "Linhas"
 
 msgid "collector_form_max_length"
-msgstr "Comprimento m·ximo"
+msgstr "Comprimento m√°ximo"
 
 msgid "collector_form_required"
 msgstr "Requerido"
@@ -415,7 +416,7 @@ msgid "collector_form_values"
 msgstr "Valores"
 
 msgid "collector_form_multiple"
-msgstr "M˙ltiplos"
+msgstr "M√∫ltiplos"
 
 #, fuzzy
 msgid "collector_form_regexp"
@@ -425,7 +426,7 @@ msgid "collector_button_change"
 msgstr "Mudar"
 
 msgid "collector_form_join_with_next"
-msgstr "Juntar com o prÛximo"
+msgstr "Juntar com o pr√≥ximo"
 
 msgid "collector_form_good_answer"
 msgstr "Resposta correta!"
@@ -440,34 +441,34 @@ msgid "collector_field_too_long"
 msgstr "Campo muito longo"
 
 msgid "collector_field_email_invalid"
-msgstr "Email inv·lido"
+msgstr "Email inv√°lido"
 
 msgid "collector_field_int_invalid"
-msgstr "Inteiro Inv·lido"
+msgstr "Inteiro Inv√°lido"
 
 msgid "collector_field_float_invalid"
-msgstr "Ponto Flutuante Inv·lido"
+msgstr "Ponto Flutuante Inv√°lido"
 
 msgid "collector_field_phone_invalid"
-msgstr "Telefone Inv·lido"
+msgstr "Telefone Inv√°lido"
 
 msgid "collector_field_read_only"
 msgstr "Somente Leitura"
 
 msgid "collector_field_id_invalid"
-msgstr "Campo id inv·lido"
+msgstr "Campo id inv√°lido"
 
 msgid "collector_field_multiselect_invalid"
-msgstr "MultiseleÁ„o inv·lido"
+msgstr "Multisele√ß√£o inv√°lido"
 
 msgid "collector_field_selection_invalid"
-msgstr "SeleÁ„o inv·lido"
+msgstr "Sele√ß√£o inv√°lido"
 
 msgid "collector_field_date_invalid"
-msgstr "Data inv·lida"
+msgstr "Data inv√°lida"
 
 msgid "collector_field_url_invalid"
-msgstr "URL inv·lida"
+msgstr "URL inv√°lida"
 
 msgid "collector_field_empty_file"
 msgstr "Campo arquivo vazio"

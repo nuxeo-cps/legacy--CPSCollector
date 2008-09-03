@@ -3,19 +3,19 @@ msgstr ""
 "Project-Id-Version: CPSCollector\n"
 "POT-Creation-Date: 2006-10-19 16:44default\n"
 "PO-Revision-Date: 2006-02-25 16:21+0100\n"
-"Last-Translator: Jes˙s MartÌn <jesusmartin@lasalle.es>\n"
-"Language-Team: espaÒol <jesusmartin@lasalle.es>\n"
+"Last-Translator: Jes√∫s Mart√≠n <jesusmartin@lasalle.es>\n"
+"Language-Team: espa√±ol <jesusmartin@lasalle.es>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language-Code: es\n"
-"Language-Name: Spanish\n"
-"Preferred-encodings: utf-8 latin1\n"
-"Domain: default\n"
 "X-Generator: KBabel 1.0.2\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-Country: SPAIN\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Domain: default\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -80,27 +80,27 @@ msgstr "Borrar"
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
 msgstr ""
-"Utilizar los comandos de esta p·gina para aÒadir campos al formulario y "
+"Utilizar los comandos de esta p√°gina para a√±adir campos al formulario y "
 "modificarlos"
 
 #.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_empty_stats"
-msgstr "TodavÌa no se han recogido datos"
+msgstr "Todav√≠a no se han recogido datos"
 
 #.   <option value="submit">
 #.               Button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_button"
-msgstr "BotÛn de envÌo"
+msgstr "Bot√≥n de env√≠o"
 
 #.   <option value="checkbox">
 #.               Checkbox
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_checkbox"
-msgstr "Recuadro de selecciÛn"
+msgstr "Recuadro de selecci√≥n"
 
 #.   <option value="comment">
 #.               Comment
@@ -119,7 +119,7 @@ msgstr "Fecha"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_email"
-msgstr "Correo electrÛnico"
+msgstr "Correo electr√≥nico"
 
 #.   <option condition="nothing" value="file">
 #.               File
@@ -131,7 +131,7 @@ msgstr "Archivo"
 #.   <option value="float">Float</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_float"
-msgstr "N˙mero real"
+msgstr "N√∫mero real"
 
 #.   <option value="hidden">
 #.               Hidden string
@@ -150,33 +150,33 @@ msgstr "Identificador"
 #.   <option value="int">Integer</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_integer"
-msgstr "N˙mero entero"
+msgstr "N√∫mero entero"
 
 #.   <option value="password">Password</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_password"
-msgstr "ContraseÒa"
+msgstr "Contrase√±a"
 
 #.   <option value="phone">
 #.               Phone number
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_phonenumber"
-msgstr "N˙mero de telÈfono"
+msgstr "N√∫mero de tel√©fono"
 
 #.   <option value="radio">
 #.               Radio button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_radiobutton"
-msgstr "BotÛn de radio"
+msgstr "Bot√≥n de radio"
 
 #.   <option value="reset">
 #.               Reset button
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_resetbutton"
-msgstr "BotÛn de reinicializaciÛn"
+msgstr "Bot√≥n de reinicializaci√≥n"
 
 #.   <option value="selection">
 #.               Selection
@@ -202,19 +202,19 @@ msgstr "Cadena de caracteres"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_string_ro"
-msgstr "Cadena de caracteres (sÛlo lectura)"
+msgstr "Cadena de caracteres (s√≥lo lectura)"
 
 #.   <option value="text">Text area</option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_textarea"
-msgstr "¡rea de texto"
+msgstr "√Årea de texto"
 
 #.   <option value="title">
 #.               Title
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_title"
-msgstr "TÌtulo"
+msgstr "T√≠tulo"
 
 #.   <option value="url">
 #.               URL
@@ -228,7 +228,7 @@ msgstr "URL"
 #.             </option>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_field_vradiobutton"
-msgstr "BotÛn de radio (disposiciÛn vertical)"
+msgstr "Bot√≥n de radio (disposici√≥n vertical)"
 
 #.   <div class="label">
 #.          Add a new field:
@@ -236,7 +236,7 @@ msgstr "BotÛn de radio (disposiciÛn vertical)"
 #.   <input type="submit" name="Form_addField:method" value="collector_form_add_new_field" class="standalone" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
-msgstr "AÒadir un campo"
+msgstr "A√±adir un campo"
 
 #.   <th nowrap="nowrap">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
@@ -268,7 +268,7 @@ msgstr "Lista de campos"
 #.   <h2>No statistic available</h2>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_form_stats_null"
-msgstr "Ning˙n campo de esta ficha le permite calcular estadÌsiticas"
+msgstr "Ning√∫n campo de esta ficha le permite calcular estad√≠siticas"
 
 #.   <th>Chosen Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
@@ -305,29 +305,29 @@ msgstr "Resultado"
 #.   <block />
 #: from ../skins/cps/Form_editField_pt.pt
 msgid "collector_modify_field"
-msgstr "ModificaciÛn de campo"
+msgstr "Modificaci√≥n de campo"
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_modify_form"
-msgstr "ModificaciÛn de formulario"
+msgstr "Modificaci√≥n de formulario"
 
 #.   <block>
 #.         Modify
 #.       </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_modify_props"
-msgstr "ModificaciÛn de las propiedades de"
+msgstr "Modificaci√≥n de las propiedades de"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_description"
-msgstr "DescripciÛn"
+msgstr "Descripci√≥n"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_persistent"
-msgstr "Mostrar la ˙ltima elecciÛn"
+msgstr "Mostrar la √∫ltima elecci√≥n"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
@@ -342,12 +342,12 @@ msgstr "Mostrar los resultados con el mensaje final"
 #.   <span condition="not: is_quiz" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_submit_msg_stats"
-msgstr "Mostrar las estadÌsticas con el mensaje final"
+msgstr "Mostrar las estad√≠sticas con el mensaje final"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_prop_title"
-msgstr "TÌtulo"
+msgstr "T√≠tulo"
 
 #.   <span />
 #: from ../skins/cps/CollectorDocument_editProp.pt
@@ -365,7 +365,7 @@ msgid "collector_stats_header"
 msgstr "Informaciones recogidas"
 
 msgid "collector_confirm"
-msgstr "øEst· usted seguro?"
+msgstr "¬øEst√° usted seguro?"
 
 msgid "collector_button_modify"
 msgstr "Guardar"
@@ -377,34 +377,34 @@ msgid "collector_field_error"
 msgstr "Error:"
 
 msgid "collector_empty_form"
-msgstr "Esta ficha est· vacÌa"
+msgstr "Esta ficha est√° vac√≠a"
 
 msgid "collector_form_label"
 msgstr "Etiqueta"
 
 msgid "collector_form_field_edit"
-msgstr "ModificaciÛn de un campo"
+msgstr "Modificaci√≥n de un campo"
 
 msgid "collector_form_type"
 msgstr "Tipo:"
 
 msgid "collector_form_size"
-msgstr "TamaÒo:"
+msgstr "Tama√±o:"
 
 msgid "collector_form_cols"
-msgstr "N˙mero de caracteres por lÌnea:"
+msgstr "N√∫mero de caracteres por l√≠nea:"
 
 msgid "collector_form_rows"
-msgstr "N˙mero de lÌneas:"
+msgstr "N√∫mero de l√≠neas:"
 
 msgid "collector_form_max_length"
-msgstr "TamaÒo m·ximo:"
+msgstr "Tama√±o m√°ximo:"
 
 msgid "collector_form_required"
 msgstr "Obligatorio:"
 
 msgid "collector_form_checked"
-msgstr "SelecciÛn por defecto:"
+msgstr "Selecci√≥n por defecto:"
 
 msgid "collector_form_value"
 msgstr "Valor por defecto:"
@@ -413,7 +413,7 @@ msgid "collector_form_values"
 msgstr "Valores:"
 
 msgid "collector_form_multiple"
-msgstr "SelecciÛn m˙ltiple:"
+msgstr "Selecci√≥n m√∫ltiple:"
 
 #, fuzzy
 msgid "collector_form_regexp"
@@ -438,37 +438,37 @@ msgid "collector_field_too_long"
 msgstr "demasiado largo"
 
 msgid "collector_field_email_invalid"
-msgstr "Correo electrÛnico inv·lido"
+msgstr "Correo electr√≥nico inv√°lido"
 
 msgid "collector_field_int_invalid"
-msgstr "identificador no v·lido"
+msgstr "identificador no v√°lido"
 
 msgid "collector_field_float_invalid"
-msgstr "n˙mero no v·lido"
+msgstr "n√∫mero no v√°lido"
 
 msgid "collector_field_phone_invalid"
-msgstr "n˙mero de telÈfono no v·lido"
+msgstr "n√∫mero de tel√©fono no v√°lido"
 
 msgid "collector_field_read_only"
-msgstr "campo de sÛlo lectura"
+msgstr "campo de s√≥lo lectura"
 
 msgid "collector_field_id_invalid"
-msgstr "identificador no v·lido"
+msgstr "identificador no v√°lido"
 
 msgid "collector_field_multiselect_invalid"
-msgstr "selecciÛn no v·lida"
+msgstr "selecci√≥n no v√°lida"
 
 msgid "collector_field_selection_invalid"
-msgstr "selecciÛn no v·lida"
+msgstr "selecci√≥n no v√°lida"
 
 msgid "collector_field_date_invalid"
-msgstr "fecha no v·lida"
+msgstr "fecha no v√°lida"
 
 msgid "collector_field_url_invalid"
-msgstr "URL no v·lido"
+msgstr "URL no v√°lido"
 
 msgid "collector_field_empty_file"
-msgstr "archivo vacÌo"
+msgstr "archivo vac√≠o"
 
 msgid "collector_field_file_too_big"
 msgstr "archivo demasiado largo"

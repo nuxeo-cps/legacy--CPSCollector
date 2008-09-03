@@ -8,12 +8,13 @@ msgstr ""
 "Last-Translator: Georg Hennemann <georg.hennemann@dhl.com>\n"
 "Language-Team: de <rheinland@dzug.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Language-Code: de\n"
-"Domain: default\n"
 "Language-Name: German\n"
+"Domain: default\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -72,13 +73,13 @@ msgstr "Weiter"
 #.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
-msgstr "Löschen"
+msgstr "LÃ¶schen"
 
 #.   <block />
 #: from ../skins/cps/Form_editForm.pt ../skins/cps/Form_editQuizForm.pt
 msgid "collector_edit_help"
 msgstr ""
-"Verwende die Befehle auf dieser Seite um Felder ins Formular hinzuzufügen "
+"Verwende die Befehle auf dieser Seite um Felder ins Formular hinzuzufÃ¼gen "
 "und zu bearbeiten"
 
 #.   <strong>no data</strong>
@@ -234,12 +235,12 @@ msgstr "Radio Taste (vertikales Layout)"
 #.   <input name="Form_addField:method" type="submit" class="standalone" value="collector_form_add_new_field" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
-msgstr "Anfügen eines neuen Feldes"
+msgstr "AnfÃ¼gen eines neuen Feldes"
 
 #.   <th nowrap="nowrap">join w/ next field</th>
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_field_join"
-msgstr "Verbinden mit nächstem Feld:"
+msgstr "Verbinden mit nÃ¤chstem Feld:"
 
 #.   <th width="50%">label</th>
 #: from ../skins/cps/Form_macros.pt
@@ -271,7 +272,7 @@ msgstr "Es gibt kein Feld in diesem Formular das statistisch auswertbar ist"
 #.   <th>Chosen Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
 msgid "collector_label_chosen_answ"
-msgstr "Gewählte Antwort"
+msgstr "GewÃ¤hlte Antwort"
 
 #.   <th>Correct Answer</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
@@ -288,7 +289,7 @@ msgstr "Erstelle Formular"
 #.   <p>collector_label_erase_warning</p>
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_label_erase_warning"
-msgstr "Gewonnene Daten werden gelöscht"
+msgstr "Gewonnene Daten werden gelÃ¶scht"
 
 #.   <th>Question</th>
 #: from ../skins/cps/QuizDocument_viewResults.pt
@@ -387,7 +388,7 @@ msgid "collector_form_type"
 msgstr "Typ:"
 
 msgid "collector_form_size"
-msgstr "Grösse:"
+msgstr "GrÃ¶sse:"
 
 msgid "collector_form_cols"
 msgstr "Anzahl der Buchstaben pro Zeile:"
@@ -396,7 +397,7 @@ msgid "collector_form_rows"
 msgstr "Anzahl der Zeilen:"
 
 msgid "collector_form_max_length"
-msgstr "Max. Länge:"
+msgstr "Max. LÃ¤nge:"
 
 msgid "collector_form_required"
 msgstr "Notwendig:"
@@ -414,10 +415,10 @@ msgid "collector_form_multiple"
 msgstr "Mehrfach Auswahl:"
 
 msgid "collector_button_change"
-msgstr "Sichern der Änderungen"
+msgstr "Sichern der Ã„nderungen"
 
 msgid "collector_form_join_with_next"
-msgstr "Verbinde mit nächsten Feld:"
+msgstr "Verbinde mit nÃ¤chsten Feld:"
 
 msgid "collector_form_good_answer"
 msgstr "Richtige Antwort:"
@@ -432,52 +433,52 @@ msgid "collector_field_too_long"
 msgstr "Feld zu lang"
 
 msgid "collector_field_email_invalid"
-msgstr "ungültige EMail"
+msgstr "ungÃ¼ltige EMail"
 
 msgid "collector_field_int_invalid"
-msgstr "ungültiger Verweis"
+msgstr "ungÃ¼ltiger Verweis"
 
 msgid "collector_field_float_invalid"
-msgstr "ungültiger float Wert"
+msgstr "ungÃ¼ltiger float Wert"
 
 msgid "collector_field_phone_invalid"
-msgstr "ungültige Telefonnummer"
+msgstr "ungÃ¼ltige Telefonnummer"
 
 msgid "collector_field_read_only"
 msgstr "Nur-Lese Feld"
 
 msgid "collector_field_id_invalid"
-msgstr "ungültiger Ausdruck"
+msgstr "ungÃ¼ltiger Ausdruck"
 
 msgid "collector_field_multiselect_invalid"
-msgstr "ungültige Auswahl"
+msgstr "ungÃ¼ltige Auswahl"
 
 msgid "collector_field_selection_invalid"
-msgstr "ungültige Auswahl"
+msgstr "ungÃ¼ltige Auswahl"
 
 msgid "collector_field_date_invalid"
-msgstr "ungültiges Datum"
+msgstr "ungÃ¼ltiges Datum"
 
 msgid "collector_field_url_invalid"
-msgstr "ungültige URL"
+msgstr "ungÃ¼ltige URL"
 
 msgid "collector_field_empty_file"
 msgstr "leere Datei "
 
 msgid "collector_field_file_too_big"
-msgstr "Datei zu groß"
+msgstr "Datei zu groÃŸ"
 
 msgid "collector_form_mulitple"
 msgstr "Mehrfach Auswahl:"
 
 msgid "collector_psm_erased_data"
-msgstr "Gesammelte Daten wurden gelöscht"
+msgstr "Gesammelte Daten wurden gelÃ¶scht"
 
 msgid "collector_psm_erase_data_cancel"
-msgstr "Gesammelte Daten wurden nicht gelöscht"
+msgstr "Gesammelte Daten wurden nicht gelÃ¶scht"
 
 msgid "collector_erased_data"
-msgstr "Gesammelte Daten wurden gelöscht"
+msgstr "Gesammelte Daten wurden gelÃ¶scht"
 
 msgid "collector_erased_data_failed"
-msgstr "Löschung gesammelter Daten fehlgeschlagen"
+msgstr "LÃ¶schung gesammelter Daten fehlgeschlagen"

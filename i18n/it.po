@@ -10,13 +10,14 @@ msgstr ""
 "Last-Translator: Stefano Schintu <schintu@gmail.com>\n"
 "Language-Team: CPS Italian <schintu@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "Language-Code: it\n"
 "Language-Name: Italian\n"
 "Domain: default\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Preferred-Encodings: utf-8\n"
 
 #    <span omit-tag="">
 #        ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
@@ -112,7 +113,7 @@ msgstr ""
 #.   <strong>no data</strong>
 #: from ../skins/cps/CollectorDocument_viewStat.pt
 msgid "collector_empty_stats"
-msgstr "Non Ë stato ancora raccolto alcun dato!"
+msgstr "Non √® stato ancora raccolto alcun dato!"
 
 #    <option value="submit">
 #                Button
@@ -423,7 +424,7 @@ msgstr "Modifica il modulo"
 #.       </block>
 #: from ../skins/cps/CollectorDocument_editProp.pt
 msgid "collector_modify_props"
-msgstr "Modifica le propriet‡ di"
+msgstr "Modifica le propriet√† di"
 
 #    <span />
 #.   <span />
@@ -492,7 +493,7 @@ msgid "collector_field_error"
 msgstr "Errore:"
 
 msgid "collector_empty_form"
-msgstr "Questo file Ë vuoto"
+msgstr "Questo file √® vuoto"
 
 msgid "collector_form_label"
 msgstr "Etichetta:"
@@ -594,18 +595,18 @@ msgstr "Courriel"
 
 #, fuzzy
 msgid "collector_form_mulitple"
-msgstr "SÈlection multiple :"
+msgstr "S√©lection multiple :"
 
 #, fuzzy
 msgid "collector_psm_erased_data"
-msgstr "Les donnÈes collectÈes ont ÈtÈ effacÈes"
+msgstr "Les donn√©es collect√©es ont √©t√© effac√©es"
 
 msgid "collector_psm_erase_data_cancel"
-msgstr "Les donnÈes collectÈes n'ont pas ÈtÈ effacÈes"
+msgstr "Les donn√©es collect√©es n'ont pas √©t√© effac√©es"
 
 msgid "collector_erased_data"
-msgstr "Les donnÈes collectÈes ont ÈtÈ effacÈes"
+msgstr "Les donn√©es collect√©es ont √©t√© effac√©es"
 
 #, fuzzy
 msgid "collector_erased_data_failed"
-msgstr "Les donnÈes collectÈes ont ÈtÈ effacÈes"
+msgstr "Les donn√©es collect√©es ont √©t√© effac√©es"
