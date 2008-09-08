@@ -6,6 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
+- The "label for" HTML was wrongly set with wrongly computed IDs.
 - #1916: Switch all the .po files to UTF-8
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
