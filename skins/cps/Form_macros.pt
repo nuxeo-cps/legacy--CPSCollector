@@ -163,8 +163,8 @@
 </td>
 
 <!-- def display_form -->
-<form action="." method="post" enctype="multipart/form-data"
-      metal:define-macro="display_form">
+<metal:block define-macro="display_form">
+<form action="." method="post" enctype="multipart/form-data">
   <div class="group">
   <div class="message"
     tal:condition="request/other/form_status|nothing"
@@ -191,6 +191,7 @@
   </table>
   </div>
 </form>
+</metal:block>
 
 <!-- def display_edit_form -->
 <form action="." method="post" metal:define-macro="display_edit_form">
