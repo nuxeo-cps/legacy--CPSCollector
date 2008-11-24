@@ -1,4 +1,25 @@
 ===========================================================
+Package: CPSCollector 1.12.2
+===========================================================
+First release built by: madarche at: 2008-11-24T01:24:35
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/tags/1.12.2
+Build from: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/trunk@53139
+
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- The "label for" HTML was wrongly set with wrongly computed IDs.
+- #1916: Switch all the .po files to UTF-8
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.12.1
 ===========================================================
 First release built by: ben at: 2007-12-18T16:13:11
