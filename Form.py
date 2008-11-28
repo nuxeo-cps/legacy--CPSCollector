@@ -112,8 +112,8 @@ class Form(Base):
         if not self.fields.has_key('regexp__'):
             self.add_field('regexp__', type='string',
                            label='collector_form_regexp')
-            return "CPSCollector: Your form didn't need any upgrade."
-        return "CPSCollector: Your form has been successfully upgraded!"
+            return "CPSCollector: Your form has been successfully upgraded!"
+        return "CPSCollector: Your form didn't need any upgrade."
 
 
     security.declareProtected(ModifyPortalContent, 'personalizeZPT')
