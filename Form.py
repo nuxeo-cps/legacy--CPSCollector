@@ -1,4 +1,4 @@
-# Copyright (c) 2002-2006 Nuxeo SAS <http://nuxeo.com>
+# Copyright (c) 2002-2008 Nuxeo SAS <http://nuxeo.com>
 # $Id$
 """
 The Form class is an HTML form generator.
@@ -112,6 +112,8 @@ class Form(Base):
         if not self.fields.has_key('regexp__'):
             self.add_field('regexp__', type='string',
                            label='collector_form_regexp')
+            return "CPSCollector: Your form didn't need any upgrade."
+        return "CPSCollector: Your form has been successfully upgraded!"
 
 
     security.declareProtected(ModifyPortalContent, 'personalizeZPT')
