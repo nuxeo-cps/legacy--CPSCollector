@@ -67,21 +67,21 @@ class TestCollector(CPSCollectorTestCase):
 
         # calling the fake view to check View perm and grab fields
         REQUEST.form = {}
-        self.working.Form_view() 
+        self.working.Form_view()
 
 
 
     ## permissions on the working copy
     def test_working_perms_add(self):
         REQUEST = self.app.REQUEST
-        
+
         REQUEST.form = {'id' : 'newfield', 'type' : 'title'}
         self.working.Form_addField(REQUEST=REQUEST) # will also call Form_editField
 
     def test_working_perms_move_up(self):
         REQUEST = self.app.REQUEST
 
-        REQUEST.form['f_id'] = 'number' 
+        REQUEST.form['f_id'] = 'number'
         self.working.Form_moveFieldUp(REQUEST=REQUEST)
 
     def test_working_perms_move_down(self):
@@ -92,7 +92,7 @@ class TestCollector(CPSCollectorTestCase):
 
     def test_working_perms_del(self):
         REQUEST = self.app.REQUEST
-        
+
         REQUEST.form['f_id'] = 'number'
         self.working.Form_delField(REQUEST=REQUEST)
 
@@ -105,7 +105,7 @@ class TestCollector(CPSCollectorTestCase):
         REQUEST = self.app.REQUEST
 
         self.working.CollectorDocument_exportData(REQUEST=REQUEST)
-        
+
 
 def test_suite():
     suite = unittest.TestSuite()

@@ -30,7 +30,7 @@ class TestFormValidation(unittest.TestCase):
                          'collector_field_required')
         self.assertEqual(checkField('string', None, required='on'),
                          'collector_field_required')
-        
+
     def test_string_maxlength_1(self):
         self.assertEqual(checkField('string', '1234', maxlength=4), None)
     def test_string_maxlength_2(self):
@@ -56,7 +56,7 @@ class TestFormValidation(unittest.TestCase):
                          'collector_field_float_invalid')
     def test_float_101(self):
         self.assertEqual(checkField('float', '12a,23'),
-                         'collector_field_float_invalid')                         
+                         'collector_field_float_invalid')
     def test_float_102(self):
         self.assertEqual(checkField('float', 'x12'),
                          'collector_field_float_invalid')
@@ -74,10 +74,10 @@ class TestFormValidation(unittest.TestCase):
                          'collector_field_int_invalid')
     def test_int_101(self):
         self.assertEqual(checkField('int', 'a1223'),
-                         'collector_field_int_invalid')                   
+                         'collector_field_int_invalid')
     def test_int_102(self):
         self.assertEqual(checkField('int', '12-12'),
-                         'collector_field_int_invalid')                   
+                         'collector_field_int_invalid')
 
     def test_identifier_1(self):
         self.assertEqual(checkField('identifier', 'id'), None)
@@ -93,10 +93,10 @@ class TestFormValidation(unittest.TestCase):
                          'collector_field_id_invalid')
     def test_identifier_101(self):
         self.assertEqual(checkField('identifier', 'b-123'),
-                         'collector_field_id_invalid')  
+                         'collector_field_id_invalid')
     def test_identifier_102(self):
         self.assertEqual(checkField('identifier', '_bla'),
-                         'collector_field_id_invalid') 
+                         'collector_field_id_invalid')
     def test_identifier_102(self):
         self.assertEqual(checkField('identifier', 'a@bla'),
                          'collector_field_id_invalid')
@@ -112,7 +112,7 @@ class TestFormValidation(unittest.TestCase):
         self.assertEqual(checkField('date', '01/01/1960'), None)
     def test_date_5(self):
         self.assertEqual(checkField('date', '01/01/1670'), None)
-        
+
     def test_date_100(self):
         self.assertEqual(checkField('date', '13/12/2003'),
                          'collector_field_date_invalid')
@@ -167,22 +167,22 @@ class TestFormValidation(unittest.TestCase):
     def test_email_1(self):
         self.assertEqual(checkField('email', 'bla@bla.com'), None)
     def test_email_2(self):
-        self.assertEqual(checkField('email', 'bla@bla.bla.com'), None)        
+        self.assertEqual(checkField('email', 'bla@bla.bla.com'), None)
     def test_email_invalid_12(self):
-        self.assertEqual(checkField('email', 'x@123.gouv'), None) 
+        self.assertEqual(checkField('email', 'x@123.gouv'), None)
 
 
     def test_selection_1(self):
-        self.assertEqual(checkField('selection', 'sel3', multiple='on', 
+        self.assertEqual(checkField('selection', 'sel3', multiple='on',
                                     mvalue='sel1 | Section 1\nsel2 | Section 2\nsel3 | Section 3\nsel4 | Section 4\n'), None)
     def test_selection_2(self):
-        self.assertEqual(checkField('selection', ['sel3','sel1'], multiple='on', 
+        self.assertEqual(checkField('selection', ['sel3','sel1'], multiple='on',
                                     mvalue='sel1\nsel2\nsel3\n'), None)
     def test_selection_3(self):
-        self.assertEqual(checkField('selection', 'sel3', multiple='on', 
+        self.assertEqual(checkField('selection', 'sel3', multiple='on',
                                     mvalue='sel1\nsel2\nsel3\n'), None)
     def test_selection_100(self):
-        self.assertEqual(checkField('selection', 'sel4', multiple='on', 
+        self.assertEqual(checkField('selection', 'sel4', multiple='on',
                                     mvalue='sel1\nsel2\nsel3\n'),
                          'collector_field_selection_invalid')
     def test_selection_101(self):
