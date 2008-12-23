@@ -8,6 +8,7 @@ form until input are correct, then it executes the action method.
 The Form is editable TTW.
 """
 
+from logging import getLogger
 from re import match
 from Globals import InitializeClass
 from ExtensionClass import Base
@@ -15,6 +16,9 @@ from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo, Unauthorized
 from Products.CMFCore.permissions import View, ModifyPortalContent
 from Products.CMFCore.utils import _checkPermission
+
+LOG_KEY = 'Form'
+logger = getLogger(LOG_KEY)
 
 def cleanQuotes(text):
     """Remove extended quotes that breaks representation."""
@@ -329,12 +333,21 @@ class Form(Base):
 
     security.declareProtected(View, 'getV')
     def getV(self, f, k, default=None, as_list=None):
-        """Return the value of field f on request."""
+        """Return the value of field f on request.
+
+        f : the field name
+        k : the HTML tag attribute to retrieve value from
+        """
         form = self.REQUEST.form
-        v = form.get(f)                   # form first
-        if not v and len(form) == 0:
-            v = self.fields[f].get(k)     # no form try object value
-        if not v and len(form) == 0:      # no form no object value try default
+        # Get value from the form first
+        v = form.get(f)
+        # madarche: Why was there this test on len(form) == 0 ???
+        #len(form) == 0
+        # If no value then try the object value
+        if not v:
+            v = self.fields[f].get(k)
+        # If still no value fallback to default
+        if not v:
             v = default
         if as_list:
             if type(v) is not type([]):

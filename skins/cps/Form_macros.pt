@@ -20,7 +20,7 @@
        tal:attributes="name f_id;
                        size f/size|default;
                        maxlength f/maxlength|default;
-                       value python:doc.getV(f_id, 'value',default)" />
+                       value python:doc.getV(f_id, 'value', f.get('value'))" />
 
 <!-- def title field -->
 <h4 metal:define-macro="title"
@@ -37,7 +37,7 @@
        type="password"
        tal:attributes="name f_id;size f/size|default;
                        maxlength f/maxlength|default;
-                       value python:doc.getV(f_id, 'value',default)" />
+                       value python:doc.getV(f_id, 'value', f.get('value'))" />
 
 <!-- def string_ro field -->
 <span metal:define-macro="string_ro" tal:omit-tag="">
@@ -51,14 +51,15 @@
           tal:attributes="name f_id;
                           cols f/cols|default;
                           rows f/rows|default"
-          tal:content="python:doc.getV(f_id, 'value',default)"
+          tal:content="python:doc.getV(f_id, 'value', f.get('value'))"
           cols="50" rows="7"></textarea>
 
 <!-- def checkbox field -->
 <input metal:define-macro="checkbox"
        class="noborder"
-       tal:attributes="name f_id;checked python:doc.meta_type!='Quiz Document' and
-                                                doc.getV(f_id,'checked')"
+       tal:attributes="name f_id;
+                       checked python:doc.meta_type!='Quiz Document'
+                                      and doc.getV(f_id,'checked')"
        name="_x_"
        type="checkbox" />
 
@@ -70,7 +71,7 @@
                            name f_id;
                            value v;
                            checked python:doc.meta_type!='Quiz Document' and
-                                          doc.getV(f_id,'checked')==v"
+                                          doc.getV(f_id, 'checked')==v"
            name="_x_" type="radio" class="noborder" />
     <label tal:attributes="for id"
            tal:content="python:doc.getLabel(f_id,v)">label</label>
@@ -139,7 +140,7 @@
 
 <!-- def file field -->
 <input metal:define-macro="file" type="file"
-       tal:attributes="name f_id; value python:doc.getV(f_id, 'value',default)"
+       tal:attributes="name f_id; value python:doc.getV(f_id, 'value', f.get('value'))"
        value="" />
 
 <!-- def display label -->
