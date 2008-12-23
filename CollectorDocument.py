@@ -361,7 +361,7 @@ class CollectorDocument(Form, BaseDocument):
         return match_id
 
     # FIXME: should be a function, not a method (it doesn't use 'self')
-    # FIXME: should use the standard cvs.py module
+    # FIXME: should use the standard csv.py module
     security.declarePrivate('_list_to_csv')
     def _list_to_csv(self, t):
         """Convert list object into csv format"""
