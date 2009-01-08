@@ -336,12 +336,16 @@ class Form(Base):
         """Return the value of field f on request.
 
         f : the field name
-        k : the HTML tag attribute to retrieve value from
+        k : the HTML tag attribute to retrieve the value from
         """
         form = self.REQUEST.form
-        # Get value from the form first
+        # First get value from the form
         v = form.get(f)
-        # madarche: Why was there this test on len(form) == 0 ???
+        # There used to be a test "len(form) == 0" which was removed because it
+        # was preventing the retrieval of the default value and seems now
+        # useless. This test was to differentiate the display of the form from
+        # the posting of field values. This comment is here in case this removal
+        # later proves to be harmful.
         #len(form) == 0
         # If no value then try the object value
         if not v:
