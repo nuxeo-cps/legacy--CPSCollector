@@ -6,8 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
-- #1523: Minor CPSCollector bugs (default value not honored)
-- Better documentation of the "upgrade" method for old forms.
+-
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 

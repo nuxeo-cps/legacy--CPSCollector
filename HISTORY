@@ -1,4 +1,25 @@
 ===========================================================
+Package: CPSCollector 1.12.3
+===========================================================
+First release built by: madarche at: 2009-03-09T12:03:45
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/tags/1.12.3
+Build from: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/trunk@53529
+
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- #1523: Minor CPSCollector bugs (default value not honored)
+- Better documentation of the "upgrade" method for old forms.
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.12.2
 ===========================================================
 First release built by: madarche at: 2008-11-24T01:24:35
