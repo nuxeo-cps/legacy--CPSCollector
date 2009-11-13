@@ -63,7 +63,8 @@ class Form(Base):
     field_attr['reset'] = field_attr['submit'] = field_attr['string_ro']
     field_attr['hidden'] = ('value__',)
     field_attr['title'] = ('label__', 'join__')
-    field_attr['separator'] = field_attr['comment'] = field_attr['title']
+    field_attr['separator'] = field_attr['title']
+    field_attr['comment'] = ('label__', 'information__')
     field_attr['file'] = ('label__', 'value__', 'maxlength__', 'required__',
                           'join__')
     field_attr['text'] = ('label__', 'cols__', 'rows__', 'value__',
@@ -108,7 +109,8 @@ class Form(Base):
                        label='collector_form_join_with_next')
         self.add_field('regexp__', type='string',
                        label='collector_form_regexp')
-
+        self.add_field('information__', type='text',
+                       label='collector_form_information')
 
     security.declareProtected(ModifyPortalContent, 'upgrade')
     def upgrade(self):
@@ -116,6 +118,10 @@ class Form(Base):
         if not self.fields.has_key('regexp__'):
             self.add_field('regexp__', type='string',
                            label='collector_form_regexp')
+            return "CPSCollector: Your form has been successfully upgraded!"
+        if not self.fields.has_key('information__'):
+            self.add_field('information__', type='text',
+                           label='collector_form_information')
             return "CPSCollector: Your form has been successfully upgraded!"
         return "CPSCollector: Your form didn't need any upgrade."
 
@@ -360,7 +366,7 @@ class Form(Base):
 
     security.declareProtected(View, 'getNbSlot')
     def getNbSlot(self, f_name):
-        """Return the number of cels used by a field."""
+        """Return the number of cells used by a field."""
         t = self.fields[f_name]['type']
         if t in ('submit', 'reset', 'separator', 'title', 'comment', 'vradio'):
             n = 1

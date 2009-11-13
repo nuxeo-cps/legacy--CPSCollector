@@ -121,7 +121,12 @@
 </metal:block>
 
 <!-- def comment -->
-<em metal:define-macro="comment" tal:content="label|nothing">comments</em>
+<meta:block metal:define-macro="comment">
+<p tal:define="text python:doc.getV(f_id, 'information', '');
+    newline_to_br nocall:modules/Products.PythonScripts.standard/newline_to_br;"
+    tal:content="structure python:newline_to_br(text)">
+</p>
+</meta:block>
 
 <!-- def submit field -->
 <metal:block metal:define-macro="submit">
