@@ -368,7 +368,8 @@ class Form(Base):
     def getNbSlot(self, f_name):
         """Return the number of cells used by a field."""
         t = self.fields[f_name]['type']
-        if t in ('submit', 'reset', 'separator', 'title', 'comment', 'vradio'):
+        if t in ('submit', 'reset', 'separator', 'title', 'comment', 'vradio',
+                 'text'):
             n = 1
         elif t in ('hidden',):
             n = 0
