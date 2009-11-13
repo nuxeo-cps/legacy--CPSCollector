@@ -48,8 +48,11 @@
 
 <!-- def text field -->
 <metal:block metal:define-macro="text">
+<div tal:attributes="class
+  python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
   <tal:block i18n:translate=""
-    tal:content="python:doc.getLabel(f_id)"/><br/>
+    tal:content="python:doc.getLabel(f_id)"/>
+</div><br/>
 <textarea tal:attributes="name f_id;
                           cols f/cols|default;
                           rows f/rows|default"
