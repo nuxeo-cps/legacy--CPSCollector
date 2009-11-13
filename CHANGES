@@ -6,7 +6,8 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
--
+- #2064: Line returns in description of a Collector Document are not rendered
+  when in view mode
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
