@@ -57,7 +57,7 @@
                           cols f/cols|default;
                           rows f/rows|default"
           tal:content="python:doc.getV(f_id, 'value', f.get('value'))"
-          cols="80" rows="7"></textarea>
+          cols="100" rows="20"></textarea>
 </metal:block>
 
 <!-- def checkbox field -->
