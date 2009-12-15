@@ -1,4 +1,25 @@
 ===========================================================
+Package: CPSCollector 1.12.4
+===========================================================
+First release built by: gracinet at: 2009-12-15T12:28:27
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/tags/1.12.4
+Build from: https://svn.nuxeo.org/pub/CPS3/legacy/CPSCollector/trunk@54101
+
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- #2064: Line returns in description of a Collector Document are not rendered
+  when in view mode
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.12.3
 ===========================================================
 First release built by: madarche at: 2009-03-09T12:03:45
