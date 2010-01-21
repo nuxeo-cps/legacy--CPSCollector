@@ -329,12 +329,13 @@ class Form(Base):
         return self.fields_list
 
     security.declareProtected(View, 'getVList')
-    def getVList(self, f_name):
+    def getVList(self, f_name, sorted=True):
         """Return the list of value for a field."""
         if not self.fields[f_name].has_key('mvalue'):
             return (f_name)
         l = self.fields[f_name]['mvalue'].keys()
-        l.sort()
+        if sorted:
+            l.sort()
         return l
 
     security.declareProtected(View, 'getV')
