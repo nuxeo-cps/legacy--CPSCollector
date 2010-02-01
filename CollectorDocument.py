@@ -28,6 +28,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CPSCollector.Form import Form
 from Products.CPSCollector.CollectorItem import CollectorItem
 from zLOG import DEBUG, LOG
+from permissions import ViewCollectorData, ManageCollectorData
 
 ### XXX GR
 ### This FTI seems never to be instantiated. Look in skins/cps/getCollectorTypes
@@ -112,7 +113,7 @@ class CollectorDocument(Form, BaseDocument):
         self._action_pt = 'CollectorDocument_action'
 
     # WEB INTERFACE --------------------------------------------------
-    security.declareProtected(ModifyPortalContent, 'exportData')
+    security.declareProtected(ViewCollectorData, 'exportData')
     def exportData(self, **kw):
         """Export all collected data as a CSV file"""
         fields = self.getFList(1)
@@ -136,7 +137,7 @@ class CollectorDocument(Form, BaseDocument):
         resp.setHeader('Content-Type', 'application/binary')
         return s
 
-    security.declareProtected(ModifyPortalContent, 'eraseData')
+    security.declareProtected(ManageCollectorData, 'eraseData')
     def eraseData(self, **kw):
         """Erase all collector items"""
         for id in self._get_item_ids():

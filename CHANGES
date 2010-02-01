@@ -6,7 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
--
+- #2108: now there's a specific permission for data management and view
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 

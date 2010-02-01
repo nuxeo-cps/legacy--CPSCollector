@@ -37,7 +37,7 @@
  <action title="action_view_stat" action_id="view_stat" category="object"
     condition_expr=""
     url_expr="string:${object_url}/CollectorDocument_viewStat" visible="True">
-  <permission value="Modify portal content"/>
+  <permission value="View collector data"/>
  </action>
  <action title="action_modify_prop" action_id="edit" category="object"
     condition_expr=""
@@ -52,11 +52,11 @@
  <action title="action_export_csv" action_id="export" category="object"
     condition_expr="" url_expr="string:${object_url}/CollectorDocument_exportData"
     visible="True">
-  <permission value="Modify portal content"/>
+  <permission value="View collector data"/>
  </action>
  <action title="action_erase_data" action_id="erase" category="object"
     condition_expr="" url_expr="string:${object_url}/Form_eraseDataPrompt"
     visible="True">
-  <permission value="Modify portal content"/>
+  <permission value="Manage collector data"/>
  </action>
 </object>

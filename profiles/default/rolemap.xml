@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <permission name="View collector data" acquire="True">
+      <role name="Manager"/>
+      <role name="WorkspaceManager"/>
+      <role name="WorkspaceMember"/>
+      <role name="SectionManager"/>
+      <role name="SectionReviewer"/>
+    </permission>
+    <permission name="Manage collector data" acquire="True">
+      <role name="Manager"/>
+    </permission>
+  </permissions>
+</rolemap>
