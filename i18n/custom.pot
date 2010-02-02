@@ -70,6 +70,9 @@ msgstr ""
 msgid "collector_form_regexp"
 msgstr ""
 
+msgid "collector_form_information"
+msgstr ""
+
 msgid "collector_button_change"
 msgstr ""
 

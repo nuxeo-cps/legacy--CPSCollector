@@ -10,16 +10,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pt-BR\n"
-"POT-Creation-Date: 2006-10-19 16:44default\n"
+"POT-Creation-Date: 2010-02-02 13:07default\n"
 "PO-Revision-Date: 2005-06-15 14:08-0300\n"
 "Last-Translator: Mario Olimpio de Menezes <mario@ipen.br>\n"
 "Language-Team: Portugues do Brasil <pt@li.org>\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Code: pt_BR\n"
 "Language-Name: Portuguese Brazilian\n"
 "Domain: default\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Preferred-Encodings: utf-8\n"
 
 #.   <span omit-tag="">
@@ -422,6 +422,10 @@ msgstr "Múltiplos"
 msgid "collector_form_regexp"
 msgstr "Required:"
 
+#, fuzzy
+msgid "collector_form_information"
+msgstr "Linhas"
+
 msgid "collector_button_change"
 msgstr "Mudar"
 
@@ -481,19 +485,19 @@ msgid "collector_field_regexp_nomatch"
 msgstr "Email"
 
 #, fuzzy
-msgid "collector_form_mulitple"
-msgstr "Multiple selection:"
+#~ msgid "collector_form_mulitple"
+#~ msgstr "Multiple selection:"
 
 #, fuzzy
-msgid "collector_psm_erased_data"
-msgstr "Collected data has been erased"
+#~ msgid "collector_psm_erased_data"
+#~ msgstr "Collected data has been erased"
 
-msgid "collector_psm_erase_data_cancel"
-msgstr "Collected data has not been erased"
+#~ msgid "collector_psm_erase_data_cancel"
+#~ msgstr "Collected data has not been erased"
 
-msgid "collector_erased_data"
-msgstr "Collected data has been erased"
+#~ msgid "collector_erased_data"
+#~ msgstr "Collected data has been erased"
 
 #, fuzzy
-msgid "collector_erased_data_failed"
-msgstr "Collected data has been erased"
+#~ msgid "collector_erased_data_failed"
+#~ msgstr "Collected data has been erased"

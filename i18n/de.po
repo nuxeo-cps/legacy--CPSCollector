@@ -1,19 +1,19 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector-de CPS-3.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-03 14:48default\n"
+"POT-Creation-Date: 2010-02-02 13:06default\n"
 "PO-Revision-Date: 2005-10-06 14:06+0200\n"
 "Last-Translator: Georg Hennemann <georg.hennemann@dhl.com>\n"
 "Language-Team: de <rheinland@dzug.org>\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Language-Code: de\n"
 "Language-Name: German\n"
 "Domain: default\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Preferred-Encodings: utf-8\n"
 
 #.   <span omit-tag="">
@@ -46,31 +46,31 @@ msgstr ""
 "Rangliste: ${collector_label_nb_correct} richtige Antwort(en) aus "
 "${collector_label_nb_all} Frage(n)"
 
-#.   <input name="cancel" onclick="history.back()" type="button" class="context" value="collector_button_cancel" />
-#.   <input name="Data_cancel_erase:method" type="submit" class="context" value="collector_button_cancel" />
+#.   <input class="context" type="button" name="cancel" value="collector_button_cancel" onclick="history.back()" />
+#.   <input type="submit" name="Data_cancel_erase:method" value="collector_button_cancel" class="context" />
 #: from ../skins/cps/CollectorDocument_editProp.pt
 #: ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_cancel"
 msgstr "Abbrechen"
 
-#.   <input name="Form_moveFieldDown:method" type="submit" class="context moveDown" value="collector_button_movedown" />
+#.   <input type="submit" name="Form_moveFieldDown:method" value="collector_button_movedown" class="context moveDown" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_movedown"
 msgstr "Runter"
 
-#.   <input name="Form_moveFieldUp:method" type="submit" class="context moveUp" value="collector_button_moveup" />
+#.   <input type="submit" name="Form_moveFieldUp:method" value="collector_button_moveup" class="context moveUp" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_moveup"
 msgstr "Hoch"
 
-#.   <input name="Data_erase:method" type="submit" class="destructive" value="collector_button_proceed" />
+#.   <input type="submit" name="Data_erase:method" value="collector_button_proceed" class="destructive" />
 #: from ../skins/cps/Form_eraseDataPrompt.pt
 msgid "collector_button_proceed"
 msgstr "Weiter"
 
-#.   <input name="Form_delField:method" type="submit" class="destructive" value="collector_button_remove" attributes="onClick
+#.   <input attributes="onClick
 #.                                    python:
-#.                                      'return window.confirm(\'%s\')' % (colmcat('collector_confirm'),)" define="colmcat nocall:here/Localizer/cpscollector" />
+#.                                      'return window.confirm(\'%s\')' % (cpsmcat('collector_confirm'),)" type="submit" name="Form_delField:method" value="collector_button_remove" class="destructive" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_button_remove"
 msgstr "Löschen"
@@ -232,7 +232,7 @@ msgstr "Radio Taste (vertikales Layout)"
 #.   <div class="label">
 #.          Add a new field:
 #.        </div>
-#.   <input name="Form_addField:method" type="submit" class="standalone" value="collector_form_add_new_field" />
+#.   <input type="submit" name="Form_addField:method" value="collector_form_add_new_field" class="standalone" />
 #: from ../skins/cps/Form_macros.pt
 msgid "collector_form_add_new_field"
 msgstr "Anfügen eines neuen Feldes"
@@ -414,6 +414,14 @@ msgstr "Werte:"
 msgid "collector_form_multiple"
 msgstr "Mehrfach Auswahl:"
 
+#, fuzzy
+msgid "collector_form_regexp"
+msgstr "Regular expression:"
+
+#, fuzzy
+msgid "collector_form_information"
+msgstr "Text (HTML allowed)"
+
 msgid "collector_button_change"
 msgstr "Sichern der Änderungen"
 
@@ -468,17 +476,21 @@ msgstr "leere Datei "
 msgid "collector_field_file_too_big"
 msgstr "Datei zu groß"
 
-msgid "collector_form_mulitple"
-msgstr "Mehrfach Auswahl:"
+#, fuzzy
+msgid "collector_field_regexp_nomatch"
+msgstr "invalid string"
 
-msgid "collector_psm_erased_data"
-msgstr "Gesammelte Daten wurden gelöscht"
+#~ msgid "collector_form_mulitple"
+#~ msgstr "Mehrfach Auswahl:"
 
-msgid "collector_psm_erase_data_cancel"
-msgstr "Gesammelte Daten wurden nicht gelöscht"
+#~ msgid "collector_psm_erased_data"
+#~ msgstr "Gesammelte Daten wurden gelöscht"
 
-msgid "collector_erased_data"
-msgstr "Gesammelte Daten wurden gelöscht"
+#~ msgid "collector_psm_erase_data_cancel"
+#~ msgstr "Gesammelte Daten wurden nicht gelöscht"
 
-msgid "collector_erased_data_failed"
-msgstr "Löschung gesammelter Daten fehlgeschlagen"
+#~ msgid "collector_erased_data"
+#~ msgstr "Gesammelte Daten wurden gelöscht"
+
+#~ msgid "collector_erased_data_failed"
+#~ msgstr "Löschung gesammelter Daten fehlgeschlagen"

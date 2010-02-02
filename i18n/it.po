@@ -5,18 +5,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSCollector Italian Translation\n"
-"POT-Creation-Date: 2006-10-19 16:44default\n"
+"POT-Creation-Date: 2010-02-02 13:06default\n"
 "PO-Revision-Date: 2005-11-10 09:07+0100\n"
 "Last-Translator: Stefano Schintu <schintu@gmail.com>\n"
 "Language-Team: CPS Italian <schintu@gmail.com>\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "Language-Code: it\n"
 "Language-Name: Italian\n"
 "Domain: default\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Preferred-Encodings: utf-8\n"
 
 #    <span omit-tag="">
@@ -533,7 +533,11 @@ msgstr "Selezione multipla:"
 
 #, fuzzy
 msgid "collector_form_regexp"
-msgstr "Obligatoire :"
+msgstr "Expression régulière :"
+
+#, fuzzy
+msgid "collector_form_information"
+msgstr "Texte (HTML autorisé)"
 
 msgid "collector_button_change"
 msgstr "Salva le variazioni"
@@ -591,7 +595,7 @@ msgstr "file di dimensione eccessiva"
 
 #, fuzzy
 msgid "collector_field_regexp_nomatch"
-msgstr "Courriel"
+msgstr "Chaîne de caractères invalide"
 
 #, fuzzy
 msgid "collector_form_mulitple"
@@ -601,12 +605,12 @@ msgstr "Sélection multiple :"
 msgid "collector_psm_erased_data"
 msgstr "Les données collectées ont été effacées"
 
-msgid "collector_psm_erase_data_cancel"
-msgstr "Les données collectées n'ont pas été effacées"
-
-msgid "collector_erased_data"
-msgstr "Les données collectées ont été effacées"
-
 #, fuzzy
 msgid "collector_erased_data_failed"
 msgstr "Les données collectées ont été effacées"
+
+#~ msgid "collector_psm_erase_data_cancel"
+#~ msgstr "Les données collectées n'ont pas été effacées"
+
+#~ msgid "collector_erased_data"
+#~ msgstr "Les données collectées ont été effacées"

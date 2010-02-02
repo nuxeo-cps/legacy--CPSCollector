@@ -6,18 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nl\n"
-"POT-Creation-Date: 2006-10-19 16:44default\n"
+"POT-Creation-Date: 2010-02-02 13:06default\n"
 "PO-Revision-Date: 2004-02-18 11:26+0100\n"
 "Last-Translator: emmanuel <epietriga@nuxeo.com>\n"
 "Language-Team: francais <fr@li.org>\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.0.2\n"
 "Language-Code: nl\n"
 "Language-Name: Dutch\n"
 "Domain: default\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Preferred-Encodings: utf-8\n"
 
 #.   <span omit-tag="">
@@ -421,7 +421,11 @@ msgstr "Veelvoudige keuze:"
 
 #, fuzzy
 msgid "collector_form_regexp"
-msgstr "Required:"
+msgstr "Regular expression:"
+
+#, fuzzy
+msgid "collector_form_information"
+msgstr "Text (HTML allowed)"
 
 msgid "collector_button_change"
 msgstr "Wijzig"
@@ -493,7 +497,7 @@ msgstr "file too big"
 
 #, fuzzy
 msgid "collector_field_regexp_nomatch"
-msgstr "Email"
+msgstr "invalid string"
 
 #, fuzzy
 msgid "collector_form_mulitple"
@@ -503,12 +507,12 @@ msgstr "Multiple selection:"
 msgid "collector_psm_erased_data"
 msgstr "Collected data has been erased"
 
-msgid "collector_psm_erase_data_cancel"
-msgstr "Verzamelde gegevens zijn niet verwijderd"
-
-msgid "collector_erased_data"
-msgstr "Verzamelde gegevens zijn verwijderd"
-
 #, fuzzy
 msgid "collector_erased_data_failed"
 msgstr "Collected data has been erased"
+
+#~ msgid "collector_psm_erase_data_cancel"
+#~ msgstr "Verzamelde gegevens zijn niet verwijderd"
+
+#~ msgid "collector_erased_data"
+#~ msgstr "Verzamelde gegevens zijn verwijderd"
