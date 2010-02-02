@@ -1,4 +1,4 @@
 ##parameters=REQUEST
 
-ob=context.getEditableContent()
+ob=context.getContent()
 return ob.exportData()
