@@ -9,7 +9,7 @@
  </field>
  <field name="unique_submit" meta_type="CPS Int Field">
   <property name="is_searchabletext">False</property>
-  <property name="default_expr">python:1</property>
+  <property name="default_expr">python:False</property>
  </field>
  <field name="persistent_data" meta_type="CPS Int Field">
   <property name="is_searchabletext">False</property>
