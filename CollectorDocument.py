@@ -13,6 +13,8 @@ import strptime
 from random import randrange
 from re import match, sub
 from types import StringType, ListType
+import csv
+from StringIO import StringIO
 
 from AccessControl import ClassSecurityInfo
 from Globals import InitializeClass
@@ -116,8 +118,10 @@ class CollectorDocument(Form, BaseDocument):
     security.declareProtected(ViewCollectorData, 'exportData')
     def exportData(self, **kw):
         """Export all collected data as a CSV file"""
+        out = StringIO()
+        writer = csv.writer(out)
         fields = self.getFList(1)
-        s = self._list_to_csv(['_date', '_user', '_ip']+fields)
+        writer.writerow(['_date', '_user', '_ip']+fields)
         for obj in self._get_item_values():
             user, ip, d = self._decode_id(obj.id)
             if not user:
@@ -126,7 +130,7 @@ class CollectorDocument(Form, BaseDocument):
             lv = [d, user, ip]
             for f in fields:
                 lv.append(obj.data.get(f, ''))
-            s += self._list_to_csv(lv)
+            writer.writerow(lv)
         resp = self.REQUEST.RESPONSE
         title = self.computeId(compute_from=self.Title())
         filename = title + '.csv'
@@ -135,7 +139,7 @@ class CollectorDocument(Form, BaseDocument):
         resp.setHeader('Cache-Control', 'post-check=0, pre-check=0')
         resp.setHeader('Content-Disposition', 'attachement; filename="' + filename + '"')
         resp.setHeader('Content-Type', 'application/binary')
-        return s
+        return out.getvalue()
 
     security.declareProtected(ManageCollectorData, 'eraseData')
     def eraseData(self, **kw):
@@ -360,31 +364,6 @@ class CollectorDocument(Form, BaseDocument):
                     match_id = id
                     match_d = d_
         return match_id
-
-    # FIXME: should be a function, not a method (it doesn't use 'self')
-    # FIXME: should use the standard csv.py module
-    security.declarePrivate('_list_to_csv')
-    def _list_to_csv(self, t):
-        """Convert list object into csv format"""
-        l = ''
-        for v in t:
-            if v and type(v) is ListType:
-                _s = ''
-                for vv in v:
-                    _s += str(vv)+'+'
-                if _s:
-                    v = _s[:-1]
-                else:
-                    v = ''
-            if v and (v.find('\n') != -1 or v.find('"') != -1 or \
-                       v.find(',') != -1):
-                v = '"' + sub('"', '""', v) + '"'
-            if not v:
-                v = ''
-            l += str(v) + ', '
-        if l:
-            l = l[:-2]
-        return l + '\n'
 
     security.declarePrivate('_check_unique')
     def _check_unique(self):
