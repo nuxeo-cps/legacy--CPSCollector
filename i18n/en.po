@@ -495,3 +495,9 @@ msgstr "invalid string"
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Collected data has been erased"
+
+msgid "action_merge_data"
+msgstr "Recollect previous data"
+
+msgid "collector_merged_data"
+msgstr "Data from previous versions have been moved to this one"

@@ -497,3 +497,9 @@ msgstr "Chaîne de caractères invalide"
 #, fuzzy
 #~ msgid "collector_erased_data_failed"
 #~ msgstr "Les données collectées ont été effacées"
+
+msgid "action_merge_data"
+msgstr "Reprendre les données antérieures"
+
+msgid "collector_merged_data"
+msgstr "Les données des versions antérieures ont été reprises dans celle-ci"

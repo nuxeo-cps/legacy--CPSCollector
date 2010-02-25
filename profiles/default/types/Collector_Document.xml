@@ -59,4 +59,9 @@
     visible="True">
   <permission value="Manage collector data"/>
  </action>
+ <action title="action_merge_data" action_id="merge" category="object"
+    condition_expr="" url_expr="string:${object_url}/CollectorDocument_mergeData"
+    visible="True">
+  <permission value="Manage collector data"/>
+ </action>
 </object>

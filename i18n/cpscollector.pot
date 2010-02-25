@@ -467,3 +467,9 @@ msgstr ""
 
 msgid "collector_field_regexp_nomatch"
 msgstr ""
+
+msgid "action_merge_data"
+msgstr ""
+
+msgid "collector_merged_data"
+msgstr ""

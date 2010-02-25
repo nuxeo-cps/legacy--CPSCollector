@@ -147,6 +147,29 @@ class CollectorDocument(Form, BaseDocument):
         for id in self._get_item_ids():
             self._del_item(id)
 
+    security.declareProtected(ManageCollectorData, 'eraseData')
+    def mergeRevisionsData(self, **kw):
+        """Merge data from other revisions into that one
+
+        TODO: maybe restrict to anterior revs of the same language
+        """
+        repotool = getToolByName(self, 'portal_repository')
+        docid, rev = repotool.getDocidAndRevisionFromObjectId(self.getId())
+
+        for other in repotool.listRevisions(docid):
+            if other == rev:
+                continue
+
+            doc = repotool.getObjectRevision(docid, other)
+            if self.language != doc.language:
+                continue
+
+            ids = doc._get_item_ids()
+            for item_id in ids:
+                item = doc._get_item(item_id)
+                self._set_item_object(item_id, item)
+                doc._del_item(item_id)
+
     # FIXME: these tests should move to a unit test package
     # GR: it looks like init of test objects, right ?
     security.declareProtected(ModifyPortalContent, 'initTest')
@@ -310,6 +333,11 @@ class CollectorDocument(Form, BaseDocument):
         """Add item interface"""
         ob =  CollectorItem(id, values)
         self._setObject(id, ob)
+
+    security.declarePrivate('_set_item_object')
+    def _set_item_object(self, item_id, ob):
+        """Add item interface"""
+        self._setObject(item_id, ob)
 
     security.declarePrivate('_del_item')
     def _del_item(self, id):
