@@ -292,6 +292,16 @@
             File
           </option>
         </select>
+	<label for="insert_after" i18n:translate="collector_insert_after">
+	  Insert after:
+	</label>
+	<select id="insert_after" name="insert_after"
+		tal:define="fields python:doc.getFList(reverse=True)"
+		tal:condition="fields">
+	  <tal:block repeat="f_id fields">
+	    <option tal:attributes="value f_id" tal:content="f_id"/>
+	  </tal:block>
+	</select>
         <input type="submit" name="Form_addField:method"
                i18n:attributes="value" value="collector_form_add_new_field"
                class="standalone" />

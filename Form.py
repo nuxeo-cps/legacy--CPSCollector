@@ -238,7 +238,7 @@ class Form(Base):
     ## All methods that always change the object are to be called
     ## on the result of getEditableContents
     security.declareProtected(ModifyPortalContent, 'add_field')
-    def add_field(self, id, **extra):
+    def add_field(self, id, insert_after=None, **extra):
         """Add or modify field to the form."""
         if not id:
             return
@@ -248,7 +248,12 @@ class Form(Base):
         if not self.fields.has_key(id):
             self.fields[id] = {}
             if id.find('__') == -1:
-                self.fields_list.append(id)
+                if insert_after is None:
+                    self.fields_list.append(id)
+                else:
+                    i = self.fields_list.index(insert_after)
+                    self.fields_list.insert(i+1, id)
+
         f = self.fields[id]               # setting attributes
         for k in extra.keys():
             if k == 'mvalue':
@@ -313,20 +318,24 @@ class Form(Base):
 
     #   Fields accessor ----------------------------------------------
     security.declareProtected(View, 'getFList')
-    def getFList(self, only_data=0):
+    def getFList(self, only_data=0, reverse=False):
         """Return a list of field ids depending on the current form."""
         form_name = self._get_current_form()
         if form_name and self.field_attr.has_key(form_name):
-            return ('title__', 'id__', 'type__') + \
+            res = ('title__', 'id__', 'type__') + \
                    self.field_attr[form_name] + ('submit__',)
         if only_data:
-            l = []
+            res = []
             for f in self.fields_list:
                 if self.fields[f]['type'] not in \
                    ('submit', 'separator', 'title', 'comment', 'reset'):
-                    l.append(f)
-            return l
-        return self.fields_list
+                    res.append(f)
+            return res
+        else:
+            res = self.fields_list
+        if reverse:
+            res.reverse()
+        return res
 
     security.declareProtected(View, 'getVList')
     def getVList(self, f_name, sorted=True):

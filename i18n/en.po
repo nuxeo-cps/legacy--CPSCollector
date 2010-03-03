@@ -19,6 +19,9 @@ msgstr ""
 "Domain: default\n"
 "Preferred-Encodings: utf-8\n"
 
+msgid "collector_insert_after"
+msgstr "Insert after :"
+
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
 #.       forms collected between

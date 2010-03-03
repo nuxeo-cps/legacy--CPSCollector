@@ -16,6 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Preferred-Encodings: utf-8\n"
 
+msgid "collector_insert_after"
+msgstr ""
+
 #.   <span omit-tag="">
 #.       ${collector_nb (tal replace="python:stats['_stat']['nb_item']")}
 #.       forms collected between
@@ -473,3 +476,4 @@ msgstr ""
 
 msgid "collector_merged_data"
 msgstr ""
+

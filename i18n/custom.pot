@@ -37,6 +37,9 @@ msgstr ""
 msgid "collector_form_field_edit"
 msgstr ""
 
+msgid "collector_insert_after"
+msgstr ""
+
 msgid "collector_form_type"
 msgstr ""
 
