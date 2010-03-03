@@ -324,15 +324,15 @@ class Form(Base):
         if form_name and self.field_attr.has_key(form_name):
             res = ('title__', 'id__', 'type__') + \
                    self.field_attr[form_name] + ('submit__',)
-        if only_data:
+        elif only_data:
             res = []
             for f in self.fields_list:
                 if self.fields[f]['type'] not in \
                    ('submit', 'separator', 'title', 'comment', 'reset'):
                     res.append(f)
-            return res
         else:
             res = self.fields_list[:]
+
         if reverse:
             res.reverse()
         return res
