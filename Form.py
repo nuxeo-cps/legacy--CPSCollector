@@ -332,7 +332,7 @@ class Form(Base):
                     res.append(f)
             return res
         else:
-            res = self.fields_list
+            res = self.fields_list[:]
         if reverse:
             res.reverse()
         return res
