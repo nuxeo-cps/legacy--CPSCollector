@@ -2,7 +2,7 @@
 <metal:block fill-slot="header">
   <tal:block define="_check_perm_ doc/assert_form_modify" />
   <h1><tal:block i18n:translate="collector_modify_form" />
-  «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»</h1>
+  <tal:block replace="here/title_or_id" /></h1>
   <div class="description"
           tal:define="text doc/Description;
           newline_to_br nocall:modules/Products.PythonScripts.standard/newline_to_br;"

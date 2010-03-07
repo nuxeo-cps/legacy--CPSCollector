@@ -2,7 +2,7 @@
 <metal:block fill-slot="header"
   tal:define="_check_perm_ doc/assert_form_modify">
   <h1><tal:block i18n:translate="collector_modify_field" />
-      «&nbsp;<tal:block replace="here/title_or_id" />&nbsp;»</h1>
+      <tal:block replace="here/title_or_id" /></h1>
   <div class="description" tal:content="doc/Description">
     Document Description goes here.
   </div>
