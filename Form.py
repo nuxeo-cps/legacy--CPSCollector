@@ -22,7 +22,7 @@ logger = getLogger(LOG_KEY)
 
 def cleanQuotes(text):
     """Remove extended quotes that breaks representation."""
-    if type(text) is not str:
+    if not isinstance(text, str): # including unicode
         return text
     for pattern in ('&#8217;', '&#8216;', '&#8221', '&#8222'):
         text = text.replace(pattern, "'")
@@ -506,8 +506,7 @@ class Form(Base):
             err = self._check_field(f, form.get(f), locale)
             if err:
                 err_l10n = mcat.translateDefault(err)
-                err_l10n_enc = err_l10n.encode('ISO-8859-15', 'ignore')
-                err = '[' + f + '] ' + err_l10n_enc
+                err = '[' + f + '] ' + err_l10n
                 msg = msg + err + ', '
                 bf.append(f)
         form['error__'] =  bf
@@ -515,8 +514,7 @@ class Form(Base):
             msg = self._validator(form)
         if msg:
             err_l10n = mcat.translateDefault('collector_field_error')
-            err_l10n_enc = err_l10n.encode('ISO-8859-15', 'ignore')
-            return ('bad_fields', err_l10n_enc + ' ' + msg[:-2] +'.')
+            return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
         if form.get('is_form_setted'):
             return ('setted_form', msg)
         return ('valid_form', 'Congratulation')

@@ -129,7 +129,10 @@ class CollectorDocument(Form, BaseDocument):
             d = time.strftime('%Y-%m-%dT%H:%M:%S', d)
             lv = [d, user, ip]
             for f in fields:
-                lv.append(obj.data.get(f, ''))
+                v = obj.data.get(f, '')
+                if isinstance(v, unicode):
+                    v = v.encode('utf-8')
+                lv.append(v)
             writer.writerow(lv)
         resp = self.REQUEST.RESPONSE
         title = self.computeId(compute_from=self.Title())
