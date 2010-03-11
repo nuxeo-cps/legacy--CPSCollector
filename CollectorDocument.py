@@ -10,6 +10,7 @@ Collector is able to display statistics about collected data
 
 import time
 import strptime
+import logging
 from random import randrange
 from re import match, sub
 from types import StringType, ListType
@@ -29,8 +30,9 @@ except ImportError:
 from Products.CMFCore.utils import getToolByName
 from Products.CPSCollector.Form import Form
 from Products.CPSCollector.CollectorItem import CollectorItem
-from zLOG import DEBUG, LOG
 from permissions import ViewCollectorData, ManageCollectorData
+
+logger = logging.getLogger('Products.CPSCollector.CollectorDocument')
 
 ### XXX GR
 ### This FTI seems never to be instantiated. Look in skins/cps/getCollectorTypes
@@ -156,6 +158,14 @@ class CollectorDocument(Form, BaseDocument):
         repotool = getToolByName(self, 'portal_repository')
         docid, rev = repotool.getDocidAndRevisionFromObjectId(self.getId())
 
+        proxy = self.aq_inner.aq_parent
+        if isinstance(proxy, ProxyBase):
+            logger.info("Starting to merge data from docid %s into rev %s (%s)",
+                        docid, rev, proxy)
+        else:
+            logger.info("Starting to merge data from docid %s into rev %s",
+                        docid, rev)
+
         for other in repotool.listRevisions(docid):
             if other == rev:
                 continue
@@ -166,8 +176,14 @@ class CollectorDocument(Form, BaseDocument):
 
             ids = doc._get_item_ids()
             for item_id in ids:
+                if self.hasObject(item_id):
+                    logger.debug("Ignoring item %s : found both in rev %d and "
+                                 "the current %d.",
+                                 item_id, other, rev)
+                    continue
                 item = doc._get_item(item_id)
-                self._set_item_object(item_id, item)
+                if not self.hasObject(item_id):
+                    self._set_item_object(item_id, item)
                 doc._del_item(item_id)
 
     # FIXME: these tests should move to a unit test package
@@ -427,7 +443,6 @@ class CollectorDocument(Form, BaseDocument):
         m = match(r'^(\d+)_([^_]+)_([^_]+)_\d+$', id)
         if m is None:
             return None, None, None
-        from zLOG import LOG, DEBUG
         if hasattr(time, 'strptime'):
             d = time.strptime(m.group(1), '%y%m%d%H%M%S')
         else:
