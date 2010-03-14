@@ -6,9 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
-- #2126: fields can be added anywhere in the form
-- #2108: now there's a specific permission for data management and view
-- Added a missing translation.
+-
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
