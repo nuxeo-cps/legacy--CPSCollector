@@ -92,8 +92,7 @@
 <metal:block metal:define-macro="vradio">
   <div tal:attributes="class
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
-  <span i18n:translate=""
-    tal:content="python:doc.getLabel(f_id)"></span>
+  <span tal:content="python:doc.getLabel(f_id)"></span>
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
   </div><br />
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
