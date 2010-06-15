@@ -137,7 +137,7 @@ class CollectorDocument(Form, BaseDocument):
                     logger.warn(
                         "Unexpected unicode in default branch for field "
                         "%r : %r", f, v)
-                    v = v.encode('iso-8869-15')
+                    v = v.encode('iso-8859-15')
                 lv.append(v)
             writer.writerow(lv)
         resp = self.REQUEST.RESPONSE
