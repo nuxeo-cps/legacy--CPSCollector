@@ -131,7 +131,14 @@ class CollectorDocument(Form, BaseDocument):
             d = time.strftime('%Y-%m-%dT%H:%M:%S', d)
             lv = [d, user, ip]
             for f in fields:
-                lv.append(obj.data.get(f, ''))
+                v = obj.data.get(f, '')
+                if isinstance(v, unicode):
+                    # of course would be normal in unicode branch
+                    logger.warn(
+                        "Unexpected unicode in default branch for field "
+                        "%r : %r", f, v)
+                    v = v.encode('iso-8869-15')
+                lv.append(v)
             writer.writerow(lv)
         resp = self.REQUEST.RESPONSE
         title = self.computeId(compute_from=self.Title())
