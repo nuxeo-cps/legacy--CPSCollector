@@ -1,4 +1,21 @@
 ===========================================================
+Package: CPSCollector 1.12.6
+===========================================================
+First release built by: gracinet at: 2010-06-30T02:33:51
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- More robustness : two border cases
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.12.5
 ===========================================================
 First release built by: gracinet at: 2010-03-14T16:38:23
