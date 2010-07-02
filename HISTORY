@@ -1,4 +1,40 @@
 ===========================================================
+Package: CPSCollector 1.12.6
+===========================================================
+First release built by: gracinet at: 2010-06-30T02:33:51
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- More robustness : two border cases
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
+Package: CPSCollector 1.12.5
+===========================================================
+First release built by: gracinet at: 2010-03-14T16:38:23
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- #2126: fields can be added anywhere in the form
+- #2108: now there's a specific permission for data management and view
+- Added a missing translation.
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.12.4
 ===========================================================
 First release built by: gracinet at: 2009-12-15T12:28:27

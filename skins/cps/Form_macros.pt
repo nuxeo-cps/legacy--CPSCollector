@@ -55,6 +55,7 @@
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
   <tal:block i18n:translate=""
     tal:content="python:doc.getLabel(f_id)"/>
+  <span tal:replace="string:*" tal:condition="f/required|nothing" />
 </div><br/>
 <textarea tal:attributes="name string:${f_id}:utf8:ustring;
                           cols f/cols|default;
