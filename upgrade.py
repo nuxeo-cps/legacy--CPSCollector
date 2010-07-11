@@ -17,6 +17,10 @@
 #
 # $Id$
 
+import logging
+import transaction
+from Products.CPSUtil.text import upgrade_string_unicode
+
 def upgrade_data_unicode(portal):
     """Upgrade all form data to unicode.
     The form documents themselves should have been treated by
@@ -28,14 +32,13 @@ def upgrade_data_unicode(portal):
     total = len(repotool)
 
     done = 0
-    for doc in repotool.iterValues():
+    for doc in repotool.objectValues(['Collector Document']):
         if not _upgrade_form_data_unicode(doc):
             logger.error("Could not upgrade form data for rev %s", doc)
             continue
         done += 1
-        if done % 100 == 0:
-            logger.info("Upgraded data for %d/%d form documents", done, total)
-            transaction.commit()
+        logger.info("Upgraded data for %d/%d form documents", done, total)
+        transaction.commit()
 
     logger.warn("Finished upgrade of data to unicode for %d/%d form documents",
                 done, total)
@@ -43,4 +46,8 @@ def upgrade_data_unicode(portal):
     transaction.commit()
 
 def _upgrade_form_data_unicode(doc):
-    pass
+    for item in doc.objectValues(['CollectorItem',]):
+        item.data = dict((upgrade_string_unicode(k), upgrade_string_unicode(v))
+                         for k,v in item.data.items())
+        item._p_changed = 1
+    return True
