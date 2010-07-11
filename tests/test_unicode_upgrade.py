@@ -32,6 +32,10 @@ class TestCollectorUnicodeUpgrade(CPSCollectorTestCase):
         coll._add_item('item1', dict(name='C\xe9sar', text="&#8230;"))
         coll._add_item('item2', {'n\xf3m' : 'ok'})
         _upgrade_form_data_unicode(coll)
+        self.assertTrue(u'n\xf3m' in coll.fields)
+        self.assertFalse('n\xf3m' in coll.fields)
+
+        self.assertEquals(coll.fields, {})
         self.assertEquals(coll['item2'].data, {u'n\xf3m' : 'ok'})
         self.assertEquals(coll['item1'].data, {u'name' : u'C\xe9sar',
                                                u'text' : u'\u2026'})

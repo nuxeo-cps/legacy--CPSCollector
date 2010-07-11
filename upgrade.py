@@ -46,6 +46,14 @@ def upgrade_data_unicode(portal):
     transaction.commit()
 
 def _upgrade_form_data_unicode(doc):
+    fields = doc.fields
+    new_fields = {}
+    for fid, descr in fields.items():
+        new_fields[upgrade_string_unicode(fid)] = dict(
+            (k, upgrade_string_unicode(v)) for k, v in descr.items())
+    doc.fields = new_fields
+    doc._p_changed = 1
+
     for item in doc.objectValues(['CollectorItem',]):
         item.data = dict((upgrade_string_unicode(k), upgrade_string_unicode(v))
                          for k,v in item.data.items())
