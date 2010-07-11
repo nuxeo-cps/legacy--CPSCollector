@@ -53,7 +53,7 @@
 <metal:block metal:define-macro="text">
 <div tal:attributes="class
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
-  <tal:block i18n:translate=""
+  <tal:block
     tal:content="python:doc.getLabel(f_id)"/>
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
 </div><br/>
@@ -169,7 +169,6 @@
          tal:attributes="for f_id" />
 
   <label tal:condition="python: f_id.endswith('__')"
-	 i18n:translate=""
 	 tal:content="label"
          tal:attributes="for f_id" />
 

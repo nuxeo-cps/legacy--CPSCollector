@@ -413,6 +413,7 @@ class Form(Base):
                 label = multiple
         else:
             label = self.fields[f_name].get('label', '')
+
         if not len(label) or label[0] != '_':
             return label
 
