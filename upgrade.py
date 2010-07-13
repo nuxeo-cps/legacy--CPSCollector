@@ -52,6 +52,8 @@ def _upgrade_form_data_unicode(doc):
         new_fields[upgrade_string_unicode(fid)] = dict(
             (k, upgrade_string_unicode(v)) for k, v in descr.items())
     doc.fields = new_fields
+
+    doc.fields_list = [upgrade_string_unicode(fid) for fid in doc.fields_list]
     doc._p_changed = 1
 
     for item in doc.objectValues(['CollectorItem',]):

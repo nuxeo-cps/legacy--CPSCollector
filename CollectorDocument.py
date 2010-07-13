@@ -121,7 +121,10 @@ class CollectorDocument(Form, BaseDocument):
         out = StringIO()
         writer = csv.writer(out)
         fields = self.getFList(1)
-        writer.writerow(['_date', '_user', '_ip']+fields)
+
+        fields_encoded = tuple(f.encode('utf-8') for f in fields)
+        writer.writerow(('_date', '_user', '_ip') + fields_encoded)
+
         for obj in self._get_item_values():
             user, ip, d = self._decode_id(obj.id)
             if not user:

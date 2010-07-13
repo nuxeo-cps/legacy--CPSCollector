@@ -34,11 +34,13 @@ class TestCollectorUnicodeUpgrade(CPSCollectorTestCase):
         _upgrade_form_data_unicode(coll)
         self.assertTrue(u'n\xf3m' in coll.fields)
         self.assertFalse('n\xf3m' in coll.fields)
+        self.assertTrue(u'n\xf3m' in coll.fields_list)
 
-        self.assertEquals(coll.fields, {})
         self.assertEquals(coll['item2'].data, {u'n\xf3m' : 'ok'})
         self.assertEquals(coll['item1'].data, {u'name' : u'C\xe9sar',
                                                u'text' : u'\u2026'})
+
+        exported = coll.exportData()
 
     def test_upgrade_whole(self):
         upgrade_data_unicode(self.portal)
