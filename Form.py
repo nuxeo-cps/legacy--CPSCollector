@@ -575,9 +575,13 @@ class Form(Base):
             elif v not in f['mvalue'].keys():
                 err = 'collector_field_selection_invalid'
         elif t == 'radio':
+            if isinstance(v, str):
+                v = v.decode('utf8')
             if v not in f['mvalue'].keys():
                 err = 'collector_field_selection_invalid'
         elif t == 'vradio':
+            if isinstance(v, str):
+                v = v.decode('utf8')
             if v not in f['mvalue'].keys():
                 err = 'collector_field_selection_invalid'
         elif t == 'date':
