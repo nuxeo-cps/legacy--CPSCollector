@@ -630,7 +630,6 @@ class Form(Base):
         for f in self.getFList(1):
             # don't know how to have unicode as KEY in form
             ff = f.encode('utf8')
-            import pdb; pdb.set_trace()
             if no_fd and self.fields[f]['type'] == 'file':
                 v[f] = form.get(ff).filename
             else:
