@@ -369,6 +369,8 @@ class Form(Base):
         # If still no value fallback to default
         if not v:
             v = default
+        if isinstance(v, str):
+            v = v.decode('utf8')
         if as_list:
             if type(v) is not type([]):
                 v = [v,]
