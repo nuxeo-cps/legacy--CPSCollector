@@ -49,8 +49,17 @@ def _upgrade_form_data_unicode(doc):
     fields = doc.fields
     new_fields = {}
     for fid, descr in fields.items():
-        new_fields[upgrade_string_unicode(fid)] = dict(
-            (k, upgrade_string_unicode(v)) for k, v in descr.items())
+        new_descr = {}
+        for k, v in descr.items():
+            if isinstance(v, dict):
+                items = v.items()
+                v = dict( (upgrade_string_unicode(k2),
+                           upgrade_string_unicode(v2))
+                          for k2, v2 in items)
+            elif isinstance(v, str):
+                v = upgrade_string_unicode(v)
+            new_descr[k] = v
+        new_fields[upgrade_string_unicode(fid)] = new_descr
     doc.fields = new_fields
 
     doc.fields_list = [upgrade_string_unicode(fid) for fid in doc.fields_list]

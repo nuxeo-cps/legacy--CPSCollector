@@ -42,6 +42,21 @@ class TestCollectorUnicodeUpgrade(CPSCollectorTestCase):
 
         exported = coll.exportData()
 
+    def test_upgrade_radio(self):
+        coll = self.collector
+        coll.add_field('radio', type='radio', mvalue='aSeconde|Seconde\nbPremi\xe8re|Premi\xe8re\ncTerminale|Terminale')
+
+        self.assertEquals(coll.fields['radio']['mvalue'],
+                          {'aSeconde': 'Seconde',
+                           'bPremi\xe8re': 'Premi\xe8re',
+                           'cTerminale': 'Terminale'})
+        _upgrade_form_data_unicode(coll)
+        self.assertEquals(coll.fields[u'radio']['mvalue'],
+                          {u'aSeconde': u'Seconde',
+                           u'bPremi\xe8re': u'Premi\xe8re',
+                           u'cTerminale': u'Terminale'})
+        rendered = coll.Form_view_pt()
+
     def test_upgrade_whole(self):
         upgrade_data_unicode(self.portal)
 
