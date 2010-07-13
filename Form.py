@@ -506,7 +506,7 @@ class Form(Base):
         msg = ''
         bf = []
         for f in self.getFList():
-            err = self._check_field(f, form.get(f), locale)
+            err = self._check_field(f, form.get(f.encode('utf8')), locale)
             if err:
                 err_l10n = mcat.translateDefault(err)
                 err = '[' + f + '] ' + err_l10n
@@ -628,10 +628,17 @@ class Form(Base):
         v = {}
         form = self.REQUEST.form
         for f in self.getFList(1):
+            # don't know how to have unicode as KEY in form
+            ff = f.encode('utf8')
+            import pdb; pdb.set_trace()
             if no_fd and self.fields[f]['type'] == 'file':
-                v[f] = form.get(f).filename
+                v[f] = form.get(ff).filename
             else:
-                v[f] = form.get(f)
+                s = form.get(ff)
+                if isinstance(s, str):
+                    v[f] = s.decode('utf8')
+                else:
+                    v[f] = s
         return v
 
     security.declarePrivate('_set_values')

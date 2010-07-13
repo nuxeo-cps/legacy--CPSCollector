@@ -39,6 +39,7 @@ class TestCollectorUnicodeUpgrade(CPSCollectorTestCase):
         self.assertEquals(coll['item2'].data, {u'n\xf3m' : 'ok'})
         self.assertEquals(coll['item1'].data, {u'name' : u'C\xe9sar',
                                                u'text' : u'\u2026'})
+        self.assertEquals(coll.getFList(), [u'name', u'text', u'n\xf3m'])
 
         exported = coll.exportData()
 
