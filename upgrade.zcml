@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.nuxeo.org/cps">
+
+  <upgradeStep
+      title="Upgrade CPSCollector forms and data to unicode"
+      source="3.5.0" destination="3.5.1"
+      handler=".upgrade.upgrade_data_unicode"
+      />
+
+</configure>

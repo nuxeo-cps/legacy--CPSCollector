@@ -22,7 +22,7 @@ logger = getLogger(LOG_KEY)
 
 def cleanQuotes(text):
     """Remove extended quotes that breaks representation."""
-    if type(text) is not str:
+    if not isinstance(text, str): # including unicode
         return text
     for pattern in ('&#8217;', '&#8216;', '&#8221', '&#8222'):
         text = text.replace(pattern, "'")
@@ -369,6 +369,8 @@ class Form(Base):
         # If still no value fallback to default
         if not v:
             v = default
+        if isinstance(v, str):
+            v = v.decode('utf8')
         if as_list:
             if type(v) is not type([]):
                 v = [v,]
@@ -413,6 +415,7 @@ class Form(Base):
                 label = multiple
         else:
             label = self.fields[f_name].get('label', '')
+
         if not len(label) or label[0] != '_':
             return label
 
@@ -503,11 +506,10 @@ class Form(Base):
         msg = ''
         bf = []
         for f in self.getFList():
-            err = self._check_field(f, form.get(f), locale)
+            err = self._check_field(f, form.get(f.encode('utf8')), locale)
             if err:
                 err_l10n = mcat.translateDefault(err)
-                err_l10n_enc = err_l10n.encode('ISO-8859-15', 'ignore')
-                err = '[' + f + '] ' + err_l10n_enc
+                err = '[' + f + '] ' + err_l10n
                 msg = msg + err + ', '
                 bf.append(f)
         form['error__'] =  bf
@@ -515,8 +517,7 @@ class Form(Base):
             msg = self._validator(form)
         if msg:
             err_l10n = mcat.translateDefault('collector_field_error')
-            err_l10n_enc = err_l10n.encode('ISO-8859-15', 'ignore')
-            return ('bad_fields', err_l10n_enc + ' ' + msg[:-2] +'.')
+            return ('bad_fields', err_l10n + ' ' + msg[:-2] +'.')
         if form.get('is_form_setted'):
             return ('setted_form', msg)
         return ('valid_form', 'Congratulation')
@@ -576,9 +577,13 @@ class Form(Base):
             elif v not in f['mvalue'].keys():
                 err = 'collector_field_selection_invalid'
         elif t == 'radio':
+            if isinstance(v, str):
+                v = v.decode('utf8')
             if v not in f['mvalue'].keys():
                 err = 'collector_field_selection_invalid'
         elif t == 'vradio':
+            if isinstance(v, str):
+                v = v.decode('utf8')
             if v not in f['mvalue'].keys():
                 err = 'collector_field_selection_invalid'
         elif t == 'date':
@@ -623,10 +628,16 @@ class Form(Base):
         v = {}
         form = self.REQUEST.form
         for f in self.getFList(1):
+            # don't know how to have unicode as KEY in form
+            ff = f.encode('utf8')
             if no_fd and self.fields[f]['type'] == 'file':
-                v[f] = form.get(f).filename
+                v[f] = form.get(ff).filename
             else:
-                v[f] = form.get(f)
+                s = form.get(ff)
+                if isinstance(s, str):
+                    v[f] = s.decode('utf8')
+                else:
+                    v[f] = s
         return v
 
     security.declarePrivate('_set_values')

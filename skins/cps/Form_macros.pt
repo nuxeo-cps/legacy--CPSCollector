@@ -17,7 +17,7 @@
 <!-- def string field -->
 <input metal:define-macro="string"
        type="text"
-       tal:attributes="name f_id;
+       tal:attributes="name string:${f_id}:utf8:ustring;
                        size f/size|default;
                        maxlength f/maxlength|default;
                        value python:doc.getV(f_id, 'value', f.get('value'))" />
@@ -29,20 +29,23 @@
 <!-- def hidden field -->
 <input metal:define-macro="hidden"
        type="hidden"
-       tal:attributes="name f_id; value f/value"
+       tal:attributes="name string:${f_id}:utf8:ustring;
+                       value f/value"
        tal:condition="f/value|nothing" />
 
 <!-- def password field -->
 <input metal:define-macro="password"
        type="password"
-       tal:attributes="name f_id;size f/size|default;
+       tal:attributes="name string:${f_id}:utf8:ustring;
+                       size f/size|default;
                        maxlength f/maxlength|default;
                        value python:doc.getV(f_id, 'value', f.get('value'))" />
 
 <!-- def string_ro field -->
 <span metal:define-macro="string_ro" tal:omit-tag="">
   <input type="hidden"
-         tal:attributes="name f_id; value python:doc.getV(f_id, 'value')" />
+         tal:attributes="name string:${f_id}:utf8:ustring;
+                         value python:doc.getV(f_id, 'value')" />
   <span tal:replace="python:doc.getV(f_id, 'value')" />
 </span>
 
@@ -50,11 +53,11 @@
 <metal:block metal:define-macro="text">
 <div tal:attributes="class
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
-  <tal:block i18n:translate=""
+  <tal:block
     tal:content="python:doc.getLabel(f_id)"/>
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
 </div><br/>
-<textarea tal:attributes="name f_id;
+<textarea tal:attributes="name string:${f_id}:utf8:ustring;
                           cols f/cols|default;
                           rows f/rows|default"
           tal:content="python:doc.getV(f_id, 'value', f.get('value'))"
@@ -90,8 +93,7 @@
 <metal:block metal:define-macro="vradio">
   <div tal:attributes="class
   python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
-  <span i18n:translate=""
-    tal:content="python:doc.getLabel(f_id)"></span>
+  <span tal:content="python:doc.getLabel(f_id)"></span>
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
   </div><br />
   <tal:block tal:repeat="v python:doc.getVList(f_id)">
@@ -159,9 +161,17 @@
 <td metal:define-macro="display_label"
     tal:condition="python:nb_slot==2">
   <div tal:attributes="class
-  python:test(f_id in request.form.get('error__',[]), 'label error', 'label')">
-  <span i18n:translate=""
-    tal:content="python:doc.getLabel(f_id)"></span>
+  python:test(f_id in request.form.get('error__',[]), 'label error', 'label')"
+       tal:define="label python:doc.getLabel(f_id)" >
+
+  <label tal:condition="python: not f_id.endswith('__')"
+         tal:content="label"
+         tal:attributes="for f_id" />
+
+  <label tal:condition="python: f_id.endswith('__')"
+	 tal:content="label"
+         tal:attributes="for f_id" />
+
   <span tal:replace="string:*" tal:condition="f/required|nothing" />
   </div>
 </td>
@@ -177,7 +187,8 @@
 
 <!-- def display_form -->
 <metal:block define-macro="display_form">
-<form action="." method="post" enctype="multipart/form-data">
+<form action="." method="post"
+      enctype="multipart/form-data" accept-charset="utf-8">
   <div class="group">
   <div class="message"
     tal:condition="request/other/form_status|nothing"
@@ -207,7 +218,8 @@
 </metal:block>
 
 <!-- def display_edit_form -->
-<form action="." method="post" metal:define-macro="display_edit_form">
+<form action="." method="post" metal:define-macro="display_edit_form"
+      enctype="multipart/form-data" accept-charset="utf-8">
   <div class="message" tal:condition="request/other/form_status|nothing">
      tal:content="request/other/form_status">bla</div>
   <div class="group">
@@ -215,7 +227,8 @@
        Add a new field:
      </div>
      <div class="field">Id:
-        <input style="margin-bottom:1em;"  type="text" name="id" size="15" />
+        <input style="margin-bottom:1em;" type="text" name="id:utf8:ustring"
+               size="15" />
         type:
         <select name="type" size=1>
           <option value="title" i18n:translate="collector_field_title">
@@ -368,7 +381,8 @@
 </form>
 
 <!-- def display_quiz_edit_form -->
-<form action="." method="post" metal:define-macro="display_quiz_edit_form">
+<form action="." method="post" metal:define-macro="display_quiz_edit_form"
+      enctype="multipart/form-data" accept-charset="utf-8">
 
   <div class="message" tal:condition="request/other/form_status|nothing">
      tal:content="request/other/form_status">bla</div>
@@ -377,7 +391,8 @@
        Add a new field:
      </div>
      <div class="field">Id:
-        <input style="margin-bottom:1em;"  type="text" name="id" size="15" />
+        <input style="margin-bottom:1em;"  type="text" name="id:utf8:ustring"
+               size="15" />
         type:
         <select name="type" size=1>
           <option value="title" i18n:translate="collector_field_title">

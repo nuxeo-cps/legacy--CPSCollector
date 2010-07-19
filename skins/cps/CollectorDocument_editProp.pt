@@ -11,7 +11,7 @@
     <tal:block i18n:translate="collector_modify_props">
       Modify
     </tal:block>
-    «&nbsp;<span tal:replace="here/title_or_id">Title</span>&nbsp;»
+    <span tal:replace="here/title_or_id">Title</span>
   </tal:block>
   </h1>
   <div class="description" tal:content="doc/Description">
@@ -32,13 +32,15 @@
               action python:create and 'content_create' or 'content_edit';">
 
   <form name="edit_form" action="." method="post" enctype="multipart/form-data"
+	accept-charset='utf-8'
         tal:attributes="action action">
 
   <div class="group">
   <div class="row">
   <div class="label"><span i18n:translate="collector_prop_title"></span></div>
   <div class="field">
-    <input type="text" name="Title" value="title" size="72" maxlength="100"
+    <input type="text" name="Title:utf8:ustring"
+	   value="title" size="72" maxlength="100"
       tal:attributes="value title" />
   </div>
   </div>
@@ -46,7 +48,7 @@
   <div class="row">
   <div class="label"><span i18n:translate="collector_prop_description"></span></div>
   <div class="field">
-    <textarea name="Description:text" rows="5" cols="72" wrap="soft"
+    <textarea name="Description:utf8:ustring" rows="5" cols="72" wrap="soft"
       tal:content="description"></textarea>
   </div>
   </div>
@@ -54,7 +56,7 @@
   <div class="row">
   <div class="label"><span i18n:translate="collector_prop_submit_msg"></span></div>
   <div class="field">
-    <textarea name="submit_msg:text" rows="5" cols="50" wrap="soft"
+    <textarea name="submit_msg:utf8:ustring" rows="5" cols="50" wrap="soft"
       tal:content="submit_msg|default"></textarea>
   </div>
   </div>
