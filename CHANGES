@@ -9,6 +9,8 @@ Bug fixes
 - Fixed #2262: [Regression] All stats to 0%
 - Fixed XML validity
 - Removed a bad usage of the <base> tag
+- Using the standard i18n file names so that CPSCollector works well with
+  update_pos.
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
