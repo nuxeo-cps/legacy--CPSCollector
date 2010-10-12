@@ -12,7 +12,6 @@ import time
 import strptime
 from random import randrange
 from re import match, sub
-from types import StringType, ListType
 import csv
 from StringIO import StringIO
 
@@ -292,6 +291,7 @@ class CollectorDocument(Form, BaseDocument):
         date_end = time.localtime(0)
         nb_item = 0
 
+        # Iterating over all the form fields
         for f in self.get_stat_fields():
             r[f] = {}
             mv = self.fields[f].get('mvalue')
@@ -301,6 +301,7 @@ class CollectorDocument(Form, BaseDocument):
             else:
                 r[f]['on'] = 0
 
+        # Iterating over all the collected answers
         for obj in self._get_item_values():
             _u, _ip, d = self._decode_id(obj.id)
             if not _u:
@@ -314,12 +315,13 @@ class CollectorDocument(Form, BaseDocument):
                 mv = obj.data.get(f)
                 if not mv:
                     continue
-                if type(mv) is StringType:
+                if isinstance(mv, str) or isinstance(mv, unicode):
                     mv = [mv,]
                 for v in mv:
                     if r[f].get(v,-1) != -1:
                         r[f][v] += 1
 
+        # Computing the stats
         if nb_item:
             for f in r.keys():
                 for v in r[f].keys():

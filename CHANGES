@@ -6,6 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
+- Fixed #2262: [Regression] All stats to 0%
 - Fixed XML validity
 - Removed a bad usage of the <base> tag
 New internal features
