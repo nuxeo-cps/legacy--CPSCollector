@@ -6,7 +6,8 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
--
+- Fixed XML validity
+- Removed a bad usage of the <base> tag
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 

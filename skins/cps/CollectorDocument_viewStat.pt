@@ -2,10 +2,6 @@
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/content_lib_master/macros/master">
-  <metal:block fill-slot="base">
-    <base href="." tal:attributes="href string:${here/absolute_url}"/>
-  </metal:block>
-
 <body>
 <metal:block fill-slot="main">
 <tal:block define="_check_perm_ doc/assert_form_modify" />
@@ -28,9 +24,9 @@
   </span>
   <h2 i18n:translate="collector_stats_details">Result</h2>
 
-  <table width="60%" tal:condition="fields">
+  <table width="100%" tal:condition="fields">
   <tal:block repeat="field fields">
-    <tr><th colspan=2>
+    <tr><th colspan="2">
     <tal:block replace="python:doc.getLabel(field)" />
     </th></tr>
     <tal:block repeat="value python:stats[field].keys()">
@@ -46,7 +42,7 @@
     <h2 i18n:translate="collector_form_stats_null">No statistic available</h2>
   </tal:block>
   </tal:block>
-  
+
 </tal:block>
 </metal:block>
 
