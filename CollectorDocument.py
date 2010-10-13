@@ -406,7 +406,10 @@ class CollectorDocument(Form, BaseDocument):
         """Check if user/remote ip have already been collected"""
         mtools = self.portal_membership
         if mtools.isAnonymousUser():
-            s = 'anonymous_' + self.REQUEST.environ.get('REMOTE_ADDR', '')
+            # getClientAddr() always returns a meaningful value, even when CPS is
+            # behind a reverse proxy such as Apache (and in this cas one must set
+            # "trusted-proxy" configuration directives in etc/zope.conf).
+            s = 'anonymous_' + self.REQUEST.getClientAddr()
         else:
             s = mtools.getAuthenticatedMember().getUserName()
         for id in self._get_item_ids():
@@ -425,7 +428,10 @@ class CollectorDocument(Form, BaseDocument):
             id += 'anonymous_'
         else:
             id += mtools.getAuthenticatedMember().getUserName() + '_'
-        id += self.REQUEST.environ.get('REMOTE_ADDR', 'unknown_ip') + '_'
+        # getClientAddr() always returns a meaningful value, even when CPS is
+        # behind a reverse proxy such as Apache (and in this cas one must set
+        # "trusted-proxy" configuration directives in etc/zope.conf).
+        id += self.REQUEST.getClientAddr() + '_'
         id += '%3.3d' % randrange(999)
         return id
 

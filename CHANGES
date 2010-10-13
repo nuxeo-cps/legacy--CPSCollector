@@ -7,6 +7,8 @@ New features
 Bug fixes
 ~~~~~~~~~
 - Fixed #2262: [Regression] All stats to 0%
+- Partly fixed #2116: One entry per user should go, by using not using the IP
+  address of the reverse proxy.
 - Fixed XML validity
 - Removed a bad usage of the <base> tag
 - Using the standard i18n file names so that CPSCollector works well with
