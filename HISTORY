@@ -1,4 +1,27 @@
 ===========================================================
+Package: CPSCollector 1.13.1
+===========================================================
+First release built by: gracinet at: 2010-10-13T11:44:13
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- Fixed #2262: [Regression] All stats to 0%
+- Partly fixed #2116: One entry per user should go, by using not using the IP
+  address of the reverse proxy.
+- Fixed XML validity
+- Removed a bad usage of the <base> tag
+- Using the standard i18n file names so that CPSCollector works well with
+  update_pos.
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.13.0
 ===========================================================
 First release built by: gracinet at: 2010-07-26T22:35:06
