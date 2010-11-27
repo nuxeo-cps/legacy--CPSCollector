@@ -419,7 +419,7 @@ class Form(Base):
         if not len(label) or label[0] != '_':
             return label
 
-        return mcat(label)
+        return self.mcat(label)
 
     security.declareProtected(View, 'isSelected')
     def isSelected(self, f=None, v=None):
