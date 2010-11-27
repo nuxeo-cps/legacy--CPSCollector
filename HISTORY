@@ -1,4 +1,21 @@
 ===========================================================
+Package: CPSCollector 1.13.2
+===========================================================
+First release built by: gracinet at: 2010-11-27T04:23:49
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- Fixed error in localization of certain labels
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.13.1
 ===========================================================
 First release built by: gracinet at: 2010-10-13T11:44:13
