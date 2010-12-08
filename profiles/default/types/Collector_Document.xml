@@ -44,6 +44,12 @@
     url_expr="string:${object_url}/CollectorDocument_editProp" visible="True">
   <permission value="Modify portal content"/>
  </action>
+ <!-- compat : old action name -->
+ <action title="action_modify_prop" action_id="edit" category="object"
+    condition_expr=""
+    url_expr="string:${object_url}/CollectorDocument_editProp" visible="False">
+  <permission value="Modify portal content"/>
+ </action>
  <action title="action_modify_form" action_id="edit_form" category="object"
     condition_expr="" url_expr="string:${object_url}/Form_editForm"
     visible="True">
