@@ -39,7 +39,7 @@
     url_expr="string:${object_url}/CollectorDocument_viewStat" visible="True">
   <permission value="View collector data"/>
  </action>
- <action title="action_modify_prop" action_id="edit" category="object"
+ <action title="action_modify_prop" action_id="edit_prop" category="object"
     condition_expr=""
     url_expr="string:${object_url}/CollectorDocument_editProp" visible="True">
   <permission value="Modify portal content"/>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<action-icons>
+ <action-icon category="object" action_id="export"
+              title="action_export_csv" priority="25"
+              icon_expr="actionicon_export_csv.png"/>
+ <action-icon category="object" action_id="view_stat"
+              title="action_view_stat" priority="20"
+              icon_expr="actionicon_view_stat.png"/>
+ <action-icon category="object" action_id="edit_prop"
+              title="action_modify_prop" priority="17"
+              icon_expr="actionicon_modify.png"/>
+ <action-icon category="object" action_id="edit_form"
+              title="action_modify_prop" priority="15"
+              icon_expr="actionicon_edit_form.png"/>
+ <action-icon category="object" action_id="erase"
+              title="action_erase_data" priority="45"
+              icon_expr="actionicon_erase_data.png"/>
+ <action-icon category="object" action_id="merge"
+              title="action_icon_merge_data" priority="40"
+              icon_expr="actionicon_merge_data.png"/>
+
+</action-icons>
