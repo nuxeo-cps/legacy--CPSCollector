@@ -1,4 +1,22 @@
 ===========================================================
+Package: CPSCollector 1.13.3
+===========================================================
+First release built by: gracinet at: 2010-12-30T12:04:47
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- Icons for collector actions
+- Compatibility in the name of edit action
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSCollector 1.13.2
 ===========================================================
 First release built by: gracinet at: 2010-11-27T04:23:49
