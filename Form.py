@@ -416,7 +416,7 @@ class Form(Base):
         else:
             label = self.fields[f_name].get('label', '')
 
-        if not len(label) or label[0] != '_':
+        if (not len(label) or label[0] != '_') and not f_name.endswith('__'):
             return label
 
         return self.mcat(label)
