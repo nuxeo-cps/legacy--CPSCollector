@@ -6,7 +6,7 @@ New features
 -
 Bug fixes
 ~~~~~~~~~
--
+- #2340: CPS error due to item id being unicode upon form submit
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 

@@ -339,6 +339,7 @@ class CollectorDocument(Form, BaseDocument):
     security.declarePrivate('_add_item')
     def _add_item(self, id, values):
         """Add item interface"""
+        id = str(id) # OFS.ObjectManager does not like unicode
         ob =  CollectorItem(id, values)
         self._setObject(id, ob)
 
