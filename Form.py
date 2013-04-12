@@ -233,11 +233,11 @@ class Form(Base):
         self._set_current_form(None)
         return self._editForm_pt
 
-
     #   Fields Setters -----------------------------------------------
     ## All methods that always change the object are to be called
     ## on the result of getEditableContents
     security.declareProtected(ModifyPortalContent, 'add_field')
+
     def add_field(self, id, insert_after=None, **extra):
         """Add or modify field to the form."""
         if not id:
@@ -245,7 +245,7 @@ class Form(Base):
         if not hasattr(aq_base(self), 'fields'):
             self.fields = {}
             self.fields_list = []
-        if not self.fields.has_key(id):
+        if not id in self.fields:
             self.fields[id] = {}
             if id.find('__') == -1:
                 if insert_after is None:
@@ -260,7 +260,7 @@ class Form(Base):
                 f[k] = self._str_to_mvalue(cleanQuotes(extra[k]))
             else:
                 f[k] = cleanQuotes(extra[k])
-        t = f.get('type')                 #setting default type
+        t = f.get('type')                 # setting default type
         if not t in self.types:
             f['type'] = 'string'
         self._notify_modified()
